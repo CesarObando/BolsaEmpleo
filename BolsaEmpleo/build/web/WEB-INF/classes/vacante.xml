@@ -1,0 +1,73 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="vacante" extends="struts-default">
+        
+        <action name="VerVacantes" class="Actions.VerVacantesAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/verVacantes.jsp</result>
+        </action> 
+        
+        <action name="buscarVacante" method="buscarVacante" class="Actions.VerVacantesAction">
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/verVacantes.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicios/insertarServicio.jsp.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+        </action>
+        
+        <action name="VerVacante" class="Actions.VerVacanteAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/verVacante.jsp</result>
+        </action> 
+        <action name="solicitarEntrevista" method="solicitarEntrevista" class="Actions.VerVacanteAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="success" type="dispatcher">/recursos/exito.jsp</result>
+            <result name="error" type="dispatcher">/recursos/vacantesVistaOferente/verVacante.jsp</result>
+            <result name="error2" type="chain">VerVacantes</result>
+        </action>
+        
+        <!--    Entrevistas     -->
+        <action name="EntrevistasSolicitadas" class="Actions.EntrevistasSolicitadasAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/entrevistasSolicitadas.jsp</result>
+            <result name="login" type="chain">IniciarSesion</result>
+        </action> 
+        <action name="cancelarEntrevista" method="cancelarEntrevista" class="Actions.EntrevistasSolicitadasAction">
+            <result name="success" type="chain">EntrevistasSolicitadas</result>
+            <result name="error" type="dispatcher">/recursos/vacantesVistaOferente/entrevistasSolicitadas.jsp</result>
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/entrevistasSolicitadas.jsp</result>
+        </action>
+        
+        <!--  Gestión de vacante NO BORRAR -->
+        <action name="modificarVacante" class="Actions.VacanteAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+        </action>
+        
+        <action name="insertarVacante" method="crearVacante" class="Actions.VacanteAction">
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+        </action>
+        
+        <action name="actualizarVacante" method="modificarVacante" class="Actions.VacanteAction">
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+        </action>
+        
+        <action name="borrarVacante" method="eliminarVacante" class="Actions.VacanteAction">
+            <result name="input" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/vacantesVistaOferente/manejoVacante.jsp</result>
+        </action>  
+    </package>
+</struts>

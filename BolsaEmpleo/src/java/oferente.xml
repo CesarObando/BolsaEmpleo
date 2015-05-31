@@ -1,0 +1,50 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: ricardo -->
+ 
+<struts>
+    <package name="oferente" extends="struts-default">
+        <!--..................Oferente......................-->
+        
+        <action name="actualizarInfoOferente" method="actualizarCamposOferente" class="Actions.BorrarOferenteAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">actualizarCamposOferente</param>
+            </interceptor-ref>
+            <result name="success" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+            <result name="error" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+        </action>
+        
+        <action name="listaPostulantes" class="Actions.BorrarOferenteAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+        </action>
+        
+        <action name="borrarOferente" method="borrarOferente" class="Actions.BorrarOferenteAction">
+            <result name="success" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+            <result name="error" type="dispatcher">/recursos/oferente/modificarOferente.jsp</result>
+        </action>
+        
+        <!--..................Oferente por vacante......................-->
+        
+        <action name="vacantesPorCategoria" class="Actions.VacantePorCategoriaAction">
+            <result name="success" type="dispatcher">/recursos/oferente/vacantesPorCategoria.jsp</result>
+        </action>
+        
+        <action name="listaPostulantesPorVacante" class="Actions.ListaPostulantesPorVacanteAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/oferente/listaPostulantesPorVacante.jsp</result>
+        </action>
+        
+        <action name="borrarOferenteVacante" method="borrarOferentePorVacante" class="Actions.ListaPostulantesPorVacanteAction">
+            <result name="success" type="dispatcher">/recursos/oferente/listaPostulantesPorVacante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/oferente/listaPostulantesPorVacante.jsp</result>    
+        </action>
+    </package>
+</struts>

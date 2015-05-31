@@ -1,0 +1,21 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <include file="servicio.xml"/>
+    <include file="usuario.xml"/>
+    <include file="vacante.xml"/>
+    <include file="empresa.xml"/>
+    <include file="oferente.xml"/>
+    <include file="empleador.xml"/>
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.mapper.action.prefix.enabled" value="true" />
+     
+    <package name="default"  extends="struts-default">
+        
+        <action name="PantallaPrincipal" class="Actions.PantallaPrincipalAction">  
+             <result name="SUCCESS">/recursos/pantallaPrincipal.jsp</result>
+        </action> 
+
+    </package>
+</struts>

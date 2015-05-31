@@ -1,0 +1,39 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: ricardo -->
+ 
+<struts>
+     <package name="empleador" extends="struts-default">
+       
+         <!--..................Empleador......................-->
+         
+         <action name="listaEmpleadores" class="Actions.EmpleadorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+        </action>
+        
+        <action name="actualizarCamposEmpleador" method="actualizarCamposEmpleador" class="Actions.EmpleadorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">actualizarCamposEmpleador</param>
+            </interceptor-ref>
+            <result name="success" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+        </action>
+        
+        <action name="borrarEmpleador" method="borrarEmpleador" class="Actions.EmpleadorAction">
+            <result name="success" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+        </action>
+        
+        <action name="actualizarCuentaEmpleador" method="modificarEmpleador" class="Actions.EmpleadorAction">
+            <result name="input" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empleador/modificarEmpleador.jsp</result>
+        </action>
+        
+    </package>
+</struts>

@@ -1,0 +1,63 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="servicio" extends="struts-default">
+        
+        <action name="Servicios" class="Actions.Servicios">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+        </action> 
+        
+        <action name="insertarServicio" method="insertarServicio" class="Actions.Servicios">
+            <result name="input" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicios/insertarServicio.jsp.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+        </action>
+        <action name="eliminarServicio" method="eliminarServicio" class="Actions.Servicios">
+            <result name="input" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicios/insertarServicio.jsp.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+        </action>
+        <action name="actualizarServicio" method="actualizarServicio" class="Actions.Servicios">
+            <result name="input" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/insertarServicio.jsp</result>
+        </action>
+        
+        <action name="ServiciosBuscar" class="Actions.ServiciosBuscar">  
+             <result name="input" type="dispatcher">/recursos/servicios/buscarServicios.jsp</result>
+        </action>
+        <action name="buscarServicio" method="buscarServicio" class="Actions.ServiciosBuscar">
+            <result name="input" type="dispatcher">/recursos/servicios/buscarServicios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicios/buscarServicios.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/buscarServicios.jsp</result>
+        </action>
+        
+        <!--..................Servicios......................-->
+        
+        <action name="actualizarInfoServicio" method="actualizarCamposServicio" class="Actions.BorrarServicioAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">actualizarCamposServicio</param>
+            </interceptor-ref>
+            <result name="success" type="dispatcher">/recursos/servicios/borrarServicio.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/borrarServicio.jsp</result>
+        </action>
+        
+        <action name="listaServicios" class="Actions.BorrarServicioAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/servicios/borrarServicio.jsp</result>
+        </action>
+        
+        <action name="borrarServicio" method="borrarServicio" class="Actions.BorrarServicioAction">
+            <result name="success" type="dispatcher">/recursos/servicios/borrarServicio.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicios/borrarServicio.jsp</result>
+        </action>
+
+    </package>
+</struts>

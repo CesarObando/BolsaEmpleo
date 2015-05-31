@@ -1,0 +1,194 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+    <package name="usuario" extends="struts-default">
+        
+        
+        <!--        Registrar usuario       -->
+        <action name="RegistrarUsuario" class="Actions.RegistrarUsuarioAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+        </action> 
+        <action name="insertarUsuario" method="insertarUsuario" class="Actions.RegistrarUsuarioAction">
+            <result name="error" type="dispatcher">/recursos/servicios/registrarUsuario.jsp</result>
+            <result name="success" type="dispatcher">/recursos/exito.jsp</result>
+        </action>
+        
+        <!--        Actualizar datos usuario    -->
+        <action name="cambiarContrasena" method="cambiarContrasena" class="Actions.RegistrarUsuarioAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+        </action>
+        <action name="actualizarUsuario" method="actualizarUsuario" class="Actions.RegistrarUsuarioAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/registrarUsuario.jsp</result>
+        </action>
+        
+        <!--        MOdificar usuario varios       -->
+        <action name="ModificarUsuarioVarios" class="Actions.ModificarUsuarioVariosAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+        </action> 
+        <action name="eliminarOferente" method="eliminarOferente" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="chain">PantallaPrincipal</result>
+        </action>
+        <action name="eliminarUsuario" method="eliminarUsuario" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="chain">logout</result>
+        </action>
+        <action name="agregarOferente" method="agregarOferente" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+        </action>
+        <action name="eliminarEmpleador" method="eliminarEmpleador" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="chain">PantallaPrincipal</result>
+        </action>
+        <action name="agregarEmpleador" method="agregarEmpleador" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+        </action>
+        <action name="eliminarAdministrador" method="eliminarAdministrador" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="chain">PantallaPrincipal</result>
+        </action>
+        <action name="agregarAdministrador" method="agregarAdministrador" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+        </action>
+        <action name="actualziarCurriculo" method="actualziarCurriculo" class="Actions.ModificarUsuarioVariosAction">
+            <result name="login" type="chain">IniciarSesion</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/modificarUsuarioVarios.jsp</result>
+        </action>
+        
+        
+        <!--        Iniciar Sesion          -->
+        <action name="IniciarSesion" class="Actions.IniciarSesionAction">            
+        <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/pantallaPrincipal.jsp</result>
+        </action> 
+        
+        <action name="iniciarSesionUsuario" method="iniciarSesionUsuario" class="Actions.IniciarSesionAction">
+            <result name="success" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="error" type="chain">PantallaPrincipal</result>
+            <result name="input" type="dispatcher">/recursos/pantallaPrincipal.jsp</result>
+            <result name="administrador" type="chain">PrincipalAdministrador</result>
+            <result name="oferente" type="chain">PrincipalOferente</result>
+            <result name="empleador" type="chain">PrincipalEmpleador</result>
+        </action>
+        
+        
+
+       <!--        prueba de logout victor          --> 
+        <action name="logout" method="logout" class="Actions.IniciarSesionAction" >  
+            <result name="success" type="chain">PantallaPrincipal</result>
+	</action>  
+        
+        <!--        Curriculo               -->
+        <action name="Curriculo" class="Actions.CurriculoAction">  
+             <result name="input" type="dispatcher">/recursos/servicios/curriculo.jsp</result>
+        </action> 
+        
+        <!--        Principales             -->
+        <action name="PrincipalOferente" class="Actions.PrincipalOferenteAction">            
+        <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/principalOferente.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+             <result name="administrador" type="chain">PrincipalAdministrador</result>
+            <result name="empleador" type="chain">PrincipalEmpleador</result>
+        </action> 
+        
+        <action name="PrincipalAdministrador" class="Actions.PrincipalAdministradorAction">            
+        <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/principalAdministrador.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+            <result name="oferente" type="chain">PrincipalOferente</result>
+            <result name="empleador" type="chain">PrincipalEmpleador</result>
+        </action> 
+        
+        <action name="PrincipalEmpleador" class="Actions.PrincipalEmpleadorAction">            
+        <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/principalEmpleador.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+             <result name="administrador" type="chain">PrincipalAdministrador</result>
+            <result name="oferente" type="chain">PrincipalOferente</result>
+        </action> 
+        
+        <!--        Especialidades          -->
+        
+        <action name="EspecialidadesOferente" class="Actions.EspecialidadesOferenteAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+        </action> 
+        <action name="agregarEspecialidad" method="agregarEspecialidad" class="Actions.EspecialidadesOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+        </action>
+        <action name="cambiarAExperiencias" method="cambiarAExperiencias" class="Actions.EspecialidadesOferenteAction">
+            <result name="input" type="chain">ExperienciasOferente</result>
+        </action>
+        <action name="insertarNivelEstudio" method="insertarNivelEstudio" class="Actions.EspecialidadesOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+        </action>
+        <action name="insertarInstitucionEstudio" method="insertarInstitucionEstudio" class="Actions.EspecialidadesOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+        </action>
+        <action name="insertarAreaEspecialidad" method="insertarAreaEspecialidad" class="Actions.EspecialidadesOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+        </action>
+        <action name="quitarEspecialidad" method="quitarEspecialidad" class="Actions.EspecialidadesOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/especialidadOferente.jsp</result>
+        </action>
+        
+        <!--        Experiencias          -->
+        <action name="ExperienciasOferente" class="Actions.ExperienciasOferenteAction">  
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+             <result name="input" type="dispatcher">/recursos/usuarios/experienciaLaboral.jsp</result>
+             <result name="login" type="chain">IniciarSesion</result>
+        </action> 
+        <action name="agregarExperiencia" method="agregarExperiencia" class="Actions.ExperienciasOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/experienciaLaboral.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/experienciaLaboral.jsp</result>
+        </action>
+        <action name="quitarExperiencia" method="quitarExperiencia" class="Actions.ExperienciasOferenteAction">
+            <result name="error" type="dispatcher">/recursos/usuarios/experienciaLaboral.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/experienciaLaboral.jsp</result>
+        </action>
+        
+        
+                
+
+    </package>
+</struts>

@@ -1,0 +1,15 @@
+/* 
+    Created on : 28-sep-2014, 11:01:34
+    Author     : Victor
+*/
+.form-actions input {
+    margin-right: 0.5em;
+}
+
+.form-actions input:hover {
+    background: #FFFFFF;
+}
+
+label {
+    font-weight: bold;
+}

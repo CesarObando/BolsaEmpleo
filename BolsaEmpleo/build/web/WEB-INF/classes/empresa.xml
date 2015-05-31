@@ -1,0 +1,40 @@
+<!DOCTYPE struts PUBLIC
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<!-- Author: ricardo -->
+ 
+<struts>
+    <package name="empresa" extends="struts-default">
+        <!--..................Empresa......................-->
+        
+        <action name="listaEmpresas" class="Actions.EmpresaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+        </action>
+        
+        <action name="actualizarCamposEmpresa" method="actualizarCamposEmpresa" class="Actions.EmpresaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">actualizarCamposEmpresa</param>
+            </interceptor-ref>
+            <result name="success" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+        </action>
+        
+        <action name="borrarEmpresa" method="borrarEmpresa" class="Actions.EmpresaAction">
+            <result name="success" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+             <result name="input" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+        </action>
+        
+        <action name="modificarEmpresa" method="modificarEmpresa" class="Actions.EmpresaAction">
+            <result name="success" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+            <result name="input" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/modificarEmpresa.jsp</result>
+        </action>
+        
+        
+    </package>
+</struts>
