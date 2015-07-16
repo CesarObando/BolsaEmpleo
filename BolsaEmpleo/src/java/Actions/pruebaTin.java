@@ -10,7 +10,7 @@ package Actions;
  * @author Tin
  */
 public class pruebaTin {
-    public void CesarSeLaComeConCurva () {
+    public void CesarSeLaComeConCurva (int cuantasSeCome) {
         
     }
 }
