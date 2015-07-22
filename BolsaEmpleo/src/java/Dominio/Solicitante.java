@@ -16,7 +16,7 @@ public class Solicitante {
     private String apellidos;
     private String username;
     private String password;
-    //IMAGEN
+    private byte [] foto; 
     private int edad;
     private char sexo;
     private String escolaridad;
@@ -31,8 +31,25 @@ public class Solicitante {
     public Solicitante() {
     }
 
-    //Constructor
-    
+    public Solicitante(String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, char sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idomas) {
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.username = username;
+        this.password = password;
+        this.foto = foto;
+        this.edad = edad;
+        this.sexo = sexo;
+        this.escolaridad = escolaridad;
+        this.titulos = titulos;
+        this.experienciaLaboral = experienciaLaboral;
+        this.detalleExperienciaLaboral = detalleExperienciaLaboral;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoMovil = telefonoMovil;
+        this.correo = correo;
+        this.idomas = idomas;
+    }
+
     public String getCedula() {
         return cedula;
     }
@@ -152,7 +169,13 @@ public class Solicitante {
     public void setIdomas(String idomas) {
         this.idomas = idomas;
     }
-    
-    
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
+    }
     
 }
