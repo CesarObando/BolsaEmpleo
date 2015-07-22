@@ -1,58 +1,110 @@
 package Dominio;
 
-import java.sql.Date;
-import java.util.LinkedList;
+public class Empleador {
 
-public class Empleador extends Usuario{
-    
-    private ContactoEmpleador contactoEmpleador;
-    private LinkedList<Vacante> vacantes;
+    private int id;
+    private String cedula;
+    private String nombre;
+    private String apellidos;
+    private String correo;
+    private String telefonoFijo;
+    private String telefonoMovil;
+    private String cedulaJuridica;
+    private String nombreEmpresa;
+    private String direccion;
 
     public Empleador() {
-        contactoEmpleador = new ContactoEmpleador();
-        vacantes = new LinkedList<>();
     }
 
-    public Empleador(ContactoEmpleador contactoEmpleador, LinkedList<Vacante> vacantes, String cedula, String nombreUsuario, String clave, String nombre, String apellidos, String provincia, String ciudad, String direccion, int codigoPostal, String email, String telefonoCasa, String telefonoCelular, String fax, Date fechaNacimiento, boolean oferente, boolean empleador, boolean administrador, LinkedList<Servicio> servicios) {
-        super(cedula, nombreUsuario, clave, nombre, apellidos, provincia, ciudad, direccion, codigoPostal, email, telefonoCasa, telefonoCelular, fax, fechaNacimiento, oferente, empleador, administrador, servicios);
-        this.contactoEmpleador = contactoEmpleador;
-        this.vacantes = vacantes;
+    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion) {
+        this.id = id;
+        this.cedula = cedula;
+        this.nombre = nombre;
+        this.apellidos = apellidos;
+        this.correo = correo;
+        this.telefonoFijo = telefonoFijo;
+        this.telefonoMovil = telefonoMovil;
+        this.cedulaJuridica = cedulaJuridica;
+        this.nombreEmpresa = nombreEmpresa;
+        this.direccion = direccion;
     }
 
-    public ContactoEmpleador getContactoEmpleador() {
-        return contactoEmpleador;
+    public int getId() {
+        return id;
     }
 
-    public void setContactoEmpleador(ContactoEmpleador contactoEmpleador) {
-        this.contactoEmpleador = contactoEmpleador;
+    public String getCedula() {
+        return cedula;
     }
 
-    public LinkedList<Vacante> getVacantes() {
-        return vacantes;
+    public void setCedula(String cedula) {
+        this.cedula = cedula;
     }
 
-    public void setVacantes(LinkedList<Vacante> vacantes) {
-        this.vacantes = vacantes;
+    public String getNombre() {
+        return nombre;
     }
 
-    @Override
-    public String toString() {
-        return "Empleador{" + "contactoEmpleador=" + contactoEmpleador + ", vacantes=" + vacantes + '}';
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public String getApellidos() {
+        return apellidos;
+    }
+
+    public void setApellidos(String apellidos) {
+        this.apellidos = apellidos;
+    }
+
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+    public String getTelefonoFijo() {
+        return telefonoFijo;
+    }
+
+    public void setTelefonoFijo(String telefonoFijo) {
+        this.telefonoFijo = telefonoFijo;
+    }
+
+    public String getTelefonoMovil() {
+        return telefonoMovil;
+    }
+
+    public void setTelefonoMovil(String telefonoMovil) {
+        this.telefonoMovil = telefonoMovil;
+    }
+
+    public String getCedulaJuridica() {
+        return cedulaJuridica;
+    }
+
+    public void setCedulaJuridica(String cedulaJuridica) {
+        this.cedulaJuridica = cedulaJuridica;
+    }
+
+    public String getNombreEmpresa() {
+        return nombreEmpresa;
+    }
+
+    public void setNombreEmpresa(String nombreEmpresa) {
+        this.nombreEmpresa = nombreEmpresa;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
     
     
 
-
-    
-
-
-    
-
-    
-    
-
-   
-    
-    
-    
 }
