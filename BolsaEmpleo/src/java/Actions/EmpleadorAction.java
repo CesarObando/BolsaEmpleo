@@ -67,7 +67,7 @@ public class EmpleadorAction extends ActionSupport implements Preparable, ModelD
             try {
                 SimpleDateFormat formatFecha = new SimpleDateFormat("dd-MM-yyyy");
                 Date fechaCreacion = formatFecha.parse(fechaNacimientoString);
-                empleador.setFechaNacimiento(new java.sql.Date(fechaCreacion.getTime()));
+//                empleador.setFechaNacimiento(new java.sql.Date(fechaCreacion.getTime()));
                 EmpleadorBusiness empBus = new EmpleadorBusiness();
                 empBus.actualizarCuentaEmpleador(empleador);
                 empleadores = new EmpleadorBusiness().getEmpleadores();
@@ -86,14 +86,14 @@ public class EmpleadorAction extends ActionSupport implements Preparable, ModelD
         empleador = new Empleador();
         if (!cedul.trim().equals("vacia")) {
             empleador = new EmpleadorBusiness().getEmpleador(cedul.trim());
-            if (empleador.getFechaNacimiento() != null) {
-                SimpleDateFormat fechaActualString = new SimpleDateFormat("dd-MM-yyyy");
-                fechaNacimientoString = fechaActualString.format(empleador.getFechaNacimiento());
-            }
-            if (empleador.getProvincia() != null) {
-
-                cargarCantones(empleador.getProvincia().trim());
-            }
+//            if (empleador.getFechaNacimiento() != null) {
+//                SimpleDateFormat fechaActualString = new SimpleDateFormat("dd-MM-yyyy");
+//                fechaNacimientoString = fechaActualString.format(empleador.getFechaNacimiento());
+//            }
+//            if (empleador.getProvincia() != null) {
+//
+//                cargarCantones(empleador.getProvincia().trim());
+//            }
         }
         return SUCCESS;
     }
@@ -295,21 +295,21 @@ public class EmpleadorAction extends ActionSupport implements Preparable, ModelD
         if (this.empleador.getApellidos().trim().isEmpty()) {
             addFieldError("empleador.apellidos", "Por favor ingrese sus apellidos");
         }
-        if (!this.empleador.getTelefonoCasa().trim().isEmpty()) {
-            if (this.empleador.getTelefonoCasa().trim().length() < 8) {
-                addFieldError("empleador.telefonoCasa", "El telefono debe tener al menos 8 dígitos");
-            }
-        }
-        if (!this.empleador.getTelefonoCelular().trim().isEmpty()) {
-            if (this.empleador.getTelefonoCelular().trim().length() < 8) {
-                addFieldError("empleador.telefonoCelular", "El celular debe tener al menos 8 dígitos");
-            }
-        }
-        if (!this.empleador.getFax().trim().isEmpty()) {
-            if (this.empleador.getFax().trim().length() < 8) {
-                addFieldError("empleador.fax", "El fax debe tener al menos 8 dígitos");
-            }
-        }
+//        if (!this.empleador.getTelefonoCasa().trim().isEmpty()) {
+//            if (this.empleador.getTelefonoCasa().trim().length() < 8) {
+//                addFieldError("empleador.telefonoCasa", "El telefono debe tener al menos 8 dígitos");
+//            }
+//        }
+//        if (!this.empleador.getTelefonoCelular().trim().isEmpty()) {
+//            if (this.empleador.getTelefonoCelular().trim().length() < 8) {
+//                addFieldError("empleador.telefonoCelular", "El celular debe tener al menos 8 dígitos");
+//            }
+//        }
+//        if (!this.empleador.getFax().trim().isEmpty()) {
+//            if (this.empleador.getFax().trim().length() < 8) {
+//                addFieldError("empleador.fax", "El fax debe tener al menos 8 dígitos");
+//            }
+//        }
 
     }
 
