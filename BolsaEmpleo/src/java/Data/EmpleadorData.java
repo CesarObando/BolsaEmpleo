@@ -31,15 +31,15 @@ public class EmpleadorData {
             cs.setString(1, empleador.getCedula());
             cs.setString(2, empleador.getNombre());
             cs.setString(3, empleador.getApellidos());
-            cs.setString(4, empleador.getProvincia());
-            cs.setString(5, empleador.getCiudad());
-            cs.setString(6, empleador.getDireccion());
-            cs.setInt(7, empleador.getCodigoPostal());
-            cs.setString(8, empleador.getEmail());
-            cs.setString(9, empleador.getTelefonoCasa());
-            cs.setString(10, empleador.getTelefonoCelular());
-            cs.setString(11, empleador.getFax());
-            cs.setDate(12, empleador.getFechaNacimiento());
+//            cs.setString(4, empleador.getProvincia());
+//            cs.setString(5, empleador.getCiudad());
+//            cs.setString(6, empleador.getDireccion());
+//            cs.setInt(7, empleador.getCodigoPostal());
+//            cs.setString(8, empleador.getEmail());
+//            cs.setString(9, empleador.getTelefonoCasa());
+//            cs.setString(10, empleador.getTelefonoCelular());
+//            cs.setString(11, empleador.getFax());
+//            cs.setDate(12, empleador.getFechaNacimiento());
             cs.execute();
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
@@ -102,16 +102,16 @@ public class EmpleadorData {
                 empleador.setCedula(rs.getString(1));
                 empleador.setNombre(rs.getString(2));
                 empleador.setApellidos(rs.getString(3));
-                empleador.setProvincia(rs.getString(4));
-                empleador.setCiudad(rs.getString(5));
-                empleador.setDireccion(rs.getString(6));
-                empleador.setCodigoPostal(rs.getInt(7));
-                empleador.setEmail(rs.getString(8));
-                empleador.setTelefonoCasa(rs.getString(9));
-                empleador.setTelefonoCelular(rs.getString(10));
-                empleador.setFax(rs.getString(11));
-                empleador.setFechaNacimiento(rs.getDate(12));
-                empleador.getContactoEmpleador().setCedulaJuridica(rs.getString(13));
+//                empleador.setProvincia(rs.getString(4));
+//                empleador.setCiudad(rs.getString(5));
+//                empleador.setDireccion(rs.getString(6));
+//                empleador.setCodigoPostal(rs.getInt(7));
+//                empleador.setEmail(rs.getString(8));
+//                empleador.setTelefonoCasa(rs.getString(9));
+//                empleador.setTelefonoCelular(rs.getString(10));
+//                empleador.setFax(rs.getString(11));
+//                empleador.setFechaNacimiento(rs.getDate(12));
+//                empleador.getContactoEmpleador().setCedulaJuridica(rs.getString(13));
                 empleadores.add(empleador);
             }
         } catch (SQLException e) {
@@ -141,16 +141,16 @@ public class EmpleadorData {
                 empleador.setCedula(rs.getString(1));
                 empleador.setNombre(rs.getString(2));
                 empleador.setApellidos(rs.getString(3));
-                empleador.setProvincia(rs.getString(4));
-                empleador.setCiudad(rs.getString(5));
-                empleador.setDireccion(rs.getString(6));
-                empleador.setCodigoPostal(rs.getInt(7));
-                empleador.setEmail(rs.getString(8));
-                empleador.setTelefonoCasa(rs.getString(9));
-                empleador.setTelefonoCelular(rs.getString(10));
-                empleador.setFax(rs.getString(11));
-                empleador.setFechaNacimiento(rs.getDate(12));
-                empleador.getContactoEmpleador().setCedulaJuridica(rs.getString(13));
+//                empleador.setProvincia(rs.getString(4));
+//                empleador.setCiudad(rs.getString(5));
+//                empleador.setDireccion(rs.getString(6));
+//                empleador.setCodigoPostal(rs.getInt(7));
+//                empleador.setEmail(rs.getString(8));
+//                empleador.setTelefonoCasa(rs.getString(9));
+//                empleador.setTelefonoCelular(rs.getString(10));
+//                empleador.setFax(rs.getString(11));
+//                empleador.setFechaNacimiento(rs.getDate(12));
+//                empleador.getContactoEmpleador().setCedulaJuridica(rs.getString(13));
             }
         } catch (SQLException e) {
             System.err.println("SQLException: " + e.getMessage());
