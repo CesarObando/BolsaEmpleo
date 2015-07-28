@@ -20,6 +20,8 @@ import static org.junit.Assert.*;
  */
 public class SolicitanteDataTest {
     
+    private Solicitante solicitante;
+    
     public SolicitanteDataTest() {
     }
     
@@ -27,6 +29,8 @@ public class SolicitanteDataTest {
     
     @Before
     public void setUp() {
+        //solicitante = new Solicitante("304590654", "Cesar", "Obando Solano", "cesar.b.c", "cesar", null, 23, 'M', "Secundaria Concluida", "Secundaria", 2, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
+
     }
     
     @After
@@ -38,9 +42,9 @@ public class SolicitanteDataTest {
     //
      @Test
      public void hello() throws SQLException {
-     Solicitante solicitante = new Solicitante("304590654", "Cesar", "Obando Solano", "cesar.b.c", "cesar", null, 23, 'M', "Secundaria Concluida", "Secundaria", 2, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
      SolicitanteData solicitanteData = new SolicitanteData();
-     solicitanteData.insertarSolicitante(solicitante);
-     
+     //solicitanteData.insertarSolicitante(solicitante);
+     solicitante = solicitanteData.iniciarSesion("cesarb.c", "cesar");
+     System.out.println(solicitante.getCedula());
      }
 }

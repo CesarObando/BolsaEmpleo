@@ -8,22 +8,22 @@ package Data;
 import Dominio.Solicitante;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 
 /**
  *
  * @author Cesar
  */
-public class SolicitanteData extends BaseData{
+public class SolicitanteData extends BaseData {
 
     public SolicitanteData() {
     }
-    
+
     //Insertar Solicitante
-    
-    public Solicitante insertarSolicitante(Solicitante solicitanteAInsertar) throws SQLException{
+    public Solicitante insertarSolicitante(Solicitante solicitanteAInsertar) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insertar_solicitante ?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?}";
+        String sqlInsert = "{CALL insertar_solicitante (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
         statement.setString(1, solicitanteAInsertar.getCedula());
         statement.setString(2, solicitanteAInsertar.getNombre());
@@ -45,6 +45,24 @@ public class SolicitanteData extends BaseData{
         conexion.close();
         return solicitanteAInsertar;
     }
-    
-    
+
+    public Solicitante iniciarSesion(String nombreUsuario, String password) throws SQLException {
+        Connection conexion = super.getConnection();
+        String sqlInicio = "{CALL iniciar_sesion_solicitantes (?, ?)}";
+        Solicitante solicitante = new Solicitante();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlInicio);
+            statement.setString(1, nombreUsuario);
+            statement.setString(2, password);
+            ResultSet rs = statement.executeQuery();
+            if (rs.next()) {
+                solicitante.setCedula(rs.getString("cedula"));
+                solicitante.setNombre(rs.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
+        return solicitante;
+    }
+
 }
