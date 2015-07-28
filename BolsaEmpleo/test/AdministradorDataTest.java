@@ -31,13 +31,22 @@ public class AdministradorDataTest {
     }
     
     @Test
-    public void insertarAdministrador() throws SQLException{
+    public void dministrador() throws SQLException{
         administrador.setCedula("3-0135-0345");
         administrador.setNombre("Eduardo");
-        administrador.setApellidos("Castillo Araya");
+        administrador.setApellidos("Castillo Moya");
         administrador.setUsername("eduardoca");
         administrador.setPassword("eduardoca");
-        administradorData.insertarAdministrador(administrador);
+//        administradorData.insertarAdministrador(administrador);
+//        administradorData.editarAdministrador(administrador);
+//        administradorData.eliminarAdministrador("3-0135-0345");
+//        administradorData.buscarAdministradores();
+//        for (Administrador administradorActual : administradorData.buscarAdministradores()) {
+//            System.out.println(administradorActual.getNombre());
+//        }
+        for (Administrador administradorActual : administradorData.buscarAdministradoresFiltrados("", "", "")) {
+            System.out.println(administradorActual.getNombre());
+        }
     }
     
     @After
