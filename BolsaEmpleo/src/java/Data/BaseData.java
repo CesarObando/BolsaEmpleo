@@ -9,7 +9,7 @@ import java.sql.*;
 
 /**
  *
- * @author ricardo
+ *
  */
 public class BaseData {
 
@@ -19,10 +19,10 @@ public class BaseData {
   public Connection getConnection() throws SQLException{
         Connection conexion;
         String url = "jdbc:odbc:ProyectoVentas";
-        String userName = "";
-        String pass = "";
+        String userName = "sqlserver";
+        String pass = "saucr.12";
    
-        conexion = DriverManager.getConnection(url);        
+        conexion = DriverManager.getConnection(url,userName,pass);        
         return conexion;
     }
 
