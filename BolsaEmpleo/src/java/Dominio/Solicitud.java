@@ -30,6 +30,10 @@ public class Solicitud {
         return id;
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Solicitante getSolicitante() {
         return solicitante;
     }

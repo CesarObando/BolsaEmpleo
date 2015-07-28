@@ -11,4 +11,7 @@ package Data;
  */
 public class SolicitanteData {
     
+    
+    
+    
 }
