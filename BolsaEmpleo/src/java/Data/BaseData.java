@@ -6,6 +6,8 @@
 package Data;
 
 import java.sql.*;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -18,12 +20,17 @@ public class BaseData {
 
   public Connection getConnection() throws SQLException{
         Connection conexion;
-        String url = "jdbc:odbc:ProyectoVentas";
-        String userName = "sqlserver";
-        String pass = "saucr.12";
-   
-        conexion = DriverManager.getConnection(url,userName,pass);        
-        return conexion;
+        String userName="sqlserver";
+        String password="saucr.12";
+        String className="com.microsoft.sqlserver.jdbc.SQLServerDriver";
+        String url="jdbc:sqlserver://163.178.107.130:1433;databaseName=BolsaEmpleoParaiso;user="+userName+";password="+password+";";
+        
+        try {
+            Class.forName(className);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(BaseData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return DriverManager.getConnection(url);
     }
 
 }
