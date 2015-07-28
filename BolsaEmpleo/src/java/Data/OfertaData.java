@@ -5,11 +5,15 @@
  */
 package Data;
 
+import Dominio.Administrador;
 import Dominio.Oferta;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.LinkedList;
 
 /**
  *
@@ -22,9 +26,12 @@ public class OfertaData extends BaseData{
     //inserta una nueva oferta 
     public Oferta insertarOferta(Oferta newOferta) throws SQLException{
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insetar_oferta(?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
+        
+        conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
+          try {
         statement.registerOutParameter(1, Types.INTEGER);//variable de salida
         statement.setString(2, newOferta.getPuesto());
         statement.setInt(3, newOferta.getEmpleador().getId());
@@ -35,10 +42,99 @@ public class OfertaData extends BaseData{
         statement.executeUpdate();
         
         newOferta.setId(statement.getInt(1));//solitamos el id generado
+       
+        conexion.commit();
+        } catch (SQLException e) {
+            conexion.rollback();
+            throw e;
+        }
         conexion.close();
         
         return newOferta;
     }
+      public void editarOferta(Oferta oferta) throws SQLException{
+        String sqlEditar = "{CALL editar_oferta(?,?,?,?)}";
+        Connection conexion = this.getConnection();
+        conexion.setAutoCommit(false);
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlEditar);
+            statement.setInt(1, oferta.getId());
+            statement.setFloat(2, oferta.getSalario());
+            statement.setInt(3, oferta.getCantidadVacantes());
+            statement.setString(4,oferta.getRequerimientos());
+            statement.executeUpdate();
+            conexion.commit();
+        } catch (SQLException e) {
+            conexion.rollback();
+            throw e;
+        }
+        conexion.close();
+    }
+      public void eliminarOferta(int id) throws SQLException{
+        String sqlEliminar = "{CALL eliminar_oferta(?)}";
+        Connection conexion = this.getConnection();
+        conexion.setAutoCommit(false);
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlEliminar);
+            statement.setInt(1, id);
+            statement.executeUpdate();
+            conexion.commit();
+        } catch (SQLException e) {
+            conexion.rollback();
+            throw e;
+        }
+        conexion.close();
+    }
+    //retorna todas las ofertas existentes
+    public LinkedList<Oferta> getOfertas() throws SQLException{
+        
+        String sqlSelect = "buscar_ofertas";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        ResultSet result = statement.executeQuery();
+        
+        LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
+         while(result.next()){
+             Oferta oferta=new Oferta();
+             oferta.setId(result.getInt("id"));
+             oferta.setCantidadVacantes(result.getInt("cantidad_vacante"));
+             oferta.getCategoria().setId(result.getInt("categoria"));
+             oferta.getEmpleador().setId(result.getInt("empleador"));
+             oferta.setSalario(result.getFloat("salario"));
+             oferta.setPuesto(result.getString("puesto"));
+             oferta.setRequerimientos(result.getString("requerimientos"));
+             
+             ofertas.add(oferta);
+         }
+        return ofertas;
+}
+    
+      public LinkedList<Oferta> getOfertasPorCategorias(String nombreCategoria,String puesto) throws SQLException{
+        
+        String sqlSelect = "CALL buscar_ofertas_filtradas(?,?)";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        statement.setString(1, puesto);
+        statement.setString(1, nombreCategoria);
+        ResultSet result = statement.executeQuery();
+        
+        LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
+         while(result.next()){
+             Oferta oferta=new Oferta();
+             oferta.setId(result.getInt("id"));
+             oferta.setCantidadVacantes(result.getInt("cantidad_vacante"));
+             oferta.getCategoria().setId(result.getInt("categoria"));
+             oferta.getEmpleador().setId(result.getInt("empleador"));
+             oferta.setSalario(result.getFloat("salario"));
+             oferta.setPuesto(result.getString("puesto"));
+             oferta.setRequerimientos(result.getString("requerimientos"));
+             
+             ofertas.add(oferta);
+         }
+        return ofertas;
+}
+    
+    
   
     
 }
