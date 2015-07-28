@@ -5,10 +5,22 @@
  */
 package Data;
 
+import Dominio.Oferta;
+
 /**
  *
  * @author Tin
  */
 public class OfertaData {
+
+    public OfertaData() {
+    }
+    //inserta una nueva oferta 
+    public void insertarOferta(Oferta newOferta){
+        
+        
+    
+    
+    }
     
 }
