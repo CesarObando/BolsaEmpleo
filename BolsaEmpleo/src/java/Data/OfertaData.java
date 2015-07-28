@@ -22,7 +22,7 @@ public class OfertaData extends BaseData{
     //inserta una nueva oferta 
     public Oferta insertarOferta(Oferta newOferta) throws SQLException{
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insetar_oferta(?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
         //cargamos el statement con la informacion nueva
         statement.registerOutParameter(1, Types.INTEGER);//variable de salida
