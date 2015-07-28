@@ -22,6 +22,10 @@ public class Oferta {
     public Oferta() {
     }
 
+    public void setId(int id) {
+        this.id = id;
+    }
+
     public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria) {
         this.id = id;
         this.puesto = puesto;
