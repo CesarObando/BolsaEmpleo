@@ -11,7 +11,26 @@ public class Empleador {
     private String telefonoMovil;
     private String cedulaJuridica;
     private String nombreEmpresa;
+    private String nombreUsuario;
+    private String pass;
     private String direccion;
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+
+    public String getNombreUsuario() {
+        return nombreUsuario;
+    }
+
+    public void setNombreUsuario(String nombreUsuario) {
+        this.nombreUsuario = nombreUsuario;
+    }
+  
 
     public Empleador() {
     }
