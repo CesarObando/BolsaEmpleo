@@ -1,17 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
-    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
+    <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Data/BaseData.java</file>
-            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Data/OfertaData.java</file>
-            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/test/TestOferta.java</file>
-=======
-            <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/test/AdministradorDataTest.java</file>
-            <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/src/java/Data/OfertaData.java</file>
-            <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/src/java/Data/SolicitanteData.java</file>
->>>>>>> 57edf06a8c0c540e64532a013f10f3d8228e51e1
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Data/AdministradorData.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/test/AdministradorDataTest.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Data/SolicitudData.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/test/SolicitudDataTest.java</file>
         </group>
     </open-files>
 </project-private>

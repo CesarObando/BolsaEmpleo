@@ -7,6 +7,8 @@
 import Data.SolicitudData;
 import Dominio.Solicitud;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -31,14 +33,19 @@ public class SolicitudDataTest {
     }
     
     @Test
-    public void solicitud() throws SQLException{
-        solicitud.getSolicitante().setCedula("4-4444-4444");
-        solicitud.getOferta().setId(7);
-//        solicitudData.insertarSolicitud(solicitud);
+    public void solicitud(){
+        try {
+            solicitud.getSolicitante().setCedula("4-4444-4444");
+            solicitud.getOferta().setId(3);
+            solicitudData.insertarSolicitud(solicitud);
 //        solicitudData.eliminarSolicitud(12);
         
-        for (Solicitud solicitudActual : solicitudData.buscarSolicitudesFiltradas("9",3)) {
-            System.out.println(solicitudActual.getId() + " " + solicitudActual.getSolicitante().getCedula() + " " + solicitudActual.getOferta().getId());
+//        for (Solicitud solicitudActual : solicitudData.buscarSolicitudesFiltradas("9",3)) {
+//            System.out.println(solicitudActual.getId() + " " + solicitudActual.getSolicitante().getCedula() + " " + solicitudActual.getOferta().getId());
+//        }
+        } catch (SQLException ex) {
+            Logger.getLogger(SolicitudDataTest.class.getName()).log(Level.SEVERE, null, ex);
+            System.err.println(ex);
         }
     }
     
