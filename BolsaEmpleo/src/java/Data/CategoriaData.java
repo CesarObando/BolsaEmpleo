@@ -37,7 +37,7 @@ public class CategoriaData extends BaseData{
     
     public Categoria editarCategoria(Categoria categoriaAEditar) throws SQLException{
         Connection conexion = super.getConnection();
-        String sqlEdit = "{Call editar_categoria (?)}";
+        String sqlEdit = "{Call editar_categoria (?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlEdit);
         statement.setInt(1, categoriaAEditar.getId());
         statement.setString(2, categoriaAEditar.getNombre());
@@ -60,13 +60,13 @@ public class CategoriaData extends BaseData{
     public LinkedList<Categoria> getCategorias() throws SQLException{
         LinkedList<Categoria> categorias = new LinkedList<Categoria>();
         Connection conexion = super.getConnection();
-        String sqlSelect = "{CALL buscar_categoria ()}";
+        String sqlSelect = "{CALL buscar_categorias ()}";
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         ResultSet rs = statement.executeQuery();
         while(rs.next()){
             Categoria categoria = new Categoria();
             categoria.setId(rs.getInt("id"));
-            categoria.setNombre("nombre");
+            categoria.setNombre(rs.getString("nombre"));
             categorias.add(categoria);
         }
         conexion.close();

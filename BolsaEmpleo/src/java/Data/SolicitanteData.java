@@ -50,7 +50,7 @@ public class SolicitanteData extends BaseData {
     
     public Solicitante editarSolicitante(Solicitante solicitanteAEditar) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insertar_solicitante (?,?,?,?,?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL editar_solicitante (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
         try {
             CallableStatement statement = conexion.prepareCall(sqlInsert);
             statement.setString(1, solicitanteAEditar.getCedula());
@@ -143,7 +143,7 @@ public class SolicitanteData extends BaseData {
     public void eliminarSolicitante(String cedula) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlEliminar = "{CALL eliminar_solicitante (?)}";
-        CallableStatement statement = conexion.prepareCall(cedula);
+        CallableStatement statement = conexion.prepareCall(sqlEliminar);
         statement.setString(1, cedula);
         statement.executeUpdate();
         conexion.commit();
