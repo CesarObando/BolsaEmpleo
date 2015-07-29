@@ -29,7 +29,7 @@ public class SolicitanteDataTest {
     
     @Before
     public void setUp() {
-        //solicitante = new Solicitante("304590654", "Cesar", "Obando Solano", "cesar.b.c", "cesar", null, 23, 'M', "Secundaria Concluida", "Secundaria", 2, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
+        solicitante = new Solicitante("304590654", "Mauricio", "Obando Solano", "cesar.b.c", "cesar", null, 23, null, "Universidad Concluida", "Secundaria", 2, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
 
     }
     
@@ -44,7 +44,9 @@ public class SolicitanteDataTest {
      public void hello() throws SQLException {
      SolicitanteData solicitanteData = new SolicitanteData();
      //solicitanteData.insertarSolicitante(solicitante);
-     solicitante = solicitanteData.iniciarSesion("cesarb.c", "cesar");
-     System.out.println(solicitante.getCedula());
+     //solicitante = solicitanteData.iniciarSesion("cesarb.c", "cesar");
+     //System.out.println(solicitante.getCedula());
+     
+     solicitanteData.editarSolicitante(solicitante);
      }
 }

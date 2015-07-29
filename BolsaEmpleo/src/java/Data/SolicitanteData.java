@@ -41,7 +41,7 @@ public class SolicitanteData extends BaseData {
         statement.setString(13, solicitanteAInsertar.getTelefonoFijo());
         statement.setString(14, solicitanteAInsertar.getTelefonoMovil());
         statement.setString(15, solicitanteAInsertar.getCorreo());
-        statement.setString(16, solicitanteAInsertar.getIdomas());
+        statement.setString(16, solicitanteAInsertar.getIdiomas());
         statement.executeUpdate();
         conexion.commit();
         conexion.close();
@@ -51,20 +51,24 @@ public class SolicitanteData extends BaseData {
     public Solicitante editarSolicitante(Solicitante solicitanteAEditar) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_solicitante (?,?,?,?,?,?,?,?,?,?,?)}";
-        CallableStatement statement = conexion.prepareCall(sqlInsert);
-        statement.setString(1, solicitanteAEditar.getCedula());
-        statement.setString(2, solicitanteAEditar.getPassword());
-        statement.setBytes(3, solicitanteAEditar.getFoto());
-        statement.setString(4, solicitanteAEditar.getEscolaridad());
-        statement.setString(5, solicitanteAEditar.getTitulos());
-        statement.setInt(6, solicitanteAEditar.getExperienciaLaboral());
-        statement.setString(7, solicitanteAEditar.getDetalleExperienciaLaboral());
-        statement.setString(8, solicitanteAEditar.getTelefonoFijo());
-        statement.setString(9, solicitanteAEditar.getTelefonoMovil());
-        statement.setString(10, solicitanteAEditar.getCorreo());
-        statement.setString(11, solicitanteAEditar.getIdomas());
-        statement.executeUpdate();
-        conexion.commit();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlInsert);
+            statement.setString(1, solicitanteAEditar.getCedula());
+            statement.setString(2, solicitanteAEditar.getPassword());
+            statement.setBytes(3, solicitanteAEditar.getFoto());
+            statement.setString(4, solicitanteAEditar.getEscolaridad());
+            statement.setString(5, solicitanteAEditar.getTitulos());
+            statement.setInt(6, solicitanteAEditar.getExperienciaLaboral());
+            statement.setString(7, solicitanteAEditar.getDetalleExperienciaLaboral());
+            statement.setString(8, solicitanteAEditar.getTelefonoFijo());
+            statement.setString(9, solicitanteAEditar.getTelefonoMovil());
+            statement.setString(10, solicitanteAEditar.getCorreo());
+            statement.setString(11, solicitanteAEditar.getIdiomas());
+            statement.executeUpdate();
+            conexion.commit();
+        } catch (SQLException e) {
+            System.out.print(e.getMessage());
+        }
         conexion.close();
         return solicitanteAEditar;
     }
@@ -88,7 +92,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setEscolaridad(rs.getString("escolaridad"));
                 solicitante.setExperienciaLaboral(rs.getInt("años_experiencia_laboral"));
                 solicitante.setFoto(rs.getBytes("foto"));
-                solicitante.setIdomas(rs.getString("idiomas"));
+                solicitante.setIdiomas(rs.getString("idiomas"));
                 solicitante.setTelefonoFijo(rs.getString("telefono_fijo"));
                 solicitante.setTelefonoMovil(rs.getString("telefono_movil"));
                 solicitante.setTitulos(rs.getString("titulos"));
@@ -123,7 +127,7 @@ public class SolicitanteData extends BaseData {
             solicitante.setEscolaridad(rs.getString("escolaridad"));
             solicitante.setExperienciaLaboral(rs.getInt("años_experiencia_laboral"));
             solicitante.setFoto(rs.getBytes("foto"));
-            solicitante.setIdomas(rs.getString("idiomas"));
+            solicitante.setIdiomas(rs.getString("idiomas"));
             solicitante.setTelefonoFijo(rs.getString("telefono_fijo"));
             solicitante.setTelefonoMovil(rs.getString("telefono_movil"));
             solicitante.setTitulos(rs.getString("titulos"));
@@ -136,7 +140,7 @@ public class SolicitanteData extends BaseData {
         return solicitantes;
     }
     
-    public void eliminarSolicitante(String cedula) throws SQLException{
+    public void eliminarSolicitante(String cedula) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlEliminar = "{CALL eliminar_solicitante (?)}";
         CallableStatement statement = conexion.prepareCall(cedula);

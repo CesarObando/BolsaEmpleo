@@ -26,12 +26,12 @@ public class Solicitante {
     private String telefonoFijo;
     private String telefonoMovil;
     private String correo;
-    private String idomas;
+    private String idiomas;
 
     public Solicitante() {
     }
 
-    public Solicitante(String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idomas) {
+    public Solicitante(String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idiomas) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -47,7 +47,7 @@ public class Solicitante {
         this.telefonoFijo = telefonoFijo;
         this.telefonoMovil = telefonoMovil;
         this.correo = correo;
-        this.idomas = idomas;
+        this.idiomas = idiomas;
     }
 
     public String getCedula() {
@@ -162,12 +162,12 @@ public class Solicitante {
         this.correo = correo;
     }
 
-    public String getIdomas() {
-        return idomas;
+    public String getIdiomas() {
+        return idiomas;
     }
 
-    public void setIdomas(String idomas) {
-        this.idomas = idomas;
+    public void setIdiomas(String idiomas) {
+        this.idiomas = idiomas;
     }
 
     public byte[] getFoto() {
