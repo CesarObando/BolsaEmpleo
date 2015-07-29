@@ -12,6 +12,8 @@ import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -94,17 +96,21 @@ public class EmpleadorData extends BaseData{
     }
      
      //verifica que el usuario sea valido 
-     public boolean inicioSecion(String user,String pass) throws SQLException{
-       
-         String sqlSelect = "CALL validacionEmpleador(?,?)";
-        Connection conexion = super.getConnection();
-        CallableStatement statement = conexion.prepareCall(sqlSelect);
-        statement.setString(1, user);
-        statement.setString(2, pass);
-        ResultSet result = statement.executeQuery();
-       
-         
-        return result.next();
-       
+     public boolean inicioSecion(String user,String pass) {
+       ResultSet result ;
+        try {
+            String sqlSelect = "CALL validacionEmpleador(?,?)";
+            Connection conexion = super.getConnection();
+            CallableStatement statement = conexion.prepareCall(sqlSelect);
+            statement.setString(1, user);
+            statement.setString(2, pass);
+            result = statement.executeQuery();
+            
+            
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadorData.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return result.next();
      }
 }
