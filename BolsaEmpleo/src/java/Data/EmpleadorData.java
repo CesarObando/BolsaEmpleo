@@ -19,67 +19,70 @@ import java.util.logging.Logger;
  *
  * @author Tin
  */
-public class EmpleadorData extends BaseData{
-      
-    public Empleador insertarEmpleador(Empleador empleador) throws SQLException{
+public class EmpleadorData extends BaseData {
+
+    public Empleador insertarEmpleador(Empleador empleador) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_empleador(?,?,?,?,?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
-        
+
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
-          try {
-        statement.registerOutParameter(1, Types.INTEGER);//variable de salida
-        statement.setString(2, empleador.getCedula());
-        statement.setString(3, empleador.getNombre());
-        statement.setString(4, empleador.getApellidos());
-        statement.setString(5, empleador.getCorreo());
-        statement.setString(6,empleador.getTelefonoFijo());
-        statement.setString(7, empleador.getTelefonoMovil());
-        statement.setString(8, empleador.getCedulaJuridica());
-        statement.setString(9, empleador.getNombreEmpresa());
-        statement.setString(10, empleador.getDireccion());
-        statement.setString(11, empleador.getNombreUsuario());
-        statement.setString(12, empleador.getPass());
-        statement.executeUpdate();
-        
-        empleador.setId(statement.getInt(1));//solitamos el id generado
-       
-        conexion.commit();
+        try {
+            statement.registerOutParameter(1, Types.INTEGER);//variable de salida
+            statement.setString(2, empleador.getCedula());
+            statement.setString(3, empleador.getNombre());
+            statement.setString(4, empleador.getApellidos());
+            statement.setString(5, empleador.getCorreo());
+            statement.setString(6, empleador.getTelefonoFijo());
+            statement.setString(7, empleador.getTelefonoMovil());
+            statement.setString(8, empleador.getCedulaJuridica());
+            statement.setString(9, empleador.getNombreEmpresa());
+            statement.setString(10, empleador.getDireccion());
+            statement.setString(11, empleador.getNombreUsuario());
+            statement.setString(12, empleador.getPass());
+            statement.executeUpdate();
+
+            empleador.setId(statement.getInt(1));//solitamos el id generado
+
+            conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
             throw e;
         }
         conexion.close();
-        
+
         return empleador;
     }
-    public void editarEmpleador(Empleador empleador) throws SQLException{
+
+    public void editarEmpleador(Empleador empleador) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
-        
+
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
-          try {
-        statement.setInt(1, empleador.getId());
-        statement.setString(2, empleador.getCorreo());
-        statement.setString(3,empleador.getTelefonoFijo());
-        statement.setString(4, empleador.getTelefonoMovil());
-        statement.setString(5, empleador.getNombreEmpresa());
-        statement.setString(6, empleador.getDireccion());
-         statement.setString(7, empleador.getPass());
-        statement.executeUpdate();
-       
-        conexion.commit();
+        try {
+            statement.setInt(1, empleador.getId());
+            statement.setString(2, empleador.getCorreo());
+            statement.setString(3, empleador.getTelefonoFijo());
+            statement.setString(4, empleador.getTelefonoMovil());
+            statement.setString(5, empleador.getNombreEmpresa());
+            statement.setString(6, empleador.getDireccion());
+            statement.setString(7, empleador.getPass());
+            statement.executeUpdate();
+
+            conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
             throw e;
         }
         conexion.close();
     }
+
     //elimina el empleador indicado 
-     public void eliminarEmpleador(int id) throws SQLException{
+
+    public void eliminarEmpleador(int id) throws SQLException {
         String sqlEliminar = "{CALL eliminar_empleador(?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
@@ -94,12 +97,13 @@ public class EmpleadorData extends BaseData{
         }
         conexion.close();
     }
+
      
      //verifica que el usuario sea valido 
-     public boolean inicioSecion(String user,String pass) {
-       ResultSet result ;
-        try {
-            String sqlSelect = "CALL validacionEmpleador(?,?)";
+     public boolean inicioSecion(String user,String pass) throws SQLException {
+       ResultSet result  ;
+       
+            String sqlSelect = "{CALL validacionEmpleador(?,?)}";
             Connection conexion = super.getConnection();
             CallableStatement statement = conexion.prepareCall(sqlSelect);
             statement.setString(1, user);
@@ -108,9 +112,22 @@ public class EmpleadorData extends BaseData{
             
             
             
-        } catch (SQLException ex) {
-            Logger.getLogger(EmpleadorData.class.getName()).log(Level.SEVERE, null, ex);
-        }
+       
        return result.next();
      }
+
+    //verifica que el usuario sea valido 
+    public boolean inicioSesion(String user, String pass) throws SQLException {
+
+        String sqlSelect = "{CALL validacionEmpleador(?,?)}";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        statement.setString(1, user);
+        statement.setString(2, pass);
+        ResultSet result = statement.executeQuery();
+
+        return result.next();
+
+    }
+
 }

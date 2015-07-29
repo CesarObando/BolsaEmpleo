@@ -21,31 +21,50 @@ import static org.junit.Assert.*;
  * @author Tin
  */
 public class EmpleadorDataTest {
+
     private Empleador empleador;
-    
+
     public EmpleadorDataTest() {
     }
-    
-   
+
     @Before
     public void setUp() {
-        empleador=new Empleador(13, "3464868", "", "Camacho mora", "tinnit@hotmail.es", "25464653", "85341334", "", "", "San Isidro de Leon Cortes","123","tin");
+        empleador = new Empleador(13, "3464868", "", "Camacho mora", "tinnit@hotmail.es", "25464653", "85341334", "", "", "San Isidro de Leon Cortes", "123", "tin");
     }
-    
-     @Test
+
+    @Test
     public void hello() {
+
         
-        EmpleadorData empleadoData=new EmpleadorData();
-        boolean secion=new Boolean(null);
-        secion= empleadoData.inicioSecion("marvince", "marvince");
-        if (secion=true){
-            System.out.print("Bienvenido ");
+        
+        
+        try {
+            //insertar empleador
+            /*EmpleadorData empleadoData=new EmpleadorData();
+            empleadoData.insertarEmpleador(empleador);*/
             
-        }else{
-            System.out.print("usario y contraseña incorecta");
+            //EDITAR EMPLEADOR
+            /*EmpleadorData empleadoData=new EmpleadorData();
+            empleadoData.editarEmpleador(empleador);*/
+            //eliminar empleador
+            /*EmpleadorData empleadoData=new EmpleadorData();
+            empleadoData.eliminarEmpleador(13);*/
+            EmpleadorData empleadoData=new EmpleadorData();
+            boolean secion=new Boolean(null);
+            secion= empleadoData.inicioSecion("marvince", "marvc");
+            if (secion=true){
+                System.out.print("Bienvenido ");
+                
+            }else{
+                System.out.print("usario y contraseña incorecta");
+                
+                
+                
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(EmpleadorDataTest.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
+        }
     
-    
-    }
 }

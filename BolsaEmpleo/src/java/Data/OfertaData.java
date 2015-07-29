@@ -19,40 +19,43 @@ import java.util.LinkedList;
  *
  * @author Tin
  */
-public class OfertaData extends BaseData{
+public class OfertaData extends BaseData {
 
     public OfertaData() {
     }
+
     //inserta una nueva oferta 
-    public Oferta insertarOferta(Oferta newOferta) throws SQLException{
+
+    public Oferta insertarOferta(Oferta newOferta) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
-        
+
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
-          try {
-        statement.registerOutParameter(1, Types.INTEGER);//variable de salida
-        statement.setString(2, newOferta.getPuesto());
-        statement.setInt(3, newOferta.getEmpleador().getId());
-        statement.setFloat(4, newOferta.getSalario());
-        statement.setInt(5, newOferta.getCantidadVacantes());
-        statement.setString(6,newOferta.getRequerimientos());
-        statement.setInt(7, newOferta.getCategoria().getId());
-        statement.executeUpdate();
-        
-        newOferta.setId(statement.getInt(1));//solitamos el id generado
-       
-        conexion.commit();
+        try {
+            statement.registerOutParameter(1, Types.INTEGER);//variable de salida
+            statement.setString(2, newOferta.getPuesto());
+            statement.setInt(3, newOferta.getEmpleador().getId());
+            statement.setFloat(4, newOferta.getSalario());
+            statement.setInt(5, newOferta.getCantidadVacantes());
+            statement.setString(6, newOferta.getRequerimientos());
+            statement.setInt(7, newOferta.getCategoria().getId());
+            statement.executeUpdate();
+
+            newOferta.setId(statement.getInt(1));//solitamos el id generado
+
+            conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
             throw e;
         }
         conexion.close();
-        
+
         return newOferta;
     }
-      public void editarOferta(Oferta oferta) throws SQLException{
+
+    public void editarOferta(Oferta oferta) throws SQLException {
         String sqlEditar = "{CALL editar_oferta(?,?,?,?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
@@ -61,7 +64,7 @@ public class OfertaData extends BaseData{
             statement.setInt(1, oferta.getId());
             statement.setFloat(2, oferta.getSalario());
             statement.setInt(3, oferta.getCantidadVacantes());
-            statement.setString(4,oferta.getRequerimientos());
+            statement.setString(4, oferta.getRequerimientos());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {
@@ -70,7 +73,8 @@ public class OfertaData extends BaseData{
         }
         conexion.close();
     }
-      public void eliminarOferta(int id) throws SQLException{
+
+    public void eliminarOferta(int id) throws SQLException {
         String sqlEliminar = "{CALL eliminar_oferta(?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
@@ -85,56 +89,55 @@ public class OfertaData extends BaseData{
         }
         conexion.close();
     }
+
     //retorna todas las ofertas existentes
-    public LinkedList<Oferta> getOfertas() throws SQLException{
-        
+
+    public LinkedList<Oferta> getOfertas() throws SQLException {
+
         String sqlSelect = "buscar_ofertas";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         ResultSet result = statement.executeQuery();
-        
-        LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
-         while(result.next()){
-             Oferta oferta=new Oferta();
-             oferta.setId(result.getInt("id"));
-             oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
-             oferta.getCategoria().setId(result.getInt("categoria"));
-             oferta.getEmpleador().setId(result.getInt("empleador"));
-             oferta.setSalario(result.getFloat("salario"));
-             oferta.setPuesto(result.getString("puesto"));
-             oferta.setRequerimientos(result.getString("requerimentos"));
-             
-             ofertas.add(oferta);
-         }
+
+        LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
+        while (result.next()) {
+            Oferta oferta = new Oferta();
+            oferta.setId(result.getInt("id"));
+            oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
+            oferta.getCategoria().setId(result.getInt("categoria"));
+            oferta.getEmpleador().setId(result.getInt("empleador"));
+            oferta.setSalario(result.getFloat("salario"));
+            oferta.setPuesto(result.getString("puesto"));
+            oferta.setRequerimientos(result.getString("requerimentos"));
+
+            ofertas.add(oferta);
+        }
         return ofertas;
-}
-    
-      public LinkedList<Oferta> getOfertasPorCategorias(String nombreCategoria,String puesto) throws SQLException{
-        
+    }
+
+    public LinkedList<Oferta> getOfertasPorCategorias(String nombreCategoria, String puesto) throws SQLException {
+
         String sqlSelect = "{CALL buscar_ofertas_filtradas(?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, puesto);
         statement.setString(2, nombreCategoria);
         ResultSet result = statement.executeQuery();
-        
-        LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
-         while(result.next()){
-             Oferta oferta=new Oferta();
-             oferta.setId(result.getInt("id"));
-             oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
-             oferta.getCategoria().setId(result.getInt("categoria"));
-             oferta.getEmpleador().setId(result.getInt("empleador"));
-             oferta.setSalario(result.getFloat("salario"));
-             oferta.setPuesto(result.getString("puesto"));
-             oferta.setRequerimientos(result.getString("requerimentos"));
-             
-             ofertas.add(oferta);
-         }
+
+        LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
+        while (result.next()) {
+            Oferta oferta = new Oferta();
+            oferta.setId(result.getInt("id"));
+            oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
+            oferta.getCategoria().setId(result.getInt("categoria"));
+            oferta.getEmpleador().setId(result.getInt("empleador"));
+            oferta.setSalario(result.getFloat("salario"));
+            oferta.setPuesto(result.getString("puesto"));
+            oferta.setRequerimientos(result.getString("requerimentos"));
+
+            ofertas.add(oferta);
+        }
         return ofertas;
-}
-    
-    
-  
-    
+    }
+
 }
