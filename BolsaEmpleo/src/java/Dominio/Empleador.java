@@ -35,7 +35,7 @@ public class Empleador {
     public Empleador() {
     }
 
-    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion) {
+    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion,String pass,String nombreUsuario) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -46,6 +46,8 @@ public class Empleador {
         this.cedulaJuridica = cedulaJuridica;
         this.nombreEmpresa = nombreEmpresa;
         this.direccion = direccion;
+        this.pass=pass;
+        this.nombreUsuario=nombreUsuario;
     }
 
     public int getId() {
