@@ -94,7 +94,7 @@ public class TestOferta {
             
             OfertaData oferdata=new OfertaData();
             LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
-            ofertas=oferdata.getOfertasPorCategorias("Administración","");
+            ofertas=oferdata.getOfertasPorCategorias("","Cajero");
             
             for (Oferta oferta1 : ofertas) {
                 System.out.println(oferta1.getPuesto());
