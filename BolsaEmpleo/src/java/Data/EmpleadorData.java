@@ -90,4 +90,12 @@ public class EmpleadorData extends BaseData{
         }
         conexion.close();
     }
+     
+     
+     public boolean inicioSecion(String user,String pass){
+        
+         
+         return false;
+     
+     }
 }
