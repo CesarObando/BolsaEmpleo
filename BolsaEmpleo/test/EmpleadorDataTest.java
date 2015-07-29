@@ -35,30 +35,36 @@ public class EmpleadorDataTest {
     @Test
     public void hello() {
 
+        
+        
+        
         try {
             //insertar empleador
             /*EmpleadorData empleadoData=new EmpleadorData();
-             empleadoData.insertarEmpleador(empleador);*/
-
+            empleadoData.insertarEmpleador(empleador);*/
+            
             //EDITAR EMPLEADOR
-             /*EmpleadorData empleadoData=new EmpleadorData();
-             empleadoData.editarEmpleador(empleador);*/
-           //eliminar empleador
             /*EmpleadorData empleadoData=new EmpleadorData();
-             empleadoData.eliminarEmpleador(13);*/
-            EmpleadorData empleadoData = new EmpleadorData();
-            boolean secion = new Boolean(null);
-            secion = empleadoData.inicioSesion("marvince", "marvice");
-            if (secion == true) {
-                System.out.print("Bienvenido ");
-
-            } else {
+            empleadoData.editarEmpleador(empleador);*/
+            //eliminar empleador
+            /*EmpleadorData empleadoData=new EmpleadorData();
+            empleadoData.eliminarEmpleador(13);*/
+            EmpleadorData empleadoData=new EmpleadorData();
+            boolean secion=new Boolean(null);
+            secion= empleadoData.inicioSecion("marve", "m");
+            if (secion==true){
+                System.out.print("Bienvenido");
+                
+            }else{
                 System.out.print("usario y contraseña incorecta");
+                
+                
+                
             }
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadorDataTest.class.getName()).log(Level.SEVERE, null, ex);
-            System.out.println(ex.getErrorCode());
         }
 
-    }
+        }
+    
 }
