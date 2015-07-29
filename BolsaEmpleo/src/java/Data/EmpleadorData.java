@@ -112,7 +112,7 @@ public class EmpleadorData extends BaseData {
             
             
             
-       
+   
        return result.next();
      }
 

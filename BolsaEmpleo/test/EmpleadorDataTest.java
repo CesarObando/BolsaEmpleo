@@ -51,9 +51,9 @@ public class EmpleadorDataTest {
             empleadoData.eliminarEmpleador(13);*/
             EmpleadorData empleadoData=new EmpleadorData();
             boolean secion=new Boolean(null);
-            secion= empleadoData.inicioSecion("marvince", "marvc");
-            if (secion=true){
-                System.out.print("Bienvenido ");
+            secion= empleadoData.inicioSecion("marve", "m");
+            if (secion==true){
+                System.out.print("Bienvenido");
                 
             }else{
                 System.out.print("usario y contraseña incorecta");
