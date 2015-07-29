@@ -111,7 +111,7 @@ public class OfertaData extends BaseData{
     
       public LinkedList<Oferta> getOfertasPorCategorias(String nombreCategoria,String puesto) throws SQLException{
         
-        String sqlSelect = "CALL buscar_ofertas_filtradas(?,?)";
+        String sqlSelect = "{CALL buscar_ofertas_filtradas(?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, puesto);
