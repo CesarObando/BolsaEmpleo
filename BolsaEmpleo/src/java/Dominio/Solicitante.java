@@ -18,7 +18,7 @@ public class Solicitante {
     private String password;
     private byte [] foto; 
     private int edad;
-    private char sexo;
+    private String sexo;
     private String escolaridad;
     private String titulos;
     private int experienciaLaboral;
@@ -31,7 +31,7 @@ public class Solicitante {
     public Solicitante() {
     }
 
-    public Solicitante(String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, char sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idomas) {
+    public Solicitante(String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idomas) {
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -98,11 +98,11 @@ public class Solicitante {
         this.edad = edad;
     }
 
-    public char getSexo() {
+    public String getSexo() {
         return sexo;
     }
 
-    public void setSexo(char sexo) {
+    public void setSexo(String sexo) {
         this.sexo = sexo;
     }
 
