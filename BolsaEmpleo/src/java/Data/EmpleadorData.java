@@ -9,6 +9,7 @@ import Dominio.Empleador;
 import Dominio.Oferta;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
 
@@ -75,6 +76,7 @@ public class EmpleadorData extends BaseData{
         }
         conexion.close();
     }
+    //elimina el empleador indicado 
      public void eliminarEmpleador(int id) throws SQLException{
         String sqlEliminar = "{CALL eliminar_empleador(?)}";
         Connection conexion = this.getConnection();
@@ -91,11 +93,22 @@ public class EmpleadorData extends BaseData{
         conexion.close();
     }
      
-     
-     public boolean inicioSecion(String user,String pass){
-        
+     //verifica que el usuario sea valido 
+     public boolean inicioSecion(String user,String pass) throws SQLException{
+        String sqlSelect = "CALL validacionEmpleador(?,?)";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        statement.setString(1, user);
+        statement.setString(1, pass);
+        ResultSet result = statement.executeQuery();
+       
          
-         return false;
-     
+       if (result.next()){
+           return true;
+       }
+       else {
+           return false;
+       }
+       
      }
 }

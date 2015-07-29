@@ -20,6 +20,8 @@ public class Oferta {
     private Categoria categoria;
 
     public Oferta() {
+        categoria=new Categoria();
+        empleador=new Empleador();
     }
 
     public void setId(int id) {

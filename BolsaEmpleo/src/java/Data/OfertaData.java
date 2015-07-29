@@ -97,12 +97,12 @@ public class OfertaData extends BaseData{
          while(result.next()){
              Oferta oferta=new Oferta();
              oferta.setId(result.getInt("id"));
-             oferta.setCantidadVacantes(result.getInt("cantidad_vacante"));
+             oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
              oferta.getCategoria().setId(result.getInt("categoria"));
              oferta.getEmpleador().setId(result.getInt("empleador"));
              oferta.setSalario(result.getFloat("salario"));
              oferta.setPuesto(result.getString("puesto"));
-             oferta.setRequerimientos(result.getString("requerimientos"));
+             oferta.setRequerimientos(result.getString("requerimentos"));
              
              ofertas.add(oferta);
          }
@@ -115,19 +115,19 @@ public class OfertaData extends BaseData{
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, puesto);
-        statement.setString(1, nombreCategoria);
+        statement.setString(2, nombreCategoria);
         ResultSet result = statement.executeQuery();
         
         LinkedList<Oferta> ofertas=new LinkedList<Oferta>();
          while(result.next()){
              Oferta oferta=new Oferta();
              oferta.setId(result.getInt("id"));
-             oferta.setCantidadVacantes(result.getInt("cantidad_vacante"));
+             oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
              oferta.getCategoria().setId(result.getInt("categoria"));
              oferta.getEmpleador().setId(result.getInt("empleador"));
              oferta.setSalario(result.getFloat("salario"));
              oferta.setPuesto(result.getString("puesto"));
-             oferta.setRequerimientos(result.getString("requerimientos"));
+             oferta.setRequerimientos(result.getString("requerimentos"));
              
              ofertas.add(oferta);
          }
