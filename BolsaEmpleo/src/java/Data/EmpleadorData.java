@@ -97,9 +97,9 @@ public class EmpleadorData extends BaseData {
     }
 
     //verifica que el usuario sea valido 
-    public boolean inicioSecion(String user, String pass) throws SQLException {
+    public boolean inicioSesion(String user, String pass) throws SQLException {
 
-        String sqlSelect = "CALL validacionEmpleador(?,?)";
+        String sqlSelect = "{CALL validacionEmpleador(?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, user);

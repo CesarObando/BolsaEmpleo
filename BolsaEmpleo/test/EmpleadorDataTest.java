@@ -48,8 +48,8 @@ public class EmpleadorDataTest {
              empleadoData.eliminarEmpleador(13);*/
             EmpleadorData empleadoData = new EmpleadorData();
             boolean secion = new Boolean(null);
-            secion = empleadoData.inicioSecion("marvince", "marvince");
-            if (secion = true) {
+            secion = empleadoData.inicioSesion("marvince", "marvice");
+            if (secion == true) {
                 System.out.print("Bienvenido ");
 
             } else {
@@ -57,6 +57,7 @@ public class EmpleadorDataTest {
             }
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadorDataTest.class.getName()).log(Level.SEVERE, null, ex);
+            System.out.println(ex.getErrorCode());
         }
 
     }
