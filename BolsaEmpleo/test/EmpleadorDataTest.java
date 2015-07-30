@@ -38,6 +38,7 @@ public class EmpleadorDataTest {
         
         
         
+        
         try {
             //insertar empleador
             /*EmpleadorData empleadoData=new EmpleadorData();
@@ -64,7 +65,8 @@ public class EmpleadorDataTest {
         } catch (SQLException ex) {
             Logger.getLogger(EmpleadorDataTest.class.getName()).log(Level.SEVERE, null, ex);
         }
+        }
 
         }
     
-}
+
