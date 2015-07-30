@@ -51,8 +51,8 @@ public class EmpleadorDataTest {
             /*EmpleadorData empleadoData=new EmpleadorData();
             empleadoData.eliminarEmpleador(13);*/
             EmpleadorData empleadoData=new EmpleadorData();
-            boolean secion=new Boolean(null);
-            secion= empleadoData.inicioSecion("marve", "m");
+            boolean secion;
+            secion= empleadoData.inicioSesion("marvince", "marvince");
             if (secion==true){
                 System.out.print("Bienvenido");
                 

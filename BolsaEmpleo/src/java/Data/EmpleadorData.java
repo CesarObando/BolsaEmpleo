@@ -81,7 +81,6 @@ public class EmpleadorData extends BaseData {
     }
 
     //elimina el empleador indicado 
-
     public void eliminarEmpleador(int id) throws SQLException {
         String sqlEliminar = "{CALL eliminar_empleador(?)}";
         Connection conexion = this.getConnection();
@@ -98,23 +97,19 @@ public class EmpleadorData extends BaseData {
         conexion.close();
     }
 
-     
-     //verifica que el usuario sea valido 
-     public boolean inicioSecion(String user,String pass) throws SQLException {
-       ResultSet result  ;
-       
-            String sqlSelect = "{CALL validacionEmpleador(?,?)}";
-            Connection conexion = super.getConnection();
-            CallableStatement statement = conexion.prepareCall(sqlSelect);
-            statement.setString(1, user);
-            statement.setString(2, pass);
-            result = statement.executeQuery();
-            
-            
-            
-   
-       return result.next();
-     }
+    //verifica que el usuario sea valido 
+//    public boolean inicioSecion(String user, String pass) throws SQLException {
+//        ResultSet result;
+//
+//        String sqlSelect = "{CALL validacionEmpleador(?,?)}";
+//        Connection conexion = super.getConnection();
+//        CallableStatement statement = conexion.prepareCall(sqlSelect);
+//        statement.setString(1, user);
+//        statement.setString(2, pass);
+//        result = statement.executeQuery();
+//
+//        return result.next();
+//    }
 
     //verifica que el usuario sea valido 
     public boolean inicioSesion(String user, String pass) throws SQLException {
