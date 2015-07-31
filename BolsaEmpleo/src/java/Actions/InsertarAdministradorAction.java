@@ -26,6 +26,7 @@ public class InsertarAdministradorAction extends ActionSupport implements Prepar
     private HttpServletRequest request;
     
     public InsertarAdministradorAction() {
+        
     }
     
     public String execute() throws Exception {
