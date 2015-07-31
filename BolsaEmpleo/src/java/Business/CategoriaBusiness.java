@@ -15,6 +15,7 @@ import java.util.LinkedList;
  *
  * @author Cesar
  */
+
 public class CategoriaBusiness {
 
     private CategoriaData categoriaData;
