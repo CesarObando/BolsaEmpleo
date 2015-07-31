@@ -7,6 +7,7 @@
 import Data.SolicitanteData;
 import Dominio.Solicitante;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -19,20 +20,18 @@ import static org.junit.Assert.*;
  * @author Cesar
  */
 public class SolicitanteDataTest {
-    
+
     private Solicitante solicitante;
-    
+
     public SolicitanteDataTest() {
     }
-    
-    
-    
+
     @Before
     public void setUp() {
-        //solicitante = new Solicitante("304590654", "Cesar", "Obando Solano", "cesar.b.c", "cesar", null, 23, 'M', "Secundaria Concluida", "Secundaria", 2, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
+        //solicitante = new Solicitante("304590654", "Cesar", "Obando Solano", "cesar.b.c", "cesar", null, 23, null, "Universidad Concluida", "Secundaria", 4, "Estudiante UCR", "87940363", "25918942", "cesar.b.c@hotmail.com", "Espanol");
 
     }
-    
+
     @After
     public void tearDown() {
     }
@@ -40,11 +39,22 @@ public class SolicitanteDataTest {
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
-     @Test
-     public void hello() throws SQLException {
-     SolicitanteData solicitanteData = new SolicitanteData();
-     //solicitanteData.insertarSolicitante(solicitante);
-     solicitante = solicitanteData.iniciarSesion("cesarb.c", "cesar");
-     System.out.println(solicitante.getCedula());
-     }
+    @Test
+    public void hello() throws SQLException {
+        SolicitanteData solicitanteData = new SolicitanteData();
+//     solicitanteData.insertarSolicitante(solicitante);
+//
+//     solicitante = solicitanteData.iniciarSesion("cesarb.c", "cesar");
+//     System.out.println(solicitante.getCedula());
+//     solicitanteData.editarSolicitante(solicitante);
+
+//        LinkedList<Solicitante> solicitantes = solicitanteData.buscarSolicitantes("", "", "Obando");
+//        int i = 0;
+//        while (solicitantes.size() > i) {
+//            System.out.println(solicitantes.get(i).getCedula());
+//            i++;
+//
+//        }
+//        solicitanteData.eliminarSolicitante("304590654");
+    }
 }

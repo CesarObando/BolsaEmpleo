@@ -6,6 +6,7 @@
 
 import Data.AdministradorData;
 import Dominio.Administrador;
+import Exception.DataException;
 import java.sql.SQLException;
 import org.junit.After;
 import org.junit.Before;
@@ -31,7 +32,7 @@ public class AdministradorDataTest {
     }
     
     @Test
-    public void dministrador() throws SQLException{
+    public void dministrador() throws SQLException, DataException{
         administrador.setCedula("3-0135-0345");
         administrador.setNombre("Eduardo");
         administrador.setApellidos("Castillo Moya");
@@ -44,9 +45,11 @@ public class AdministradorDataTest {
 //        for (Administrador administradorActual : administradorData.buscarAdministradores()) {
 //            System.out.println(administradorActual.getNombre());
 //        }
-        for (Administrador administradorActual : administradorData.buscarAdministradoresFiltrados("", "", "")) {
-            System.out.println(administradorActual.getNombre());
-        }
+//        for (Administrador administradorActual : administradorData.buscarAdministradoresFiltrados("", "", "")) {
+//            System.out.println(administradorActual.getNombre());
+//        }
+        administrador = administradorData.iniciarSesion("jonathanbo", "jonathanbo");
+        System.out.println(administrador.getNombre() + " " + administrador.getApellidos() + " " + administrador.getUsername() + " " + administrador.getPassword());
     }
     
     @After

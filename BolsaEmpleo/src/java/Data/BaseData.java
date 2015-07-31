@@ -28,7 +28,7 @@ public class BaseData {
         try {
             Class.forName(className);
         } catch (ClassNotFoundException ex) {
-            Logger.getLogger(BaseData.class.getName()).log(Level.SEVERE, null, ex);
+         System.out.print(ex.getMessage());
         }
         return DriverManager.getConnection(url);
     }

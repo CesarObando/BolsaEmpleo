@@ -74,7 +74,7 @@ public class SolicitudData extends BaseData{
         return solicitudes;
     }
     
-    public LinkedList<Solicitud> buscarSolicitudesFiltradas(String solicitante, int oferta) throws SQLException{
+    public LinkedList<Solicitud> buscarSolicitudesFiltradas(String solicitante, int oferta) throws SQLException {
         String sqlBuscarSolicitudesFiltradas = "{CALL buscar_solicitudes_filtradas(?,?)}";
         Connection conexion = this.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlBuscarSolicitudesFiltradas);
