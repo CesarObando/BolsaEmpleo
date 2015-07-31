@@ -128,6 +128,29 @@ public class AdministradorData extends BaseData {
         return administradores;
     }
 
+    public Administrador buscarAdministrador(String cedula) throws SQLException, DataException{
+        String sqlBuscarAdministrador = "{CALL buscar_administrador(?)}";
+        Connection conexion = this.getConnection();
+        Administrador administrador = new Administrador();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarAdministrador);
+            statement.setString(1, cedula);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                administrador.setCedula(resultSet.getString("cedula"));
+                administrador.setNombre(resultSet.getString("nombre"));
+                administrador.setApellidos(resultSet.getString("apellidos"));
+                administrador.setUsername(resultSet.getString("nombre_usuario"));
+                administrador.setPassword(resultSet.getString("passwd"));
+                return administrador;
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return null;
+    }
+    
     public Administrador iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
         String sqlIniciarSesion = "{CALL iniciar_sesion_administradores(?,?)}";
         Connection conexion = this.getConnection();

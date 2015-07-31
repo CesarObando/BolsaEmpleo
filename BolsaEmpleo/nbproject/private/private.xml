@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="3"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/test/CategoriaDataTest.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Business/OfertaBusiness.java</file>
@@ -9,5 +10,14 @@
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Business/SolicitanteBusiness.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Data/OfertaData.java</file>
         </group>
+=======
+<<<<<<< HEAD
+        <group>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Data/SolicitanteData.java</file>
+        </group>
+=======
+        <group/>
+>>>>>>> e2508fd487add1d3e74624f1c44e3d0808204bed
+>>>>>>> d1b7412197aa337d89c673bbcb5aecc605d718ed
     </open-files>
 </project-private>
