@@ -5,9 +5,12 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
-import Dominio.Solicitante;
+import Business.CategoriaBusiness;
+import Dominio.Categoria;
 import Exception.DataException;
+import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.INPUT;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -19,29 +22,29 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Cesar
  */
-public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware{
+public class InsertarCategoriaAction extends ActionSupport implements Preparable, ModelDriven<Categoria>, ServletRequestAware{
     
-    private Solicitante solicitanteAEditar;
+    private Categoria categoriaAInsertar;
     private String mensaje;
     private HttpServletRequest request;
 
-    public EditarSolicitanteAction() {
+    public InsertarCategoriaAction() {
     }
 
     @Override
     public String execute() throws Exception {
         return INPUT;
     }
-    
+
     @Override
     public void prepare() throws Exception {
-        solicitanteAEditar = new Solicitante();
-        mensaje = "";
+        this.categoriaAInsertar = new Categoria();
+        this.mensaje = "";
     }
 
     @Override
-    public Solicitante getModel() {
-        return this.solicitanteAEditar;
+    public Categoria getModel() {
+        return this.categoriaAInsertar;
     }
 
     @Override
@@ -51,34 +54,34 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
     
     @Override
     public void validate(){
-        if(solicitanteAEditar.getPassword().length()==0 || solicitanteAEditar.getPassword().equals(null)){
-            addFieldError("password", "Debe ingresar una contraseña.");
+        if(categoriaAInsertar.getNombre().length()==0 || categoriaAInsertar.getNombre().equals(null)){
+            addFieldError("nombre", "Debe ingresar un nombre.");
         } 
     }
     
-    public String editar() throws DataException{
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        boolean editado = true;
+    public String insertar() throws DataException{
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        boolean insertado = true;
         try {
-            solicitanteBusiness.editarSolicitante(solicitanteAEditar);
+            categoriaBusiness.insertarCategoria(categoriaAInsertar);
         } catch (SQLException e) {
-            editado=false;
+            insertado=false;
             mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(editado==true){
-            this.mensaje = "El solicitante fue editado correctamente";
+        if(insertado==true){
+            this.mensaje = "La categoria fue insertada correctamente";
             return SUCCESS;
         }else{
             return ERROR;
         }
     }
 
-    public Solicitante getSolicitanteAEditar() {
-        return solicitanteAEditar;
+    public Categoria getCategoriaAInsertar() {
+        return categoriaAInsertar;
     }
 
-    public void setSolicitanteAEditar(Solicitante solicitanteAEditar) {
-        this.solicitanteAEditar = solicitanteAEditar;
+    public void setCategoriaAInsertar(Categoria categoriaAInsertar) {
+        this.categoriaAInsertar = categoriaAInsertar;
     }
 
     public String getMensaje() {

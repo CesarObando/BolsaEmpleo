@@ -5,8 +5,8 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
-import Dominio.Solicitante;
+import Business.CategoriaBusiness;
+import Dominio.Categoria;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -19,29 +19,29 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Cesar
  */
-public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware{
+public class EditarCategoriaAction extends ActionSupport implements Preparable, ModelDriven<Categoria>, ServletRequestAware{
     
-    private Solicitante solicitanteAEditar;
+    private Categoria categoriaAEditar;
     private String mensaje;
     private HttpServletRequest request;
 
-    public EditarSolicitanteAction() {
+    public EditarCategoriaAction() {
     }
 
     @Override
     public String execute() throws Exception {
         return INPUT;
     }
-    
+
     @Override
     public void prepare() throws Exception {
-        solicitanteAEditar = new Solicitante();
-        mensaje = "";
+        this.categoriaAEditar = new Categoria();
+        this.mensaje = "";
     }
 
     @Override
-    public Solicitante getModel() {
-        return this.solicitanteAEditar;
+    public Categoria getModel() {
+        return this.categoriaAEditar;
     }
 
     @Override
@@ -51,34 +51,34 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
     
     @Override
     public void validate(){
-        if(solicitanteAEditar.getPassword().length()==0 || solicitanteAEditar.getPassword().equals(null)){
-            addFieldError("password", "Debe ingresar una contraseña.");
+        if(categoriaAEditar.getNombre().length()==0 || categoriaAEditar.getNombre().equals(null)){
+            addFieldError("nombre", "Debe ingresar un nombre.");
         } 
     }
     
     public String editar() throws DataException{
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
         boolean editado = true;
         try {
-            solicitanteBusiness.editarSolicitante(solicitanteAEditar);
+            categoriaBusiness.editarCategoria(categoriaAEditar);
         } catch (SQLException e) {
             editado=false;
             mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
         if(editado==true){
-            this.mensaje = "El solicitante fue editado correctamente";
+            this.mensaje = "La categoria fue editada correctamente";
             return SUCCESS;
         }else{
             return ERROR;
         }
     }
 
-    public Solicitante getSolicitanteAEditar() {
-        return solicitanteAEditar;
+    public Categoria getCategoriaAEditar() {
+        return categoriaAEditar;
     }
 
-    public void setSolicitanteAEditar(Solicitante solicitanteAEditar) {
-        this.solicitanteAEditar = solicitanteAEditar;
+    public void setCategoriaAEditar(Categoria categoriaAEditar) {
+        this.categoriaAEditar = categoriaAEditar;
     }
 
     public String getMensaje() {
