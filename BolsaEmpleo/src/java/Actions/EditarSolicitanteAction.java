@@ -51,18 +51,6 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
     
     @Override
     public void validate(){
-        if(solicitanteAEditar.getCedula().length()!=9 || solicitanteAEditar.getCedula().equals(null)){
-            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
-        }
-        if(solicitanteAEditar.getNombre().length()==0 || solicitanteAEditar.getNombre().equals(null)){
-            addFieldError("nombre", "Debe ingresar su nombre.");
-        }
-        if(solicitanteAEditar.getApellidos().length()==0 || solicitanteAEditar.getApellidos().equals(null)){
-            addFieldError("apellidos", "Debe ingresar sus apellidos.");
-        }
-        if(solicitanteAEditar.getUsername().length()==0 || solicitanteAEditar.getUsername().equals(null)){
-            addFieldError("username", "Debe ingresar un nombre de usuario.");
-        }
         if(solicitanteAEditar.getPassword().length()==0 || solicitanteAEditar.getPassword().equals(null)){
             addFieldError("password", "Debe ingresar una contraseña.");
         } 
