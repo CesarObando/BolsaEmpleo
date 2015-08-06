@@ -5,8 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
-import Dominio.Administrador;
+import Business.SolicitanteBusiness;
+import Dominio.Solicitante;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -17,30 +17,33 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 
 /**
  *
- * @author JonathanA
+ * @author Cesar
  */
-public class InsertarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware{
+public class InsertarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware{
     
-    private Administrador administradorInsertar;
+    
+    private Solicitante solicitanteAInsertar;
     private String mensaje;
     private HttpServletRequest request;
-    
-    public InsertarAdministradorAction() {
+
+    public InsertarSolicitanteAction() {
         
     }
-    
+
+    @Override
     public String execute() throws Exception {
         return INPUT;
     }
-
+    
     @Override
     public void prepare() throws Exception {
-        administradorInsertar = new Administrador();
+        solicitanteAInsertar = new Solicitante();
+        mensaje = "";
     }
 
     @Override
-    public Administrador getModel() {
-        return this.administradorInsertar;
+    public Solicitante getModel() {
+        return this.solicitanteAInsertar;
     }
 
     @Override
@@ -50,46 +53,46 @@ public class InsertarAdministradorAction extends ActionSupport implements Prepar
     
     @Override
     public void validate(){
-        if(administradorInsertar.getCedula().length()!=9 || administradorInsertar.getCedula().equals(null)){
+        if(solicitanteAInsertar.getCedula().length()!=9 || solicitanteAInsertar.getCedula().equals(null)){
             addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
         }
-        if(administradorInsertar.getNombre().length()==0 || administradorInsertar.getNombre().equals(null)){
+        if(solicitanteAInsertar.getNombre().length()==0 || solicitanteAInsertar.getNombre().equals(null)){
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if(administradorInsertar.getApellidos().length()==0 || administradorInsertar.getApellidos().equals(null)){
+        if(solicitanteAInsertar.getApellidos().length()==0 || solicitanteAInsertar.getApellidos().equals(null)){
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if(administradorInsertar.getUsername().length()==0 || administradorInsertar.getUsername().equals(null)){
+        if(solicitanteAInsertar.getUsername().length()==0 || solicitanteAInsertar.getUsername().equals(null)){
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if(administradorInsertar.getPassword().length()==0 || administradorInsertar.getPassword().equals(null)){
+        if(solicitanteAInsertar.getPassword().length()==0 || solicitanteAInsertar.getPassword().equals(null)){
             addFieldError("password", "Debe ingresar una contraseña.");
         } 
     }
     
     public String insertar() throws DataException{
-        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        SolicitanteBusiness solicitanteBusiness  = new SolicitanteBusiness();
         boolean insertado = true;
         try {
-            administradorBusiness.insertarAdministrador(administradorInsertar);
+            solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
         } catch (SQLException e) {
             insertado=false;
-            mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
         if(insertado==true){
-            this.mensaje = "El administrador fue insertado correctamente";
+            this.mensaje = "El solicitante fue insertado correctamente";
             return SUCCESS;
         }else{
             return ERROR;
         }
     }
 
-    public Administrador getAdministradorInsertar() {
-        return administradorInsertar;
+    public Solicitante getSolicitanteAInsertar() {
+        return solicitanteAInsertar;
     }
 
-    public void setAdministradorInsertar(Administrador administradorInsertar) {
-        this.administradorInsertar = administradorInsertar;
+    public void setSolicitanteAInsertar(Solicitante solicitanteAInsertar) {
+        this.solicitanteAInsertar = solicitanteAInsertar;
     }
 
     public String getMensaje() {
@@ -107,5 +110,5 @@ public class InsertarAdministradorAction extends ActionSupport implements Prepar
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-        
+    
 }
