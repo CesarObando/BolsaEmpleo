@@ -7,6 +7,7 @@ package Business;
 
 import Data.SolicitudData;
 import Dominio.Solicitud;
+import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -36,5 +37,9 @@ public class SolicitudBusiness {
 
     public LinkedList<Solicitud> buscarSolicitudesFiltradas(String solicitante, int oferta) throws SQLException {
         return solicitudData.buscarSolicitudesFiltradas(solicitante, oferta);
+    }
+
+    public Solicitud buscarSolicitud(int id) throws SQLException, DataException {
+        return solicitudData.buscarSolicitud(id);
     }
 }

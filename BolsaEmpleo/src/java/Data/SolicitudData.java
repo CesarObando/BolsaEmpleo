@@ -5,7 +5,9 @@
  */
 package Data;
 
+import Dominio.Administrador;
 import Dominio.Solicitud;
+import Exception.DataException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -90,5 +92,26 @@ public class SolicitudData extends BaseData{
             solicitudes.add(solicitudActual);
         }
         return solicitudes;
+    }
+    
+    public Solicitud buscarSolicitud(int id) throws SQLException, DataException{
+        String sqlBuscarSolicitud = "{CALL buscar_solicitud(?)}";
+        Connection conexion = this.getConnection();
+        Solicitud solicitud = new Solicitud();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarSolicitud);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                solicitud.setId(resultSet.getInt("id"));
+                solicitud.getSolicitante().setCedula(resultSet.getString("solicitante"));
+                solicitud.getOferta().setId(resultSet.getInt("oferta"));
+                return solicitud;
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return null;
     }
 }

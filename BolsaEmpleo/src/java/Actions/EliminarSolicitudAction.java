@@ -6,7 +6,8 @@
 package Actions;
 
 import Business.AdministradorBusiness;
-import Dominio.Administrador;
+import Business.SolicitudBusiness;
+import Dominio.Solicitud;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -19,14 +20,14 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author JonathanA
  */
-public class EliminarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware {
+public class EliminarSolicitudAction extends ActionSupport implements Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
-    private Administrador administradorEliminar;
+    private Solicitud solicitudEliminar;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
 
-    public EliminarAdministradorAction() {
+    public EliminarSolicitudAction() {
     }
 
     public String execute() throws Exception {
@@ -40,17 +41,17 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     @Override
     public void prepare() throws Exception {
         existe = true;
-        String cedulaAdministrador = request.getParameter("cedula");
+        int idSolicitud = Integer.parseInt(request.getParameter("id"));
         try {
-            administradorEliminar = new AdministradorBusiness().buscarAdministrador(cedulaAdministrador);
+            solicitudEliminar = new SolicitudBusiness().buscarSolicitud(idSolicitud);
         } catch (SQLException e) {
             existe = false;
         }
     }
 
     @Override
-    public Administrador getModel() {
-        return this.administradorEliminar;
+    public Solicitud getModel() {
+        return this.solicitudEliminar;
     }
 
     @Override
@@ -59,15 +60,15 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     }
 
     public String eliminar() throws DataException {
-        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
         boolean eliminado = true;
         try {
-            administradorBusiness.eliminarAdministrador(administradorEliminar.getCedula());
+            solicitudBusiness.eliminarSolicitud(solicitudEliminar.getId());
         } catch (SQLException e) {
             eliminado = !eliminado;
         }
         if (eliminado) {
-            mensaje = "El administrador fue eliminado correctamente.";
+            mensaje = "La solicitud fue eliminada correctamente.";
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
@@ -75,12 +76,12 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
         }
     }
 
-    public Administrador getAdministradorEliminar() {
-        return administradorEliminar;
+    public Solicitud getSolicitudEliminar() {
+        return solicitudEliminar;
     }
 
-    public void setAdministradorEliminar(Administrador administradorEliminar) {
-        this.administradorEliminar = administradorEliminar;
+    public void setSolicitudEliminar(Solicitud solicitudEliminar) {
+        this.solicitudEliminar = solicitudEliminar;
     }
 
     public String getMensaje() {

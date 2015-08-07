@@ -19,16 +19,16 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author JonathanA
  */
-public class InsertarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware{
-    
+public class InsertarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware {
+
     private Administrador administradorInsertar;
     private String mensaje;
     private HttpServletRequest request;
-    
+
     public InsertarAdministradorAction() {
-        
+
     }
-    
+
     public String execute() throws Exception {
         return INPUT;
     }
@@ -47,39 +47,39 @@ public class InsertarAdministradorAction extends ActionSupport implements Prepar
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
-    public void validate(){
-        if(administradorInsertar.getCedula().length()!=9 || administradorInsertar.getCedula().equals(null)){
+    public void validate() {
+        if (administradorInsertar.getCedula().length() != 9 || administradorInsertar.getCedula().equals(null)) {
             addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
         }
-        if(administradorInsertar.getNombre().length()==0 || administradorInsertar.getNombre().equals(null)){
+        if (administradorInsertar.getNombre().length() == 0 || administradorInsertar.getNombre().equals(null)) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if(administradorInsertar.getApellidos().length()==0 || administradorInsertar.getApellidos().equals(null)){
+        if (administradorInsertar.getApellidos().length() == 0 || administradorInsertar.getApellidos().equals(null)) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if(administradorInsertar.getUsername().length()==0 || administradorInsertar.getUsername().equals(null)){
+        if (administradorInsertar.getUsername().length() == 0 || administradorInsertar.getUsername().equals(null)) {
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if(administradorInsertar.getPassword().length()==0 || administradorInsertar.getPassword().equals(null)){
+        if (administradorInsertar.getPassword().length() == 0 || administradorInsertar.getPassword().equals(null)) {
             addFieldError("password", "Debe ingresar una contraseña.");
-        } 
+        }
     }
-    
-    public String insertar() throws DataException{
+
+    public String insertar() throws DataException {
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         boolean insertado = true;
         try {
             administradorBusiness.insertarAdministrador(administradorInsertar);
         } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
+        if (insertado == true) {
             this.mensaje = "El administrador fue insertado correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
@@ -107,5 +107,5 @@ public class InsertarAdministradorAction extends ActionSupport implements Prepar
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-        
+
 }
