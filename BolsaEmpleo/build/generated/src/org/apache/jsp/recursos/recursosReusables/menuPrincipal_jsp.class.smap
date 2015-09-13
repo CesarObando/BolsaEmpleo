@@ -1,0 +1,13 @@
+SMAP
+menuPrincipal_jsp.java
+JSP
+*S JSP
+*F
++ 0 menuPrincipal.jsp
+recursos/recursosReusables/menuPrincipal.jsp
+*L
+1,17:54
+17:97,8
+18,4:105
+21,7:73
+*E
