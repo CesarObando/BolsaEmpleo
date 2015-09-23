@@ -42,7 +42,7 @@
                         <div class="branding-data">
                             <div class="logo-ucr">
                                 <!--<a href="http://www.ucr.ac.cr" target="blank">Universidad de Costa Ric</a>-->
-                                <img class="img-responsive" src="recursos/imagenes/logo-ucr.png" alt="" />
+                                <img class="img-responsive" src="../recursos/imagenes/logo-ucr.png" alt="" />
                             </div>
                             <div class="logo-img">                   
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->

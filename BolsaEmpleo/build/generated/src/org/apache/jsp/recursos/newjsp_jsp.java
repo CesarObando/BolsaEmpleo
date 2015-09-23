@@ -81,7 +81,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"branding-data\">\n");
       out.write("                            <div class=\"logo-ucr\">\n");
       out.write("                                <!--<a href=\"http://www.ucr.ac.cr\" target=\"blank\">Universidad de Costa Ric</a>-->\n");
-      out.write("                                <img class=\"img-responsive\" src=\"recursos/imagenes/logo-ucr.png\" alt=\"\" />\n");
+      out.write("                                <img class=\"img-responsive\" src=\"../recursos/imagenes/logo-ucr.png\" alt=\"\" />\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"logo-img\">                   \n");
       out.write("                                <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->\n");
