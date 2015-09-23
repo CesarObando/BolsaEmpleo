@@ -53,7 +53,7 @@
 
                 <c:if test="${sessionScope.usuario == null}" > 
                     <c:if test="${empty sessionScope.usuario}">
-                        <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>  
+                        <jsp:include page="../recursos/recursosReusables/menuPrincipal.jsp"/>  
                     </c:if>
                 </c:if>
                 <c:if test="${sessionScope.empleador != null}" > 
