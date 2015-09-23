@@ -87,7 +87,7 @@
                             <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                                 <div class="content clearfix">                                        
                                     © 2014 Oficina de Orientación, UCR |&nbsp;<a href="http://www.orientacion.ucr.ac.cr/">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>
-                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="recursos/imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
+                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../recursos/imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
                                     <hgroup class="site-name-slogan">      
                                         <h1 class="site-name"><a href="/" title="Inicio" class="active">Oficina de Orientación</a></h1>
                                         <h6 class="site-slogan">Al servicio de la comunidad estudiantil</h6>
@@ -101,7 +101,7 @@
                                         <div class="view-content">
                                             <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
                                                 <div class="views-field views-field-changed">    
-                                                    <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">10/10/2014 - 23:35</span>  
+                                                    <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">23/9/2015 - 8:57</span>  
                                                 </div>  
                                             </div>
                                         </div>
