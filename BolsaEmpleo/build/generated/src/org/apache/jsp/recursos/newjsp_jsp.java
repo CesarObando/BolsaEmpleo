@@ -51,8 +51,12 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
 <<<<<<< HEAD
       out.write("        <link rel=\"shortcut icon\" href=\"../recursos/imagenes/favicon.ico\" />\r\n");
 =======
+<<<<<<< HEAD
+      out.write("        <link rel=\"shortcut icon\" href=\"../recursos/imagenes/favicon.ico\" />\r\n");
+=======
       out.write("        <link rel=\"shortcut icon\" href=\"recursos/imagenes/favicon.ico\" />\r\n");
 >>>>>>> a22385cd6e315036e82c8c08aa8dcf3cd32a158d
+>>>>>>> d8c17ada70836e7d664d935a3398fb81e99901d6
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no\" />\r\n");
       out.write("\r\n");
       out.write("        <title>Inicio | Bolsa de Empleo</title>  \r\n");
@@ -147,10 +151,14 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <div class=\"views-row views-row-1 views-row-odd views-row-first views-row-last\">\r\n");
       out.write("                                                <div class=\"views-field views-field-changed\">    \r\n");
 <<<<<<< HEAD
+      out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">23/9/2015 - 8:57</span>  \r\n");
+=======
+<<<<<<< HEAD
       out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">10/10/2014 - 23:35</span>  \r\n");
 =======
       out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">23-9-2015 - 8:57 am</span>  \r\n");
 >>>>>>> a22385cd6e315036e82c8c08aa8dcf3cd32a158d
+>>>>>>> d8c17ada70836e7d664d935a3398fb81e99901d6
       out.write("                                                </div>  \r\n");
       out.write("                                            </div>\r\n");
       out.write("                                        </div>\r\n");
@@ -176,16 +184,22 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("        </script>\r\n");
       out.write("\r\n");
 <<<<<<< HEAD
+=======
+<<<<<<< HEAD
+>>>>>>> d8c17ada70836e7d664d935a3398fb81e99901d6
       out.write("        <script type=\"text/javascript\" src=\"../recursos/js/jquery.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"../recursos/js/hoverIntent.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"../recursos/js/superfish.js\"></script>                \r\n");
       out.write("        <script type=\"text/javascript\" src=\"../recursos/js/supersubs.js\"></script>\r\n");
+<<<<<<< HEAD
+=======
 =======
       out.write("        <script type=\"text/javascript\" src=\"recursos/js/jquery.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"recursos/js/hoverIntent.js\"></script>\r\n");
       out.write("        <script type=\"text/javascript\" src=\"recursos/js/superfish.js\"></script>                \r\n");
       out.write("        <script type=\"text/javascript\" src=\"recursos/js/supersubs.js\"></script>\r\n");
 >>>>>>> a22385cd6e315036e82c8c08aa8dcf3cd32a158d
+>>>>>>> d8c17ada70836e7d664d935a3398fb81e99901d6
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\">\r\n");
       out.write("            // initialise plugins\r\n");
