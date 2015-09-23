@@ -11,10 +11,20 @@ public final class pantallaPrincipal_jsp extends org.apache.jasper.runtime.HttpJ
 
   private static java.util.List<String> _jspx_dependants;
 
+  private org.apache.jasper.runtime.TagHandlerPool _jspx_tagPool_s_label_label_nobody;
+
   private org.glassfish.jsp.api.ResourceInjector _jspx_resourceInjector;
 
   public java.util.List<String> getDependants() {
     return _jspx_dependants;
+  }
+
+  public void _jspInit() {
+    _jspx_tagPool_s_label_label_nobody = org.apache.jasper.runtime.TagHandlerPool.getTagHandlerPool(getServletConfig());
+  }
+
+  public void _jspDestroy() {
+    _jspx_tagPool_s_label_label_nobody.release();
   }
 
   public void _jspService(HttpServletRequest request, HttpServletResponse response)
@@ -82,6 +92,10 @@ public final class pantallaPrincipal_jsp extends org.apache.jasper.runtime.HttpJ
       out.write("                            <div class=\"logo-ucr\">\n");
       out.write("                                <!--<a href=\"http://www.ucr.ac.cr\" target=\"blank\">Universidad de Costa Ric</a>-->\n");
       out.write("                                <img class=\"img-responsive\" src=\"../recursos/imagenes/logo-ucr.png\" alt=\"\" />\n");
+      out.write("                                ");
+      if (_jspx_meth_s_label_0(_jspx_page_context))
+        return;
+      out.write("\n");
       out.write("                            </div>\n");
       out.write("                            <div class=\"logo-img\">                   \n");
       out.write("                                <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->\n");
@@ -191,5 +205,23 @@ public final class pantallaPrincipal_jsp extends org.apache.jasper.runtime.HttpJ
     } finally {
       _jspxFactory.releasePageContext(_jspx_page_context);
     }
+  }
+
+  private boolean _jspx_meth_s_label_0(PageContext _jspx_page_context)
+          throws Throwable {
+    PageContext pageContext = _jspx_page_context;
+    JspWriter out = _jspx_page_context.getOut();
+    //  s:label
+    org.apache.struts2.views.jsp.ui.LabelTag _jspx_th_s_label_0 = (org.apache.struts2.views.jsp.ui.LabelTag) _jspx_tagPool_s_label_label_nobody.get(org.apache.struts2.views.jsp.ui.LabelTag.class);
+    _jspx_th_s_label_0.setPageContext(_jspx_page_context);
+    _jspx_th_s_label_0.setParent(null);
+    _jspx_th_s_label_0.setLabel("Tiin");
+    int _jspx_eval_s_label_0 = _jspx_th_s_label_0.doStartTag();
+    if (_jspx_th_s_label_0.doEndTag() == javax.servlet.jsp.tagext.Tag.SKIP_PAGE) {
+      _jspx_tagPool_s_label_label_nobody.reuse(_jspx_th_s_label_0);
+      return true;
+    }
+    _jspx_tagPool_s_label_label_nobody.reuse(_jspx_th_s_label_0);
+    return false;
   }
 }
