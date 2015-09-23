@@ -5,10 +5,10 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Business.SolicitanteBusiness;
+import Dominio.Administrador;
 import Dominio.Empleador;
-import Dominio.Solicitante;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -23,34 +23,27 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Tin
  */
-public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class EditarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
-    private Empleador empleadorAEliminar;
+    private Empleador empleadorEditar;
     private String mensaje;
     private HttpServletRequest request;
 
-    public EliminarEmpleadorAction() {
+    public EditarEmpleadorAction() {
     }
 
-    @Override
     public String execute() throws Exception {
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        empleadorAEliminar = new Empleador();
-        mensaje = "";
-    }
-
-    @Override
-    public void validate() {
-
+        empleadorEditar = new Empleador();
     }
 
     @Override
     public Empleador getModel() {
-        return this.empleadorAEliminar;
+        return this.empleadorEditar;
     }
 
     @Override
@@ -58,22 +51,34 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
         this.request = hsr;
     }
 
-    public String eliminar() throws DataException {
-        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+    @Override
+    public void validate() {
+
+    }
+
+    public String editar() {
+        EmpleadorBusiness empleadorBussines = new EmpleadorBusiness();
+        boolean insertado = true;
         try {
-            empleadorBusiness.eliminarEmpleador(empleadorAEliminar.getId());
-            return SUCCESS;
+            empleadorBussines.editarEmpleador(empleadorEditar);;
         } catch (SQLException e) {
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+        }
+        if (insertado == true) {
+            this.mensaje = "El administrador fue editado correctamente";
+            return SUCCESS;
+        } else {
             return ERROR;
         }
     }
 
-    public Empleador getEmpleadorAEliminar() {
-        return empleadorAEliminar;
+    public Empleador getEmpleadorEditar() {
+        return empleadorEditar;
     }
 
-    public void setEmpleadorAEliminar(Empleador empleadorAEliminar) {
-        this.empleadorAEliminar = empleadorAEliminar;
+    public void setEmpleadorEditar(Empleador empleadorEditar) {
+        this.empleadorEditar = empleadorEditar;
     }
 
     public String getMensaje() {
@@ -91,5 +96,4 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-
 }
