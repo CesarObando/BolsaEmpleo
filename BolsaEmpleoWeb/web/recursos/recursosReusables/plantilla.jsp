@@ -55,16 +55,16 @@
                 <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
             </div>
         </header>
-        <section >
+        <section>
             <div id="zone-content" class="clearfix container-12">     
                 <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
                     <div class=" block-menu-block-1" id="block-menu-block-1">
                         <div class="content clearfix">                            
                             <ul class="menu">
                                 <li class="first collapsed"><a href="#" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="Curriculo">Cómo hacer un Curriculo?</a></li>                                              
-                                <li class="leaf"><a href="#">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                
+                                <li class="first collapsed"> <a href="Curriculo">¿Cómo hacer un Curriculum?</a></li>                                              
+                                <li class="leaf"><a href="#">Recinto de Paraíso</a></li>
+                                <li class="leaf"><a href="#">Contáctenos</a></li>                                
                             </ul>                                
                         </div>
                     </div>
