@@ -5,8 +5,9 @@
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="/struts-tags" prefix="s" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -84,21 +85,17 @@
             
             <div class="grid-9 region-content" id="region-content">
 
-                    <s:if test="hasActionErrors()">
+                 <%--   <s:if test="hasActionErrors()">
                         <s:actionerror />
                     </s:if>
                     <s:if test="hasActionMessages()">
                         <s:actionmessage />
-                    </s:if>
+                    </s:if> --%>
                 
-                <s:form method="post" enctype="multipart/form-data">
-                    <s:submit id="solicitante" value="Solicitante"></s:submit>
-                    <c:if test="${solicitante!=null}">
-                        <s:textfield name="cedula"/>
-                    </c:if>
+                <s:form method="post">
                 </s:form>
                 
-                    <s:form method="post" enctype="multipart/form-data" action="RegistrarUsuarioAction">
+                  <%--   <s:form method="post" enctype="multipart/form-data" action="RegistrarUsuarioAction">
 
                         <c:if test="${sessionScope.usuario == null}" >
                             <s:textfield name="cedula" label="Cedula"/>
@@ -151,7 +148,7 @@
 
 
                     </s:form>
-
+                    --%>
 
                 </div>                           
 
