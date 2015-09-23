@@ -14,24 +14,24 @@
 
         <title>Inicio | Bolsa de Empleo</title>  
 
-        <link rel="stylesheet" type="text/css" href="recursos/css/system.base.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/system.menus.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/system.messages.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/system.theme.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/system.base.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/system.menus.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/system.messages.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/system.theme.css">
 
         <!--menu-->
-        <link rel="stylesheet" type="text/css" href="recursos/css/superfish.css" media="screen">       
-        <link rel="stylesheet" type="text/css" href="recursos/css/superfish-smallscreen.css" media="screen">  
+        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish.css" media="screen">       
+        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish-smallscreen.css" media="screen">  
 
-        <link rel="stylesheet" type="text/css" href="recursos/css/omega-text.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/omega-branding.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/omega-menu.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/omega-forms.css">
-        <link rel="stylesheet" type="text/css" href="recursos/css/global.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-text.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-branding.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-menu.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-forms.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/global.css">
         <!--responsive-->
         <style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
-            @import url("recursos/css/omega-obas-alpha-default.css");            
-            @import url("recursos/css/alpha-default-normal-12.css");            
+            @import url("../recursos/css/omega-obas-alpha-default.css");            
+            @import url("../recursos/css/alpha-default-normal-12.css");            
         </style>
     </head>
     <body>
