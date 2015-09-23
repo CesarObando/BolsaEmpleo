@@ -4,18 +4,25 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/web/recursos/newjsp.jsp</file>
+=======
+            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarAdministradorAction.java</file>
+>>>>>>> ce6caa00f85d12a45bd6df3d6504ccf573597751
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/MantenimientoAdministradoresAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarEmpleadorAction.java</file>
+            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarCategoriaAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarSolicitudAction.java</file>
-            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/MantenimientoSolicitudesAction.java</file>
+            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarCategoriaAction.java</file>
+            <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarSolicitudAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/MantenimientoCategoriasAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/MantenimientoSolicitantesAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarEmpleadoresAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarSolicitanteAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarSolicitanteAction.java</file>
+<<<<<<< HEAD
 =======
 <<<<<<< HEAD
             <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/web/recursos/pantallaPrincipal.jsp</file>
@@ -33,6 +40,8 @@
 >>>>>>> 5765504ff43b0099e7ce6603c09d5a54d64431bb
 >>>>>>> a22385cd6e315036e82c8c08aa8dcf3cd32a158d
 >>>>>>> d8c17ada70836e7d664d935a3398fb81e99901d6
+=======
+>>>>>>> ce6caa00f85d12a45bd6df3d6504ccf573597751
         </group>
     </open-files>
 </project-private>
