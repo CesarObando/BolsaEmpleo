@@ -16,6 +16,10 @@
         <action name="PantallaPrincipal" class="Actions.PantallaPrincipalAction">  
              <result name="SUCCESS">/recursos/pantallaPrincipal.jsp</result>
         </action> 
+        
+        <action name="InsertarUsuario" class="Actions.InsertarSolicitanteAction">  
+             <result type="dispatcher" name="SUCCESS">/recursos/usuarios/insertar_usuario.jsp</result>
+        </action> 
 
     </package>
 </struts>
