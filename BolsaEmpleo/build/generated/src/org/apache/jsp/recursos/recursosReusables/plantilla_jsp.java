@@ -1,10 +1,10 @@
-package org.apache.jsp.recursos;
+package org.apache.jsp.recursos.recursosReusables;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
 import javax.servlet.jsp.*;
 
-public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
+public final class plantilla_jsp extends org.apache.jasper.runtime.HttpJspBase
     implements org.apache.jasper.runtime.JspSourceDependent {
 
   private static final JspFactory _jspxFactory = JspFactory.getDefaultFactory();
@@ -48,31 +48,29 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("<html>\r\n");
       out.write("    <head>\r\n");
       out.write("        <meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\r\n");
-      out.write("        <link rel=\"shortcut icon\" href=\"../recursos/imagenes/favicon.ico\" />\r\n");
-      out.write("        <link rel=\"shortcut icon\" href=\"../recursos/imagenes/favicon.ico\" />\r\n");
-      out.write("        <link rel=\"shortcut icon\" href=\"recursos/imagenes/favicon.ico\" />\r\n");
+      out.write("        <link rel=\"shortcut icon\" href=\"../imagenes/favicon.ico\" />\r\n");
       out.write("        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no\" />\r\n");
       out.write("\r\n");
       out.write("        <title>Inicio | Bolsa de Empleo</title>  \r\n");
       out.write("\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/system.base.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/system.menus.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/system.messages.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/system.theme.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/system.base.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/system.menus.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/system.messages.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/system.theme.css\">\r\n");
       out.write("\r\n");
       out.write("        <!--menu-->\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/superfish.css\" media=\"screen\">       \r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/superfish-smallscreen.css\" media=\"screen\">  \r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/superfish.css\" media=\"screen\">       \r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/superfish-smallscreen.css\" media=\"screen\">  \r\n");
       out.write("\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/omega-text.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/omega-branding.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/omega-menu.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/omega-forms.css\">\r\n");
-      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../recursos/css/global.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/omega-text.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/omega-branding.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/omega-menu.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/omega-forms.css\">\r\n");
+      out.write("        <link rel=\"stylesheet\" type=\"text/css\" href=\"../css/global.css\">\r\n");
       out.write("        <!--responsive-->\r\n");
       out.write("        <style type=\"text/css\" media=\"all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)\">\r\n");
-      out.write("            @import url(\"../recursos/css/omega-obas-alpha-default.css\");            \r\n");
-      out.write("            @import url(\"../recursos/css/alpha-default-normal-12.css\");            \r\n");
+      out.write("            @import url(\"../css/omega-obas-alpha-default.css\");            \r\n");
+      out.write("            @import url(\"../css/alpha-default-normal-12.css\");            \r\n");
       out.write("        </style>\r\n");
       out.write("    </head>\r\n");
       out.write("    <body>\r\n");
@@ -83,7 +81,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                        <div class=\"branding-data\">\r\n");
       out.write("                            <div class=\"logo-ucr\">\r\n");
       out.write("                                <!--<a href=\"http://www.ucr.ac.cr\" target=\"blank\">Universidad de Costa Ric</a>-->\r\n");
-      out.write("                                <img class=\"img-responsive\" src=\"../recursos/imagenes/logo-ucr.png\" alt=\"\" />\r\n");
+      out.write("                                <img class=\"img-responsive\" src=\"../imagenes/logo-ucr.png\" alt=\"\" />\r\n");
       out.write("                            </div>\r\n");
       out.write("                            <div class=\"logo-img\">                   \r\n");
       out.write("                                <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->\r\n");
@@ -94,7 +92,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                    </div>\r\n");
       out.write("                </div>\r\n");
       out.write("                ");
-      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../recursos/recursosReusables/menuPrincipal.jsp", out, false);
+      org.apache.jasper.runtime.JspRuntimeLibrary.include(request, response, "../recursosReusables/menuPrincipal.jsp", out, false);
       out.write("\r\n");
       out.write("            </div>\r\n");
       out.write("        </header>\r\n");
@@ -130,7 +128,7 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                            <div class=\"block block-block block-6 block-block-6 odd block-without-title\" id=\"block-block-6\">\r\n");
       out.write("                                <div class=\"content clearfix\">                                        \r\n");
       out.write("                                    © 2014 Oficina de Orientación, UCR |&nbsp;<a href=\"http://www.orientacion.ucr.ac.cr/\">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>\r\n");
-      out.write("                                    <a href=\"/\" rel=\"home\" title=\"Oficina de Orientación\" class=\"active\"><img src=\"../recursos/imagenes/menu-bg.png\" alt=\"Oficina de Orientación\" id=\"logo\" /></a> \r\n");
+      out.write("                                    <a href=\"/\" rel=\"home\" title=\"Oficina de Orientación\" class=\"active\"><img src=\"../imagenes/menu-bg.png\" alt=\"Oficina de Orientación\" id=\"logo\" /></a> \r\n");
       out.write("                                    <hgroup class=\"site-name-slogan\">      \r\n");
       out.write("                                        <h1 class=\"site-name\"><a href=\"/\" title=\"Inicio\" class=\"active\">Oficina de Orientación</a></h1>\r\n");
       out.write("                                        <h6 class=\"site-slogan\">Al servicio de la comunidad estudiantil</h6>\r\n");
@@ -145,8 +143,6 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("                                            <div class=\"views-row views-row-1 views-row-odd views-row-first views-row-last\">\r\n");
       out.write("                                                <div class=\"views-field views-field-changed\">    \r\n");
       out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">23/9/2015 - 8:57</span>  \r\n");
-      out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">10/10/2014 - 23:35</span>  \r\n");
-      out.write("                                                    <span class=\"views-label views-label-changed\">Última Actualización:</span><span class=\"field-content\">23-9-2015 - 8:57 am</span>  \r\n");
       out.write("                                                </div>  \r\n");
       out.write("                                            </div>\r\n");
       out.write("                                        </div>\r\n");
@@ -171,14 +167,10 @@ public final class newjsp_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("            }(document, 'script', 'facebook-jssdk'));\r\n");
       out.write("        </script>\r\n");
       out.write("\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"../recursos/js/jquery.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"../recursos/js/hoverIntent.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"../recursos/js/superfish.js\"></script>                \r\n");
-      out.write("        <script type=\"text/javascript\" src=\"../recursos/js/supersubs.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"recursos/js/jquery.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"recursos/js/hoverIntent.js\"></script>\r\n");
-      out.write("        <script type=\"text/javascript\" src=\"recursos/js/superfish.js\"></script>                \r\n");
-      out.write("        <script type=\"text/javascript\" src=\"recursos/js/supersubs.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"../js/jquery.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"../js/hoverIntent.js\"></script>\r\n");
+      out.write("        <script type=\"text/javascript\" src=\"../js/superfish.js\"></script>                \r\n");
+      out.write("        <script type=\"text/javascript\" src=\"../js/supersubs.js\"></script>\r\n");
       out.write("\r\n");
       out.write("        <script type=\"text/javascript\">\r\n");
       out.write("            // initialise plugins\r\n");
