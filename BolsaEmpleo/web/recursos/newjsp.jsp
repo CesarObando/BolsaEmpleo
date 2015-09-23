@@ -9,7 +9,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="shortcut icon" href="recursos/imagenes/favicon.ico" />
+        <link rel="shortcut icon" href="../recursos/imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
         <title>Inicio | Bolsa de Empleo</title>  
@@ -126,10 +126,10 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
 
-        <script type="text/javascript" src="recursos/js/jquery.js"></script>
-        <script type="text/javascript" src="recursos/js/hoverIntent.js"></script>
-        <script type="text/javascript" src="recursos/js/superfish.js"></script>                
-        <script type="text/javascript" src="recursos/js/supersubs.js"></script>
+        <script type="text/javascript" src="../recursos/js/jquery.js"></script>
+        <script type="text/javascript" src="../recursos/js/hoverIntent.js"></script>
+        <script type="text/javascript" src="../recursos/js/superfish.js"></script>                
+        <script type="text/javascript" src="../recursos/js/supersubs.js"></script>
 
         <script type="text/javascript">
             // initialise plugins
