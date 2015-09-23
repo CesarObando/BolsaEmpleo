@@ -6,10 +6,10 @@
 package Actions;
 
 import Business.OfertaBusiness;
-import Business.SolicitanteBusiness;
+import Dominio.Administrador;
 import Dominio.Oferta;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -22,14 +22,13 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Tin
  */
-public class InsertarOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class EditarOfertaAction  extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware{
 
-     
-    private Oferta ofertaAInsertar;
+       private Oferta ofertaAEditar;
     private String mensaje;
     private HttpServletRequest request;
 
-    public InsertarOfertaAction() {
+    public EditarOfertaAction() {
     }
 
     
@@ -39,13 +38,13 @@ public class InsertarOfertaAction extends ActionSupport implements Preparable, M
     }
     @Override
     public void prepare() throws Exception {
-      ofertaAInsertar=new Oferta();
+      ofertaAEditar=new Oferta();
       mensaje="";
     }
 
     @Override
     public Oferta getModel() {
-       return this.ofertaAInsertar;
+       return this.ofertaAEditar;
     }
 
     @Override
@@ -54,42 +53,42 @@ public class InsertarOfertaAction extends ActionSupport implements Preparable, M
     }
     @Override
     public void validate(){
-  if(ofertaAInsertar.getPuesto().length()==0 || ofertaAInsertar.getPuesto().equals(null)){
+  if(ofertaAEditar.getPuesto().length()==0 || ofertaAEditar.getPuesto().equals(null)){
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if(ofertaAInsertar.getRequerimientos().length()==0 ||ofertaAInsertar.getRequerimientos().equals(null)){
+        if(ofertaAEditar.getRequerimientos().length()==0 ||ofertaAEditar.getRequerimientos().equals(null)){
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
-         if(ofertaAInsertar.getCategoria().getNombre().length()==0 ||ofertaAInsertar.getCategoria().getNombre().equals(null)){
+         if(ofertaAEditar.getCategoria().getNombre().length()==0 ||ofertaAEditar.getCategoria().getNombre().equals(null)){
             addFieldError("categoria", "Debe seleccionar una categoria");
         }
-          if(ofertaAInsertar.getCantidadVacantes()==0){
+          if(ofertaAEditar.getCantidadVacantes()==0){
             addFieldError("vacantes", "Debe seleccionar una catidad de vacantes");
         }
      
     }
-     public String insertar() {
+     public String editar() {
          OfertaBusiness ofertaBusiness=new OfertaBusiness();
-        boolean insertado = true;
+        boolean editado = true;
         try {
-          ofertaBusiness.insertaOferta(ofertaAInsertar);
+          ofertaBusiness.editarOferta(ofertaAEditar);
         } catch (SQLException e) {
-            insertado=false;
+            editado=false;
             mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
-            this.mensaje = "La  oferta  fue insertada correctamente";
+        if(editado==true){
+            this.mensaje = "La oferta fue editada correctamente";
             return SUCCESS;
         }else{
             return ERROR;
         }
     }
      public Oferta getOfertaAInsertar() {
-        return ofertaAInsertar;
+        return ofertaAEditar;
     }
 
     public void setOfertaAInsertar(Oferta ofertaAInsertar) {
-        this.ofertaAInsertar = ofertaAInsertar;
+        this.ofertaAEditar = ofertaAInsertar;
     }
 
     public String getMensaje() {
@@ -107,5 +106,6 @@ public class InsertarOfertaAction extends ActionSupport implements Preparable, M
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
+    
     
 }
