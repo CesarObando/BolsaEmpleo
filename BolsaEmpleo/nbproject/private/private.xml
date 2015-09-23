@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/web/recursos/newjsp.jsp</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/MantenimientoAdministradoresAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarEmpleadorAction.java</file>
@@ -13,6 +14,19 @@
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarEmpleadoresAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/InsertarSolicitanteAction.java</file>
             <file>file:/C:/Users/Tin/Documents/BolsaEmpleo/BolsaEmpleo/src/java/Actions/EliminarSolicitanteAction.java</file>
+=======
+<<<<<<< HEAD
+            <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/web/recursos/pantallaPrincipal.jsp</file>
+            <file>file:/C:/Users/Cesar/Documents/BolsaEmpleo/Repositorio/BolsaEmpleo/web/recursos/newjsp.jsp</file>
+=======
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Actions/InsertarSolicitanteAction.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Data/SolicitanteData.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Business/SolicitanteBusiness.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/src/java/Dominio/Empleador.java</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/web/recursos/pantallaPrincipal.jsp</file>
+            <file>file:/C:/Users/JonathanA/Documents/Git/BolsaEmpleo/web/recursos/newjsp.jsp</file>
+>>>>>>> 5765504ff43b0099e7ce6603c09d5a54d64431bb
+>>>>>>> a22385cd6e315036e82c8c08aa8dcf3cd32a158d
         </group>
     </open-files>
 </project-private>
