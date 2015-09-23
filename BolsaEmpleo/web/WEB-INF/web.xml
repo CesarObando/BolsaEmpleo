@@ -15,8 +15,9 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>pantallaPrincipal.jsp</welcome-file>
+        <welcome-file>recursos/pantallaPrincipal.jsp</welcome-file>
     </welcome-file-list>
+
     <!--<security-constraint>
         <web-resource-collection>
             <web-resource-name>Deny Direct Access</web-resource-name>
