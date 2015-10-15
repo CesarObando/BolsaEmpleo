@@ -5,29 +5,29 @@
 <html lang="es" >
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="shortcut icon" href="../imagenes/favicon.ico" />
+        <link rel="shortcut icon" href="recursos/imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Inicio | Bolsa de Empleo</title>  
+        <title>Login | Bolsa de Empleo</title>  
 
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.base.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.menus.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.messages.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.theme.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/system.base.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/system.menus.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/system.messages.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/system.theme.css">
 
         <!--menu-->
-        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish.css" media="screen">       
-        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish-smallscreen.css" media="screen">  
+        <link rel="stylesheet" type="text/css" href="recursos/css/superfish.css" media="screen">       
+        <link rel="stylesheet" type="text/css" href="recursos/css/superfish-smallscreen.css" media="screen">  
 
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-text.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-branding.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-menu.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-forms.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/global.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/omega-text.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/omega-branding.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/omega-menu.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/omega-forms.css">
+        <link rel="stylesheet" type="text/css" href="recursos/css/global.css">
         <!--responsive-->
         <style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
-            @import url("../recursos/css/omega-obas-alpha-default.css");            
-            @import url("../recursos/css/alpha-default-normal-12.css");            
+            @import url("recursos/css/omega-obas-alpha-default.css");            
+            @import url("recursos/css/alpha-default-normal-12.css");            
         </style>
     </head>
     <body>
@@ -38,7 +38,7 @@
                         <div class="branding-data">
                             <div class="logo-ucr">
                                 <!--<a href="http://www.ucr.ac.cr" target="blank">Universidad de Costa Ric</a>-->
-                                <img class="img-responsive" src="../recursos/imagenes/logo-ucr.png" alt="" />
+                                <img class="img-responsive" src="recursos/imagenes/logo-ucr.png" alt="" />
                             </div>
                             <div class="logo-img">                   
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->
@@ -48,7 +48,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursos/recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="recursos/recursosReusables/menuPrincipal.jsp"/>
             </div>
         </header>
         <section >
@@ -83,7 +83,7 @@
                             <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                                 <div class="content clearfix">                                        
                                     © 2014 Oficina de Orientación, UCR |&nbsp;<a href="http://www.orientacion.ucr.ac.cr/">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>
-                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../recursos/imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
+                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="recursos/imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
                                     <hgroup class="site-name-slogan">      
                                         <h1 class="site-name"><a href="/" title="Inicio" class="active">Oficina de Orientación</a></h1>
                                         <h6 class="site-slogan">Al servicio de la comunidad estudiantil</h6>
@@ -122,10 +122,10 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
 
-        <script type="text/javascript" src="../recursos/js/jquery.js"></script>
-        <script type="text/javascript" src="../recursos/js/hoverIntent.js"></script>
-        <script type="text/javascript" src="../recursos/js/superfish.js"></script>                
-        <script type="text/javascript" src="../recursos/js/supersubs.js"></script>
+        <script type="text/javascript" src="recursos/js/jquery.js"></script>
+        <script type="text/javascript" src="recursos/js/hoverIntent.js"></script>
+        <script type="text/javascript" src="recursos/js/superfish.js"></script>                
+        <script type="text/javascript" src="recursos/js/supersubs.js"></script>
 
         <script type="text/javascript">
             // initialise plugins
