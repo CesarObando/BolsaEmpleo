@@ -78,22 +78,22 @@
                         </div>
                     </section>
                 </aside>
+                <aside class="grid-3 region" id="region-sidebar-second">
+                    <div>
+                        <s:form method="post" enctype="multipart/form-data" action="IniciarSesion">
+                            <s:if test="hasActionMessages()">
+                                <s:actionmessage />
+                            </s:if>
+                            <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
+                            <s:password name="clave" placeholder="Contraseña"/>
+                            <s:submit action="iniciarSesionUsuario" value="Iniciar Sesion" class="button-submit"/>
+                        </s:form> 
+                    </div>
+                </aside>
             </div>            
         </section> 
-
-            <div id="zone-branding" class="container-12">
-                <s:form method="post" enctype="multipart/form-data" action="IniciarSesion">
-                    <s:if test="hasActionMessages()">
-                        <s:actionmessage />
-                    </s:if>
-                    <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                    <s:password name="clave" placeholder="Contraseña"/>
-                    <s:submit action="iniciarSesionUsuario" value="Iniciar Sesion" class="button-submit"/>
-                </s:form> 
-            </div>
-
     </body>
-    <footer >
+    <footer>
         <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
             <div id="zone-footer" class="zone zone-footer clearfix container-12">
                 <div class="grid-12 region region-footer-first" id="region-footer-first">
