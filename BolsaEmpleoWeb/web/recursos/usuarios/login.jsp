@@ -85,10 +85,10 @@
                             <s:actionmessage />
                         </s:if>
                         <s:else>
-                            <s:form method="post" enctype="multipart/form-data" action="IniciarSesionAction">
+                            <s:form method="post" enctype="multipart/form-data" action="iniciarSesion">
                                 <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
                                 <s:password name="clave" placeholder="Contraseña"/>
-                                <s:submit action="iniciarSesionUsuario" value="Iniciar Sesion" class="button-submit"/>
+                                <s:submit action="iniciarSesion" value="Iniciar Sesion" class="button-submit"/>
                             </s:form>
                         </s:else>
                     </div>
