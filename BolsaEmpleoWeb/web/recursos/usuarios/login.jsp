@@ -13,7 +13,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Inicio | Bolsa de Empleo</title>  
+        <title>Iniciar Sesión | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -80,6 +80,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div>
+                        <h3>Iniciar Sesión</h3>
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
