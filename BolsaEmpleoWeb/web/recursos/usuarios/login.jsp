@@ -80,14 +80,16 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div>
-                        <s:form method="post" enctype="multipart/form-data" action="IniciarSesion">
-                            <s:if test="hasActionMessages()">
-                                <s:actionmessage />
-                            </s:if>
-                            <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                            <s:password name="clave" placeholder="Contraseña"/>
-                            <s:submit action="iniciarSesionUsuario" value="Iniciar Sesion" class="button-submit"/>
-                        </s:form> 
+                        <s:if test="hasActionMessages()">
+                            <s:actionmessage />
+                        </s:if>
+                        <s:else>
+                            <s:form method="post" enctype="multipart/form-data" action="IniciarSesionAction">
+                                <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
+                                <s:password name="clave" placeholder="Contraseña"/>
+                                <s:submit action="iniciarSesionUsuario" value="Iniciar Sesion" class="button-submit"/>
+                            </s:form>
+                        </s:else>
                     </div>
                 </aside>
             </div>            
