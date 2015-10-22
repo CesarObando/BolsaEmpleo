@@ -7,7 +7,6 @@ package Actions;
 
 import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
-import Dominio.Usuario;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
