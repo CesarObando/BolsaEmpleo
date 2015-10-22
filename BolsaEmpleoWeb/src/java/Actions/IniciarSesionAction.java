@@ -64,24 +64,24 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     }
 
     public String iniciarSesionUsuario() {
-        sessionMap.clear();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        try {
-            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante == null){
-                this.addActionMessage("Usuario o contraseÃ±a incorrectas");
-                return ERROR;
-            }
-            sessionMap.put("solicitante", solicitante);
-        } catch (SQLException ex) {
-            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
-            return ERROR;
-        } catch (DataException ex) {
-            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
-            return ERROR;
-        }
+//        sessionMap.clear();
+//        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+//        try {
+//            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
+//            if (solicitante == null){
+//                this.addActionMessage("Usuario o contraseÃ±a incorrectas");
+//                return ERROR;
+//            }
+//            sessionMap.put("solicitante", solicitante);
+//        } catch (SQLException ex) {
+//            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
+//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
+//            return ERROR;
+//        } catch (DataException ex) {
+//            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
+//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
+//            return ERROR;
+//        }
         return SUCCESS;
     }
 
