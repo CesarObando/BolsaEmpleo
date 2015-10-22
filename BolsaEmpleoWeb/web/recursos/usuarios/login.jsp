@@ -104,7 +104,7 @@
                         <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                             <div class="content clearfix">                                        
                                 © 2014 Oficina de Orientación, UCR |&nbsp;<a href="http://www.orientacion.ucr.ac.cr/">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>
-                                <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
+                                <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo"></a> 
                                 <hgroup class="site-name-slogan">      
                                     <h1 class="site-name"><a href="/" title="Inicio" class="active">Oficina de Orientación</a></h1>
                                     <h6 class="site-slogan">Al servicio de la comunidad estudiantil</h6>

@@ -10,7 +10,6 @@
             <param name="validation.excludeMethods">execute</param>
         </interceptor-ref>
         <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
-        <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
     </action>
     <action name="iniciarSesion" method="iniciarSesionUsuario" class="Actions.IniciarSesionAction">
         <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
