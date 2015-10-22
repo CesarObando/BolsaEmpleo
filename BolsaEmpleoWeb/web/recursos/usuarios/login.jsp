@@ -1,8 +1,4 @@
-<%-- 
-    Document   : login
-    Created on : Oct 6, 2014, 11:49:21 PM
-    Author     : ricardo
---%>
+
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
