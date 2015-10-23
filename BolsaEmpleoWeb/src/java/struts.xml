@@ -9,11 +9,11 @@
         <interceptor-ref name="defaultStack">
             <param name="validation.excludeMethods">execute</param>
         </interceptor-ref>
-        <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
+        <result name="input" type="dispatcher">/recursos/login.jsp</result>
     </action>
     <action name="iniciarSesion" method="iniciarSesionUsuario" class="Actions.IniciarSesionAction">
         <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
-        <result name="success" type="dispatcher">PantallaPrincipal.jsp</result>
+        <result name="success" type="dispatcher">/recursos/usuarios/pantallaPrincipal.jsp</result>
         <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
     </action>
     </package>

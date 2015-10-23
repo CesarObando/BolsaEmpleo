@@ -5,21 +5,15 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
-import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import java.sql.SQLException;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
-import org.apache.struts2.interceptor.validation.SkipValidation;
 
 /**
  *
@@ -69,17 +63,17 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
 //        try {
 //            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
 //            if (solicitante == null){
-//                this.addActionMessage("Usuario o contraseÃ±a incorrectas");
+//                this.addActionMessage("Usuario o contraseña incorrectas");
 //                return ERROR;
 //            }
 //            sessionMap.put("solicitante", solicitante);
 //        } catch (SQLException ex) {
 //            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
+//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
 //            return ERROR;
 //        } catch (DataException ex) {
 //            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comunÃ­quese con nosotros.\nGracias");
+//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
 //            return ERROR;
 //        }
         return SUCCESS;
@@ -91,7 +85,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
             addFieldError("nombreUsuario", "Ingrese un nombre de usuario o correo");
         }
         if (this.request.getParameter("clave").trim().equals("")) {
-            addFieldError("clave", "Ingrese una contraseÃ±a");
+            addFieldError("clave", "Ingrese una contraseña");
         }
     }
 
