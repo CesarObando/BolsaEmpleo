@@ -24,7 +24,7 @@
             </interceptor-ref>
             <result name="input" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
         </action>
-        <action name="insertarSolicitante" method="" class="Actions.InsertarSolicitanteAction">
+        <action name="insertarSolicitante" method="insertarSoliciante" class="Actions.InsertarSolicitanteAction">
             <result name="input" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>

@@ -62,10 +62,10 @@
                     <div class=" block-menu-block-1" id="block-menu-block-1">
                         <div class="content clearfix">                            
                             <ul class="menu">
-                                <li class="first collapsed"><a href="#" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="Curriculo">Cómo hacer un Curriculo?</a></li>                                              
-                                <li class="leaf"><a href="#">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                
+                                <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
+                                <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
+                                <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
+                                <li class="leaf"><a href="#">Contactenos</a></li>                                   
                             </ul>                                
                         </div>
                     </div>
