@@ -9,14 +9,11 @@
             <div class="content clearfix">
                 <ul  class="menu sf-menu sf-horizontal">
                     <li>
-                        <a href="PantallaPrincipal" class="">Inicio</a>
+                        <a href="../recursos/pantallaPrincipal.jsp" class="">Inicio</a>
                     </li>
-                    <li>
-                        <a href="RegistrarUsuario" class="">Registrate</a>                        
-                    </li>
-                    <c:if test="${!empty sessionScope.usuario}">
+                    <c:if test="${sessionScope.solicitante == null}">
                         <li>
-                            <a href="#"  class="">Cerrar Sesión</a>                        
+                            <a href="../recursos/usuarios/insertarSolicitante.jsp" class="">Registrate</a>               
                         </li>
                     </c:if>
                 </ul>

@@ -78,8 +78,9 @@
                         </div>
                     </section>
                 </aside>
+                <c:if test="${sessionScope.solicitante == null}" >
                 <aside class="grid-3 region" id="region-sidebar-second">
-                    <div>
+                    <div class="grid-9 region-content" id="region-content">
                         <h3>Iniciar Sesión</h3>
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
@@ -93,6 +94,7 @@
                         </s:else>
                     </div>
                 </aside>
+                </c:if>
             </div>            
         </section> 
     </body>

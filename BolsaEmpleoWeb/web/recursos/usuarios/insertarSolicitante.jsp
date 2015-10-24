@@ -1,14 +1,22 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- 
+    Document   : insertar_usuario
+    Created on : Sep 23, 2015, 10:13:30 AM
+    Author     : JonathanA
+--%>
+
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">
-<html lang="es" >
+<%@taglib prefix="sj" uri="/struts-jquery-tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Inicio | Bolsa de Empleo</title>  
+        <title>Registrar Usuario | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -58,9 +66,9 @@
                         <div class="content clearfix">                            
                             <ul class="menu">
                                 <li class="first collapsed"><a href="#" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="Curriculo">Cómo hacer un Curriculo?</a></li>                                              
-                                <li class="leaf"><a href="#">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                
+                                <li class="first collapsed"> <a href="Curriculo">¿Cómo hacer un Curriculum?</a></li>                                              
+                                <li class="leaf"><a href="#">Recinto de Paraíso</a></li>
+                                <li class="leaf"><a href="#">Contáctenos</a></li>                                
                             </ul>                                
                         </div>
                     </div>
@@ -73,8 +81,37 @@
                         </div>
                     </section>
                 </aside>
+                <aside class="grid-3 region" id="region-sidebar-second">
+                    <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionErrors()">
+                            <s:actionerror />
+                        </s:if>
+                        <s:if test="hasActionMessages()">
+                            <s:actionmessage />
+                        </s:if>
+                        <s:form method="post" enctype="multipart/form-data" action="InsertarSolicitanteAction">
+                            <s:textfield name="cedula" label="Cedula"/>
+                            <s:textarea name="nombre" label="Nombre"/>
+                            <s:textfield name="apellidos" label="Apellidos"/>
+                            <s:textfield name="nombreUsuario" label="Nombre Usuario"/>
+                            <s:password name="clave" label="Clave"/> 
+                            <s:password name="repitaClave" label="Compruebe clave"/> 
+                            <s:textfield name="ciudad" label="Ciudad"/> 
+                            <s:textfield name="direccion" label="Dirección"/> 
+                            <s:textfield name="codigoPostal" label="Código Postal"/> 
+                            <s:textfield name="email" label="Email"/> 
+                            <s:textfield name="telefonoCasa" label="Teléfono Casa"/> 
+                            <s:textfield name="telefonoCelular" label="Teléfono Celular"/> 
+                            <s:textfield name="fax" label="Fax"/> 
+                            <sj:datepicker name="fechaNacimiento" label="Fecha nacimiento"  displayFormat="dd/mm/yy"></sj:datepicker>
+                            <s:label id="lblFoto" value="Foto"/>
+                            <s:file id="archivo" name="archivoFoto"/>   
+                            <s:submit action="insertarSolicitante" key="Aceptar" value="Registrar Datos"/>
+                        </s:form>
+                    </div>
+                </aside> 
             </div>            
-        </section> 
+        </section>
         <footer >
             <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
                 <div id="zone-footer" class="zone zone-footer clearfix container-12">
@@ -133,5 +170,7 @@
                 jQuery('ul.sf-menu').superfish();
             });
         </script>
+
+
     </body>
 </html>

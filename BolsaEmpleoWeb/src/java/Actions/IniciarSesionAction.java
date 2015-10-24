@@ -5,11 +5,16 @@
  */
 package Actions;
 
+import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
+import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.sql.SQLException;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -58,24 +63,24 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     }
 
     public String iniciarSesionUsuario() {
-//        sessionMap.clear();
-//        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-//        try {
-//            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-//            if (solicitante == null){
-//                this.addActionMessage("Usuario o contraseña incorrectas");
-//                return ERROR;
-//            }
-//            sessionMap.put("solicitante", solicitante);
-//        } catch (SQLException ex) {
-//            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
-//            return ERROR;
-//        } catch (DataException ex) {
-//            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-//            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
-//            return ERROR;
-//        }
+        sessionMap.clear();
+        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        try {
+            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
+            if (solicitante == null){
+                this.addActionMessage("Usuario o contraseña incorrectas");
+                return ERROR;
+            }
+            sessionMap.put("solicitante", solicitante);
+        } catch (SQLException ex) {
+            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
+            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            return ERROR;
+        } catch (DataException ex) {
+            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
+            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            return ERROR;
+        }
         return SUCCESS;
     }
 
