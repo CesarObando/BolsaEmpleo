@@ -91,7 +91,7 @@ public class AdministradorData extends BaseData {
                 administradorActual.setCedula(resultSet.getString("cedula"));
                 administradorActual.setNombre(resultSet.getString("nombre"));
                 administradorActual.setApellidos(resultSet.getString("apellidos"));
-                administradorActual.setUsername(resultSet.getString("nombre_usuario"));
+                administradorActual.setUsername(resultSet.getString("username"));
                 administradorActual.setPassword(resultSet.getString("passwd"));
                 administradores.add(administradorActual);
             }
@@ -117,7 +117,7 @@ public class AdministradorData extends BaseData {
                 administradorActual.setCedula(resultSet.getString("cedula"));
                 administradorActual.setNombre(resultSet.getString("nombre"));
                 administradorActual.setApellidos(resultSet.getString("apellidos"));
-                administradorActual.setUsername(resultSet.getString("nombre_usuario"));
+                administradorActual.setUsername(resultSet.getString("username"));
                 administradorActual.setPassword(resultSet.getString("passwd"));
                 administradores.add(administradorActual);
             }
@@ -140,7 +140,7 @@ public class AdministradorData extends BaseData {
                 administrador.setCedula(resultSet.getString("cedula"));
                 administrador.setNombre(resultSet.getString("nombre"));
                 administrador.setApellidos(resultSet.getString("apellidos"));
-                administrador.setUsername(resultSet.getString("nombre_usuario"));
+                administrador.setUsername(resultSet.getString("username"));
                 administrador.setPassword(resultSet.getString("passwd"));
                 return administrador;
             }
@@ -152,7 +152,7 @@ public class AdministradorData extends BaseData {
     }
     
     public Administrador iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
-        String sqlIniciarSesion = "{CALL iniciar_sesion_administradores(?,?)}";
+        String sqlIniciarSesion = "{CALL iniciar_sesion_administrador(?,?)}";
         Connection conexion = this.getConnection();
         Administrador administrador = new Administrador();
         try {
@@ -164,7 +164,7 @@ public class AdministradorData extends BaseData {
                 administrador.setCedula(resultSet.getString("cedula"));
                 administrador.setNombre(resultSet.getString("nombre"));
                 administrador.setApellidos(resultSet.getString("apellidos"));
-                administrador.setUsername(resultSet.getString("nombre_usuario"));
+                administrador.setUsername(resultSet.getString("username"));
                 administrador.setPassword(resultSet.getString("passwd"));
                 return administrador;
             }
