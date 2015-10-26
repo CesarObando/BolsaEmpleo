@@ -89,6 +89,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
+                        
                         <s:form method="post" enctype="multipart/form-data" action="insertarSolicitante">
                             <s:textfield name="cedula" label="Cedula"/>
                             <s:textfield name="nombre" label="Nombre"/>

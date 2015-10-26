@@ -7,6 +7,9 @@
     <constant name="struts.configuration.xml.reload" value="true" />
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
+        <action name="menuPrincipal">
+            <result name="input" type="dispatcher">/recursos/usuarios/menuPrincipal.jsp</result>
+        </action>
         <action name="iniciarSesionInit" class="Actions.IniciarSesionAction">
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
