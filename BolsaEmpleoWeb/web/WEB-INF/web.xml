@@ -15,7 +15,7 @@
         </session-timeout>
     </session-config>
     <welcome-file-list>
-        <welcome-file>/recursos/usuarios/pantallaPrincipal.jsp</welcome-file>
+        <welcome-file>/recursos/pantallaPrincipal.jsp</welcome-file>
     </welcome-file-list>
     
     
