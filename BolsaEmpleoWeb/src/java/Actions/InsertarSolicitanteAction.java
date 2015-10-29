@@ -12,6 +12,8 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -70,12 +72,15 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         } 
     }
     
-    public String insertar() throws DataException{
+    public String insertarSoliciante(){
         SolicitanteBusiness solicitanteBusiness  = new SolicitanteBusiness();
         boolean insertado = true;
         try {
             solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
         } catch (SQLException e) {
+            insertado=false;
+            mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+        } catch (DataException ex) {
             insertado=false;
             mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }

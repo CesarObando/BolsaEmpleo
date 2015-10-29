@@ -5,7 +5,7 @@
 <html lang="es" >
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="shortcut icon" href="../imagenes/favicon.ico" />
+        <link rel="shortcut icon" href="../recursos/imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
         <title>Inicio | Bolsa de Empleo</title>  
@@ -43,7 +43,18 @@
                             <div class="logo-img">                   
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->
                                 <!--<a href="http://www.ucr.ac.cr"><img class="img-responsive" src="//placehold.it/130x55&text=Logo" class="img-responsive" alt="Imagen responsive"></a>-->
-                                <h3 class="site-name">Bolsa de Empleo</h3>                                    
+                                    <c:if test="${sessionScope.solicitante == null}" > 
+                                        <a href="../recursos/usuarios/login.jsp">
+                                            <h12 class="site-name">Iniciar sesión</h12>
+                                            <h5 class="site-name">Bolsa de Empleo</h5>  
+                                        </a>
+                                    </c:if>
+                                    <c:if test="${sessionScope.solicitante != null}" > 
+                                        <a href="../recursos/pantallaPrincipal.jsp">
+                                            <h12 class="site-name">Cerrar sesión</h12>
+                                            <h5 class="site-name">Bolsa de Empleo</h5>  
+                                        </a>
+                                    </c:if>                            
                             </div>
                         </div>
                     </div>
@@ -57,9 +68,9 @@
                     <div class=" block-menu-block-1" id="block-menu-block-1">
                         <div class="content clearfix">                            
                             <ul class="menu">
-                                <li class="first collapsed"><a href="#" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="Curriculo">Cómo hacer un Curriculo?</a></li>                                              
-                                <li class="leaf"><a href="#">Recinto de Paraiso</a></li>
+                                <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
+                                <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
+                                <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
                                 <li class="leaf"><a href="#">Contactenos</a></li>                                
                             </ul>                                
                         </div>

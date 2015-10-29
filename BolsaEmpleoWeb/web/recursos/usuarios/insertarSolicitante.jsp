@@ -59,16 +59,16 @@
                 <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
             </div>
         </header>
-        <section >
+        <section>
             <div id="zone-content" class="clearfix container-12">     
                 <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
                     <div class=" block-menu-block-1" id="block-menu-block-1">
                         <div class="content clearfix">                            
                             <ul class="menu">
-                                <li class="first collapsed"><a href="#" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="Curriculo">¿Cómo hacer un Curriculum?</a></li>                                              
-                                <li class="leaf"><a href="#">Recinto de Paraíso</a></li>
-                                <li class="leaf"><a href="#">Contáctenos</a></li>                                
+                                <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
+                                <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
+                                <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
+                                <li class="leaf"><a href="#">Contactenos</a></li>                                            
                             </ul>                                
                         </div>
                     </div>
@@ -81,71 +81,38 @@
                         </div>
                     </section>
                 </aside>
+                <aside class="grid-3 region" id="region-sidebar-second">
+                    <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionErrors()">
+                            <s:actionerror />
+                        </s:if>
+                        <s:if test="hasActionMessages()">
+                            <s:actionmessage />
+                        </s:if>
+                        
+                        <s:form method="post" enctype="multipart/form-data" action="insertarSolicitante">
+                            <s:textfield name="cedula" label="Cedula"/>
+                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="apellidos" label="Apellidos"/>
+                            <s:textfield name="username" label="Nombre Usuario"/>
+                            <s:password name="password" label="Clave"/> 
+                            <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
+                            <s:textfield name="edad" label="Edad"/>
+                            <s:textfield name="sexo" label="Sexo"/>
+                            <s:textfield name="escolaridad" label="Escolaridad"/>
+                            <s:textfield name="titulos" label="Titulos"/>
+                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
+                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
+                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
+                            <s:textfield name="correo" label="Email"/>
+                            <s:textfield name="idiomas" label="Idiomas que domina"/>
+                            <s:submit action="insertarSolicitante" key="Aceptar" value="Insertar Solicitante"/>
+                        </s:form>
+                    </div>
+                </aside> 
             </div>            
-        </section> 
-
-        <div class="grid-9 region-content" id="region-content">
-
-            <s:if test="hasActionErrors()">
-                <s:actionerror />
-            </s:if>
-            <s:if test="hasActionMessages()">
-                <s:actionmessage />
-            </s:if>
-
-            <s:form method="post" enctype="multipart/form-data" action="RegistrarUsuarioAction">
-
-                <c:if test="${sessionScope.usuario == null}" >
-                    <s:textfield name="cedula" label="Cedula"/>
-                </c:if>
-                <c:if test="${sessionScope.usuario != null}" >
-                    <s:textfield name="cedula" label="Cedula" readonly="true"/>
-                </c:if>
-
-                <s:textarea name="nombre" label="Nombre"/>
-                <s:textfield name="apellidos" label="Apellidos"/>
-                <s:textfield name="nombreUsuario" label="Nombre Usuario"/>
-
-                <s:password name="clave" label="Clave"/> 
-                <s:password name="repitaClave" label="Compruebe clave"/> 
-                <c:if test="${sessionScope.usuario != null}" >
-                    <s:password name="actualClave" label="Contraseña actual"/> 
-                    <s:submit action="cambiarContrasena" value="Cambiar Contraseña"/>
-                </c:if>
-
-                <s:textfield name="ciudad" label="Ciudad"/> 
-                <s:textfield name="direccion" label="Dirección"/> 
-                <s:textfield name="codigoPostal" label="Código Postal"/> 
-                <s:textfield name="email" label="Email"/> 
-                <s:textfield name="telefonoCasa" label="Teléfono Casa"/> 
-                <s:textfield name="telefonoCelular" label="Teléfono Celular"/> 
-                <s:textfield name="fax" label="Fax"/> 
-                <sj:datepicker name="fechaNacimiento" label="Fecha nacimiento"  displayFormat="dd/mm/yy"></sj:datepicker>
-
-                <c:if test="${sessionScope.usuario == null}" >
-                    <s:label id="labelCurriculo" value="Curriculo"/>
-                    <s:file id="archivo" name="archivoCurriculo"/>  
-                </c:if>  
-
-                <c:if test="${sessionScope.usuario != null}" >
-                    <s:label id="labelCurriculo" value="Curriculo"/>
-                    <s:file id="archivo" name="archivoCurriculo"/> 
-                </c:if>  
-
-                <c:if test="${sessionScope.usuario == null}" >
-                    <s:submit action="insertarUsuario" key="Aceptar" value="Registrar Datos"/>
-                </c:if>
-                <c:if test="${sessionScope.usuario != null}" >
-                    <s:submit action="actualizarUsuario" value="Actualizar"/>
-                </c:if>
-
-
-            </s:form>
-
-
-        </div>                           
-
-
+        </section>
         <footer >
             <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
                 <div id="zone-footer" class="zone zone-footer clearfix container-12">
