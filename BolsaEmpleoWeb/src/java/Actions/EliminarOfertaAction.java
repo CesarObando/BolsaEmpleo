@@ -5,6 +5,7 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Dominio.Empleador;
@@ -27,6 +28,7 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     private Oferta ofertaAEliminar;
     private String mensaje;
+    private boolean existe;
     private HttpServletRequest request;
 
     public EliminarOfertaAction() {
@@ -39,8 +41,13 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     @Override
     public void prepare() throws Exception {
-        ofertaAEliminar = new Oferta();
-        mensaje = "";
+        existe = true;
+        int idOferta = Integer.parseInt(request.getParameter("id"));
+        try {
+            ofertaAEliminar = new OfertaBusiness().buscarOferta(idOferta);
+        } catch (SQLException e) {
+            existe = false;
+        }
     }
 
     @Override
@@ -85,6 +92,14 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
 
 }

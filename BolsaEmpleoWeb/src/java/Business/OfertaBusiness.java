@@ -7,6 +7,7 @@ package Business;
 
 import Data.OfertaData;
 import Dominio.Oferta;
+import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -15,36 +16,41 @@ import java.util.LinkedList;
  * @author Tin
  */
 public class OfertaBusiness {
-     
+
     private OfertaData ofertaData;
 
     public OfertaBusiness() {
-       ofertaData = new OfertaData();
+        ofertaData = new OfertaData();
     }
-    
-    public Oferta insertaOferta(Oferta oferta) throws SQLException{
+
+    public Oferta insertaOferta(Oferta oferta) throws SQLException {
         return ofertaData.insertarOferta(oferta);
-    
+
     }
-    
-    public void editarOferta(Oferta oferta) throws SQLException{
-        
-    ofertaData.editarOferta(oferta);
-    
+
+    public void editarOferta(Oferta oferta) throws SQLException {
+
+        ofertaData.editarOferta(oferta);
+
     }
-    public void eliminarOferta(int id) throws SQLException{
-        
-     ofertaData.eliminarOferta(id);
-    
+
+    public void eliminarOferta(int id) throws SQLException {
+
+        ofertaData.eliminarOferta(id);
+
     }
-    
-    public LinkedList<Oferta> getOfertas() throws SQLException{
-    
-    return ofertaData.getOfertas();
+
+    public LinkedList<Oferta> getOfertas() throws SQLException {
+
+        return ofertaData.getOfertas();
     }
-     public LinkedList<Oferta> getOfertasPorCategoria(String nombreCategoria,String puesto) throws SQLException{
-    
-    return ofertaData.getOfertasPorCategorias(nombreCategoria, puesto);
+
+    public LinkedList<Oferta> getOfertasPorCategoria(String nombreCategoria, String puesto) throws SQLException {
+
+        return ofertaData.getOfertasPorCategorias(nombreCategoria, puesto);
     }
-    
+
+    public Oferta buscarOferta(int id) throws SQLException, DataException{
+        return ofertaData.buscarOferta(id);
+    }
 }

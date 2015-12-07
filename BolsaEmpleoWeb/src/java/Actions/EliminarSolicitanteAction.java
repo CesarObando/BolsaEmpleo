@@ -5,6 +5,7 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
 import Exception.DataException;
@@ -23,6 +24,7 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     
     private Solicitante solicitanteAEliminar;
     private String mensaje;
+    private boolean existe;
     private HttpServletRequest request;
 
     public EliminarSolicitanteAction() {
@@ -35,8 +37,13 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     
     @Override
     public void prepare() throws Exception {
-        solicitanteAEliminar = new Solicitante();
-        mensaje = "";
+        existe = true;
+        int idSolicitante = Integer.parseInt(request.getParameter("id"));
+        try {
+            solicitanteAEliminar = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
+        } catch (SQLException e) {
+            existe = false;
+        }
     }
 
     @Override
@@ -57,7 +64,7 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     public String eliminar() throws DataException{
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
-            solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getCedula());
+            solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
             return SUCCESS;
         } catch (SQLException e) {
             return ERROR;
@@ -86,6 +93,14 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
     
 }

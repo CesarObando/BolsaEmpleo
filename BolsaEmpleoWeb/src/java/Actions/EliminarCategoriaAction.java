@@ -5,6 +5,7 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.CategoriaBusiness;
 import Dominio.Categoria;
 import Exception.DataException;
@@ -23,6 +24,7 @@ public class EliminarCategoriaAction extends ActionSupport implements Preparable
 
     private Categoria categoriaAEliminar;
     private String mensaje;
+    private boolean existe;
     private HttpServletRequest request;
 
     public EliminarCategoriaAction() {
@@ -35,8 +37,13 @@ public class EliminarCategoriaAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
-        this.categoriaAEliminar = new Categoria();
-        this.mensaje = "";
+        existe = true;
+        int idCategoria = Integer.parseInt(request.getParameter("id"));
+        try {
+            categoriaAEliminar = new CategoriaBusiness().buscarCategoria(idCategoria);
+        } catch (SQLException e) {
+            existe = false;
+        }
     }
 
     @Override
@@ -82,6 +89,14 @@ public class EliminarCategoriaAction extends ActionSupport implements Preparable
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
 
 }

@@ -5,6 +5,7 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
 import Business.SolicitanteBusiness;
 import Dominio.Empleador;
@@ -27,6 +28,7 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     private Empleador empleadorAEliminar;
     private String mensaje;
+    private boolean existe;
     private HttpServletRequest request;
 
     public EliminarEmpleadorAction() {
@@ -39,8 +41,13 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
-        empleadorAEliminar = new Empleador();
-        mensaje = "";
+        existe = true;
+        int idEmpleador = Integer.parseInt(request.getParameter("id"));
+        try {
+            empleadorAEliminar = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
+        } catch (SQLException e) {
+            existe = false;
+        }
     }
 
     @Override
@@ -90,6 +97,14 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
 
 }

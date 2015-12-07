@@ -11,31 +11,14 @@ public class Empleador {
     private String telefonoMovil;
     private String cedulaJuridica;
     private String nombreEmpresa;
-    private String nombreUsuario;
+    private String username;
     private String pass;
     private String direccion;
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
-    public String getNombreUsuario() {
-        return nombreUsuario;
-    }
-
-    public void setNombreUsuario(String nombreUsuario) {
-        this.nombreUsuario = nombreUsuario;
-    }
-  
-
+ 
     public Empleador() {
     }
 
-    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion,String pass,String nombreUsuario) {
+    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion,String pass,String username) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -47,7 +30,7 @@ public class Empleador {
         this.nombreEmpresa = nombreEmpresa;
         this.direccion = direccion;
         this.pass=pass;
-        this.nombreUsuario=nombreUsuario;
+        this.username=username;
     }
 
     public int getId() {
@@ -128,6 +111,22 @@ public class Empleador {
 
     public void setDireccion(String direccion) {
         this.direccion = direccion;
+    }
+
+        public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
+    
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
     
     

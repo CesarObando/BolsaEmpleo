@@ -6,7 +6,9 @@
 package Data;
 
 import Dominio.Administrador;
+import Dominio.Categoria;
 import Dominio.Oferta;
+import Exception.DataException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -140,4 +142,27 @@ public class OfertaData extends BaseData {
         return ofertas;
     }
 
+    public Oferta buscarOferta(int id) throws SQLException, DataException{
+        String sqlBuscarOferta = "{CALL buscar_oferta(?)}";
+        Connection conexion = this.getConnection();
+        Oferta oferta = new Oferta();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarOferta);
+            statement.setInt(1, id);
+            ResultSet result = statement.executeQuery();
+            if (result.next()) {
+                oferta.setId(result.getInt("id"));
+            oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
+            oferta.getCategoria().setId(result.getInt("categoria"));
+            oferta.getEmpleador().setId(result.getInt("empleador"));
+            oferta.setSalario(result.getFloat("salario"));
+            oferta.setPuesto(result.getString("puesto"));
+            oferta.setRequerimientos(result.getString("requerimentos"));
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return oferta;
+    }
 }

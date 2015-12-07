@@ -5,7 +5,6 @@
  */
 package Data;
 
-import Dominio.Administrador;
 import Dominio.Solicitud;
 import Exception.DataException;
 import java.sql.CallableStatement;
@@ -31,7 +30,7 @@ public class SolicitudData extends BaseData{
         try {
             CallableStatement statement = conexion.prepareCall(sqlInsertarSolicitud);
             statement.registerOutParameter(1, Types.INTEGER);
-            statement.setString(2, solicitud.getSolicitante().getCedula());
+            statement.setInt(2, solicitud.getSolicitante().getId());
             statement.setInt(3, solicitud.getOferta().getId());
             statement.executeUpdate();
             solicitud.setId(statement.getInt(1));
@@ -69,25 +68,25 @@ public class SolicitudData extends BaseData{
         while(resultSet.next()) {
             Solicitud solicitudActual = new Solicitud();
             solicitudActual.setId(resultSet.getInt("id"));
-            solicitudActual.getSolicitante().setCedula(resultSet.getString("solicitante"));
+            solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
             solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
             solicitudes.add(solicitudActual);
         }
         return solicitudes;
     }
     
-    public LinkedList<Solicitud> buscarSolicitudesFiltradas(String solicitante, int oferta) throws SQLException {
+    public LinkedList<Solicitud> buscarSolicitudesFiltradas(int solicitante, int oferta) throws SQLException {
         String sqlBuscarSolicitudesFiltradas = "{CALL buscar_solicitudes_filtradas(?,?)}";
         Connection conexion = this.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlBuscarSolicitudesFiltradas);
-        statement.setString(1, solicitante);
+        statement.setInt(1, solicitante);
         statement.setInt(2, oferta);
         ResultSet resultSet = statement.executeQuery();
         LinkedList<Solicitud> solicitudes = new LinkedList<Solicitud>();
         while(resultSet.next()) {
             Solicitud solicitudActual = new Solicitud();
             solicitudActual.setId(resultSet.getInt("id"));
-            solicitudActual.getSolicitante().setCedula(resultSet.getString("solicitante"));
+            solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
             solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
             solicitudes.add(solicitudActual);
         }
@@ -104,7 +103,7 @@ public class SolicitudData extends BaseData{
             ResultSet resultSet = statement.executeQuery();
             if (resultSet.next()) {
                 solicitud.setId(resultSet.getInt("id"));
-                solicitud.getSolicitante().setCedula(resultSet.getString("solicitante"));
+                solicitud.getSolicitante().setId(resultSet.getInt("solicitante"));
                 solicitud.getOferta().setId(resultSet.getInt("oferta"));
                 return solicitud;
             }

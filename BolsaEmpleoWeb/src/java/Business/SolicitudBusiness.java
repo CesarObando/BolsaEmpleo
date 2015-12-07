@@ -35,7 +35,7 @@ public class SolicitudBusiness {
         return solicitudData.buscarSolicitudes();
     }
 
-    public LinkedList<Solicitud> buscarSolicitudesFiltradas(String solicitante, int oferta) throws SQLException {
+    public LinkedList<Solicitud> buscarSolicitudesFiltradas(int solicitante, int oferta) throws SQLException {
         return solicitudData.buscarSolicitudesFiltradas(solicitante, oferta);
     }
 

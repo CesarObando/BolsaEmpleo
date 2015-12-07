@@ -35,12 +35,20 @@ public class SolicitanteBusiness {
         return solicitanteData.iniciarSesion(nombreUsuario, password);
     }
     
-    public LinkedList<Solicitante> buscarSolicitantes(String cedula, String nombre, String apellidos) throws SQLException, DataException {
-        return solicitanteData.buscarSolicitantes(cedula, nombre, apellidos);
+    public LinkedList<Solicitante> buscarSolicitantes() throws SQLException, DataException {
+        return solicitanteData.buscarSolicitantes();
     }
     
-    public void eliminarSolicitante(String cedula) throws SQLException, DataException {
-        solicitanteData.eliminarSolicitante(cedula);
+    public LinkedList<Solicitante> buscarSolicitantesFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
+        return solicitanteData.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
+    }
+    
+    public Solicitante buscarSolicitante(int id) throws SQLException, DataException {
+        return solicitanteData.buscarSolicitante(id);
+    }
+    
+    public void eliminarSolicitante(int id) throws SQLException, DataException {
+        solicitanteData.eliminarSolicitante(id);
     }
     
 }

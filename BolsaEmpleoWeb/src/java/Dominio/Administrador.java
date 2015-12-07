@@ -11,6 +11,7 @@ package Dominio;
  */
 public class Administrador {
     
+    private int id;
     private String cedula;
     private String nombre;
     private String apellidos;
@@ -20,7 +21,8 @@ public class Administrador {
     public Administrador() {
     }
 
-    public Administrador(String cedula, String nombre, String apellidos, String username, String password) {
+    public Administrador(int id,String cedula, String nombre, String apellidos, String username, String password) {
+        this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -28,6 +30,14 @@ public class Administrador {
         this.password = password;
     }
 
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
+    
     public String getCedula() {
         return cedula;
     }

@@ -40,9 +40,9 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     @Override
     public void prepare() throws Exception {
         existe = true;
-        String cedulaAdministrador = request.getParameter("cedula");
+        int idAdministrador = Integer.parseInt(request.getParameter("id"));
         try {
-            administradorEliminar = new AdministradorBusiness().buscarAdministrador(cedulaAdministrador);
+            administradorEliminar = new AdministradorBusiness().buscarAdministrador(idAdministrador);
         } catch (SQLException e) {
             existe = false;
         }
@@ -62,7 +62,7 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         boolean eliminado = true;
         try {
-            administradorBusiness.eliminarAdministrador(administradorEliminar.getCedula());
+            administradorBusiness.eliminarAdministrador(administradorEliminar.getId());
         } catch (SQLException e) {
             eliminado = !eliminado;
         }

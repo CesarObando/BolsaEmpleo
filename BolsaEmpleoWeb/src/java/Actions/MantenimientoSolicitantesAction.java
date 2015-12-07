@@ -31,7 +31,7 @@ public class MantenimientoSolicitantesAction  extends ActionSupport implements P
     @Override
     public void prepare() throws Exception {
         solicitanteBusiness = new SolicitanteBusiness();
-        solicitantes = solicitanteBusiness.buscarSolicitantes("", "", "");
+        solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados("", "", "");
     }
 
     public LinkedList<Solicitante> getSolicitantes() {

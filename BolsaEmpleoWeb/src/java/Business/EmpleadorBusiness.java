@@ -7,6 +7,7 @@ package Business;
 
 import Data.EmpleadorData;
 import Dominio.Empleador;
+import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
@@ -35,8 +36,19 @@ public class EmpleadorBusiness {
         empleadorData.eliminarEmpleador(id);
     
     }
-    public boolean inicioSesecion(String user,String pass) throws SQLException{
+    public Empleador inicioSesion(String user,String pass) throws SQLException, DataException{
         return empleadorData.inicioSesion(user, pass);
+    }
     
+    public LinkedList<Empleador> buscarEmpleadores() throws SQLException, DataException {
+        return empleadorData.buscarEmpleadores();
+    }
+    
+    public LinkedList<Empleador> buscarEmpleadoresFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
+        return empleadorData.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
+    }
+    
+    public Empleador buscarEmpleador(int id) throws SQLException, DataException{
+        return empleadorData.buscarEmpleador(id);
     }
 }

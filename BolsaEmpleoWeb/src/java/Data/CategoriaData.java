@@ -5,6 +5,7 @@
  */
 package Data;
 
+import Dominio.Administrador;
 import Dominio.Categoria;
 import Exception.DataException;
 import java.sql.CallableStatement;
@@ -90,4 +91,43 @@ public class CategoriaData extends BaseData {
         return categorias;
     }
 
+    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException{
+        LinkedList<Categoria> categorias = new LinkedList<>();
+        Connection conexion = super.getConnection();
+        String sqlSelect = "{CALL buscar_categorias_filtradas (?)}";
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlSelect);
+            statement.setString(1, nombre);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                Categoria categoria = new Categoria();
+                categoria.setId(rs.getInt("id"));
+                categoria.setNombre(rs.getString("nombre"));
+                categorias.add(categoria);
+            }
+        } catch (Exception e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return categorias;
+    }
+    
+    public Categoria buscarCategoria(int id) throws SQLException, DataException{
+        String sqlBuscarCategoria = "{CALL buscar_categoria(?)}";
+        Connection conexion = this.getConnection();
+        Categoria categoria = new Categoria();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarCategoria);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                categoria.setId(resultSet.getInt("id"));
+                categoria.setNombre(resultSet.getString("nombre"));
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return categoria;
+    }
 }

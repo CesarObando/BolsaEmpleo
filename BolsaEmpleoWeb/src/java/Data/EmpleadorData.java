@@ -5,13 +5,16 @@
  */
 package Data;
 
+import Dominio.Administrador;
 import Dominio.Empleador;
 import Dominio.Oferta;
+import Exception.DataException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -39,7 +42,7 @@ public class EmpleadorData extends BaseData {
             statement.setString(8, empleador.getCedulaJuridica());
             statement.setString(9, empleador.getNombreEmpresa());
             statement.setString(10, empleador.getDireccion());
-            statement.setString(11, empleador.getNombreUsuario());
+            statement.setString(11, empleador.getUsername());
             statement.setString(12, empleador.getPass());
             statement.executeUpdate();
 
@@ -57,19 +60,20 @@ public class EmpleadorData extends BaseData {
 
     public void editarEmpleador(Empleador empleador) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
 
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
         try {
             statement.setInt(1, empleador.getId());
-            statement.setString(2, empleador.getCorreo());
-            statement.setString(3, empleador.getTelefonoFijo());
-            statement.setString(4, empleador.getTelefonoMovil());
-            statement.setString(5, empleador.getNombreEmpresa());
-            statement.setString(6, empleador.getDireccion());
-            statement.setString(7, empleador.getPass());
+            statement.setString(2, empleador.getCedula());
+            statement.setString(3, empleador.getCorreo());
+            statement.setString(4, empleador.getTelefonoFijo());
+            statement.setString(5, empleador.getTelefonoMovil());
+            statement.setString(6, empleador.getNombreEmpresa());
+            statement.setString(7, empleador.getDireccion());
+            statement.setString(8, empleador.getPass());
             statement.executeUpdate();
 
             conexion.commit();
@@ -97,32 +101,126 @@ public class EmpleadorData extends BaseData {
         conexion.close();
     }
 
-    //verifica que el usuario sea valido 
-//    public boolean inicioSecion(String user, String pass) throws SQLException {
-//        ResultSet result;
-//
-//        String sqlSelect = "{CALL validacionEmpleador(?,?)}";
-//        Connection conexion = super.getConnection();
-//        CallableStatement statement = conexion.prepareCall(sqlSelect);
-//        statement.setString(1, user);
-//        statement.setString(2, pass);
-//        result = statement.executeQuery();
-//
-//        return result.next();
-//    }
+    public LinkedList<Empleador> buscarEmpleadores() throws SQLException, DataException {
+        String sqlBuscarEmpleadores = "{CALL buscar_empleadores}";
+        Connection conexion = this.getConnection();
+        LinkedList<Empleador> empleadores = new LinkedList<Empleador>();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarEmpleadores);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Empleador empleadorActual = new Empleador();
+                empleadorActual.setId(resultSet.getInt("id"));
+                empleadorActual.setCedula(resultSet.getString("cedula"));
+                empleadorActual.setNombre(resultSet.getString("nombre"));
+                empleadorActual.setApellidos(resultSet.getString("apellidos"));
+                empleadorActual.setCorreo(resultSet.getString("correo"));
+                empleadorActual.setTelefonoFijo(resultSet.getString("telefono_fijo"));
+                empleadorActual.setTelefonoMovil(resultSet.getString("telefono_movil"));
+                empleadorActual.setCedulaJuridica(resultSet.getString("cedula_juridica"));
+                empleadorActual.setNombreEmpresa(resultSet.getString("nombre_empresa"));
+                empleadorActual.setDireccion(resultSet.getString("direccion"));
+                empleadorActual.setUsername(resultSet.getString("username"));
+                empleadorActual.setPass(resultSet.getString("passwd"));
+                empleadores.add(empleadorActual);
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        return empleadores;
+    }
+
+    public LinkedList<Empleador> buscarEmpleadoresFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
+        String sqlBuscarEmpleadoresFiltrados = "{CALL buscar_empleadores_filtrados (?,?,?)}";
+        Connection conexion = this.getConnection();
+        LinkedList<Empleador> empleadores = new LinkedList<Empleador>();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarEmpleadoresFiltrados);
+            statement.setString(1, cedula);
+            statement.setString(2, nombre);
+            statement.setString(3, apellidos);
+            ResultSet resultSet = statement.executeQuery();
+            while (resultSet.next()) {
+                Empleador empleadorActual = new Empleador();
+                empleadorActual.setId(resultSet.getInt("id"));
+                empleadorActual.setCedula(resultSet.getString("cedula"));
+                empleadorActual.setNombre(resultSet.getString("nombre"));
+                empleadorActual.setApellidos(resultSet.getString("apellidos"));
+                empleadorActual.setCorreo(resultSet.getString("correo"));
+                empleadorActual.setTelefonoFijo(resultSet.getString("telefono_fijo"));
+                empleadorActual.setTelefonoMovil(resultSet.getString("telefono_movil"));
+                empleadorActual.setCedulaJuridica(resultSet.getString("cedula_juridica"));
+                empleadorActual.setNombreEmpresa(resultSet.getString("nombre_empresa"));
+                empleadorActual.setDireccion(resultSet.getString("direccion"));
+                empleadorActual.setUsername(resultSet.getString("username"));
+                empleadorActual.setPass(resultSet.getString("passwd"));
+                empleadores.add(empleadorActual);
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        return empleadores;
+    }
+
+    public Empleador buscarEmpleador(int id) throws SQLException, DataException {
+        String sqlBuscarEmpleador = "{CALL buscar_empleador (?)}";
+        Connection conexion = this.getConnection();
+        Empleador empleador = new Empleador();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarEmpleador);
+            statement.setInt(1, id);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                empleador.setId(resultSet.getInt("id"));
+                empleador.setCedula(resultSet.getString("cedula"));
+                empleador.setNombre(resultSet.getString("nombre"));
+                empleador.setApellidos(resultSet.getString("apellidos"));
+                empleador.setCorreo(resultSet.getString("correo"));
+                empleador.setTelefonoFijo(resultSet.getString("telefono_fijo"));
+                empleador.setTelefonoMovil(resultSet.getString("telefono_movil"));
+                empleador.setCedulaJuridica(resultSet.getString("cedula_juridica"));
+                empleador.setNombreEmpresa(resultSet.getString("nombre_empresa"));
+                empleador.setDireccion(resultSet.getString("direccion"));
+                empleador.setUsername(resultSet.getString("username"));
+                empleador.setPass(resultSet.getString("passwd"));
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return empleador;
+    }
 
     //verifica que el usuario sea valido 
-    public boolean inicioSesion(String user, String pass) throws SQLException {
+    public Empleador inicioSesion(String user, String pass) throws SQLException, DataException {
 
-        String sqlSelect = "{CALL iniciar_sesion_empleadores(?,?)}";
+        String sqlSelect = "{CALL iniciar_sesion_empleador(?,?)}";
         Connection conexion = super.getConnection();
-        CallableStatement statement = conexion.prepareCall(sqlSelect);
-        statement.setString(1, user);
-        statement.setString(2, pass);
-        ResultSet result = statement.executeQuery();
-
-        return result.next();
-
+        Empleador empleador = new Empleador();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlSelect);
+            statement.setString(1, user);
+            statement.setString(2, pass);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                empleador.setId(resultSet.getInt("id"));
+                empleador.setCedula(resultSet.getString("cedula"));
+                empleador.setNombre(resultSet.getString("nombre"));
+                empleador.setApellidos(resultSet.getString("apellidos"));
+                empleador.setCorreo(resultSet.getString("correo"));
+                empleador.setTelefonoFijo(resultSet.getString("telefono_fijo"));
+                empleador.setTelefonoMovil(resultSet.getString("telefono_movil"));
+                empleador.setCedulaJuridica(resultSet.getString("cedula_juridica"));
+                empleador.setNombreEmpresa(resultSet.getString("nombre_empresa"));
+                empleador.setDireccion(resultSet.getString("direccion"));
+                empleador.setUsername(resultSet.getString("username"));
+                empleador.setPass(resultSet.getString("passwd"));
+            }
+        } catch (Exception e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return empleador;
     }
 
 }
