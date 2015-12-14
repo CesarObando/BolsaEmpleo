@@ -21,19 +21,44 @@
             <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
-        <action name="insertarSolicitanteInit" class="Actions.InsertarSolicitanteAction">
+        <action name="insertarSolicitante" class="Actions.InsertarSolicitanteAction">
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
             </interceptor-ref>
             <result name="input" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
         </action>
-        <action name="insertarSolicitante" method="insertarSoliciante" class="Actions.InsertarSolicitanteAction">
+        <action name="insertarSolicitanteProcess" method="insertar" class="Actions.InsertarSolicitanteAction">
             <result name="input" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
-    
-    
+        <action  class="Actions.BuscarSolicitantesAction" name="buscarSolicitante">
+            <result name="input" type="dispatcher">/recursos/usuarios/buscarSolicitantes.jsp</result>
+        </action>
+        <action  class="Actions.BuscarSolicitantesAction" name="buscarSolicitantesProcess" method="buscar">
+            <result name="buscarSolicitantes" type="dispatcher">/recursos/usuarios/mantenerSolicitantes.jsp</result>
+        </action>
+        <action class="Actions.EditarSolicitanteAction" name="editarSolicitante">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/usuarios/editarSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarSolicitanteAction" name="editarSolicitanteProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/usuarios/editarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/editarSolicitante.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitante">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
     </package>
     
 </struts>

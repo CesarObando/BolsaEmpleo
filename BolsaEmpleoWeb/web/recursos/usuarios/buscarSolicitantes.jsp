@@ -89,25 +89,12 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
-                        <s:form method="post" action="insertarSolicitanteProcess">
-                            <s:textfield name="cedula" label="Cedula"/>
+
+                        <s:form action="buscarSolicitantesProcess" method="get">
+                            <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
-                            <s:password name="password" label="Clave"/> 
-                            <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
-                            <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo"/>
-                            <s:textfield name="escolaridad" label="Escolaridad"/>
-                            <s:textfield name="titulos" label="Titulos"/>
-                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit action="insertarSolicitanteProcess" value="Insertar Solicitante"/>
+                            <s:submit method="buscar" value="Buscar"/>
                         </s:form>
                     </div>
                 </aside> 

@@ -83,32 +83,53 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
-                        
-                        <s:form method="post" action="insertarSolicitanteProcess">
-                            <s:textfield name="cedula" label="Cedula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
-                            <s:password name="password" label="Clave"/> 
-                            <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
-                            <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo"/>
-                            <s:textfield name="escolaridad" label="Escolaridad"/>
-                            <s:textfield name="titulos" label="Titulos"/>
-                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit action="insertarSolicitanteProcess" value="Insertar Solicitante"/>
-                        </s:form>
+
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            <s:if test="%{solicitantes.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Id del solicitante</td>
+                                <td>Cédula</td>
+                                <td>Nombre</td>
+                                <td>Apellidos</td>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="solicitantes" var="solicitanteActual">
+                                        <tr>
+                                            <td><s:property value="#solicitanteActual.id"/></td>
+                                            <td><s:property value="#solicitanteActual.cedula"/></td>
+                                            <td><s:property value="#solicitanteActual.nombre"/></td>
+                                            <td><s:property value="#solicitanteActual.apellidos"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                    <s:url action="editarSolicitante" var="url">
+                                                        <s:param name="id" value="#solicitanteActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
+
+                                                </p>
+                                            </td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <s:url action="eliminarSolicitante" var="url">
+                                                        <s:param name="id" value="#solicitanteActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>     
+
+
                     </div>
                 </aside> 
             </div>            

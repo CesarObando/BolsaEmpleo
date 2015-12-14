@@ -5,7 +5,6 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
 import Exception.DataException;
@@ -32,7 +31,11 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     
      @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
     
     @Override

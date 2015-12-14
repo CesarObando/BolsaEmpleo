@@ -11,9 +11,14 @@ import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
@@ -27,6 +32,7 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
     private Solicitante solicitanteAInsertar;
     private String mensaje;
     private HttpServletRequest request;
+    private File archivoImagen;
 
     public InsertarSolicitanteAction() {
         
@@ -72,10 +78,11 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         } 
     }
     
-    public String insertarSoliciante(){
+    public String insertar(){
         SolicitanteBusiness solicitanteBusiness  = new SolicitanteBusiness();
         boolean insertado = true;
         try {
+            cargarImagen();
             solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
         } catch (SQLException e) {
             insertado=false;
@@ -89,6 +96,23 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
             return SUCCESS;
         }else{
             return ERROR;
+        }
+    }
+    
+    private void cargarImagen() {
+        try {
+            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            BufferedImage buffer = ImageIO.read(this.archivoImagen);
+            // Creamos un stream de salida, que escriba un arreglo de bytes
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            ImageIO.write(buffer, "jpg", baos);
+            baos.flush();
+            // A nuestra instancia de Producto2 le asignamos la archivoImagen
+            this.solicitanteAInsertar.setFoto(baos.toByteArray());
+            baos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -114,6 +138,14 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+    
+    public File getArchivoImagen() {
+        return archivoImagen;
+    }
+
+    public void setArchivoImagen(File archivoImagen) {
+        this.archivoImagen = archivoImagen;
     }
     
 }

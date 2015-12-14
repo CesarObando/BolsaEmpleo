@@ -90,15 +90,16 @@
                             <s:actionmessage />
                         </s:if>
                         
-                        <s:form method="post" action="insertarSolicitanteProcess">
-                            <s:textfield name="cedula" label="Cedula"/>
+                        <s:form method="post" action="editarSolicitanteProcess">
+                            <s:textfield name="id" label="Id" readonly="True"/>
+                            <s:textfield name="cedula" label="Cedula" readonly="True"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
+                            <s:textfield name="username" label="Nombre Usuario" readonly="True"/>
                             <s:password name="password" label="Clave"/> 
                             <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
                             <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo"/>
+                            <s:textfield name="sexo" label="Sexo" readonly="True"/>
                             <s:textfield name="escolaridad" label="Escolaridad"/>
                             <s:textfield name="titulos" label="Titulos"/>
                             <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
@@ -107,7 +108,7 @@
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit action="insertarSolicitanteProcess" value="Insertar Solicitante"/>
+                            <s:submit action="editarSolicitanteProcess" value="Editar Solicitante"/>
                         </s:form>
                     </div>
                 </aside> 

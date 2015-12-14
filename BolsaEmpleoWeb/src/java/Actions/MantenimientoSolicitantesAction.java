@@ -18,7 +18,6 @@ import java.util.LinkedList;
 public class MantenimientoSolicitantesAction  extends ActionSupport implements Preparable{
     
     private LinkedList<Solicitante> solicitantes;
-    private SolicitanteBusiness solicitanteBusiness;
 
     public MantenimientoSolicitantesAction() {
     }
@@ -30,8 +29,7 @@ public class MantenimientoSolicitantesAction  extends ActionSupport implements P
     
     @Override
     public void prepare() throws Exception {
-        solicitanteBusiness = new SolicitanteBusiness();
-        solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados("", "", "");
+        solicitantes = new SolicitanteBusiness().buscarSolicitantes();
     }
 
     public LinkedList<Solicitante> getSolicitantes() {
