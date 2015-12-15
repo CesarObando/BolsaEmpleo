@@ -5,9 +5,12 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
-import Dominio.Solicitante;
+import Business.EmpleadorBusiness;
+import Dominio.Empleador;
 import Exception.DataException;
+import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.INPUT;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -24,22 +27,22 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class IniciarSesionAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, SessionAware, ServletRequestAware {
-
+public class IniciarSesionEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, SessionAware, ServletRequestAware {
+    
     private HttpServletRequest request;
-    private SessionMap<String, Object> sessionMap;
-    private Solicitante solicitante;
+    public SessionMap<String, Object> sessionMap;
+    private Empleador empleador;
     private String nombreUsuario;
     private String clave;
 
     @Override
     public void prepare() throws Exception {
-        solicitante = new Solicitante();
+        empleador = new Empleador();
     }
     
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("solicitante") == null){ // Si no hay una sesion iniciada
+        if (this.sessionMap.get("empleador") == null){ // Si no hay una sesion iniciada
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
@@ -48,8 +51,8 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     }
 
     @Override
-    public Solicitante getModel() {
-        return this.solicitante;
+    public Empleador getModel() {
+        return this.empleador;
     }
 
     @Override
@@ -62,16 +65,16 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         this.sessionMap = (SessionMap<String, Object>) map;
     }
 
-    public String iniciarSesionUsuario() {
+    public String iniciarSesionEmpleador() {
         sessionMap.clear();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         try {
-            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante == null || solicitante.getCedula().equals("")){
+            empleador = empleadorBusiness.inicioSesion(nombreUsuario, clave);
+            if (empleador == null || empleador.getCedula().equals("")){
                 this.addActionMessage("Usuario o contraseña incorrectas");
                 return ERROR;
             }
-            sessionMap.put("solicitante", solicitante);
+            sessionMap.put("empleador", empleador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
@@ -94,12 +97,12 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         }
     }
 
-    public Solicitante getSolicitante() {
-        return solicitante;
+    public Empleador getSolicitante() {
+        return empleador;
     }
 
-    public void setSolicitante(Solicitante solicitante) {
-        this.solicitante = solicitante;
+    public void setSolicitante(Empleador empleador) {
+        this.empleador = empleador;
     }
 
     public String getNombreUsuario() {
