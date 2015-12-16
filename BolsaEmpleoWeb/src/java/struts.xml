@@ -88,6 +88,51 @@
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
         
+        
+        
+        
+        
+        
+        
+        <action name="insertarAdministrador" class="Actions.InsertarAdministradorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/usuarios/insertarAdministrador.jsp</result>
+        </action>
+        <action name="insertarAdministradorProcess" method="insertar" class="Actions.InsertarAdministradorAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/insertarAdministrador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/insertarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action  class="Actions.BuscarAdministradoresAction" name="buscarAdministrador">
+            <result name="input" type="dispatcher">/recursos/usuarios/buscarAdministradores.jsp</result>
+        </action>
+        <action  class="Actions.BuscarAdministradoresAction" name="buscarAdministradoresProcess" method="buscar">
+            <result name="buscarAdministradores" type="dispatcher">/recursos/usuarios/mantenerAdministradores.jsp</result>
+        </action>
+        <action class="Actions.EditarAdministradorAction" name="editarAdministrador">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/usuarios/editarAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarAdministradorAction" name="editarAdministradorProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/usuarios/editarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/editarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action class="Actions.EliminarAdministradorAction" name="eliminarAdministrador">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarAdministradorAction" name="eliminarAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/eliminarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
     </package>
     
 </struts>

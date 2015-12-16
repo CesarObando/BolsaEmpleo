@@ -27,17 +27,24 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
     private Administrador administradorEditar;
     private String mensaje;
     private HttpServletRequest request;
+    private boolean existe;
     
     public EditarAdministradorAction() {
     }
     
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
     public void prepare() throws Exception {
-        administradorEditar = new Administrador();
+        existe = true;
+        int id = Integer.parseInt(request.getParameter("id"));
+        administradorEditar = new AdministradorBusiness().buscarAdministrador(id);
     }
 
     @Override
@@ -108,6 +115,14 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
     
 }

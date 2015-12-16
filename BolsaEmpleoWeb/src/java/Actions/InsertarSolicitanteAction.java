@@ -33,6 +33,8 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
     private String mensaje;
     private HttpServletRequest request;
     private File archivoImagen;
+    private String imagenFileName;
+    private String imagenContentType;
 
     public InsertarSolicitanteAction() {
         
@@ -84,10 +86,7 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         try {
             cargarImagen();
             solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
-        } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-        } catch (DataException ex) {
+        } catch (SQLException | DataException e) {
             insertado=false;
             mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
@@ -99,7 +98,7 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         }
     }
     
-    private void cargarImagen() {
+    public void cargarImagen() {
         try {
             // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
             BufferedImage buffer = ImageIO.read(this.archivoImagen);
@@ -108,7 +107,6 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
             // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
             ImageIO.write(buffer, "jpg", baos);
             baos.flush();
-            // A nuestra instancia de Producto2 le asignamos la archivoImagen
             this.solicitanteAInsertar.setFoto(baos.toByteArray());
             baos.close();
         } catch (IOException ex) {
@@ -139,13 +137,29 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
+
     public File getArchivoImagen() {
         return archivoImagen;
     }
 
     public void setArchivoImagen(File archivoImagen) {
         this.archivoImagen = archivoImagen;
+    }
+
+    public String getImagenFileName() {
+        return imagenFileName;
+    }
+
+    public void setImagenFileName(String imagenFileName) {
+        this.imagenFileName = imagenFileName;
+    }
+
+    public String getImagenContentType() {
+        return imagenContentType;
+    }
+
+    public void setImagenContentType(String imagenContentType) {
+        this.imagenContentType = imagenContentType;
     }
     
 }

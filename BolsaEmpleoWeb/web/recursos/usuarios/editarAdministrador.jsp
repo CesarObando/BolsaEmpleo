@@ -89,25 +89,15 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-
-                        <s:form method="post" action="insertarSolicitanteProcess" enctype="multipart/form-data">
-                            <s:textfield name="cedula" label="Cedula"/>
+                        
+                        <s:form method="post" action="editarAdministradorProcess">
+                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:textfield name="cedula" label="Cedula" readonly="true"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
+                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
                             <s:password name="password" label="Clave"/> 
-                            <s:file name="foto" type="file" label="Seleccione una foto para su perfil"/> 
-                            <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo"/>
-                            <s:textfield name="escolaridad" label="Escolaridad"/>
-                            <s:textfield name="titulos" label="Titulos"/>
-                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit action="insertarSolicitanteProcess" value="Insertar Solicitante"/>
+                            <s:submit action="editarAdministradorProcess" value="Editar Administrador"/>
                         </s:form>
                     </div>
                 </aside> 

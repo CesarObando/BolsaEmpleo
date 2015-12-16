@@ -91,15 +91,15 @@
                         </s:if>
                         
                         <s:form method="post" action="editarSolicitanteProcess">
-                            <s:textfield name="id" label="Id" readonly="True"/>
-                            <s:textfield name="cedula" label="Cedula" readonly="True"/>
+                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:textfield name="cedula" label="Cedula" readonly="true"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="True"/>
+                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
                             <s:password name="password" label="Clave"/> 
                             <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
                             <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo" readonly="True"/>
+                            <s:textfield name="sexo" label="Sexo" readonly="true"/>
                             <s:textfield name="escolaridad" label="Escolaridad"/>
                             <s:textfield name="titulos" label="Titulos"/>
                             <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
