@@ -88,8 +88,27 @@
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
         
+        <action name="registrarEmpleador" class="Actions.InsertarEmpleadoresAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+        </action>
+        <action name="registrarEmpleadorProcess" method="insertar" class="Actions.InsertarEmpleadoresAction">
+            <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
         
+         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+        </action>
         
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
         
         
         

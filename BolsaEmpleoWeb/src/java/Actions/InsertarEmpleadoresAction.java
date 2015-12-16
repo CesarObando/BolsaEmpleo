@@ -5,9 +5,7 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Administrador;
 import Dominio.Empleador;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -25,7 +23,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  */
 public class InsertarEmpleadoresAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware{
     
-    private Empleador empleadorInsetar;
+    private Empleador empleadorInsertar;
     private String mensaje;
     private HttpServletRequest request;
 
@@ -39,43 +37,43 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
 
     @Override
     public void prepare() throws Exception {
-      empleadorInsetar=new Empleador();
+      empleadorInsertar=new Empleador();
     }
 
    @Override
     public Empleador getModel() {
-        return this.empleadorInsetar;
+        return this.empleadorInsertar;
     }
-    // @Override TO DO
-//    public void validate(){
-//        if(empleadorInsetar.getCedula().length()!=9 || empleadorInsetar.getCedula().equals(null)){
-//            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
-//        }
-//        if(empleadorInsetar.getNombre().length()==0 || empleadorInsetar.getNombre().equals(null)){
-//            addFieldError("nombre", "Debe ingresar su nombre.");
-//        }
-//        if(administradorInsertar.getApellidos().length()==0 || administradorInsertar.getApellidos().equals(null)){
-//            addFieldError("apellidos", "Debe ingresar sus apellidos.");
-//        }
-//        if(administradorInsertar.getUsername().length()==0 || administradorInsertar.getUsername().equals(null)){
-//            addFieldError("username", "Debe ingresar un nombre de usuario.");
-//        }
-//        if(administradorInsertar.getPassword().length()==0 || administradorInsertar.getPassword().equals(null)){
-//            addFieldError("password", "Debe ingresar una contraseña.");
-//        } 
-//    }
+     @Override
+    public void validate(){
+        if(empleadorInsertar.getCedula().length()!=9 || empleadorInsertar.getCedula().equals(null)){
+            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
+        }
+        if(empleadorInsertar.getNombre().length()==0 || empleadorInsertar.getNombre().equals(null)){
+            addFieldError("nombre", "Debe ingresar su nombre.");
+        }
+        if(empleadorInsertar.getApellidos().length()==0 || empleadorInsertar.getApellidos().equals(null)){
+            addFieldError("apellidos", "Debe ingresar sus apellidos.");
+        }
+        if(empleadorInsertar.getUsername().length()==0 || empleadorInsertar.getUsername().equals(null)){
+            addFieldError("username", "Debe ingresar un nombre de usuario.");
+        }
+        if(empleadorInsertar.getPass().length()==0 || empleadorInsertar.getPass().equals(null)){
+            addFieldError("pass", "Debe ingresar una contraseña.");
+        } 
+    }
     
       public String insertar() {
           EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         boolean insertado = true;
         try {
-            empleadorBusiness.insertarEmpleador(empleadorInsetar);
+            empleadorBusiness.insertarEmpleador(empleadorInsertar);
         } catch (SQLException e) {
             insertado=false;
             mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
         if(insertado==true){
-            this.mensaje = "El administrador fue insertado correctamente";
+            this.mensaje = "El empleador fue insertado correctamente";
             return SUCCESS;
         }else{
             return ERROR;
@@ -89,12 +87,12 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
     }
     
     
-    public Empleador getEmpleadorInsetar() {
-        return empleadorInsetar;
+    public Empleador getEmpleadorInsertar() {
+        return empleadorInsertar;
     }
 
-    public void setEmpleadorInsetar(Empleador empleadorInsetar) {
-        this.empleadorInsetar = empleadorInsetar;
+    public void setEmpleadorInsertar(Empleador empleadorInsertar) {
+        this.empleadorInsertar = empleadorInsertar;
     }
 
     public String getMensaje() {

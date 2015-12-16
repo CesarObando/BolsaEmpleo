@@ -72,6 +72,7 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
         }
         if (insertado == true) {
             this.mensaje = "El empleador fue editado correctamente";
+            sessionMap.put("empleador", empleadorEditar);
             return SUCCESS;
         } else {
             return ERROR;

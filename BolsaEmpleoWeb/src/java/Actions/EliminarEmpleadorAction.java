@@ -5,11 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Business.SolicitanteBusiness;
 import Dominio.Empleador;
-import Dominio.Solicitante;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
