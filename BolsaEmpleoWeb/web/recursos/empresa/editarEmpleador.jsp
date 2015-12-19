@@ -1,3 +1,4 @@
+<%@page import="Dominio.Empleador"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
