@@ -42,8 +42,8 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
 
     @Override
     public void prepare() throws Exception {
-        empleadorEditar = new Empleador();
-        //empleadorEditar = (Empleador) sessionMap.get("empleador");
+        //empleadorEditar = new Empleador();
+        empleadorEditar = (Empleador) sessionMap.get("empleador");
     }
 
     @Override
