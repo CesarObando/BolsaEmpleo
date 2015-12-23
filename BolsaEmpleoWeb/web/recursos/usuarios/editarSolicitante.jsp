@@ -97,7 +97,8 @@
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
                             <s:password name="password" label="Clave"/> 
-                            <s:file id="archivo" name="foto" label="Seleccione una foto para su perfil"/>
+                            <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                            <s:file name="archivoImagen" label="Seleccione una foto para su perfil"/>
                             <s:textfield name="edad" label="Edad"/>
                             <s:textfield name="sexo" label="Sexo" readonly="true"/>
                             <s:textfield name="escolaridad" label="Escolaridad"/>

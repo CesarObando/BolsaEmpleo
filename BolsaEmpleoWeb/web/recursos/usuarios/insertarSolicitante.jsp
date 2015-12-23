@@ -17,6 +17,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
         <title>Registrar Usuario | Bolsa de Empleo</title>  
+        
+        <s:head />
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -96,7 +98,7 @@
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="username" label="Nombre Usuario"/>
                             <s:password name="password" label="Clave"/> 
-                            <s:file name="foto" type="file" label="Seleccione una foto para su perfil"/> 
+                            <s:file name="archivoImagen" label="Seleccione una foto para su perfil"/> 
                             <s:textfield name="edad" label="Edad"/>
                             <s:textfield name="sexo" label="Sexo"/>
                             <s:textfield name="escolaridad" label="Escolaridad"/>
@@ -107,7 +109,7 @@
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit action="insertarSolicitanteProcess" value="Insertar Solicitante"/>
+                            <s:submit method="insertar" value="Insertar Solicitante"/>
                         </s:form>
                     </div>
                 </aside> 
