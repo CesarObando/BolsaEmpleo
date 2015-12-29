@@ -18,6 +18,7 @@ import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import javax.swing.JOptionPane;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -37,13 +38,18 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     }
 
     public String execute() throws Exception {
+        empleadorEditar = new Empleador();
+        empleadorEditar = (Empleador) sessionMap.get("empleador");
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        //empleadorEditar = new Empleador();
+        empleadorEditar = new Empleador();
         empleadorEditar = (Empleador) sessionMap.get("empleador");
+        System.out.println("");
+        System.out.println("");
+        System.out.println(empleadorEditar.getNombre());
     }
 
     @Override

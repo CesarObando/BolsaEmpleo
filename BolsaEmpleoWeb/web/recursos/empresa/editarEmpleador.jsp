@@ -91,13 +91,13 @@
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
+                            <s:textfield name="telefonoFijo" label="Teléfono Fijo"/> 
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="cedulaJuridica" label="Cedula Juridica" readonly="True"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
                             <s:textfield name="direccion" label="Direccion"/>
-                            <s:password name="pass" label="Clave"/>
                             <s:textfield name="username" label="Nombre Usuario" readonly="True"/>
+                            <s:password name="pass" label="Clave"/>
                             <s:submit action="editarEmpleadorProcess" value="Editar Empleador"/>
                         </s:form>
                     </div>
