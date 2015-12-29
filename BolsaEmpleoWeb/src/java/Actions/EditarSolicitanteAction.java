@@ -40,6 +40,8 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
     private String mensaje;
     private HttpServletRequest request;
     private File archivoImagen;
+    private String archivoImagenContentType;
+    private String archivoImagenFileName;
     private boolean existe;
 
     public EditarSolicitanteAction() {
@@ -88,7 +90,9 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         boolean editado = true;
         try {
-            cargarImagen();
+            if (this.archivoImagen != null) {
+                cargarImagen();
+            }
             solicitanteBusiness.editarSolicitante(solicitanteAEditar);
         } catch (SQLException e) {
             editado = false;
@@ -175,6 +179,22 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
 
     public void setArchivoImagen(File archivoImagen) {
         this.archivoImagen = archivoImagen;
+    }
+
+    public String getArchivoImagenContentType() {
+        return archivoImagenContentType;
+    }
+
+    public void setArchivoImagenContentType(String archivoImagenContentType) {
+        this.archivoImagenContentType = archivoImagenContentType;
+    }
+
+    public String getArchivoImagenFileName() {
+        return archivoImagenFileName;
+    }
+
+    public void setArchivoImagenFileName(String archivoImagenFileName) {
+        this.archivoImagenFileName = archivoImagenFileName;
     }
 
     public boolean isExiste() {

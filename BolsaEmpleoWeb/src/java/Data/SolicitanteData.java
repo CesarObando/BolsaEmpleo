@@ -59,23 +59,24 @@ public class SolicitanteData extends BaseData {
 
     public Solicitante editarSolicitante(Solicitante solicitanteAEditar) throws SQLException, DataException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL editar_solicitante (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
+        String sqlInsert = "{CALL editar_solicitante (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)}";
         try {
             CallableStatement statement = conexion.prepareCall(sqlInsert);
             statement.setInt(1, solicitanteAEditar.getId());
-            statement.setString(2, solicitanteAEditar.getPassword());
-            statement.setBytes(3, solicitanteAEditar.getFoto());
-            statement.setString(4, solicitanteAEditar.getEscolaridad());
-            statement.setString(5, solicitanteAEditar.getTitulos());
-            statement.setInt(6, solicitanteAEditar.getExperienciaLaboral());
-            statement.setString(7, solicitanteAEditar.getDetalleExperienciaLaboral());
-            statement.setString(8, solicitanteAEditar.getTelefonoFijo());
-            statement.setString(9, solicitanteAEditar.getTelefonoMovil());
-            statement.setString(10, solicitanteAEditar.getCorreo());
-            statement.setString(11, solicitanteAEditar.getIdiomas());
-            statement.setInt(12, solicitanteAEditar.getEdad());
-            statement.setString(13, solicitanteAEditar.getNombre());
-            statement.setString(14, solicitanteAEditar.getApellidos());
+            statement.setString(2, solicitanteAEditar.getCedula());
+            statement.setString(3, solicitanteAEditar.getPassword());
+            statement.setBytes(4, solicitanteAEditar.getFoto());
+            statement.setString(5, solicitanteAEditar.getEscolaridad());
+            statement.setString(6, solicitanteAEditar.getTitulos());
+            statement.setInt(7, solicitanteAEditar.getExperienciaLaboral());
+            statement.setString(8, solicitanteAEditar.getDetalleExperienciaLaboral());
+            statement.setString(9, solicitanteAEditar.getTelefonoFijo());
+            statement.setString(10, solicitanteAEditar.getTelefonoMovil());
+            statement.setString(11, solicitanteAEditar.getCorreo());
+            statement.setString(12, solicitanteAEditar.getIdiomas());
+            statement.setInt(13, solicitanteAEditar.getEdad());
+            statement.setString(14, solicitanteAEditar.getNombre());
+            statement.setString(15, solicitanteAEditar.getApellidos());
             statement.executeUpdate();
             conexion.commit();
         } catch (Exception e) {

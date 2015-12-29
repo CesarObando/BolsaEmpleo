@@ -186,5 +186,7 @@ public class Solicitante {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
-    
+    public String getFotoString() {
+        return new String(this.foto);
+    }
 }
