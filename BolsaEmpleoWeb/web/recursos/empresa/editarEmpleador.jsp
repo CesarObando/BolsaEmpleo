@@ -85,7 +85,7 @@
                             <s:actionmessage />
                         </s:if>
                         
-                        <s:form method="post" action="editarEmpleadorProcess">
+                        <s:form method="get" action="editarEmpleadorProcess">
                             <s:textfield name="id" label="Id" readonly="True"/>
                             <s:textfield name="cedula" label="Cedula" readonly="True"/>
                             <s:textfield name="nombre" label="Nombre"/>

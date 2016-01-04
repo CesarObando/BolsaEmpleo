@@ -85,14 +85,6 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
         }
     }
 
-    public Empleador getEmpleadorEditar() {
-        return empleadorEditar;
-    }
-
-    public void setEmpleadorEditar(Empleador empleadorEditar) {
-        this.empleadorEditar = empleadorEditar;
-    }
-
     public String getMensaje() {
         return mensaje;
     }
@@ -112,5 +104,13 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
+    }
+    
+    public Empleador getEmpleadorEditar() {
+        return empleadorEditar;
+    }
+
+    public void setEmpleadorEditar(Empleador empleadorEditar) {
+        this.empleadorEditar = empleadorEditar;
     }
 }
