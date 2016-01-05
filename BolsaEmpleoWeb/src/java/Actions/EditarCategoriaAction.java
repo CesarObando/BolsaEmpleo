@@ -24,19 +24,25 @@ public class EditarCategoriaAction extends ActionSupport implements Preparable, 
     private Categoria categoriaAEditar;
     private String mensaje;
     private HttpServletRequest request;
+    private boolean existe;
 
     public EditarCategoriaAction() {
     }
 
     @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
     public void prepare() throws Exception {
-        this.categoriaAEditar = new Categoria();
-        this.mensaje = "";
+        existe = true;
+        int id = Integer.parseInt(request.getParameter("id"));
+        categoriaAEditar = new CategoriaBusiness().buscarCategoria(id);
     }
 
     @Override
@@ -95,6 +101,14 @@ public class EditarCategoriaAction extends ActionSupport implements Preparable, 
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
     }
     
 }

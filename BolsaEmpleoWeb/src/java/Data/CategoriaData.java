@@ -74,7 +74,7 @@ public class CategoriaData extends BaseData {
     public LinkedList<Categoria> getCategorias() throws SQLException, DataException {
         LinkedList<Categoria> categorias = new LinkedList<Categoria>();
         Connection conexion = super.getConnection();
-        String sqlSelect = "{CALL buscar_categorias ()}";
+        String sqlSelect = "{CALL buscar_categorias}";
         try {
             CallableStatement statement = conexion.prepareCall(sqlSelect);
             ResultSet rs = statement.executeQuery();

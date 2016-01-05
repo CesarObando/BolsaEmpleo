@@ -5,6 +5,7 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
 import Business.OfertaBusiness;
 import Dominio.Administrador;
 import Dominio.Oferta;
@@ -22,73 +23,82 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Tin
  */
-public class EditarOfertaAction  extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware{
+public class EditarOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
-       private Oferta ofertaAEditar;
+    private Oferta ofertaAEditar;
     private String mensaje;
     private HttpServletRequest request;
+    private boolean existe;
 
     public EditarOfertaAction() {
     }
 
-    
     @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
+
     @Override
     public void prepare() throws Exception {
-      ofertaAEditar=new Oferta();
-      mensaje="";
+        existe = true;
+        int id = Integer.parseInt(request.getParameter("id"));
+        ofertaAEditar = new OfertaBusiness().buscarOferta(id);
     }
 
     @Override
     public Oferta getModel() {
-       return this.ofertaAEditar;
+        return this.ofertaAEditar;
     }
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
-         this.request = hsr;
+        this.request = hsr;
     }
+
     @Override
-    public void validate(){
-  if(ofertaAEditar.getPuesto().length()==0 || ofertaAEditar.getPuesto().equals(null)){
+    public void validate() {
+        if (ofertaAEditar.getPuesto().length() == 0 || ofertaAEditar.getPuesto().equals(null)) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if(ofertaAEditar.getRequerimientos().length()==0 ||ofertaAEditar.getRequerimientos().equals(null)){
+        if (ofertaAEditar.getRequerimientos().length() == 0 || ofertaAEditar.getRequerimientos().equals(null)) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
-         if(ofertaAEditar.getCategoria().getNombre().length()==0 ||ofertaAEditar.getCategoria().getNombre().equals(null)){
+        if (ofertaAEditar.getCategoria().getNombre().length() == 0 || ofertaAEditar.getCategoria().getNombre().equals(null)) {
             addFieldError("categoria", "Debe seleccionar una categoria");
         }
-          if(ofertaAEditar.getCantidadVacantes()==0){
+        if (ofertaAEditar.getCantidadVacantes() == 0) {
             addFieldError("vacantes", "Debe seleccionar una catidad de vacantes");
         }
-     
+
     }
-     public String editar() {
-         OfertaBusiness ofertaBusiness=new OfertaBusiness();
+
+    public String editar() {
+        OfertaBusiness ofertaBusiness = new OfertaBusiness();
         boolean editado = true;
         try {
-          ofertaBusiness.editarOferta(ofertaAEditar);
+            ofertaBusiness.editarOferta(ofertaAEditar);
         } catch (SQLException e) {
-            editado=false;
-            mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            editado = false;
+            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(editado==true){
+        if (editado == true) {
             this.mensaje = "La oferta fue editada correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
-     public Oferta getOfertaAInsertar() {
+
+    public Oferta getOfertaAEditar() {
         return ofertaAEditar;
     }
 
-    public void setOfertaAInsertar(Oferta ofertaAInsertar) {
-        this.ofertaAEditar = ofertaAInsertar;
+    public void setOfertaAEditar(Oferta ofertaAEditar) {
+        this.ofertaAEditar = ofertaAEditar;
     }
 
     public String getMensaje() {
@@ -106,6 +116,15 @@ public class EditarOfertaAction  extends ActionSupport implements Preparable, Mo
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
-    
+
+    public boolean isExiste() {
+        return existe;
+    }
+
+    public void setExiste(boolean existe) {
+        this.existe = existe;
+    }
+
+   
+
 }

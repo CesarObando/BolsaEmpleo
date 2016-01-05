@@ -168,33 +168,82 @@
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
         
+        <action name="insertarCategoria" class="Actions.InsertarCategoriaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
+        </action>
+        <action name="insertarCategoriaProcess" method="insertar" class="Actions.InsertarCategoriaAction">
+            <result name="input" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
+            <result name="error" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action  class="Actions.BuscarCategoriasAction" name="buscarCategoria">
+            <result name="input" type="dispatcher">/recursos/Categorias/buscarCategorias.jsp</result>
+        </action>
+        <action  class="Actions.BuscarCategoriasAction" name="buscarCategoriasProcess" method="buscar">
+            <result name="buscarCategorias" type="dispatcher">/recursos/Categorias/mantenerCategorias.jsp</result>
+        </action>
+        <action class="Actions.EditarCategoriaAction" name="editarCategoria">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/Categorias/editarCategoria.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarCategoriaAction" name="editarCategoriaProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/Categorias/editarCategoria.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Categorias/editarCategoria.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action class="Actions.EliminarCategoriaAction" name="eliminarCategoria">
+            <result type="dispatcher" name="input">/recursos/Categorias/eliminarCategoria.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarCategoriaAction" name="eliminarCategoriaProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/Categorias/eliminarCategoria.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Categorias/eliminarCategoria.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
         <action name="insertarOferta" class="Actions.InsertarOfertaAction">
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
             </interceptor-ref>
             <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
         </action>
+        
         <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
             <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
             <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
-        <action  class="Actions.BuscarCategoriasAction" name="buscarCategorias">
-            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/buscarCategorias.jsp</result>
+        <action  class="Actions.BuscarOfertasAction" name="buscarOfertas">
+            <result name="input" type="dispatcher">/recursos/Ofertas/buscarOfertas.jsp</result>
         </action>
-        <action  class="Actions.BuscarCategoriasAction" name="buscarCategoriasProcess" method="buscar">
-            <result name="buscarCategorias" type="dispatcher">/recursos/usuarios/Categorias/mantenerCategorias.jsp</result>
+        <action  class="Actions.BuscarOfertasAction" name="buscarOfertasProcess" method="buscar">
+            <result name="buscarOfertas" type="dispatcher">/recursos/Ofertas/mantenerOfertas.jsp</result>
         </action>
-        
-        <action name="insertarCategoria" class="Actions.InsertarCategoriaAction">
+        <action class="Actions.EditarOfertaAction" name="editarOferta">
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
             </interceptor-ref>
-            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
+            <result type="dispatcher" name="input">/recursos/Ofertas/editarOferta.jsp</result>
         </action>
-        <action name="insertarCategoriaProcess" method="insertar" class="Actions.InsertarCategoriaAction">
-            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
-            <result name="error" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
+        
+        <action class="Actions.EditarOfertaAction" name="editarOfertaProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/Ofertas/editarOferta.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/editarOferta.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action class="Actions.EliminarOfertaAction" name="eliminarOferta">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarOfertaAction" name="eliminarOfertaProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarAdministrador.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
     </package>

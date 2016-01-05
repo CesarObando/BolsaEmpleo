@@ -1,6 +1,6 @@
 <%-- 
-    Document   : mantenerCategorias
-    Created on : 04-ene-2016, 15:34:11
+    Document   : insertarCategoria
+    Created on : 04-ene-2016, 18:09:43
     Author     : Tin
 --%>
 
@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Mantenimiento Categoría | Bolsa de Empleo</title>  
+        <title>Eliminar Categoría | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -83,50 +83,19 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionErrors()">
+                            <s:actionerror />
+                        </s:if>
+                        <s:if test="hasActionMessages()">
+                            <s:actionmessage />
+                        </s:if>
 
-                        <table id="mytable" class="table table-bordred table-striped">
+                        <s:form action="eliminarCategoriaProcess">
+                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:textfield name="nombre" label="Nombre" readonly="true"/>
 
-                            <s:if test="%{solicitantes.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
-
-                            <s:else>
-                                <thead>
-                                <td>Id de Categoria</td>
-                                <td>Nombre</td>
-                                <th>Edit</th>
-                                <th>Delete</th>
-                                </thead>
-                                <tbody>
-                                   <s:iterator value="categorias" var="categoriaActual">
-                                        <tr>
-                                            <td><s:property value="#categoriaActual.id"/></td>
-                                            <td><s:property value="#categoriaActual.nombre"/></td>
-                                            
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                    <s:url action="editarCategoria" var="url">
-                                                        <s:param name="id" value="#categoriaActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
-
-                                                </p>
-                                            </td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarCategoria" var="url">
-                                                        <s:param name="id" value="#categoriaActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>     
-
-
+                            <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría"/>
+                        </s:form>
                     </div>
                 </aside> 
             </div>            
