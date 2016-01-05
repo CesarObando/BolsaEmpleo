@@ -168,6 +168,35 @@
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
         
+        <action name="insertarOferta" class="Actions.InsertarOfertaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+        </action>
+        <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        <action  class="Actions.BuscarCategoriasAction" name="buscarCategorias">
+            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/buscarCategorias.jsp</result>
+        </action>
+        <action  class="Actions.BuscarCategoriasAction" name="buscarCategoriasProcess" method="buscar">
+            <result name="buscarCategorias" type="dispatcher">/recursos/usuarios/Categorias/mantenerCategorias.jsp</result>
+        </action>
+        
+        <action name="insertarCategoria" class="Actions.InsertarCategoriaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
+        </action>
+        <action name="insertarCategoriaProcess" method="insertar" class="Actions.InsertarCategoriaAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/Categorias/insertarCategoria.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
     </package>
     
 </struts>

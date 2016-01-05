@@ -5,8 +5,10 @@
  */
 package Actions;
 
+import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;
+import Dominio.Categoria;
 import Dominio.Oferta;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -15,19 +17,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class InsertarOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class InsertarOfertaAction extends ActionSupport implements  ModelDriven<Oferta>, Preparable, ServletRequestAware{
 
      
     private Oferta ofertaAInsertar;
+    private LinkedList<Categoria> listaCategorias;
     private String mensaje;
     private HttpServletRequest request;
+
 
     public InsertarOfertaAction() {
     }
@@ -39,7 +45,10 @@ public class InsertarOfertaAction extends ActionSupport implements Preparable, M
     }
     @Override
     public void prepare() throws Exception {
-      ofertaAInsertar=new Oferta();
+     
+      CategoriaBusiness categoriaBuss=new CategoriaBusiness();
+      this.listaCategorias=categoriaBuss.getCategorias(); 
+      this.ofertaAInsertar=new Oferta();
       mensaje="";
     }
 
@@ -107,5 +116,14 @@ public class InsertarOfertaAction extends ActionSupport implements Preparable, M
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
+
+    public LinkedList<Categoria> getListaCategorias() {
+        return listaCategorias;
+    }
+
+    public void setListaCategorias(LinkedList<Categoria> listaCategorias) {
+        this.listaCategorias = listaCategorias;
+    }
+    
     
 }
