@@ -5,11 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Administrador;
 import Dominio.Empleador;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +15,6 @@ import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -38,14 +34,11 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     }
 
     public String execute() throws Exception {
-        empleadorEditar = new Empleador();
-        empleadorEditar = (Empleador) sessionMap.get("empleador");
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        empleadorEditar = new Empleador();
         empleadorEditar = (Empleador) sessionMap.get("empleador");
         System.out.println("");
         System.out.println("");
@@ -64,14 +57,14 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
 
     @Override
     public void validate() {
-
+        empleadorEditar = (Empleador) sessionMap.get("empleador");
     }
 
     public String editar() {
         EmpleadorBusiness empleadorBussines = new EmpleadorBusiness();
         boolean insertado = true;
         try {
-            empleadorBussines.editarEmpleador(empleadorEditar);;
+            empleadorBussines.editarEmpleador(empleadorEditar);
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
@@ -113,4 +106,13 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     public void setEmpleadorEditar(Empleador empleadorEditar) {
         this.empleadorEditar = empleadorEditar;
     }
+
+    public SessionMap<String, Object> getSessionMap() {
+        return sessionMap;
+    }
+
+    public void setSessionMap(SessionMap<String, Object> sessionMap) {
+        this.sessionMap = sessionMap;
+    }
+    
 }
