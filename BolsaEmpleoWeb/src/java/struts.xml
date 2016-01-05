@@ -98,7 +98,6 @@
             </interceptor-ref>
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
         </action>
-        
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/editarEmpleador.jsp</result>
