@@ -1,8 +1,3 @@
-<%-- 
-    Document   : insertarOferta
-    Created on : 04-ene-2016, 9:21:35
-    Author     : Tin
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -15,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Oferta | Bolsa de Empleo</title>  
+        <title>Editar Información | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +50,35 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+
+                <div id="zone-menu" class="zone-menu clearfix container-12">
+                    <div class="grid-12">                        
+                        <div class="main-menu">
+                            <div class="content clearfix">
+                                <ul  class="menu sf-menu sf-horizontal">
+                                    <li>
+                                        <a href="../empresa/principalEmpleador.jsp" class="">Inicio</a>
+                                    </li>
+                                    <c:if test="${sessionScope.solicitante == null}">
+                                        <li>
+                                            <a href="../empresa/login.jsp" class="">Registrate</a>               
+                                        </li>
+                                    </c:if>
+                                    <li>
+                                        <a href="../Ofertas/insertarOferta.jsp" class="" >Registrar Oferta</a>
+                                        <s:form action="insertarOferta" method="post">
+                                            <s:submit action="insertarOferta" value="Registrar"/>
+                                        </s:form>
+                                    </li>
+                                    <li>
+                                        <a href="../Ofertas/buscarOfertas.jsp" class="" >Buscar Ofertas</a>
+                                        
+                                    </li>
+                                </ul>
+                            </div>                                
+                        </div>                          
+                    </div>
+                </div>
             </div>
         </header>
         <section>
@@ -88,17 +111,6 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
-                        <s:form method="post" action="insertarOfertaProcess">
-                            <s:textfield name="puesto" label="Puesto "/>
-                            <s:textfield name="empleador.id" label="Empleador"/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre"/>            
-                            <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="insertarOfertaProcess" value="Insertar Oferta"/>
-                        </s:form>
                     </div>
                 </aside> 
             </div>            

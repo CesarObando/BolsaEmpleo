@@ -90,8 +90,8 @@
                         </s:if>
 
                         <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Id"/>
-                            <s:select name="categoria.id" list="listaCategorias" listValue="nombre" listKey="id" label="Categoría "/>
+                            <s:textfield name="puesto" label="Puesto"/>
+                           
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
                         

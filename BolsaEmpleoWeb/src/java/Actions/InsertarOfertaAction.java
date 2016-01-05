@@ -26,7 +26,7 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 public class InsertarOfertaAction extends ActionSupport implements ModelDriven<Oferta>, Preparable, ServletRequestAware {
 
     private Oferta ofertaAInsertar;
-    private LinkedList<Categoria> listaCategorias;
+    private LinkedList listaCategorias;
     private String mensaje;
     private HttpServletRequest request;
 
@@ -40,9 +40,9 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
 
     @Override
     public void prepare() throws Exception {
+        ofertaAInsertar = new Oferta();
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
         this.listaCategorias = categoriaBusiness.getCategorias();
-        this.ofertaAInsertar = new Oferta();
         mensaje = "";
     }
 
@@ -58,14 +58,11 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
 
     @Override
     public void validate() {
-        if (ofertaAInsertar.getPuesto().length() == 0 || ofertaAInsertar.getPuesto().equals(null)) {
+        if (ofertaAInsertar.getPuesto().length() == 0 || ofertaAInsertar.getPuesto() == null) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if (ofertaAInsertar.getRequerimientos().length() == 0 || ofertaAInsertar.getRequerimientos().equals(null)) {
+        if (ofertaAInsertar.getRequerimientos().length() == 0 || ofertaAInsertar.getRequerimientos() == null) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
-        }
-        if (ofertaAInsertar.getCategoria().getNombre().length() == 0 || ofertaAInsertar.getCategoria().getNombre().equals(null)) {
-            addFieldError("categoria", "Debe seleccionar una categoria");
         }
         if (ofertaAInsertar.getCantidadVacantes() == 0) {
             addFieldError("vacantes", "Debe seleccionar una catidad de vacantes");
@@ -114,11 +111,11 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
         this.request = request;
     }
 
-    public LinkedList<Categoria> getListaCategorias() {
+    public LinkedList getListaCategorias() {
         return listaCategorias;
     }
 
-    public void setListaCategorias(LinkedList<Categoria> listaCategorias) {
+    public void setListaCategorias(LinkedList listaCategorias) {
         this.listaCategorias = listaCategorias;
     }
 

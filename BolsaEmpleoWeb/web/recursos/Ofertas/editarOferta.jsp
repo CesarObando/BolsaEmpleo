@@ -91,12 +91,11 @@
 
                         <s:form method="post" action="editarOfertaProcess">
                             <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto "/>
-                            <s:textfield name="empleador" label="Empleador"/>
+                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
+                            <s:textfield name="empleador.id" label="Empleador" readonly="true"/>
                             <s:textfield name="salario" label="Salario "/>
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
                             <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:select name="categoria.id" list="listaCategorias"  listValue="nombre" listKey="id" label="Categoría "/>            
                             <s:textarea name="descripcion" label="Descripción"/>
                             <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
                         </s:form>

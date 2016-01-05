@@ -243,6 +243,10 @@
             <result type="dispatcher" name="error">/recursos/Ofertas/eliminarAdministrador.jsp</result>
             <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
         </action>
+        
+        <action class="Actions.VerOfertaAction" name="verOferta">
+            <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
+        </action>
     </package>
     
 </struts>

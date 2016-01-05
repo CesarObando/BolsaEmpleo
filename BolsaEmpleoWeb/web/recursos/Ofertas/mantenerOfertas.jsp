@@ -117,7 +117,7 @@
                                                 </p>
                                             </td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                    <s:url action="VerOferta" var="url">
+                                                    <s:url action="verOferta" var="url">
                                                         <s:param name="id" value="#ofertaActual.id"/>
                                                     </s:url>
                                                     <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>

@@ -28,10 +28,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
 public class BuscarOfertasAction extends ActionSupport implements Preparable, ServletRequestAware{
     
     private final String BUSCAR_OFERTAS = "buscarOfertas";
-    private LinkedList<Oferta> ofertas;
-    private LinkedList<Categoria> categorias; 
+    private LinkedList<Oferta> ofertas; 
     private HttpServletRequest request;
-    private String categoria;
     private String puesto;
     
     public BuscarOfertasAction() {
@@ -43,20 +41,16 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
 
     @Override
     public void prepare() throws Exception {
-        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        categorias = categoriaBusiness.getCategorias();
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        categoria = request.getParameter("categoria");
         puesto = request.getParameter("puesto");
-        ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+        ofertas = ofertaBusiness.getOfertasPorCategoria("", puesto);
     }
     
     public String buscar() throws DataException{
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        categoria = request.getParameter("cedula");
-        puesto = request.getParameter("nombre");
+        puesto = request.getParameter("puesto");
         try {
-            ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+            ofertas = ofertaBusiness.getOfertasPorCategoria("", puesto);
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -66,14 +60,6 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
-    }
-
-    public String getCedula() {
-        return categoria;
-    }
-
-    public void setCedula(String cedula) {
-        this.categoria = cedula;
     }
 
     public String getNombre() {
@@ -98,22 +84,6 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public LinkedList<Categoria> getCategorias() {
-        return categorias;
-    }
-
-    public void setCategorias(LinkedList<Categoria> categorias) {
-        this.categorias = categorias;
-    }
-
-    public String getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(String categoria) {
-        this.categoria = categoria;
     }
 
     public String getPuesto() {
