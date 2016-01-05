@@ -86,7 +86,7 @@
 
                         <table id="mytable" class="table table-bordred table-striped">
 
-                            <s:if test="%{solicitantes.isEmpty()}">
+                            <s:if test="%{administradores.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>
 

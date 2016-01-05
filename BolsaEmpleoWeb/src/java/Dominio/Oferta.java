@@ -10,7 +10,7 @@ package Dominio;
  * @author Cesar
  */
 public class Oferta {
-    
+
     private int id;
     private String puesto;
     private Empleador empleador;
@@ -18,17 +18,14 @@ public class Oferta {
     private int cantidadVacantes;
     private String requerimientos;
     private Categoria categoria;
+    private String descripcion;
 
     public Oferta() {
-        categoria=new Categoria();
-        empleador=new Empleador();
+        categoria = new Categoria();
+        empleador = new Empleador();
     }
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria) {
+    public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria, String descripcion) {
         this.id = id;
         this.puesto = puesto;
         this.empleador = empleador;
@@ -36,10 +33,15 @@ public class Oferta {
         this.cantidadVacantes = cantidadVacantes;
         this.requerimientos = requerimientos;
         this.categoria = categoria;
+        this.descripcion = descripcion;
     }
 
     public int getId() {
         return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getPuesto() {
@@ -89,5 +91,13 @@ public class Oferta {
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
     }
-    
+
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
 }

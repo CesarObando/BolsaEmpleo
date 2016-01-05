@@ -30,7 +30,7 @@ public class OfertaData extends BaseData {
 
     public Oferta insertarOferta(Oferta newOferta) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
 
         conexion.setAutoCommit(false);
@@ -43,6 +43,7 @@ public class OfertaData extends BaseData {
             statement.setInt(5, newOferta.getCantidadVacantes());
             statement.setString(6, newOferta.getRequerimientos());
             statement.setInt(7, newOferta.getCategoria().getId());
+            statement.setString(8, newOferta.getDescripcion());
             statement.executeUpdate();
 
             newOferta.setId(statement.getInt(1));//solitamos el id generado
@@ -58,7 +59,7 @@ public class OfertaData extends BaseData {
     }
 
     public void editarOferta(Oferta oferta) throws SQLException {
-        String sqlEditar = "{CALL editar_oferta(?,?,?,?)}";
+        String sqlEditar = "{CALL editar_oferta(?,?,?,?,?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
         try {
@@ -67,6 +68,7 @@ public class OfertaData extends BaseData {
             statement.setFloat(2, oferta.getSalario());
             statement.setInt(3, oferta.getCantidadVacantes());
             statement.setString(4, oferta.getRequerimientos());
+            statement.setString(5, oferta.getDescripcion());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {
@@ -111,6 +113,7 @@ public class OfertaData extends BaseData {
             oferta.setSalario(result.getFloat("salario"));
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
+            oferta.setDescripcion(result.getString("descripcion"));
 
             ofertas.add(oferta);
         }
@@ -136,6 +139,7 @@ public class OfertaData extends BaseData {
             oferta.setSalario(result.getFloat("salario"));
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
+            oferta.setDescripcion(result.getString("descripcion"));
 
             ofertas.add(oferta);
         }
@@ -158,6 +162,7 @@ public class OfertaData extends BaseData {
             oferta.setSalario(result.getFloat("salario"));
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
+            oferta.setDescripcion(result.getString("descripcion"));
             }
         } catch (SQLException e) {
             throw new DataException("Ha ocurrido un error con la base de datos");

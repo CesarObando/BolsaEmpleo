@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Registrar Oferta | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -89,13 +89,15 @@
                             <s:actionmessage />
                         </s:if>
                         
-                        <s:form method="post" action="insertarOfertaProcess">
-                            <s:textfield name="puesto" label="Puesto: "/>
-                            <s:textfield name="salario" label="Salario: "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes:"/>
-                            <s:textfield name="requerimientos" label="Requerimientos: "/>
-                            <s:select name="categoria.id"  headerKey="-1" headerValue="%{getText('slh.categoria.id')}"  list="listaCategorias"  listValue="nombre" listKey="id" label="Categoria: " key="sl.categoria.id"/>            
-                            <s:submit action="insertarOfertaProcess" value="Insertar Administrador"/>
+                        <s:form method="get" action="insertarOfertaProcess">
+                            <s:textfield name="puesto" label="Puesto "/>
+                            <s:textfield name="empleador" label="Empleador"/>
+                            <s:textfield name="salario" label="Salario "/>
+                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
+                            <s:textarea name="requerimientos" label="Requerimientos "/>
+                            <s:select name="categoria.id" list="listaCategorias" listKey="id" listValue="nombre" label="Categoría"/>            
+                            <s:textarea name="descripcion" label="Descripción"/>
+                            <s:submit action="insertarOfertaProcess" value="Insertar Oferta"/>
                         </s:form>
                     </div>
                 </aside> 

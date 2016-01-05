@@ -5,12 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
-import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
-import Dominio.Empleador;
 import Dominio.Oferta;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -36,7 +32,11 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -57,10 +57,17 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     public String eliminar() {
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        boolean eliminado = true;
         try {
             ofertaBusiness.eliminarOferta(ofertaAEliminar.getId());
-            return SUCCESS;
         } catch (SQLException e) {
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La oferta fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
             return ERROR;
         }
     }

@@ -32,7 +32,11 @@ public class EliminarCategoriaAction extends ActionSupport implements Preparable
 
     @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -58,11 +62,17 @@ public class EliminarCategoriaAction extends ActionSupport implements Preparable
 
     public String eliminar() throws DataException {
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        boolean eliminado = true;
         try {
             categoriaBusiness.eliminarCategoria(categoriaAEliminar.getId());
-            return SUCCESS;
         } catch (SQLException e) {
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La categoría fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
             return ERROR;
         }
     }

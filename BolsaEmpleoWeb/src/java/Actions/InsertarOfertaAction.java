@@ -7,10 +7,8 @@ package Actions;
 
 import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
-import Business.SolicitanteBusiness;
 import Dominio.Categoria;
 import Dominio.Oferta;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -20,80 +18,79 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class InsertarOfertaAction extends ActionSupport implements  ModelDriven<Oferta>, Preparable, ServletRequestAware{
+public class InsertarOfertaAction extends ActionSupport implements ModelDriven<Oferta>, Preparable, ServletRequestAware {
 
-     
     private Oferta ofertaAInsertar;
     private LinkedList<Categoria> listaCategorias;
     private String mensaje;
     private HttpServletRequest request;
 
-
     public InsertarOfertaAction() {
     }
 
-    
     @Override
     public String execute() throws Exception {
         return INPUT;
     }
+
     @Override
     public void prepare() throws Exception {
-     
-      CategoriaBusiness categoriaBuss=new CategoriaBusiness();
-      this.listaCategorias=categoriaBuss.getCategorias(); 
-      this.ofertaAInsertar=new Oferta();
-      mensaje="";
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        this.listaCategorias = categoriaBusiness.getCategorias();
+        this.ofertaAInsertar = new Oferta();
+        mensaje = "";
     }
 
     @Override
     public Oferta getModel() {
-       return this.ofertaAInsertar;
+        return this.ofertaAInsertar;
     }
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
-         this.request = hsr;
+        this.request = hsr;
     }
+
     @Override
-    public void validate(){
-  if(ofertaAInsertar.getPuesto().length()==0 || ofertaAInsertar.getPuesto().equals(null)){
+    public void validate() {
+        if (ofertaAInsertar.getPuesto().length() == 0 || ofertaAInsertar.getPuesto().equals(null)) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if(ofertaAInsertar.getRequerimientos().length()==0 ||ofertaAInsertar.getRequerimientos().equals(null)){
+        if (ofertaAInsertar.getRequerimientos().length() == 0 || ofertaAInsertar.getRequerimientos().equals(null)) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
-         if(ofertaAInsertar.getCategoria().getNombre().length()==0 ||ofertaAInsertar.getCategoria().getNombre().equals(null)){
+        if (ofertaAInsertar.getCategoria().getNombre().length() == 0 || ofertaAInsertar.getCategoria().getNombre().equals(null)) {
             addFieldError("categoria", "Debe seleccionar una categoria");
         }
-          if(ofertaAInsertar.getCantidadVacantes()==0){
+        if (ofertaAInsertar.getCantidadVacantes() == 0) {
             addFieldError("vacantes", "Debe seleccionar una catidad de vacantes");
         }
-     
+
     }
-     public String insertar() {
-         OfertaBusiness ofertaBusiness=new OfertaBusiness();
+
+    public String insertar() {
+        OfertaBusiness ofertaBusiness = new OfertaBusiness();
         boolean insertado = true;
         try {
-          ofertaBusiness.insertaOferta(ofertaAInsertar);
+            ofertaBusiness.insertaOferta(ofertaAInsertar);
         } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
+        if (insertado == true) {
             this.mensaje = "La  oferta  fue insertada correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
-     public Oferta getOfertaAInsertar() {
+
+    public Oferta getOfertaAInsertar() {
         return ofertaAInsertar;
     }
 
@@ -124,6 +121,5 @@ public class InsertarOfertaAction extends ActionSupport implements  ModelDriven<
     public void setListaCategorias(LinkedList<Categoria> listaCategorias) {
         this.listaCategorias = listaCategorias;
     }
-    
-    
+
 }
