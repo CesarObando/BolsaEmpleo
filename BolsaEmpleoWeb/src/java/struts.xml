@@ -93,9 +93,6 @@
         </action>
         
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleador"> 
-            <interceptor-ref name="defaultStack">
-                <param name="validation.excludeMethods">execute</param>
-            </interceptor-ref>
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
         </action>
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">

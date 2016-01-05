@@ -5,11 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Administrador;
 import Dominio.Empleador;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -18,7 +15,6 @@ import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import javax.swing.JOptionPane;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
@@ -37,17 +33,17 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     public EditarEmpleadorAction() {
     }
 
-    public String execute() throws Exception {
-        empleadorEditar = (Empleador) sessionMap.get("empleador");
+    @Override
+    public String execute(){
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        empleadorEditar = (Empleador) sessionMap.get("empleador");
-        System.out.println("");
-        System.out.println("");
-        System.out.println(empleadorEditar.getNombre());
+        empleadorEditar = new Empleador();
+        empleadorEditar.setId(1);
+        empleadorEditar.setPass("electrou");
+        //empleadorEditar = (Empleador) sessionMap.get("empleador");
     }
 
     @Override

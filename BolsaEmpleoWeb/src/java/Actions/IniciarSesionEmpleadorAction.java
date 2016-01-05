@@ -11,9 +11,11 @@ import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import com.opensymphony.xwork2.util.ValueStack;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -75,6 +77,8 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
                 return ERROR;
             }
             sessionMap.put("empleador", empleador);
+            ValueStack stack = ActionContext.getContext().getValueStack();
+            stack.push(empleador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
