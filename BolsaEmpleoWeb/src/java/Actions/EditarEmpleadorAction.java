@@ -38,14 +38,12 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     }
 
     public String execute() throws Exception {
-        empleadorEditar = new Empleador();
         empleadorEditar = (Empleador) sessionMap.get("empleador");
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        empleadorEditar = new Empleador();
         empleadorEditar = (Empleador) sessionMap.get("empleador");
         System.out.println("");
         System.out.println("");
