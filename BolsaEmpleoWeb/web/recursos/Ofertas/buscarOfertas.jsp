@@ -91,7 +91,6 @@
 
                         <s:form action="buscarOfertasProcess">
                             <s:textfield name="puesto" label="Puesto"/>
-                           
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
                         
