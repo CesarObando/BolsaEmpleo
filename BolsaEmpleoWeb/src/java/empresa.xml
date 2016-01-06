@@ -17,7 +17,7 @@
         <action name="iniciarSesionEmpleador" method="iniciarSesionEmpleador" class="Actions.IniciarSesionEmpleadorAction">
             <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/login.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/editarEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleador"> 
@@ -27,7 +27,7 @@
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/editarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action name="registrarEmpleador" class="Actions.InsertarEmpleadoresAction">
@@ -40,7 +40,7 @@
         <action name="registrarEmpleadorProcess" method="insertar" class="Actions.InsertarEmpleadoresAction">
             <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">
@@ -50,8 +50,17 @@
         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
+        <action class="Actions.VerPerfilEmpleadorAction" name="verPerfilEmpleador"> 
+            <result type="dispatcher" name="input">/recursos/empresa/perfilEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilEmpleadorAction" name="verPerfilEmpleadorProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/perfilEmpleador.jsp</result>
+        </action>
     </package>
 </struts>
