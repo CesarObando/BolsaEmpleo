@@ -96,7 +96,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="get" action="editarEmpleadorProcess">
                             <s:label name="id" label="Id" readonly="true"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
@@ -109,10 +109,9 @@
                             <s:label name="nombreEmpresa" label="Nombre de la empresa"/>
                             <s:label name="direccion" label="Direccion"/>
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:submit action="editarEmpleadorProcess" value="Editar Empleador"/>
-                            <s:submit action="eliminarEmpleadorProcess" value="Eliminar Empleador"/>
                         </s:form>
-                        
+                        <a href="../empresa/editarEmpleador.jsp" class="">Editar</a>
+                        <a href="../empresa/eliminarEmpleador.jsp" class="">Eliminar</a>
                     </div>
                 </aside> 
             </div>            

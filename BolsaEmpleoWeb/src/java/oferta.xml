@@ -17,7 +17,7 @@
         <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
             <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
             <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarOfertasAction" name="buscarOfertas">
@@ -38,7 +38,7 @@
         <action class="Actions.EditarOfertaAction" name="editarOfertaProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/Ofertas/editarOferta.jsp</result>
             <result type="dispatcher" name="error">/recursos/Ofertas/editarOferta.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EliminarOfertaAction" name="eliminarOferta">
@@ -48,7 +48,7 @@
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
             <result type="dispatcher" name="error">/recursos/Ofertas/eliminarAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action class="Actions.VerOfertaAction" name="verOferta">
