@@ -84,7 +84,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="eliminarEmpleadorProcess">
+                        <s:form action="eliminarEmpleadorProcess" method="post">
                             <s:label name="id" label="Id Del Empleador"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>

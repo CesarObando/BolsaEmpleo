@@ -17,14 +17,16 @@
         <action name="iniciarSesionEmpleador" method="iniciarSesionEmpleador" class="Actions.IniciarSesionEmpleadorAction">
             <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/login.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/editarEmpleador.jsp</result>
         </action>
         
-        <action class="Actions.EditarEmpleadorAction" name="editarEmpleador"> 
+        <action class="Actions.EditarEmpleadorAction" name="editarEmpleador" method="prepare">
+            <interceptor-ref name="prepare"> </interceptor-ref>
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">
+            <interceptor-ref name="prepare"> </interceptor-ref>
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/editarEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
