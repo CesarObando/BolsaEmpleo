@@ -90,7 +90,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="eliminarSolicitanteProcess">
+                        <s:form action="eliminarSolicitanteProcess" method="post">
                             <s:textfield name="id" label="Id del Solicitante" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
