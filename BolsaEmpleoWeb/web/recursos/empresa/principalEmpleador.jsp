@@ -65,10 +65,10 @@
                                         </li>
                                     </c:if>
                                     <li>
-                                        <a href="../Ofertas/insertarOferta.jsp" class="" >Registrar Oferta</a>
-                                        <s:form action="insertarOferta" method="post">
-                                            <s:submit action="insertarOferta" value="Registrar"/>
+                                        <s:form action="insertarOferta"  method="post">
+                                              <s:a action="insertarOferta"  >Registrar Oferta</s:a>
                                         </s:form>
+                                       
                                     </li>
                                     <li>
                                         <a href="../Ofertas/buscarOfertas.jsp" class="" >Buscar Ofertas</a>
