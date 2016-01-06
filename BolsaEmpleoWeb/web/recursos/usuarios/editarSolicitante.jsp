@@ -1,9 +1,3 @@
-<%-- 
-    Document   : insertar_usuario
-    Created on : Sep 23, 2015, 10:13:30 AM
-    Author     : JonathanA
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -90,7 +84,7 @@
                             <s:actionmessage />
                         </s:if>
                         
-                        <s:form method="post" action="editarSolicitanteProcess">
+                        <s:form method="get" action="editarSolicitanteProcess">
                             <s:textfield name="id" label="Id" readonly="true"/>
                             <s:textfield name="cedula" label="Cedula" readonly="true"/>
                             <s:textfield name="nombre" label="Nombre"/>

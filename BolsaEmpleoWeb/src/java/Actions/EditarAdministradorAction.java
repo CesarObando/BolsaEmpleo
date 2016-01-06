@@ -15,19 +15,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author JonathanA
  */
-public class EditarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware {
+public class EditarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware, SessionAware {
     
     private Administrador administradorEditar;
     private String mensaje;
     private HttpServletRequest request;
     private boolean existe;
+    public SessionMap<String, Object> sessionMap;
     
     public EditarAdministradorAction() {
     }
@@ -42,9 +46,7 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
-        int id = Integer.parseInt(request.getParameter("id"));
-        administradorEditar = new AdministradorBusiness().buscarAdministrador(id);
+        administradorEditar = (Administrador) sessionMap.get("administrador");
     }
 
     @Override
@@ -123,6 +125,11 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
     
 }

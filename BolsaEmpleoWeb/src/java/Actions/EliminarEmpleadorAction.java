@@ -14,19 +14,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware, SessionAware {
 
     private Empleador empleadorAEliminar;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
+    public SessionMap<String, Object> sessionMap;
 
     public EliminarEmpleadorAction() {
     }
@@ -39,12 +43,7 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int idEmpleador = Integer.parseInt(request.getParameter("id"));
-        try {
-            empleadorAEliminar = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
-        } catch (SQLException e) {
-            existe = false;
-        }
+        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
     }
 
     @Override
@@ -102,6 +101,11 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

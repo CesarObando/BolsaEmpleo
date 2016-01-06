@@ -21,6 +21,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -28,13 +29,15 @@ import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Cesar
  */
-public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware {
+public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware{
 
     private Solicitante solicitanteAEditar;
     private String mensaje;
@@ -43,6 +46,7 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
     private String archivoImagenContentType;
     private String archivoImagenFileName;
     private boolean existe;
+    public SessionMap<String, Object> sessionMap;
 
     public EditarSolicitanteAction() {
     }
@@ -58,9 +62,7 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
-        int id = Integer.parseInt(request.getParameter("id"));
-        solicitanteAEditar = new SolicitanteBusiness().buscarSolicitante(id);
+        solicitanteAEditar = (Solicitante) sessionMap.get("solicitante");
     }
 
     @Override
@@ -203,6 +205,11 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

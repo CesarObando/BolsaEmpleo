@@ -5,9 +5,12 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
-import Dominio.Solicitante;
+import Business.AdministradorBusiness;
+import Dominio.Administrador;
 import Exception.DataException;
+import static com.opensymphony.xwork2.Action.ERROR;
+import static com.opensymphony.xwork2.Action.INPUT;
+import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -26,22 +29,21 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class IniciarSesionAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, SessionAware, ServletRequestAware {
-
+public class IniciarSesionAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, SessionAware, ServletRequestAware{
     private HttpServletRequest request;
-    private SessionMap<String, Object> sessionMap;
-    private Solicitante solicitante;
+    public SessionMap<String, Object> sessionMap;
+    private Administrador administrador;
     private String nombreUsuario;
     private String clave;
-
+    
     @Override
     public void prepare() throws Exception {
-        solicitante = new Solicitante();
+        administrador = new Administrador();
     }
     
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("solicitante") == null){ // Si no hay una sesion iniciada
+        if (this.sessionMap.get("administrador") == null){ // Si no hay una sesion iniciada
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
@@ -49,10 +51,6 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         }
     }
 
-    @Override
-    public Solicitante getModel() {
-        return this.solicitante;
-    }
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
@@ -64,18 +62,18 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         this.sessionMap = (SessionMap<String, Object>) map;
     }
 
-    public String iniciarSesionUsuario() {
+    public String iniciarSesionAdministrador() {
         sessionMap.clear();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         try {
-            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante == null || solicitante.getCedula().equals("")){
+            administrador = administradorBusiness.iniciarSesion(nombreUsuario, clave);
+            if (administrador == null || administrador.getCedula().equals("")){
                 this.addActionMessage("Usuario o contraseña incorrectas");
                 return ERROR;
             }
-            sessionMap.put("solicitante", solicitante);
+            sessionMap.put("administrador", administrador);
             ValueStack stack = ActionContext.getContext().getValueStack();
-            stack.push(solicitante);
+            stack.push(administrador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
@@ -98,14 +96,6 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         }
     }
 
-    public Solicitante getSolicitante() {
-        return solicitante;
-    }
-
-    public void setSolicitante(Solicitante solicitante) {
-        this.solicitante = solicitante;
-    }
-
     public String getNombreUsuario() {
         return nombreUsuario;
     }
@@ -120,5 +110,18 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    @Override
+    public Administrador getModel() {
+        return this.administrador;
+    }
+
+    public Administrador getAdministrador() {
+        return administrador;
+    }
+
+    public void setAdministrador(Administrador administrador) {
+        this.administrador = administrador;
     }
 }
