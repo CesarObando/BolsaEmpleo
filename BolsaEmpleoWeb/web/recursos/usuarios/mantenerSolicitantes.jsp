@@ -102,7 +102,7 @@
                                 <tbody>
                                     <s:iterator value="solicitantes" var="solicitanteActual">
                                         <tr>
-                                            <td><s:property value="#solicitanteActual.id"/></td>
+                                            <td><s:textfield name="id"/></td>
                                             <td><s:property value="#solicitanteActual.cedula"/></td>
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>

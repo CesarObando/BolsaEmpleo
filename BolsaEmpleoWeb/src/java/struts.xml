@@ -34,7 +34,7 @@
         <action name="iniciarSesion" method="iniciarSesionUsuario" class="Actions.IniciarSesionAction">
             <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/mantenerSolicitantes.jsp</result>
         </action>
         
         
