@@ -59,23 +59,6 @@
                                     <li>
                                         <a href="../empresa/principalEmpleador.jsp" class="">Inicio</a>
                                     </li>
-                                    <c:if test="${sessionScope.empleador == null}">
-                                        <li>
-                                            <a href="../empresa/login.jsp" class="">Registrate</a>               
-                                        </li>
-                                    </c:if>
-                                    <li>
-                                        <a href="../Ofertas/insertarOferta.jsp" class="" >Registrar Oferta</a>
-                                        <s:form action="insertarOferta" method="post">
-                                            <s:submit action="insertarOferta" value="Registrar"/>
-                                        </s:form>
-                                    </li>
-                                    <li>
-                                        <a href="../Ofertas/buscarOfertas.jsp" class="" >Buscar Ofertas</a>
-                                    </li>
-                                    <li>
-                                        <a href="../empresa/perfilEmpleador.jsp" class="" >Mantener informacion</a>
-                                    </li>
                                 </ul>
                             </div>                                
                         </div>                          
@@ -113,6 +96,23 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
+                        
+                        <s:form method="get" action="editarEmpleadorProcess">
+                            <s:label name="id" label="Id" readonly="true"/>
+                            <s:label name="cedula" label="Cedula" readonly="true"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <s:label name="correo" label="Email"/>
+                            <s:label name="telefonoFijo" label="Teléfono Fijo"/> 
+                            <s:label name="telefonoMovil" label="Teléfono Celular"/>
+                            <s:label name="cedulaJuridica" label="Cedula Juridica" readonly="true"/>
+                            <s:label name="nombreEmpresa" label="Nombre de la empresa"/>
+                            <s:label name="direccion" label="Direccion"/>
+                            <s:label name="username" label="Nombre Usuario" readonly="true"/>
+                            <s:submit action="editarEmpleadorProcess" value="Editar Empleador"/>
+                            <s:submit action="eliminarEmpleadorProcess" value="Eliminar Empleador"/>
+                        </s:form>
+                        
                     </div>
                 </aside> 
             </div>            

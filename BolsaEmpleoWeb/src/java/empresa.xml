@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="empresa" namespace="/recursos/empresa" extends="struts-default">
+        
+        <action name="iniciarSesionEmpleadorInit" class="Actions.IniciarSesionEmpleadorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
+        </action>
+        
+        <action name="iniciarSesionEmpleador" method="iniciarSesionEmpleador" class="Actions.IniciarSesionEmpleadorAction">
+            <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/login.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/editarEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarEmpleadorAction" name="editarEmpleador"> 
+            <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/editarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+        <action name="registrarEmpleador" class="Actions.InsertarEmpleadoresAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+        </action>
+        
+        <action name="registrarEmpleadorProcess" method="insertar" class="Actions.InsertarEmpleadoresAction">
+            <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+    </package>
+</struts>

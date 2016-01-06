@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <package name="oferta" namespace="/recursos/Ofertas" extends="struts-default">
+        
+        <action name="insertarOferta" class="Actions.InsertarOfertaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+        </action>
+        
+        <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasAction" name="buscarOfertas">
+            <result name="input" type="dispatcher">/recursos/Ofertas/buscarOfertas.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasAction" name="buscarOfertasProcess" method="buscar">
+            <result name="buscarOfertas" type="dispatcher">/recursos/Ofertas/mantenerOfertas.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarOfertaAction" name="editarOferta">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/Ofertas/editarOferta.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarOfertaAction" name="editarOfertaProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/Ofertas/editarOferta.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/editarOferta.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarOfertaAction" name="eliminarOferta">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarOfertaAction" name="eliminarOfertaProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+        </action>
+        
+        <action class="Actions.VerOfertaAction" name="verOferta">
+            <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
+        </action>
+        
+    </package>
+</struts>
