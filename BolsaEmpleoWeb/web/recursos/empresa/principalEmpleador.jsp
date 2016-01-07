@@ -61,18 +61,13 @@
                                     </li>
                                     <c:if test="${sessionScope.empleador == null}">
                                         <li>
-                                            <a href="../empresa/login.jsp" class="">Registrate</a>               
+                                            <a href="../empresa/logi.jsp" class="">Registrate</a>               
                                         </li>
                                     </c:if>
                                     <li>
-<<<<<<< HEAD
-                                        <s:form action="insertarOferta"  method="post">
-                                              <s:a action="insertarOferta"  >Registrar Oferta</s:a>
-=======
-                                        <s:form action="insertarOferta" method="post">
-                                            <s:a action="insertarOferta" class="">Registrar Oferta</s:a>
->>>>>>> 0b543cd2c653b4a22bb099eeadb7914814c5d4d0
-                                        </s:form>
+
+                                            <s:a action="insertarOferta" >Registrar Oferta</s:a>
+                                    
                                        
                                     </li>
                                     <li>
