@@ -44,8 +44,8 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     public void prepare() throws Exception {
         empleadorEditar = new Empleador();
         empleadorEditar = (Empleador) sessionMap.get("empleador");
-        ValueStack stack = ActionContext.getContext().getValueStack();
-            stack.push(empleadorEditar);
+//        ValueStack stack = ActionContext.getContext().getValueStack();
+//        stack.push(empleadorEditar);
     }
 
     @Override

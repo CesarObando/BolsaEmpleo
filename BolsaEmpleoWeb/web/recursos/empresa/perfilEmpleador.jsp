@@ -110,8 +110,8 @@
                             <s:label name="direccion" label="Direccion"/>
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
                         </s:form>
-                        <a href="../empresa/editarEmpleador.jsp" class="">Editar</a>
-                        <a href="../empresa/eliminarEmpleador.jsp" class="">Eliminar</a>
+                        <a href="../empresa/editarEmpleador.action" class="">Editar</a>
+                        <a href="../empresa/eliminarEmpleador.action" class="">Eliminar</a>
                     </div>
                 </aside> 
             </div>            

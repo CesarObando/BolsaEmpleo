@@ -79,7 +79,7 @@
                                         <a href="../Ofertas/buscarOfertas.jsp" class="">Buscar Ofertas</a>
                                     </li>
                                     <li>
-                                        <a href="../empresa/perfilEmpleador.jsp" class="" >Mantener informacion</a>
+                                        <a href="../empresa/verPerfilEmpleador.action" class="" >Mantener informacion</a>
                                     </li>
                                 </ul>
                             </div>                                
