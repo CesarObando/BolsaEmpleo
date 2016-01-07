@@ -61,7 +61,7 @@
                                     </li>
                                     <c:if test="${sessionScope.empleador == null}">
                                         <li>
-                                            <a href="../empresa/logi.jsp" class="">Registrate</a>               
+                                            <a href="../empresa/login.jsp" class="">Registrate</a>               
                                         </li>
                                     </c:if>
                                     <li>
