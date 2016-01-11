@@ -62,6 +62,7 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
+        solicitanteAEditar = new Solicitante();
         solicitanteAEditar = (Solicitante) sessionMap.get("solicitante");
     }
 
@@ -96,6 +97,7 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
                 cargarImagen();
             }
             solicitanteBusiness.editarSolicitante(solicitanteAEditar);
+            sessionMap.put("solicitante", this.solicitanteAEditar);
         } catch (SQLException e) {
             editado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";

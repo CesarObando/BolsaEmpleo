@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Inicio | Bolsa de Empleo</title>  
         
         <s:head />
 

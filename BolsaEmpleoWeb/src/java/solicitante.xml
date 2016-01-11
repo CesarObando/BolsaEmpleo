@@ -32,7 +32,7 @@
         <action name="iniciarSesion" method="iniciarSesionUsuario" class="Actions.IniciarSesionAction">
             <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/buscarSolicitantes.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action name="insertarSolicitante" class="Actions.InsertarSolicitanteAction">
@@ -63,7 +63,7 @@
         <action class="Actions.EditarSolicitanteAction" name="editarSolicitanteProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/usuarios/editarSolicitante.jsp</result>
             <result type="dispatcher" name="error">/recursos/usuarios/editarSolicitante.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitante">
@@ -73,7 +73,7 @@
         <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
             <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
     </package>

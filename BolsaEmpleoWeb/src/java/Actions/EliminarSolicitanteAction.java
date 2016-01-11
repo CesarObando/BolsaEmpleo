@@ -44,6 +44,7 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     
     @Override
     public void prepare() throws Exception {
+        solicitanteAEliminar = new Solicitante();
         solicitanteAEliminar = (Solicitante) sessionMap.get("solicitante");
     }
 
@@ -66,6 +67,7 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
             solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
+            sessionMap.put("solicitante", this.solicitanteAEliminar);
             return SUCCESS;
         } catch (SQLException e) {
             return ERROR;

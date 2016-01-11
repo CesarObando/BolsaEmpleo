@@ -74,8 +74,6 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
                 return ERROR;
             }
             sessionMap.put("solicitante", solicitante);
-            ValueStack stack = ActionContext.getContext().getValueStack();
-            stack.push(solicitante);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
