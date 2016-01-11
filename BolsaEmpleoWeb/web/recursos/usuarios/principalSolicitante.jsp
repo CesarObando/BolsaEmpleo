@@ -58,22 +58,8 @@
                         </div>
                     </div>
                 </div>
-                <div id="zone-menu" class="zone-menu clearfix container-12">
-                    <div class="grid-12">                        
-                        <div class="main-menu">
-                            <div class="content clearfix">
-                                <ul  class="menu sf-menu sf-horizontal">
-                                    <li>
-                                        <a href="../empresa/principalEmpleador.jsp" class="">Inicio</a>
-                                    </li>
-                                    <li>
-                                        <a href="../Ofertas/buscarOfertas.jsp" class="" >Buscar Ofertas</a>
-                                    </li>
-                                </ul>
-                            </div>                                
-                        </div>                          
-                    </div>
-                </div>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                
             </div>
         </header>
         <section>

@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
             </div>
         </header>
         <section>
@@ -91,7 +91,6 @@
                         
                         <s:form method="post" action="insertarOfertaProcess">
                             <s:textfield name="puesto" label="Puesto "/>
-                            <s:textfield name="empleador.id" label="Empleador"/>
                             <s:textfield name="salario" label="Salario "/>
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
                             <s:textarea name="requerimientos" label="Requerimientos "/>

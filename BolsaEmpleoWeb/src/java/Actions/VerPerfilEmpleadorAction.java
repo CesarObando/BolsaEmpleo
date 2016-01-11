@@ -5,14 +5,10 @@
  */
 package Actions;
 
-import Business.EmpleadorBusiness;
 import Dominio.Empleador;
-import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;

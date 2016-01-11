@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
             </div>
         </header>
         <section>
@@ -90,7 +90,6 @@
 
                             <s:else>
                                 <thead>
-                                <td>Id de la oferta</td>
                                 <td>Puesto</td>
                                 <th>Edit</th>
                                 <th>Delete</th>
@@ -99,7 +98,6 @@
                                 <tbody>
                                     <s:iterator value="ofertas" var="ofertaActual">
                                         <tr>
-                                            <td><s:property value="#ofertaActual.id"/></td>
                                             <td><s:property value="#ofertaActual.puesto"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit">
                                                     <s:url action="editarOferta" var="url">

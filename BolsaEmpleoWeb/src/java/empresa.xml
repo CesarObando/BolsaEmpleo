@@ -63,5 +63,18 @@
             <result type="dispatcher" name="error">/recursos/empresa/perfilEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/perfilEmpleador.jsp</result>
         </action>
+        
+        <action name="insertarOferta" class="Actions.InsertarOfertaAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+        </action>
+        
+        <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
+            <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+        </action>
     </package>
 </struts>
