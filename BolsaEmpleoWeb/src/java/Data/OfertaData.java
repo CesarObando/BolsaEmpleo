@@ -170,4 +170,31 @@ public class OfertaData extends BaseData {
         conexion.close();
         return oferta;
     }
+    //buscarOfertasPorEmpleador 
+     public LinkedList<Oferta> getOfertasPorEmpleador(int idEmpleador) throws SQLException {
+
+        String sqlSelect = "{CALL buscarOfertasPorEmpleador (?)}";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        statement.setInt(1, idEmpleador);
+        
+        ResultSet result = statement.executeQuery();
+
+        LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
+        while (result.next()) {
+            Oferta oferta = new Oferta();
+            oferta.setId(result.getInt("id"));
+            oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
+            oferta.getCategoria().setId(result.getInt("categoria"));
+            oferta.getEmpleador().setId(result.getInt("empleador"));
+            oferta.setSalario(result.getFloat("salario"));
+            oferta.setPuesto(result.getString("puesto"));
+            oferta.setRequerimientos(result.getString("requerimentos"));
+            oferta.setDescripcion(result.getString("descripcion"));
+
+            ofertas.add(oferta);
+        }
+        return ofertas;
+    }
+
 }

@@ -53,4 +53,7 @@ public class OfertaBusiness {
     public Oferta buscarOferta(int id) throws SQLException, DataException{
         return ofertaData.buscarOferta(id);
     }
+    public LinkedList<Oferta> getOfertasPorEmpleador(int idEmpleador) throws SQLException {
+        return ofertaData.getOfertasPorEmpleador(idEmpleador);
+    }
 }

@@ -17,10 +17,11 @@
         <action name="iniciarSesionEmpleador" method="iniciarSesionEmpleador" class="Actions.IniciarSesionEmpleadorAction">
             <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/login.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
-        <action class="Actions.EditarEmpleadorAction" name="editarEmpleador"> 
+        <action class="Actions.EditarEmpleadorAction" name="editarEmpleador">
+            
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
         </action>
         

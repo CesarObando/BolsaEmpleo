@@ -65,15 +65,16 @@
                                         </li>
                                     </c:if>
                                     <li>
-                                        <s:form action="insertarOferta" method="post">
-                                            <s:a action="insertarOferta" class="">Registrar Oferta</s:a>
-                                        </s:form>
+
+                                            <s:a action="insertarOferta" >Registrar Oferta</s:a>
+                                    
+                                       
                                     </li>
                                     <li>
                                         <a href="../Ofertas/buscarOfertas.jsp" class="">Buscar Ofertas</a>
                                     </li>
                                     <li>
-                                        <a href="../empresa/perfilEmpleador.jsp" class="" >Mantener informacion</a>
+                                        <a href="../empresa/verPerfilEmpleador.action" class="" >Mantener informacion</a>
                                     </li>
                                 </ul>
                             </div>                                

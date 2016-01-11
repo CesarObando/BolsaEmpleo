@@ -77,8 +77,6 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
                 return ERROR;
             }
             sessionMap.put("empleador", empleador);
-            ValueStack stack = ActionContext.getContext().getValueStack();
-            stack.push(empleador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
