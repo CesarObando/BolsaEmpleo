@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Oferta | Bolsa de Empleo</title>  
+        <title>Ver Oferta | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -89,16 +89,16 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post" action="editarOfertaProcess">
+                        <s:form method="post" action="verOfertaProcess">
                             <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
+                            <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
+                            <s:textfield name="salario" label="Salario " readonly="true"/>
+                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
+                            <s:textarea name="requerimientos" label="Requerimientos " readonly="true"/>
+                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
+                            <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
                         
                     </div>

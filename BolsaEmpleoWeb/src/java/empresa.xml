@@ -41,7 +41,7 @@
         <action name="registrarEmpleadorProcess" method="insertar" class="Actions.InsertarEmpleadoresAction">
             <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/login.jsp</result>
         </action>
         
         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">

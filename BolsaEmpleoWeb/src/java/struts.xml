@@ -16,6 +16,21 @@
     <!-- Configuration for the default package. -->
     <package name="default" extends="struts-default">
         
+        <result-types>
+            <result-type name="fotoSolicitante" class="Actions.CustomImageResult" />
+        </result-types>
+        
+        <action name="getImagen" class="Actions.ImagenUtilAction">
+            <interceptor-ref name="defaultStack">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
+                </param>
+            </interceptor-ref>
+            <result name="success" type="fotoSolicitante" />
+            <result name="input" type="fotoSolicitante" />
+        </action>
+        
         <action name="menuPrincipal">
             <result name="input" type="dispatcher">/recursos/usuarios/menuPrincipal.jsp</result>
         </action>
@@ -60,6 +75,29 @@
         
         <action class="Actions.VerOfertaAction" name="verOferta">
             <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilSolicitanteAction" name="verPerfilSolicitante"> 
+            <result type="dispatcher" name="input">/recursos/usuarios/perfilSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilSolicitanteAction" name="verPerfilSolicitanteProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/usuarios/perfilSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/perfilSolicitante.jsp</result>
+            <result name="success" type="redirect">/recursos/perfilSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitante">
+            <result name="input" type="dispatcher">/recursos/Ofertas/buscarOfertasSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/Ofertas/buscarOfertasSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitanteProcess" method="buscar">
+            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/Ofertas/mantenerOfertasSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.VerOfertaSolicitanteAction" name="verOfertaSolicitante">
+            <result type="dispatcher" name="input">/recursos/Ofertas/verOfertaSolicitante.jsp</result>
         </action>
     </package>
     

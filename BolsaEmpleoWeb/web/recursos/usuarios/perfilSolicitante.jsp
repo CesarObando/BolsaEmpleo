@@ -1,8 +1,3 @@
-<%-- 
-    Document   : insertarOferta
-    Created on : 04-ene-2016, 9:21:35
-    Author     : Tin
---%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -15,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Oferta | Bolsa de Empleo</title>  
+        <title>Editar Información | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -88,19 +83,27 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-
-                        <s:form method="post" action="editarOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
-                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
-                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
-                        </s:form>
                         
+                        <s:form method="get" action="editarSolicitanteProcess">
+                            <s:label name="id" label="Id"/>
+                            <s:label name="cedula" label="Cedula" readonly="true"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <s:label name="username" label="Nombre Usuario" readonly="true"/>
+                            <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                            <s:label name="edad" label="Edad"/>
+                            <s:label name="sexo" label="Sexo" readonly="true"/>
+                            <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
+                            <s:label name="titulos" label="Titulos"/>
+                            <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
+                            <s:label name="telefonoFijo" label="Teléfono Casa"/> 
+                            <s:label name="telefonoMovil" label="Teléfono Celular"/>
+                            <s:label name="correo" label="Email"/>
+                            <s:label name="idiomas" label="Idiomas que domina"/>
+                        </s:form>
+                            <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
+                            <a href="../usuarios/eliminarSolicitante.action" class="">Eliminar</a>
                     </div>
                 </aside> 
             </div>            

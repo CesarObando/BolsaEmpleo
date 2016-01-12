@@ -45,7 +45,7 @@
         <action name="insertarSolicitanteProcess" method="insertar" class="Actions.InsertarSolicitanteAction">
             <result name="input" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/insertarSolicitante.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/login.jsp</result>
         </action>
         
         <action  class="Actions.BuscarSolicitantesAction" name="buscarSolicitante">
@@ -58,23 +58,36 @@
         
         <action class="Actions.EditarSolicitanteAction" name="editarSolicitante">
             <result type="dispatcher" name="input">/recursos/usuarios/editarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/editarSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EditarSolicitanteAction" name="editarSolicitanteProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/usuarios/editarSolicitante.jsp</result>
             <result type="dispatcher" name="error">/recursos/usuarios/editarSolicitante.jsp</result>
-            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitante">
             <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
             <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
-            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
+        <action class="Actions.VerPerfilSolicitanteAction" name="verPerfilSolicitante"> 
+            <result type="dispatcher" name="input">/recursos/usuarios/perfilSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilSolicitanteAction" name="verPerfilSolicitanteProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/usuarios/perfilSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/perfilSolicitante.jsp</result>
+            <result name="success" type="redirect">/recursos/perfilSolicitante.jsp</result>
+        </action>
     </package>
+    
+    
 </struts>

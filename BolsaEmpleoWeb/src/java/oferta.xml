@@ -55,5 +55,17 @@
             <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
         </action>
         
+        <action class="Actions.VerOfertaSolicitanteAction" name="verOfertaSolicitante">
+            <result type="dispatcher" name="input">/recursos/Ofertas/verOfertaSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitante">
+            <result name="input" type="dispatcher">/recursos/Ofertas/buscarOfertasSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitanteProcess" method="buscar">
+            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/Ofertas/mantenerOfertasSolicitante.jsp</result>
+        </action>
+        
     </package>
 </struts>

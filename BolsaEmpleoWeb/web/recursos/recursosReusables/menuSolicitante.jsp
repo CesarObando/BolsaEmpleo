@@ -13,11 +13,11 @@
                     </li>
                     <c:if test="${sessionScope.solicitante == null}">
                         <li>
-                            <a href="../usuarios/login.jsp" class="">Registrate</a>               
+                            <a href="../usuarios/insertarSolicitante.jsp" class="">Registrate</a>               
                         </li>
                     </c:if>
                     <li>
-                        <a href="../Ofertas/buscarOfertas.jsp" class="" >Buscar Ofertas</a>
+                        <s:a action="buscarOfertasSolicitante" >Buscar Ofertas</s:a>
                     </li>
                     <li>
                         <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>

@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Oferta | Bolsa de Empleo</title>  
+        <title>Mantener Ofertas | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -82,25 +82,35 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
+                        <table id="mytable" class="table table-bordred table-striped">
 
-                        <s:form method="post" action="editarOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
-                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
-                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
-                        </s:form>
-                        
+                            <s:if test="%{ofertas.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Puesto</td>
+                                <th>Ver</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="ofertas" var="ofertaActual">
+                                        <tr>
+                                            <td><s:property value="#ofertaActual.puesto"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="verOfertaSolicitante" var="url">
+                                                        <s:param name="id" value="#ofertaActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
                     </div>
                 </aside> 
             </div>            

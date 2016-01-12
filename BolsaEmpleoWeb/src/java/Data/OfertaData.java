@@ -5,8 +5,11 @@
  */
 package Data;
 
+import Business.CategoriaBusiness;
+import Business.EmpleadorBusiness;
 import Dominio.Administrador;
 import Dominio.Categoria;
+import Dominio.Empleador;
 import Dominio.Oferta;
 import Exception.DataException;
 import java.sql.CallableStatement;
@@ -27,7 +30,6 @@ public class OfertaData extends BaseData {
     }
 
     //inserta una nueva oferta 
-
     public Oferta insertarOferta(Oferta newOferta) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?,?)}";
@@ -95,7 +97,6 @@ public class OfertaData extends BaseData {
     }
 
     //retorna todas las ofertas existentes
-
     public LinkedList<Oferta> getOfertas() throws SQLException {
 
         String sqlSelect = "buscar_ofertas";
@@ -145,7 +146,7 @@ public class OfertaData extends BaseData {
         }
         return ofertas;
     }
-    
+
     public LinkedList<Oferta> getOfertasPorEmpleador(int categoria, String puesto, int empleador) throws SQLException {
 
         String sqlSelect = "{CALL buscar_ofertas_por_empleador(?,?,?)}";
@@ -173,7 +174,7 @@ public class OfertaData extends BaseData {
         return ofertas;
     }
 
-    public Oferta buscarOferta(int id) throws SQLException, DataException{
+    public Oferta buscarOferta(int id) throws SQLException, DataException {
         String sqlBuscarOferta = "{CALL buscar_oferta(?)}";
         Connection conexion = this.getConnection();
         Oferta oferta = new Oferta();
@@ -183,13 +184,23 @@ public class OfertaData extends BaseData {
             ResultSet result = statement.executeQuery();
             if (result.next()) {
                 oferta.setId(result.getInt("id"));
-            oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
-            oferta.getCategoria().setId(result.getInt("categoria"));
-            oferta.getEmpleador().setId(result.getInt("empleador"));
-            oferta.setSalario(result.getFloat("salario"));
-            oferta.setPuesto(result.getString("puesto"));
-            oferta.setRequerimientos(result.getString("requerimentos"));
-            oferta.setDescripcion(result.getString("descripcion"));
+                oferta.setCantidadVacantes(result.getInt("cantidad_vacantes"));
+                oferta.getCategoria().setId(result.getInt("categoria"));
+                oferta.getEmpleador().setId(result.getInt("empleador"));
+                oferta.setSalario(result.getFloat("salario"));
+                oferta.setPuesto(result.getString("puesto"));
+                oferta.setRequerimientos(result.getString("requerimentos"));
+                oferta.setDescripcion(result.getString("descripcion"));
+                
+                int idEmpleador = oferta.getEmpleador().getId();
+                Empleador empleador = new Empleador();
+                empleador = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
+                oferta.setEmpleador(empleador);
+                
+                int idCategoria = oferta.getCategoria().getId();
+                Categoria categoria = new Categoria();
+                categoria = new CategoriaBusiness().buscarCategoria(idCategoria);
+                oferta.setCategoria(categoria);
             }
         } catch (SQLException e) {
             throw new DataException("Ha ocurrido un error con la base de datos");
