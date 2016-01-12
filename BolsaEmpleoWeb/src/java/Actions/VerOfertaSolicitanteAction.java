@@ -5,32 +5,33 @@
  */
 package Actions;
 
-import Business.CategoriaBusiness;
-import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
-import Dominio.Categoria;
-import Dominio.Empleador;
+import Business.SolicitudBusiness;
 import Dominio.Oferta;
-import Exception.DataException;
+import Dominio.Solicitante;
+import Dominio.Solicitud;
 import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class VerOfertaSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class VerOfertaSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware, SessionAware {
 
     private Oferta ofertaAVer;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
+    private SessionMap<String,Object> sessionMap;
 
     public VerOfertaSolicitanteAction() {
     }
@@ -52,6 +53,28 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
             ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
         } catch (SQLException e) {
             existe = false;
+        }
+    }
+    
+    public String solicitar(){
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        Solicitud solicitud = new Solicitud();
+        Solicitante solicitante = new Solicitante();
+        boolean insertado = true;
+        try {
+            solicitante = (Solicitante)sessionMap.get("solicitante");
+            solicitud.setSolicitante(solicitante);
+            solicitud.setOferta(ofertaAVer);
+            solicitudBusiness.insertarSolicitud(solicitud);
+        } catch (SQLException e) {
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+        }
+        if (insertado == true) {
+            this.mensaje = "La  oferta  fue insertada correctamente";
+            return SUCCESS;
+        } else {
+            return ERROR;
         }
     }
 
@@ -95,6 +118,11 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

@@ -56,15 +56,15 @@
         </action>
         
         <action class="Actions.VerOfertaSolicitanteAction" name="verOfertaSolicitante">
-            <result type="dispatcher" name="input">/recursos/Ofertas/verOfertaSolicitante.jsp</result>
+            <result type="dispatcher" name="input">/recursos/usuarios/verOfertaSolicitante.jsp</result>
         </action>
         
         <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitante">
-            <result name="input" type="dispatcher">/recursos/Ofertas/buscarOfertasSolicitante.jsp</result>
+            <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
         </action>
         
         <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitanteProcess" method="buscar">
-            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/Ofertas/mantenerOfertasSolicitante.jsp</result>
+            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
         </action>
         
     </package>

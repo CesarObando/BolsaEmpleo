@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Ver Oferta | Bolsa de Empleo</title>  
+        <title>Mantener Ofertas | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -82,25 +82,40 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
+                        <table id="mytable" class="table table-bordred table-striped">
 
-                        <s:form method="post" action="verOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto " readonly="true"/>
-                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
-                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario " readonly="true"/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
-                            <s:textarea name="requerimientos" label="Requerimientos " readonly="true"/>
-                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
-                            <s:textarea name="descripcion" label="Descripción" readonly="true"/>
-                        </s:form>
-                        
+                            
+                            <s:if test="%{solicitudes.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Puesto</td>
+                                <td>Empleador</td>
+                                <td>Empresa</td>
+                                <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="solicitudes" var="solicitudActual">
+                                        <tr>
+                                            <td><s:property value="#solicitudActual.oferta.puesto"/></td>
+                                            <td><s:property value="#solicitudActual.oferta.empleador.nombre"/></td>
+                                            <td><s:property value="#solicitudActual.oferta.empleador.nombreEmpresa"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="eliminarSolicitudSolicitanteProcess" var="url">
+                                                        <s:param name="id" value="#solicitudActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
                     </div>
                 </aside> 
             </div>            
