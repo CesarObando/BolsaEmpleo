@@ -55,7 +55,13 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                <c:if test="${sessionScope.solicitante == null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
+
+                <c:if test="${sessionScope.solicitante != null}">
+                    <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                </c:if>
             </div>
         </header>
         <section>
@@ -89,7 +95,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post" action="insertarSolicitudProcess">
+                        <s:form method="post">
                             <s:textfield name="id" label="Id" readonly="true"/>
                             <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
@@ -99,9 +105,14 @@
                             <s:textarea name="requerimientos" label="Requerimientos " readonly="true"/>
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
-                            <s:submit action="insertarSolicitudProcess" value="Solicitar"/>
+                            <c:if test="${sessionScope.solicitante != null}">
+                                <s:submit value="Solicitar" action="insertarSolicitudProcess"/>
+                            </c:if>
                         </s:form>
-                        
+
+                        <c:if test="${sessionScope.solicitante == null}">
+                            <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
+                        </c:if>
                     </div>
                 </aside> 
             </div>            
@@ -144,12 +155,11 @@
         <div id="fb-root"></div>
         <script>(function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
-                    return;
+                    if (d.getElementById(id))
+                return;
                 js = d.createElement(s);
-                js.id = id;
-                js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
-                fjs.parentNode.insertBefore(js, fjs);
+                js.id = id;                 js.src = "//connect.facebook.net/es_LA/sdk.js#xfbml=1&version=v2.0";
+            fjs.parentNode.insertBefore(js, fjs);
             }(document, 'script', 'facebook-jssdk'));
         </script>
 
@@ -160,8 +170,8 @@
 
         <script type="text/javascript">
             // initialise plugins
-            jQuery(function () {
-                jQuery('ul.sf-menu').superfish();
+                jQuery(function () {
+            jQuery('ul.sf-menu').superfish();
             });
         </script>
 

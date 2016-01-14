@@ -58,7 +58,10 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         puesto = request.getParameter("puesto");
-        categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        if(request.getParameter("categoria.id") != null){
+            categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        }
+        
 //        if (request.getParameter("categoria.id") == null) {
 //            categoria = -1;
 //        } else {

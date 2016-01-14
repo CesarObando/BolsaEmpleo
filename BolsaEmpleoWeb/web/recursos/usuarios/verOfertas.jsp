@@ -55,7 +55,15 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+
+                <c:if test="${sessionScope.solicitante == null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
+
+                <c:if test="${sessionScope.solicitante != null}">
+                    <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                </c:if>
+
             </div>
         </header>
         <section>
@@ -82,9 +90,15 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <s:form action="buscarOfertasSolicitanteProcess">
+                            <s:textfield name="puesto" label="Puesto"/>
+                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                            <s:submit method="buscar" value="Buscar"/>
+                        </s:form>
                         <table id="mytable" class="table table-bordred table-striped">
 
-                            
+
+
                             <s:if test="%{solicitudes.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>
