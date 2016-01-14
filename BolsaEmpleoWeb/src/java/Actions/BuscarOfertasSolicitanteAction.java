@@ -6,7 +6,9 @@
 package Actions;
 
 import Business.CategoriaBusiness;
+import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
+import Dominio.Empleador;
 import Dominio.Oferta;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,18 +24,18 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author JonathanA
  */
-public class BuscarOfertasSolicitanteAction extends ActionSupport implements Preparable, ServletRequestAware{
-    
+public class BuscarOfertasSolicitanteAction extends ActionSupport implements Preparable, ServletRequestAware {
+
     private final String BUSCAR_OFERTAS = "buscarOfertasSolicitante";
-    private LinkedList<Oferta> ofertas; 
+    private LinkedList<Oferta> ofertas;
     private HttpServletRequest request;
     private String puesto;
     private int categoria;
     private LinkedList categorias;
-    
+
     public BuscarOfertasSolicitanteAction() {
     }
-    
+
     @Override
     public String execute() throws Exception {
         return ActionSupport.SUCCESS;
@@ -42,15 +44,38 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
     @Override
     public void prepare() throws Exception {
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.categorias = categoriaBusiness.getCategorias();
-    }
-    
-    public String buscar() throws DataException{
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        this.categorias = categoriaBusiness.getCategorias();
+        puesto = "";
+        categoria = -1;
+        ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+            
+
+    }
+
+    public String buscar() throws DataException {
+        OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         puesto = request.getParameter("puesto");
         categoria = Integer.parseInt(request.getParameter("categoria.id"));
+//        if (request.getParameter("categoria.id") == null) {
+//            categoria = -1;
+//        } else {
+//            categoria = Integer.parseInt(request.getParameter("categoria.id"));
+//        }
         try {
             ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+            
+//            for (Oferta oferta : ofertas) {
+//                int i=0;
+//                int idEmpleador = oferta.getEmpleador().getId();
+//                Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+//                oferta.setEmpleador(empleador);
+//                ofertas.remove(i);
+//                ofertas.add(oferta);
+//                i++;
+//            }
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasSolicitanteAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -102,7 +127,6 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         this.categorias = categorias;
     }
 
-
     public int getCategoria() {
         return categoria;
     }
@@ -110,5 +134,5 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
     public void setCategoria(int categoria) {
         this.categoria = categoria;
     }
-    
+
 }

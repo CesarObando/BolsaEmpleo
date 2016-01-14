@@ -1,33 +1,40 @@
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
-<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%-- 
+    Document   : insertarOferta
+    Created on : 04-ene-2016, 9:21:35
+    Author     : Tin
+--%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">
-<html lang="es" >
+<%@taglib prefix="sj" uri="/struts-jquery-tags" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+
+<!DOCTYPE html>
+<html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-        <link rel="shortcut icon" href="../recursos/imagenes/favicon.ico" />
+        <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Inicio | Bolsa de Empleo</title>  
+        <title>Mantener Ofertas | Bolsa de Empleo</title>  
 
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.base.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.menus.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.messages.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/system.theme.css">
+        <link rel="stylesheet" type="text/css" href="../css/system.base.css">
+        <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
+        <link rel="stylesheet" type="text/css" href="../css/system.messages.css">
+        <link rel="stylesheet" type="text/css" href="../css/system.theme.css">
 
         <!--menu-->
-        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish.css" media="screen">       
-        <link rel="stylesheet" type="text/css" href="../recursos/css/superfish-smallscreen.css" media="screen">  
+        <link rel="stylesheet" type="text/css" href="../css/superfish.css" media="screen">       
+        <link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">  
 
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-text.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-branding.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-menu.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/omega-forms.css">
-        <link rel="stylesheet" type="text/css" href="../recursos/css/global.css">
+        <link rel="stylesheet" type="text/css" href="../css/omega-text.css">
+        <link rel="stylesheet" type="text/css" href="../css/omega-branding.css">
+        <link rel="stylesheet" type="text/css" href="../css/omega-menu.css">
+        <link rel="stylesheet" type="text/css" href="../css/omega-forms.css">
+        <link rel="stylesheet" type="text/css" href="../css/global.css">
         <!--responsive-->
         <style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
-            @import url("../recursos/css/omega-obas-alpha-default.css");            
-            @import url("../recursos/css/alpha-default-normal-12.css");            
+            @import url("../css/omega-obas-alpha-default.css");            
+            @import url("../css/alpha-default-normal-12.css");            
         </style>
     </head>
     <body>
@@ -38,31 +45,20 @@
                         <div class="branding-data">
                             <div class="logo-ucr">
                                 <!--<a href="http://www.ucr.ac.cr" target="blank">Universidad de Costa Ric</a>-->
-                                <img class="img-responsive" src="../recursos/imagenes/logo-ucr.png" alt="" />
+                                <img class="img-responsive" src="../imagenes/logo-ucr.png" alt="" />
                             </div>
                             <div class="logo-img">                   
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->
-                                <!--<a href="http://www.ucr.ac.cr"><img class="img-responsive" src="//placehold.it/130x55&text=Logo" class="img-responsive" alt="Imagen responsive"></a>-->  
-                                    <c:if test="${sessionScope.solicitante != null}" > 
-                                        <a href="../recursos/pantallaPrincipal.jsp">
-                                            <h12 class="site-name">Cerrar sesión</h12>
-                                            <h5 class="site-name">Bolsa de Empleo</h5>  
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${sessionScope.solicitante == null}" > 
-                                        <a href="../recursos/usuarios/login.jsp">
-                                            <h12 class="site-name">Iniciar sesión</h12>
-                                            <h5 class="site-name">Bolsa de Empleo</h5>  
-                                        </a>
-                                    </c:if>
+                                <!--<a href="http://www.ucr.ac.cr"><img class="img-responsive" src="//placehold.it/130x55&text=Logo" class="img-responsive" alt="Imagen responsive"></a>-->
+                                <h3 class="site-name">Bolsa de Empleo</h3>                                    
                             </div>
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursos/recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
-        <section >
+        <section>
             <div id="zone-content" class="clearfix container-12">     
                 <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
                     <div class=" block-menu-block-1" id="block-menu-block-1">
@@ -71,7 +67,7 @@
                                 <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
                                 <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
                                 <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                
+                                <li class="leaf"><a href="#">Contactenos</a></li>                                            
                             </ul>                                
                         </div>
                     </div>
@@ -86,22 +82,40 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
-                        
-                        <s:form action="buscarOfertasSolicitanteProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
-                        
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            
+                            <s:if test="%{solicitudes.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Puesto</td>
+                                <th>Ver</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="ofertas" var="ofertaActual">
+                                        <tr>
+                                            <td><s:property value="#ofertaActual.puesto"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="verOfertaSolicitante" var="url">
+                                                        <s:param name="id" value="#ofertaActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
                     </div>
                 </aside> 
             </div>            
-        </section> 
+        </section>
         <footer >
             <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
                 <div id="zone-footer" class="zone zone-footer clearfix container-12">
@@ -110,7 +124,7 @@
                             <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                                 <div class="content clearfix">                                        
                                     © 2014 Oficina de Orientación, UCR |&nbsp;<a href="http://www.orientacion.ucr.ac.cr/">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>
-                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../recursos/imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
+                                    <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
                                     <hgroup class="site-name-slogan">      
                                         <h1 class="site-name"><a href="/" title="Inicio" class="active">Oficina de Orientación</a></h1>
                                         <h6 class="site-slogan">Al servicio de la comunidad estudiantil</h6>
@@ -149,10 +163,10 @@
             }(document, 'script', 'facebook-jssdk'));
         </script>
 
-        <script type="text/javascript" src="../recursos/js/jquery.js"></script>
-        <script type="text/javascript" src="../recursos/js/hoverIntent.js"></script>
-        <script type="text/javascript" src="../recursos/js/superfish.js"></script>                
-        <script type="text/javascript" src="../recursos/js/supersubs.js"></script>
+        <script type="text/javascript" src="../js/jquery.js"></script>
+        <script type="text/javascript" src="../js/hoverIntent.js"></script>
+        <script type="text/javascript" src="../js/superfish.js"></script>                
+        <script type="text/javascript" src="../js/supersubs.js"></script>
 
         <script type="text/javascript">
             // initialise plugins
@@ -160,5 +174,7 @@
                 jQuery('ul.sf-menu').superfish();
             });
         </script>
+
+
     </body>
 </html>
