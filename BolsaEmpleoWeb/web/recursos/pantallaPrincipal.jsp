@@ -24,6 +24,7 @@
         <link rel="stylesheet" type="text/css" href="../recursos/css/omega-menu.css">
         <link rel="stylesheet" type="text/css" href="../recursos/css/omega-forms.css">
         <link rel="stylesheet" type="text/css" href="../recursos/css/global.css">
+        <link rel="stylesheet" type="text/css" href="../recursos/css/menu-desplegable.css">
         <!--responsive-->
         <style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
             @import url("../recursos/css/omega-obas-alpha-default.css");            

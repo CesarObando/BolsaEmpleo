@@ -7,13 +7,17 @@
     <div class="grid-12">                        
         <div class="main-menu">
             <div class="content clearfix">
-                <ul  class="menu sf-menu sf-horizontal">
+                <ul  class="menu sf-menu sf-horizontal nav">
                     <li>
                         <a href="../recursos/pantallaPrincipal.jsp" class="">Inicio</a>
                     </li>
                     <c:if test="${sessionScope.solicitante == null}">
                         <li>
-                            <a href="../empresa/registrarEmpleador.jsp" class="">Registrate</a>               
+                            <a>Registrate</a> 
+                            <ul>
+                                <li><a href="../recursos/empresa/registrarEmpleador.jsp" >Empleador</a></li>
+                                <li><a href="../recursos/usuarios/insertarSolicitante.jsp" >Usuario</a> </li>
+                            </ul>
                         </li>
                     </c:if>
                 </ul>
