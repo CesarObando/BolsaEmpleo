@@ -29,21 +29,22 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class IniciarSesionAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, SessionAware, ServletRequestAware{
+public class IniciarSesionAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, SessionAware, ServletRequestAware {
+
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
     private Administrador administrador;
     private String nombreUsuario;
     private String clave;
-    
+
     @Override
     public void prepare() throws Exception {
         administrador = new Administrador();
     }
-    
+
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("administrador") == null){ // Si no hay una sesion iniciada
+        if (this.sessionMap.get("administrador") == null) { // Si no hay una sesion iniciada
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
@@ -51,12 +52,11 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
         }
     }
 
-
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
@@ -67,7 +67,7 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         try {
             administrador = administradorBusiness.iniciarSesion(nombreUsuario, clave);
-            if (administrador == null || administrador.getCedula().equals("")){
+            if (administrador == null || administrador.getCedula().equals("")) {
                 this.addActionMessage("Usuario o contraseña incorrectas");
                 return ERROR;
             }
@@ -85,7 +85,7 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
         }
         return SUCCESS;
     }
-    
+
     @Override
     public void validate() {
         if (this.request.getParameter("nombreUsuario").trim().equals("")) {

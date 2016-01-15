@@ -34,7 +34,7 @@
         <action name="menuPrincipal">
             <result name="input" type="dispatcher">/recursos/usuarios/menuPrincipal.jsp</result>
         </action>
-       <action name="insertarOferta" class="Actions.InsertarOfertaAction">
+        <action name="insertarOferta" class="Actions.InsertarOfertaAction">
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
             </interceptor-ref>

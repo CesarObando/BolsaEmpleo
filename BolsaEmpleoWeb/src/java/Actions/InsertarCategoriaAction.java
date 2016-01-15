@@ -22,8 +22,8 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Cesar
  */
-public class InsertarCategoriaAction extends ActionSupport implements Preparable, ModelDriven<Categoria>, ServletRequestAware{
-    
+public class InsertarCategoriaAction extends ActionSupport implements Preparable, ModelDriven<Categoria>, ServletRequestAware {
+
     private Categoria categoriaAInsertar;
     private String mensaje;
     private HttpServletRequest request;
@@ -51,27 +51,27 @@ public class InsertarCategoriaAction extends ActionSupport implements Preparable
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
-    public void validate(){
-        if(categoriaAInsertar.getNombre().length()==0 || categoriaAInsertar.getNombre().equals(null)){
+    public void validate() {
+        if (categoriaAInsertar.getNombre().length() == 0 || categoriaAInsertar.getNombre().equals(null)) {
             addFieldError("nombre", "Debe ingresar un nombre.");
-        } 
+        }
     }
-    
-    public String insertar() throws DataException{
+
+    public String insertar() throws DataException {
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
         boolean insertado = true;
         try {
             categoriaBusiness.insertarCategoria(categoriaAInsertar);
         } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
+        if (insertado == true) {
             this.mensaje = "La categoria fue insertada correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
@@ -99,5 +99,5 @@ public class InsertarCategoriaAction extends ActionSupport implements Preparable
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
+
 }

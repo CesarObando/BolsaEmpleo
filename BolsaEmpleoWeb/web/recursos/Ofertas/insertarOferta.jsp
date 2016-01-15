@@ -88,7 +88,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="post" action="insertarOfertaProcess">
                             <s:textfield name="puesto" label="Puesto "/>
                             <s:textfield name="salario" label="Salario "/>

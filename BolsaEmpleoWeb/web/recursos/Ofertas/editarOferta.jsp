@@ -100,7 +100,7 @@
                             <s:textarea name="descripcion" label="Descripción"/>
                             <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
                         </s:form>
-                        
+
                     </div>
                 </aside> 
             </div>            

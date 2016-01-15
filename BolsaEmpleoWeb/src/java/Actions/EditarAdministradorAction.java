@@ -26,16 +26,16 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author JonathanA
  */
 public class EditarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware, SessionAware {
-    
+
     private Administrador administradorEditar;
     private String mensaje;
     private HttpServletRequest request;
     private boolean existe;
     public SessionMap<String, Object> sessionMap;
-    
+
     public EditarAdministradorAction() {
     }
-    
+
     public String execute() throws Exception {
         if (existe) {
             return INPUT;
@@ -58,39 +58,39 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
-    public void validate(){
-        if(administradorEditar.getCedula().length()!=9 || administradorEditar.getCedula().equals(null)){
+    public void validate() {
+        if (administradorEditar.getCedula().length() != 9 || administradorEditar.getCedula().equals(null)) {
             addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
         }
-        if(administradorEditar.getNombre().length()==0 || administradorEditar.getNombre().equals(null)){
+        if (administradorEditar.getNombre().length() == 0 || administradorEditar.getNombre().equals(null)) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if(administradorEditar.getApellidos().length()==0 || administradorEditar.getApellidos().equals(null)){
+        if (administradorEditar.getApellidos().length() == 0 || administradorEditar.getApellidos().equals(null)) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if(administradorEditar.getUsername().length()==0 || administradorEditar.getUsername().equals(null)){
+        if (administradorEditar.getUsername().length() == 0 || administradorEditar.getUsername().equals(null)) {
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if(administradorEditar.getPassword().length()==0 || administradorEditar.getPassword().equals(null)){
+        if (administradorEditar.getPassword().length() == 0 || administradorEditar.getPassword().equals(null)) {
             addFieldError("password", "Debe ingresar una contraseña.");
-        } 
+        }
     }
-    
-    public String editar() throws DataException{
+
+    public String editar() throws DataException {
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         boolean insertado = true;
         try {
             administradorBusiness.editarAdministrador(administradorEditar);
         } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
+        if (insertado == true) {
             this.mensaje = "El administrador fue editado correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
@@ -131,5 +131,5 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
     }
-    
+
 }

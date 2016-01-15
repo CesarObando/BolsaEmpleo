@@ -21,18 +21,18 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author JonathanA
  */
-public class BuscarSolicitantesAction extends ActionSupport implements Preparable, ServletRequestAware{
-    
+public class BuscarSolicitantesAction extends ActionSupport implements Preparable, ServletRequestAware {
+
     private final String BUSCAR_SOLICITANTES = "buscarSolicitantes";
     private LinkedList<Solicitante> solicitantes;
     private HttpServletRequest request;
     private String cedula;
     private String nombre;
     private String apellidos;
-    
+
     public BuscarSolicitantesAction() {
     }
-    
+
     public String execute() throws Exception {
         return ActionSupport.SUCCESS;
     }
@@ -45,8 +45,8 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         apellidos = request.getParameter("apellidos");
         solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
     }
-    
-    public String buscar() throws DataException{
+
+    public String buscar() throws DataException {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
@@ -103,5 +103,5 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-    
+
 }

@@ -243,7 +243,7 @@
 
         <!--plugin facebook-->
         <div id="fb-root"></div>
-        <script>(function(d, s, id) {
+        <script>(function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
                 if (d.getElementById(id))
                     return;
@@ -287,7 +287,7 @@
         </script>
         <script type="text/javascript">
             // initialise plugins
-            jQuery(function() {
+            jQuery(function () {
                 jQuery('ul.sf-menu').superfish();
             });
         </script>

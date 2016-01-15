@@ -49,7 +49,7 @@
                         </div>
                     </div>
                 </div>
-                 
+
 
 
             </div>
@@ -69,7 +69,7 @@
                         </div>
                     </div>  
                     <!--si no existe un usuario en session lo muestra-->
-                 
+
                     <section class="block block-menu block-menu-redes-sociales block-menu-menu-redes-sociales odd" id="block-menu-menu-redes-sociales">
                         <div class="block-inner clearfix">
                             <h2 class="block-title">Síguenos en facebook</h2>

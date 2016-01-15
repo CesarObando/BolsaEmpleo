@@ -23,30 +23,32 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  * @author Tin
  */
 public class BuscarCategoriasAction extends ActionSupport implements Preparable, ServletRequestAware {
- 
+
     private final String BUSCAR_CATEGORIAS = "buscarCategorias";
     private LinkedList<Categoria> categorias;
     private HttpServletRequest request;
     private String nombre;
-    
+
     @Override
-      public String execute() throws Exception {
+    public String execute() throws Exception {
         return ActionSupport.SUCCESS;
     }
+
     @Override
     public void prepare() throws Exception {
-        CategoriaBusiness categoriaBuss= new CategoriaBusiness();
+        CategoriaBusiness categoriaBuss = new CategoriaBusiness();
         nombre = request.getParameter("nombre");
-        categorias=categoriaBuss.getCategoriasFiltradas(nombre);
-         
+        categorias = categoriaBuss.getCategoriasFiltradas(nombre);
+
     }
-    public String buscar() throws DataException{
-         CategoriaBusiness categoriaBuss= new CategoriaBusiness();
-        
+
+    public String buscar() throws DataException {
+        CategoriaBusiness categoriaBuss = new CategoriaBusiness();
+
         nombre = request.getParameter("nombre");
-      
+
         try {
-            categorias= categoriaBuss.getCategoriasFiltradas(nombre);
+            categorias = categoriaBuss.getCategoriasFiltradas(nombre);
         } catch (SQLException e) {
             Logger.getLogger(BuscarCategoriasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -81,5 +83,5 @@ public class BuscarCategoriasAction extends ActionSupport implements Preparable,
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
+
 }

@@ -31,7 +31,7 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
     }
 
     @Override
-    public String execute(){
+    public String execute() {
         return INPUT;
     }
 
@@ -84,5 +84,5 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
+
 }

@@ -30,7 +30,7 @@ import org.apache.struts2.interceptor.SessionAware;
  * @author Cesar
  */
 public class IniciarSesionEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, SessionAware, ServletRequestAware {
-    
+
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
     private Empleador empleador;
@@ -41,10 +41,10 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
     public void prepare() throws Exception {
         empleador = new Empleador();
     }
-    
+
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("empleador") == null){ // Si no hay una sesion iniciada
+        if (this.sessionMap.get("empleador") == null) { // Si no hay una sesion iniciada
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
@@ -61,7 +61,7 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
@@ -72,7 +72,7 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         try {
             empleador = empleadorBusiness.inicioSesion(nombreUsuario, clave);
-            if (empleador == null || empleador.getCedula().equals("")){
+            if (empleador == null || empleador.getCedula().equals("")) {
                 this.addActionMessage("Usuario o contraseña incorrectas");
                 return ERROR;
             }
@@ -88,7 +88,7 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
         }
         return SUCCESS;
     }
-    
+
     @Override
     public void validate() {
         if (this.request.getParameter("nombreUsuario").trim().equals("")) {

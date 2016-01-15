@@ -89,5 +89,5 @@ public class InsertarSolicitudAction extends ActionSupport implements Preparable
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-    
+
 }

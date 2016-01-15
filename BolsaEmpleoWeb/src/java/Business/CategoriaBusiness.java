@@ -15,7 +15,6 @@ import java.util.LinkedList;
  *
  * @author Cesar
  */
-
 public class CategoriaBusiness {
 
     private CategoriaData categoriaData;
@@ -40,11 +39,11 @@ public class CategoriaBusiness {
         return categoriaData.getCategorias();
     }
 
-    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException{
+    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException {
         return categoriaData.getCategoriasFiltradas(nombre);
     }
-    
-    public Categoria buscarCategoria(int id) throws SQLException, DataException{
+
+    public Categoria buscarCategoria(int id) throws SQLException, DataException {
         return categoriaData.buscarCategoria(id);
     }
 }

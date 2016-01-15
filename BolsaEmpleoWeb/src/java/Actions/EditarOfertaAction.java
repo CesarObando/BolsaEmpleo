@@ -122,6 +122,4 @@ public class EditarOfertaAction extends ActionSupport implements Preparable, Mod
         this.existe = existe;
     }
 
-   
-
 }

@@ -100,7 +100,7 @@
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
-                        
+
                     </div>
                 </aside> 
             </div>            

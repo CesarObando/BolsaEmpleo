@@ -49,8 +49,21 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         this.categorias = categoriaBusiness.getCategorias();
         puesto = "";
         categoria = -1;
+        if (request.getParameter("categoria.id") != null) {
+            categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        }
+        if(request.getParameter("puesto")!=null){
+            puesto=request.getParameter("puesto");
+        }
         ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
-            
+
+        for (int i = 0; i < ofertas.size(); i++) {
+            Oferta oferta = ofertas.get(i);
+            int idEmpleador = oferta.getEmpleador().getId();
+            Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+            oferta.setEmpleador(empleador);
+            ofertas.set(i, oferta);
+        }
 
     }
 
@@ -58,27 +71,20 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         puesto = request.getParameter("puesto");
-        if(request.getParameter("categoria.id") != null){
+        categoria = -1;
+        if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
-        
-//        if (request.getParameter("categoria.id") == null) {
-//            categoria = -1;
-//        } else {
-//            categoria = Integer.parseInt(request.getParameter("categoria.id"));
-//        }
         try {
             ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
-            
-//            for (Oferta oferta : ofertas) {
-//                int i=0;
-//                int idEmpleador = oferta.getEmpleador().getId();
-//                Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
-//                oferta.setEmpleador(empleador);
-//                ofertas.remove(i);
-//                ofertas.add(oferta);
-//                i++;
-//            }
+
+            for (int i = 0; i < ofertas.size(); i++) {
+                Oferta oferta = ofertas.get(i);
+                int idEmpleador = oferta.getEmpleador().getId();
+                Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+                oferta.setEmpleador(empleador);
+                ofertas.set(i, oferta);
+            }
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasSolicitanteAction.class.getName()).log(Level.SEVERE, null, e);
         }

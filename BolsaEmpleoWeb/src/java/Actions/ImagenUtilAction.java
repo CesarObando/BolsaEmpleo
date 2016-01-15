@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Actions;
 
 import Business.SolicitanteBusiness;
@@ -18,7 +17,7 @@ import java.util.logging.Logger;
  * @author Andrés Durán Hewitt
  */
 public class ImagenUtilAction extends ActionSupport {
-    
+
     byte[] imagenBytes;
     String idImagen;
 
@@ -26,7 +25,7 @@ public class ImagenUtilAction extends ActionSupport {
     public String execute() throws Exception {
         return SUCCESS;
     }
-    
+
     public byte[] getImagenEnBytes() {
         try {
             return new SolicitanteBusiness().buscarSolicitante(Integer.parseInt(this.idImagen)).getFoto();
@@ -35,7 +34,7 @@ public class ImagenUtilAction extends ActionSupport {
         }
         return null;
     }
-    
+
     public String getCustomContentType() {
         return "image/jpeg";
     }
@@ -47,5 +46,5 @@ public class ImagenUtilAction extends ActionSupport {
     public void setIdImagen(String idImagen) {
         this.idImagen = idImagen;
     }
-    
+
 }

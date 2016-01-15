@@ -43,7 +43,7 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
 
     @Override
     public void prepare() throws Exception {
-       administradorEliminar = (Administrador) sessionMap.get("administrador");
+        administradorEliminar = (Administrador) sessionMap.get("administrador");
     }
 
     @Override

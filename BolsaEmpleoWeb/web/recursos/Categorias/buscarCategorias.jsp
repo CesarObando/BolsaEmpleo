@@ -89,7 +89,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form action="buscarCategoriasProcess" method="get">
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:submit method="buscar" value="Buscar"/>

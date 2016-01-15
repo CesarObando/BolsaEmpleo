@@ -30,17 +30,17 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author JonathanA
  */
-public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements Preparable, ServletRequestAware, SessionAware{
-    
+public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements Preparable, ServletRequestAware, SessionAware {
+
     private final String BUSCAR_SOLICITUDES = "buscarSolicitudesSolicitante";
     private Solicitante solicitante;
-    private LinkedList<Solicitud> solicitudes; 
+    private LinkedList<Solicitud> solicitudes;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
-    
+    private SessionMap<String, Object> sessionMap;
+
     public BuscarSolicitudesSolicitanteAction() {
     }
-    
+
     @Override
     public String execute() throws Exception {
         return ActionSupport.SUCCESS;
@@ -55,20 +55,20 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         solicitudes = solicitudBusiness.buscarSolicitudesFiltradas(idSolicitante, 0);
         for (Solicitud solicitud : solicitudes) {
-                int i=0;
-                int idOferta = solicitud.getOferta().getId();
-                Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
-                int idEmpleador = oferta.getEmpleador().getId();
-                Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
-                oferta.setEmpleador(empleador);
-                solicitud.setOferta(oferta);
-                solicitudes.remove(i);
-                solicitudes.add(solicitud);
-                i++;
-            }
+            int i = 0;
+            int idOferta = solicitud.getOferta().getId();
+            Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
+            int idEmpleador = oferta.getEmpleador().getId();
+            Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+            oferta.setEmpleador(empleador);
+            solicitud.setOferta(oferta);
+            solicitudes.remove(i);
+            solicitudes.add(solicitud);
+            i++;
+        }
     }
-    
-    public String buscar() throws DataException{
+
+    public String buscar() throws DataException {
         solicitante = (Solicitante) sessionMap.get("solicitante");
         int idSolicitante = solicitante.getId();
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
@@ -78,7 +78,7 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
             solicitudes = solicitudBusiness.buscarSolicitudesFiltradas(idSolicitante, 0);
 
             for (Solicitud solicitud : solicitudes) {
-                int i=0;
+                int i = 0;
                 int idOferta = solicitud.getOferta().getId();
                 Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
                 int idEmpleador = oferta.getEmpleador().getId();
@@ -89,7 +89,7 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
                 solicitudes.add(solicitud);
                 i++;
             }
-            
+
         } catch (SQLException e) {
             Logger.getLogger(BuscarSolicitudesSolicitanteAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -129,5 +129,5 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
     public void setSolicitudes(LinkedList<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
     }
-    
+
 }

@@ -98,11 +98,11 @@
                                 <th>Delete</th>
                                 </thead>
                                 <tbody>
-                                   <s:iterator value="categorias" var="categoriaActual">
+                                    <s:iterator value="categorias" var="categoriaActual">
                                         <tr>
                                             <td><s:property value="#categoriaActual.id"/></td>
                                             <td><s:property value="#categoriaActual.nombre"/></td>
-                                            
+
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit">
                                                     <s:url action="editarCategoria" var="url">
                                                         <s:param name="id" value="#categoriaActual.id"/>

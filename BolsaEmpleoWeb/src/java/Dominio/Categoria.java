@@ -10,6 +10,7 @@ package Dominio;
  * @author JonathanA
  */
 public class Categoria {
+
     private int id;
     private String nombre;
 
@@ -20,7 +21,7 @@ public class Categoria {
         this.nombre = nombre;
         this.id = id;
     }
-    
+
     public int getId() {
         return id;
     }
@@ -36,6 +37,5 @@ public class Categoria {
     public void setNombre(String nombre) {
         this.nombre = nombre;
     }
-    
-    
+
 }

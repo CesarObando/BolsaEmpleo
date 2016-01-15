@@ -42,8 +42,8 @@ public class AdministradorBusiness {
     public LinkedList<Administrador> buscarAdministradoresFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
         return administradorData.buscarAdministradoresFiltrados(cedula, nombre, apellidos);
     }
-    
-    public Administrador buscarAdministrador(int id) throws SQLException, DataException{
+
+    public Administrador buscarAdministrador(int id) throws SQLException, DataException {
         return administradorData.buscarAdministrador(id);
     }
 

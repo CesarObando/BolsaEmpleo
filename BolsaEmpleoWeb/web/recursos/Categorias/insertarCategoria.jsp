@@ -89,11 +89,11 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="post" action="insertarCategoriaProcess">
-                        
+
                             <s:textfield name="nombre" label="Nombre"/>
-            
+
                             <s:submit action="insertarCategoriaProcess" value="Insertar Categoria"/>
                         </s:form>
                     </div>

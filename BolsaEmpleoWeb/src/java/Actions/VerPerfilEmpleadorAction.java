@@ -30,7 +30,7 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
     }
 
     @Override
-    public String execute(){
+    public String execute() {
         return INPUT;
     }
 
@@ -72,7 +72,6 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
 //            return ERROR;
 //        }
 //    }
-
     public String getMensaje() {
         return mensaje;
     }
@@ -93,7 +92,7 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
     }
-    
+
     public Empleador getEmpleadorEditar() {
         return empleador;
     }

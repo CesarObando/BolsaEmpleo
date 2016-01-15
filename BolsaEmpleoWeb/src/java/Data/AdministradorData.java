@@ -132,7 +132,7 @@ public class AdministradorData extends BaseData {
         return administradores;
     }
 
-    public Administrador buscarAdministrador(int id) throws SQLException, DataException{
+    public Administrador buscarAdministrador(int id) throws SQLException, DataException {
         String sqlBuscarAdministrador = "{CALL buscar_administrador(?)}";
         Connection conexion = this.getConnection();
         Administrador administrador = new Administrador();
@@ -154,7 +154,7 @@ public class AdministradorData extends BaseData {
         conexion.close();
         return administrador;
     }
-    
+
     public Administrador iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
         String sqlIniciarSesion = "{CALL iniciar_sesion_administrador(?,?)}";
         Connection conexion = this.getConnection();

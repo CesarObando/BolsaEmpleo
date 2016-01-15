@@ -15,14 +15,14 @@ import java.util.LinkedList;
  *
  * @author JonathanA
  */
-public class MantenimientoSolicitudesAction extends ActionSupport implements Preparable{
-    
+public class MantenimientoSolicitudesAction extends ActionSupport implements Preparable {
+
     private LinkedList<Solicitud> solicitudes;
     private SolicitudBusiness solicitudBusiness;
-    
+
     public MantenimientoSolicitudesAction() {
     }
-    
+
     public String execute() throws Exception {
         return INPUT;
     }
@@ -40,5 +40,5 @@ public class MantenimientoSolicitudesAction extends ActionSupport implements Pre
     public void setSolicitudes(LinkedList<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
     }
-    
+
 }

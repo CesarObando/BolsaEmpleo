@@ -83,7 +83,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="get" action="editarSolicitanteProcess">
                             <s:label name="id" label="Id"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
@@ -102,8 +102,8 @@
                             <s:label name="correo" label="Email"/>
                             <s:label name="idiomas" label="Idiomas que domina"/>
                         </s:form>
-                            <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
-                            <a href="../usuarios/eliminarSolicitante.action" class="">Eliminar</a>
+                        <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
+                        <a href="../usuarios/eliminarSolicitante.action" class="">Eliminar</a>
                     </div>
                 </aside> 
             </div>            
