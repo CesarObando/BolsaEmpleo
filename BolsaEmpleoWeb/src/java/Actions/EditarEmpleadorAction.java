@@ -58,7 +58,18 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
 
     @Override
     public void validate() {
-
+        if (empleadorEditar.getNombre().length() == 0) {
+            addFieldError("nombre", "Debe ingresar su nombre.");
+        }
+        if (empleadorEditar.getApellidos().length() == 0) {
+            addFieldError("apellidos", "Debe ingresar sus apellidos.");
+        }
+        if (empleadorEditar.getUsername().length() == 0) {
+            addFieldError("username", "Debe ingresar un nombre de usuario.");
+        }
+        if (empleadorEditar.getPass().length() < 6) {
+            addFieldError("pass", "La contraseña debe ser mayor a 6 caracteres");
+        }
     }
 
     public String editar() {

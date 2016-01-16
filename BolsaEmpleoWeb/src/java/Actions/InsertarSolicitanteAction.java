@@ -62,20 +62,23 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     @Override
     public void validate() {
-        if (solicitanteAInsertar.getCedula().length() != 9 || solicitanteAInsertar.getCedula().equals(null)) {
-            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
+        if (solicitanteAInsertar.getCedula().length() != 9) {
+            addFieldError("cedula", "Debe ingresar un número de identificación válido. Ej: 000000000");
         }
-        if (solicitanteAInsertar.getNombre().length() == 0 || solicitanteAInsertar.getNombre().equals(null)) {
+        if (solicitanteAInsertar.getNombre().length() == 0) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if (solicitanteAInsertar.getApellidos().length() == 0 || solicitanteAInsertar.getApellidos().equals(null)) {
+        if (solicitanteAInsertar.getApellidos().length() == 0) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if (solicitanteAInsertar.getUsername().length() == 0 || solicitanteAInsertar.getUsername().equals(null)) {
+        if (solicitanteAInsertar.getUsername().length() == 0) {
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if (solicitanteAInsertar.getPassword().length() == 0 || solicitanteAInsertar.getPassword().equals(null)) {
-            addFieldError("password", "Debe ingresar una contraseña.");
+        if (solicitanteAInsertar.getPassword().length() < 6) {
+            addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
+        }
+        if(solicitanteAInsertar.getFoto() == null){
+            addFieldError("archivoImagen","Debe seleccionar una foto");
         }
     }
 

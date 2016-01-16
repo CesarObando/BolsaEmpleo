@@ -85,6 +85,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        
                         <s:if test="hasActionErrors()">
                             <s:actionerror />
                         </s:if>

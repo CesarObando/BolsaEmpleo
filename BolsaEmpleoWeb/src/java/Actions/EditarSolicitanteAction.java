@@ -78,14 +78,20 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
 
     @Override
     public void validate() {
-        if (solicitanteAEditar.getNombre().length() == 0 || solicitanteAEditar.getNombre().equals(null)) {
+        if (solicitanteAEditar.getNombre().length() == 0) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if (solicitanteAEditar.getApellidos().length() == 0 || solicitanteAEditar.getApellidos().equals(null)) {
+        if (solicitanteAEditar.getApellidos().length() == 0) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if (solicitanteAEditar.getPassword().length() == 0 || solicitanteAEditar.getPassword().equals(null)) {
-            addFieldError("password", "Debe ingresar una contraseña.");
+        if (solicitanteAEditar.getUsername().length() == 0) {
+            addFieldError("username", "Debe ingresar un nombre de usuario.");
+        }
+        if (solicitanteAEditar.getPassword().length() < 6) {
+            addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
+        }
+        if(solicitanteAEditar.getFoto() == null){
+            addFieldError("archivoImagen","Debe seleccionar una foto");
         }
     }
 

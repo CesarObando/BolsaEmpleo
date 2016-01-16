@@ -54,7 +54,7 @@ public class InsertarCategoriaAction extends ActionSupport implements Preparable
 
     @Override
     public void validate() {
-        if (categoriaAInsertar.getNombre().length() == 0 || categoriaAInsertar.getNombre().equals(null)) {
+        if (categoriaAInsertar.getNombre().length() == 0 ){
             addFieldError("nombre", "Debe ingresar un nombre.");
         }
     }

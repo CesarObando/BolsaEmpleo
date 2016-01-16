@@ -7,7 +7,6 @@ package Actions;
 
 import Business.EmpleadorBusiness;
 import Dominio.Empleador;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -46,20 +45,20 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
 
     @Override
     public void validate() {
-        if (empleadorInsertar.getCedula().length() != 9 || empleadorInsertar.getCedula().equals(null)) {
-            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
+        if (empleadorInsertar.getCedula().length() != 9) {
+            addFieldError("cedula", "Debe ingresar un número de identificación válido. Ej: 000000000");
         }
-        if (empleadorInsertar.getNombre().length() == 0 || empleadorInsertar.getNombre().equals(null)) {
+        if (empleadorInsertar.getNombre().length() == 0) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if (empleadorInsertar.getApellidos().length() == 0 || empleadorInsertar.getApellidos().equals(null)) {
+        if (empleadorInsertar.getApellidos().length() == 0) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if (empleadorInsertar.getUsername().length() == 0 || empleadorInsertar.getUsername().equals(null)) {
+        if (empleadorInsertar.getUsername().length() == 0) {
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if (empleadorInsertar.getPass().length() == 0 || empleadorInsertar.getPass().equals(null)) {
-            addFieldError("pass", "Debe ingresar una contraseña.");
+        if (empleadorInsertar.getPass().length() < 6) {
+            addFieldError("pass", "La contraseña debe ser mayor a 6 caracteres");
         }
     }
 

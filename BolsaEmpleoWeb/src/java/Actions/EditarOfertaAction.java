@@ -61,14 +61,14 @@ public class EditarOfertaAction extends ActionSupport implements Preparable, Mod
 
     @Override
     public void validate() {
-        if (ofertaAEditar.getPuesto().length() == 0 || ofertaAEditar.getPuesto().equals(null)) {
+        if (ofertaAEditar.getPuesto().length() == 0 ) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if (ofertaAEditar.getRequerimientos().length() == 0 || ofertaAEditar.getRequerimientos().equals(null)) {
+        if (ofertaAEditar.getRequerimientos().length() == 0 ) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
         if (ofertaAEditar.getCantidadVacantes() == 0) {
-            addFieldError("vacantes", "Debe seleccionar una catidad de vacantes");
+            addFieldError("cantidadVacantes", "Debe seleccionar una catidad de vacantes");
         }
 
     }

@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Información | Bolsa de Empleo</title>  
+        <title>Registrar Empleador | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -77,6 +77,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        
                         <s:if test="hasActionErrors()">
                             <s:actionerror />
                         </s:if>
@@ -84,7 +85,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post" action="registrarEmpleadorProcess">
+                        <s:form method="post" action="registrarEmpleadorProcess" enctype="multipart/form-data">
                             <s:textfield name="cedula" label="Cedula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
