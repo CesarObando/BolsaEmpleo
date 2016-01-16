@@ -10,6 +10,7 @@ package Dominio;
  * @author JonathanA
  */
 public class Solicitud {
+
     private int id;
     private Solicitante solicitante;
     private Oferta oferta;
@@ -24,7 +25,6 @@ public class Solicitud {
         this.solicitante = solicitante;
         this.oferta = oferta;
     }
-    
 
     public int getId() {
         return id;

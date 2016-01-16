@@ -38,10 +38,10 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     public void prepare() throws Exception {
         solicitante = new Solicitante();
     }
-    
+
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("solicitante") == null){ // Si no hay una sesion iniciada
+        if (this.sessionMap.get("solicitante") == null) { // Si no hay una sesion iniciada
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
@@ -58,7 +58,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
@@ -69,7 +69,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
             solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante == null || solicitante.getCedula().equals("")){
+            if (solicitante == null || solicitante.getCedula().equals("")) {
                 this.addActionMessage("Usuario o contraseña incorrectas");
                 return ERROR;
             }
@@ -85,7 +85,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         }
         return SUCCESS;
     }
-    
+
     @Override
     public void validate() {
         if (this.request.getParameter("nombreUsuario").trim().equals("")) {

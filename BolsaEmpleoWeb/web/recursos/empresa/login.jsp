@@ -74,21 +74,21 @@
                     </section>
                 </aside>
                 <c:if test="${sessionScope.empleador == null}" >
-                <aside class="grid-3 region" id="region-sidebar-second">
-                    <div class="grid-9 region-content" id="region-content">
-                        <h3>Iniciar Sesión</h3>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
-                        <s:else>
-                            <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador">
-                                <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                                <s:password name="clave" placeholder="Contraseña"/>
-                                <s:submit action="iniciarSesionempleador" value="Iniciar Sesion" class="button-submit"/>
-                            </s:form>
-                        </s:else>
-                    </div>
-                </aside>
+                    <aside class="grid-3 region" id="region-sidebar-second">
+                        <div class="grid-9 region-content" id="region-content">
+                            <h3>Iniciar Sesión</h3>
+                            <s:if test="hasActionMessages()">
+                                <s:actionmessage />
+                            </s:if>
+                            <s:else>
+                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador">
+                                    <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
+                                    <s:password name="clave" placeholder="Contraseña"/>
+                                    <s:submit action="iniciarSesionempleador" value="Iniciar Sesion" class="button-submit"/>
+                                </s:form>
+                            </s:else>
+                        </div>
+                    </aside>
                 </c:if>
             </div>            
         </section> 

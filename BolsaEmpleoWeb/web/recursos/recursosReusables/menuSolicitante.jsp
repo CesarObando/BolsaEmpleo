@@ -18,11 +18,11 @@
                     </c:if>
                     <li>
                         <s:a action="buscarOfertasSolicitante" >Buscar Ofertas</s:a>
-                    </li>
-                    <li>
-                        <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
-                    </li>
-                    <li>
+                        </li>
+                        <li>
+                            <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
+                        </li>
+                        <li>
                         <s:a action="buscarSolicitudesSolicitante" >Administrar Solicitudes</s:a>
                     </li>
                 </ul>

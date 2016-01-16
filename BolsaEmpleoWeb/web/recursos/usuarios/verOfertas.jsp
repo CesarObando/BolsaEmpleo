@@ -106,17 +106,21 @@
                             <s:else>
                                 <thead>
                                 <td>Puesto</td>
+                                <td>Empleador</td>
+                                <td>Empresa</td>
                                 <th>Ver</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="ofertas" var="ofertaActual">
                                         <tr>
                                             <td><s:property value="#ofertaActual.puesto"/></td>
+                                            <td><s:property value="#ofertaActual.empleador.nombre"/></td>
+                                            <td><s:property value="#ofertaActual.empleador.nombreEmpresa"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                     <s:url action="verOfertaSolicitante" var="url">
                                                         <s:param name="id" value="#ofertaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete"><span class="fa fa-trash" ></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>

@@ -84,7 +84,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="get" action="editarEmpleadorProcess">
                             <s:textfield name="id" label="Id" readonly="True"/>
                             <s:textfield name="cedula" label="Cedula" readonly="true"/>

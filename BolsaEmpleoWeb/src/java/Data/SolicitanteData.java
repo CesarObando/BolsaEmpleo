@@ -85,7 +85,7 @@ public class SolicitanteData extends BaseData {
         conexion.close();
         return solicitanteAEditar;
     }
-    
+
     public void eliminarSolicitante(int id) throws SQLException, DataException {
         Connection conexion = super.getConnection();
         String sqlEliminar = "{CALL eliminar_solicitante (?)}";
@@ -99,7 +99,7 @@ public class SolicitanteData extends BaseData {
         }
         conexion.close();
     }
-    
+
     public LinkedList<Solicitante> buscarSolicitantes() throws SQLException, DataException {
         LinkedList<Solicitante> solicitantes = new LinkedList<Solicitante>();
         Connection conexion = super.getConnection();
@@ -134,7 +134,7 @@ public class SolicitanteData extends BaseData {
         conexion.close();
         return solicitantes;
     }
-    
+
     public LinkedList<Solicitante> buscarSolicitantesFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
         LinkedList<Solicitante> solicitantes = new LinkedList<Solicitante>();
         Connection conexion = super.getConnection();
@@ -172,7 +172,7 @@ public class SolicitanteData extends BaseData {
         conexion.close();
         return solicitantes;
     }
-    
+
     public Solicitante buscarSolicitante(int id) throws SQLException, DataException {
         Connection conexion = super.getConnection();
         String sqlBuscar = "{CALL buscar_solicitante (?)}";
@@ -242,5 +242,4 @@ public class SolicitanteData extends BaseData {
         return solicitante;
     }
 
-    
 }

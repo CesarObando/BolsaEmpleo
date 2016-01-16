@@ -21,72 +21,70 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Tin
  */
-public class InsertarEmpleadoresAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware{
-    
+public class InsertarEmpleadoresAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+
     private Empleador empleadorInsertar;
     private String mensaje;
     private HttpServletRequest request;
 
-    
-
     public InsertarEmpleadoresAction() {
     }
-     public String execute() throws Exception {
+
+    public String execute() throws Exception {
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-      empleadorInsertar=new Empleador();
+        empleadorInsertar = new Empleador();
     }
 
-   @Override
+    @Override
     public Empleador getModel() {
         return this.empleadorInsertar;
     }
-     @Override
-    public void validate(){
-        if(empleadorInsertar.getCedula().length()!=9 || empleadorInsertar.getCedula().equals(null)){
+
+    @Override
+    public void validate() {
+        if (empleadorInsertar.getCedula().length() != 9 || empleadorInsertar.getCedula().equals(null)) {
             addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
         }
-        if(empleadorInsertar.getNombre().length()==0 || empleadorInsertar.getNombre().equals(null)){
+        if (empleadorInsertar.getNombre().length() == 0 || empleadorInsertar.getNombre().equals(null)) {
             addFieldError("nombre", "Debe ingresar su nombre.");
         }
-        if(empleadorInsertar.getApellidos().length()==0 || empleadorInsertar.getApellidos().equals(null)){
+        if (empleadorInsertar.getApellidos().length() == 0 || empleadorInsertar.getApellidos().equals(null)) {
             addFieldError("apellidos", "Debe ingresar sus apellidos.");
         }
-        if(empleadorInsertar.getUsername().length()==0 || empleadorInsertar.getUsername().equals(null)){
+        if (empleadorInsertar.getUsername().length() == 0 || empleadorInsertar.getUsername().equals(null)) {
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
-        if(empleadorInsertar.getPass().length()==0 || empleadorInsertar.getPass().equals(null)){
+        if (empleadorInsertar.getPass().length() == 0 || empleadorInsertar.getPass().equals(null)) {
             addFieldError("pass", "Debe ingresar una contraseña.");
-        } 
+        }
     }
-    
-      public String insertar() {
-          EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+
+    public String insertar() {
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         boolean insertado = true;
         try {
             empleadorBusiness.insertarEmpleador(empleadorInsertar);
         } catch (SQLException e) {
-            insertado=false;
-            mensaje="Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
         }
-        if(insertado==true){
+        if (insertado == true) {
             this.mensaje = "El empleador fue insertado correctamente";
             return SUCCESS;
-        }else{
+        } else {
             return ERROR;
         }
     }
-
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
-    
+
     public Empleador getEmpleadorInsertar() {
         return empleadorInsertar;
     }
@@ -103,6 +101,4 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
         this.mensaje = mensaje;
     }
 
-   
-    
 }

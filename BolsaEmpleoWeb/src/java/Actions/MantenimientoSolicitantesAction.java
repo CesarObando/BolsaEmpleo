@@ -15,8 +15,8 @@ import java.util.LinkedList;
  *
  * @author Cesar
  */
-public class MantenimientoSolicitantesAction  extends ActionSupport implements Preparable{
-    
+public class MantenimientoSolicitantesAction extends ActionSupport implements Preparable {
+
     private LinkedList<Solicitante> solicitantes;
 
     public MantenimientoSolicitantesAction() {
@@ -26,7 +26,7 @@ public class MantenimientoSolicitantesAction  extends ActionSupport implements P
     public String execute() throws Exception {
         return INPUT;
     }
-    
+
     @Override
     public void prepare() throws Exception {
         solicitantes = new SolicitanteBusiness().buscarSolicitantes();
@@ -39,5 +39,5 @@ public class MantenimientoSolicitantesAction  extends ActionSupport implements P
     public void setSolicitantes(LinkedList<Solicitante> solicitantes) {
         this.solicitantes = solicitantes;
     }
-    
+
 }

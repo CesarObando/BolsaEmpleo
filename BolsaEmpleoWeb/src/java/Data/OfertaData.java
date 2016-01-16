@@ -191,12 +191,12 @@ public class OfertaData extends BaseData {
                 oferta.setPuesto(result.getString("puesto"));
                 oferta.setRequerimientos(result.getString("requerimentos"));
                 oferta.setDescripcion(result.getString("descripcion"));
-                
+
                 int idEmpleador = oferta.getEmpleador().getId();
                 Empleador empleador = new Empleador();
                 empleador = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
                 oferta.setEmpleador(empleador);
-                
+
                 int idCategoria = oferta.getCategoria().getId();
                 Categoria categoria = new Categoria();
                 categoria = new CategoriaBusiness().buscarCategoria(idCategoria);

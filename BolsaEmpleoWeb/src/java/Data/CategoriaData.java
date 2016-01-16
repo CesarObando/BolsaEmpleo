@@ -91,7 +91,7 @@ public class CategoriaData extends BaseData {
         return categorias;
     }
 
-    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException{
+    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException {
         LinkedList<Categoria> categorias = new LinkedList<>();
         Connection conexion = super.getConnection();
         String sqlSelect = "{CALL buscar_categorias_filtradas (?)}";
@@ -111,8 +111,8 @@ public class CategoriaData extends BaseData {
         conexion.close();
         return categorias;
     }
-    
-    public Categoria buscarCategoria(int id) throws SQLException, DataException{
+
+    public Categoria buscarCategoria(int id) throws SQLException, DataException {
         String sqlBuscarCategoria = "{CALL buscar_categoria(?)}";
         Connection conexion = this.getConnection();
         Categoria categoria = new Categoria();

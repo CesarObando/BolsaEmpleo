@@ -18,20 +18,22 @@ import java.util.LinkedList;
  * @author Tin
  */
 public class MantenimientoOfertaAction extends ActionSupport implements Preparable {
-       private LinkedList<Oferta> ofertas;
-       private OfertaBusiness  ofertaBusiness;
+
+    private LinkedList<Oferta> ofertas;
+    private OfertaBusiness ofertaBusiness;
 
     public MantenimientoOfertaAction() {
     }
-      @Override
+
+    @Override
     public String execute() throws Exception {
         return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        ofertaBusiness=new OfertaBusiness();
-        ofertas=ofertaBusiness.getOfertas();
+        ofertaBusiness = new OfertaBusiness();
+        ofertas = ofertaBusiness.getOfertas();
     }
 
     public LinkedList<Oferta> getOfertas() {
@@ -41,6 +43,5 @@ public class MantenimientoOfertaAction extends ActionSupport implements Preparab
     public void setOfertas(LinkedList<Oferta> ofertas) {
         this.ofertas = ofertas;
     }
-    
 
 }

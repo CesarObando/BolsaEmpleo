@@ -15,14 +15,14 @@ import java.util.LinkedList;
  *
  * @author Cesar
  */
-public class MantenimientoCategoriasAction extends ActionSupport implements Preparable{
-    
+public class MantenimientoCategoriasAction extends ActionSupport implements Preparable {
+
     private LinkedList<Categoria> categorias;
     private CategoriaBusiness categoriaBusiness;
 
     public MantenimientoCategoriasAction() {
     }
-    
+
     @Override
     public String execute() throws Exception {
         return INPUT;
@@ -41,5 +41,5 @@ public class MantenimientoCategoriasAction extends ActionSupport implements Prep
     public void setCategorias(LinkedList<Categoria> categorias) {
         this.categorias = categorias;
     }
-    
+
 }

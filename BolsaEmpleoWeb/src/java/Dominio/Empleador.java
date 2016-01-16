@@ -14,11 +14,11 @@ public class Empleador {
     private String username;
     private String pass;
     private String direccion;
- 
+
     public Empleador() {
     }
 
-    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion,String pass,String username) {
+    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion, String pass, String username) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -29,8 +29,8 @@ public class Empleador {
         this.cedulaJuridica = cedulaJuridica;
         this.nombreEmpresa = nombreEmpresa;
         this.direccion = direccion;
-        this.pass=pass;
-        this.username=username;
+        this.pass = pass;
+        this.username = username;
     }
 
     public int getId() {
@@ -113,14 +113,14 @@ public class Empleador {
         this.direccion = direccion;
     }
 
-        public String getPass() {
+    public String getPass() {
         return pass;
     }
 
     public void setPass(String pass) {
         this.pass = pass;
     }
-    
+
     public String getUsername() {
         return username;
     }
@@ -128,7 +128,5 @@ public class Empleador {
     public void setUsername(String username) {
         this.username = username;
     }
-    
-    
 
 }

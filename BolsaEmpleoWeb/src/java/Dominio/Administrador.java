@@ -10,7 +10,7 @@ package Dominio;
  * @author Cesar
  */
 public class Administrador {
-    
+
     private int id;
     private String cedula;
     private String nombre;
@@ -21,7 +21,7 @@ public class Administrador {
     public Administrador() {
     }
 
-    public Administrador(int id,String cedula, String nombre, String apellidos, String username, String password) {
+    public Administrador(int id, String cedula, String nombre, String apellidos, String username, String password) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -37,7 +37,7 @@ public class Administrador {
     public void setId(int id) {
         this.id = id;
     }
-    
+
     public String getCedula() {
         return cedula;
     }
@@ -77,5 +77,5 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
-    
+
 }

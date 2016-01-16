@@ -27,10 +27,10 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author JonathanA
  */
-public class BuscarOfertasAction extends ActionSupport implements Preparable, ServletRequestAware, ModelDriven<Empleador>, SessionAware{
-    
+public class BuscarOfertasAction extends ActionSupport implements Preparable, ServletRequestAware, ModelDriven<Empleador>, SessionAware {
+
     private final String BUSCAR_OFERTAS = "buscarOfertas";
-    private LinkedList<Oferta> ofertas; 
+    private LinkedList<Oferta> ofertas;
     private HttpServletRequest request;
     private String puesto;
     private int categoria;
@@ -38,10 +38,10 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     private LinkedList categorias;
     private Empleador empleador;
     public SessionMap<String, Object> sessionMap;
-    
+
     public BuscarOfertasAction() {
     }
-    
+
     @Override
     public String execute() throws Exception {
         return ActionSupport.SUCCESS;
@@ -55,14 +55,14 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
         this.categorias = categoriaBusiness.getCategorias();
     }
-    
-    public String buscar() throws DataException{
+
+    public String buscar() throws DataException {
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         puesto = request.getParameter("puesto");
         categoria = Integer.parseInt(request.getParameter("categoria.id"));
         idEmpleador = empleador.getId();
         try {
-            ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto,idEmpleador);
+            ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto, idEmpleador);
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -147,5 +147,5 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     public void setIdEmpleador(int idEmpleador) {
         this.idEmpleador = idEmpleador;
     }
-    
+
 }

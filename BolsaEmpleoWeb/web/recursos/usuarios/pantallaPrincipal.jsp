@@ -17,7 +17,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
         <title>Inicio | Bolsa de Empleo</title>  
-        
+
         <s:head />
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
@@ -59,7 +59,7 @@
                     </div>
                 </div>
                 <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
-                
+
             </div>
         </header>
         <section>
@@ -92,7 +92,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form action="buscarOfertasSolicitanteProcess" method="post">
                             <s:textfield name="puesto" label="Puesto"/>
                             <s:submit method="buscar" value="Buscar"/>

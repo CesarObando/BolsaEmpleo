@@ -84,7 +84,7 @@
                     <div class="grid-9 region-content" id="region-content">
                         <table id="mytable" class="table table-bordred table-striped">
 
-                            
+
                             <s:if test="%{solicitudes.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>

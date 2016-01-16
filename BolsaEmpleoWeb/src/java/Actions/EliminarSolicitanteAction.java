@@ -22,8 +22,8 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class EliminarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware{
-    
+public class EliminarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
+
     private Solicitante solicitanteAEliminar;
     private String mensaje;
     private boolean existe;
@@ -32,8 +32,8 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
 
     public EliminarSolicitanteAction() {
     }
-    
-     @Override
+
+    @Override
     public String execute() throws Exception {
         if (existe) {
             return INPUT;
@@ -41,7 +41,7 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
             return ERROR;
         }
     }
-    
+
     @Override
     public void prepare() throws Exception {
         solicitanteAEliminar = new Solicitante();
@@ -57,13 +57,13 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-    
+
     @Override
-    public void validate(){
-        
+    public void validate() {
+
     }
-    
-    public String eliminar() throws DataException{
+
+    public String eliminar() throws DataException {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
             solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
@@ -110,5 +110,5 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
     }
-    
+
 }

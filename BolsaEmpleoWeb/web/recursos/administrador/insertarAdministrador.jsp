@@ -89,7 +89,7 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form method="post" action="insertarAdministradorProcess">
                             <s:textfield name="cedula" label="Cedula"/>
                             <s:textfield name="nombre" label="Nombre"/>

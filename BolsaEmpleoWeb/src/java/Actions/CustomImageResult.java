@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Actions;
 
 import com.opensymphony.xwork2.ActionInvocation;
@@ -26,5 +25,5 @@ public class CustomImageResult implements Result {
         response.getOutputStream().flush();
         response.getOutputStream().close();
     }
-    
+
 }

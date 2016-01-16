@@ -37,7 +37,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware{
+public class EditarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
 
     private Solicitante solicitanteAEditar;
     private String mensaje;

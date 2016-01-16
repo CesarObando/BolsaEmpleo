@@ -44,18 +44,18 @@
                             <div class="logo-img">                   
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->
                                 <!--<a href="http://www.ucr.ac.cr"><img class="img-responsive" src="//placehold.it/130x55&text=Logo" class="img-responsive" alt="Imagen responsive"></a>-->  
-                                    <c:if test="${sessionScope.solicitante != null}" > 
-                                        <a href="../recursos/pantallaPrincipal.jsp">
-                                            <h12 class="site-name">Cerrar sesión</h12>
-                                            <h5 class="site-name">Bolsa de Empleo</h5>  
-                                        </a>
-                                    </c:if>
-                                    <c:if test="${sessionScope.solicitante == null}" > 
-                                        <a href="../recursos/usuarios/login.jsp">
-                                            <h12 class="site-name">Iniciar sesión</h12>
-                                            <h5 class="site-name">Bolsa de Empleo</h5>  
-                                        </a>
-                                    </c:if>
+                                <c:if test="${sessionScope.solicitante != null}" > 
+                                    <a href="../recursos/pantallaPrincipal.jsp">
+                                        <h12 class="site-name">Cerrar sesión</h12>
+                                        <h5 class="site-name">Bolsa de Empleo</h5>  
+                                    </a>
+                                </c:if>
+                                <c:if test="${sessionScope.solicitante == null}" > 
+                                    <a href="../recursos/usuarios/login.jsp">
+                                        <h12 class="site-name">Iniciar sesión</h12>
+                                        <h5 class="site-name">Bolsa de Empleo</h5>  
+                                    </a>
+                                </c:if>
                             </div>
                         </div>
                     </div>
@@ -93,13 +93,13 @@
                         <s:if test="hasActionMessages()">
                             <s:actionmessage />
                         </s:if>
-                        
+
                         <s:form action="buscarOfertasSolicitanteProcess" method="post">
                             <s:textfield name="puesto" label="Puesto"/>
                             <s:textfield name="categoria.id" value="-1"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
-                        
+
                     </div>
                 </aside> 
             </div>            

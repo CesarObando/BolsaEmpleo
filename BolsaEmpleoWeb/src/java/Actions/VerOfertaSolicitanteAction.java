@@ -31,7 +31,7 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public VerOfertaSolicitanteAction() {
     }
@@ -55,14 +55,14 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
             existe = false;
         }
     }
-    
-    public String solicitar(){
+
+    public String solicitar() {
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
         Solicitud solicitud = new Solicitud();
         Solicitante solicitante = new Solicitante();
         boolean insertado = true;
         try {
-            solicitante = (Solicitante)sessionMap.get("solicitante");
+            solicitante = (Solicitante) sessionMap.get("solicitante");
             solicitud.setSolicitante(solicitante);
             solicitud.setOferta(ofertaAVer);
             solicitudBusiness.insertarSolicitud(solicitud);

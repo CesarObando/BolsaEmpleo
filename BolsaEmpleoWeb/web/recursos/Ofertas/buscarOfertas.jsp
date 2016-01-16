@@ -94,7 +94,7 @@
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
-                        
+
                     </div>
                 </aside> 
             </div>            

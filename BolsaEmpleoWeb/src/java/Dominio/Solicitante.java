@@ -10,13 +10,14 @@ package Dominio;
  * @author Cesar
  */
 public class Solicitante {
+
     private int id;
     private String cedula;
     private String nombre;
     private String apellidos;
     private String username;
     private String password;
-    private byte [] foto; 
+    private byte[] foto;
     private int edad;
     private String sexo;
     private String escolaridad;
@@ -31,7 +32,7 @@ public class Solicitante {
     public Solicitante() {
     }
 
-    public Solicitante(int id,String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idiomas) {
+    public Solicitante(int id, String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idiomas) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -186,6 +187,7 @@ public class Solicitante {
     public void setFoto(byte[] foto) {
         this.foto = foto;
     }
+
     public String getFotoString() {
         return new String(this.foto);
     }

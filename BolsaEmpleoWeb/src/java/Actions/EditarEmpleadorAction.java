@@ -36,7 +36,7 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     }
 
     @Override
-    public String execute(){
+    public String execute() {
         return INPUT;
     }
 
@@ -99,7 +99,7 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
     }
-    
+
     public Empleador getEmpleadorEditar() {
         return empleadorEditar;
     }
