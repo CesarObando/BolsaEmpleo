@@ -56,7 +56,17 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                <c:if test="${sessionScope.administrador != null}">
+                    <li>
+                        <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>      
+                    </li>
+                </c:if>
+                <c:if test="${sessionScope.solicitante != null}">
+                    <li>
+                        <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>               
+                    </li>
+                </c:if>
+
             </div>
         </header>
         <section>
@@ -90,12 +100,24 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="eliminarSolicitanteProcess" method="post">
+                        <c:if test="${sessionScope.administrador != null}">
+                            <s:form action="eliminarSolicitanteAdministradorProcess" method="post">
+                            <s:textfield name="id" label="Id del Solicitante" readonly="true"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess"/>
+                        </s:form>
+                        </c:if>
+                        <c:if test="${sessionScope.solicitante != null}">
+                            <s:form action="eliminarSolicitanteProcess" method="post">
                             <s:textfield name="id" label="Id del Solicitante" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <s:submit value="Eliminar" action="eliminarSolicitanteProcess"/>
                         </s:form>
+                        </c:if>
+
+                        
                     </div>
                 </aside> 
             </div>            

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : buscarCategorias
-    Created on : 04-ene-2016, 15:29:39
-    Author     : Tin
+    Document   : insertar_usuario
+    Created on : Sep 23, 2015, 10:13:30 AM
+    Author     : JonathanA
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Categorías | Bolsa de Empleo</title>  
+        <title>Mantener empleadores | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -83,17 +83,44 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
 
-                        <s:form action="buscarCategoriasProcess" method="get">
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            <s:if test="%{administradores.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Cédula</td>
+                                <td>Nombre</td>
+                                <td>Apellidos</td>
+                                <td>Nombre de empresa</td>
+                                <th>Delete</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="empleadores" var="empleadorActual">
+                                        <tr>
+                                            <td><s:property value="#empleadorActual.cedula"/></td>
+                                            <td><s:property value="#empleadorActual.nombre"/></td>
+                                            <td><s:property value="#empleadorActual.apellidos"/></td>
+                                            <td><s:property value="#empleadorActual.nombreEmpresa"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <s:url action="eliminarEmpleador" var="url">
+                                                        <s:param name="id" value="#empleadorActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>     
+
+
                     </div>
                 </aside> 
             </div>            

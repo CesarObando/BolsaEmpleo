@@ -55,7 +55,13 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                <c:if test="${sessionScope.solicitante != null}">
+                    <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                </c:if>
+                <c:if test="${sessionScope.administrador != null}">
+                    <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
+                </c:if>
+
             </div>
         </header>
         <section>
@@ -89,11 +95,22 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasSolicitanteProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                        <c:if test="${sessionScope.solicitante != null}">
+                            <s:form action="buscarOfertasSolicitanteProcess">
+                                <s:textfield name="puesto" label="Puesto"/>
+                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:submit method="buscar" value="Buscar" action="buscarOfertasSolicitanteProcess"/>
+                            </s:form>
+                        </c:if>
+                        <c:if test="${sessionScope.administrador != null}">
+                            <s:form action="buscarOfertasAdministradorProcess">
+                                <s:textfield name="puesto" label="Puesto"/>
+                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:submit action="buscarOfertasAdministradorProcess" method="buscar" value="Buscar"/>
+                            </s:form>
+                        </c:if>
+
+
 
                     </div>
                 </aside> 

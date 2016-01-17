@@ -55,7 +55,12 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <c:if test="${sessionScope.empleador != null}">
+                    <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                </c:if>
+                <c:if test="${sessionScope.administrador != null}">
+                    <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
+                </c:if>
             </div>
         </header>
         <section>
@@ -82,7 +87,9 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <table id="mytable" class="table table-bordred table-striped">
+
+                        <c:if test="${sessionScope.empleador != null}">
+                            <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{ofertas.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
@@ -128,6 +135,40 @@
                             </div       
                             </tbody>
                         </table>
+                        </c:if>
+                        <c:if test="${sessionScope.administrador != null}">
+                            <table id="mytable" class="table table-bordred table-striped">
+
+                            <s:if test="%{ofertas.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Puesto</td>
+                                <th>Delete</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="ofertas" var="ofertaActual">
+                                        <tr>
+                                            <td><s:property value="#ofertaActual.puesto"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <s:url action="eliminarOfertaAdministrador" var="url">
+                                                        <s:param name="id" value="#ofertaActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
+                        </c:if>
+
+                        
                     </div>
                 </aside> 
             </div>            

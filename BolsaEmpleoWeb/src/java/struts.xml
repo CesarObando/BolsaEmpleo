@@ -129,6 +129,65 @@
             <result type="dispatcher" name="error">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
             <result name="success" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
         </action>
+        
+        <action name="iniciarSesionAdministradorInit" class="Actions.IniciarSesionAdministradorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/administrador/login.jsp</result>
+        </action>
+        
+        <action name="iniciarSesionAdministrador" method="iniciarSesionAdministrador" class="Actions.IniciarSesionAdministradorAction">
+            <result name="input" type="dispatcher">/recursos/administrador/login.jsp</result>
+            <result name="error" type="dispatcher">/recursos/administrador/login.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministrador">
+            <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministradorProcess" method="buscar">
+            <result name="buscarOfertasAdministrador" type="dispatcher">/recursos/Ofertas/mantenerOfertas.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministrador">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalAdministrador.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarEmpleadoresAction" name="buscarEmpleadores">
+            <result name="input" type="dispatcher">/recursos/administrador/buscarEmpleadores.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarEmpleadoresAction" name="buscarEmpleadoresProcess" method="buscar">
+            <result name="buscarEmpleadores" type="dispatcher">/recursos/administrador/mantenerEmpleadores.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorAdministrador">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalAdministrador.jsp</result>
+        </action>
     </package>
-    
 </struts>

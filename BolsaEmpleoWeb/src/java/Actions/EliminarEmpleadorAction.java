@@ -6,6 +6,7 @@
 package Actions;
 
 import Business.EmpleadorBusiness;
+import Business.SolicitanteBusiness;
 import Dominio.Empleador;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -47,6 +48,15 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
         existe = true;
         empleadorAEliminar = new Empleador();
         empleadorAEliminar = (Empleador) sessionMap.get("empleador");
+        existe = true;
+        if (request.getParameter("id") != null) {
+            int idEmpleador = Integer.parseInt(request.getParameter("id"));
+            try {
+                empleadorAEliminar = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
+            } catch (SQLException e) {
+                existe = false;
+            }
+        }
     }
 
     @Override

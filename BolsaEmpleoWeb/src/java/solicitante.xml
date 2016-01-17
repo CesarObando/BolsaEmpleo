@@ -87,6 +87,17 @@
             <result type="dispatcher" name="error">/recursos/usuarios/perfilSolicitante.jsp</result>
             <result name="success" type="redirect">/recursos/perfilSolicitante.jsp</result>
         </action>
+        
+        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteAdministrador">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result type="dispatcher" name="error">/recursos/usuarios/eliminarSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
+        </action>
     </package>
     
     

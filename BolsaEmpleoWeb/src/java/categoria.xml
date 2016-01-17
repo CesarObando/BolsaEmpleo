@@ -17,7 +17,7 @@
         <action name="insertarCategoriaProcess" method="insertar" class="Actions.InsertarCategoriaAction">
             <result name="input" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
             <result name="error" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarCategoriasAction" name="buscarCategoria">
@@ -38,7 +38,7 @@
         <action class="Actions.EditarCategoriaAction" name="editarCategoriaProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/Categorias/editarCategoria.jsp</result>
             <result type="dispatcher" name="error">/recursos/Categorias/editarCategoria.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarCategoriaAction" name="eliminarCategoria">
@@ -48,7 +48,7 @@
         <action class="Actions.EliminarCategoriaAction" name="eliminarCategoriaProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/Categorias/eliminarCategoria.jsp</result>
             <result type="dispatcher" name="error">/recursos/Categorias/eliminarCategoria.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
     </package>

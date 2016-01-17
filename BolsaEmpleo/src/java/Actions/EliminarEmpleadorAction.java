@@ -6,9 +6,7 @@
 package Actions;
 
 import Business.EmpleadorBusiness;
-import Business.SolicitanteBusiness;
 import Dominio.Empleador;
-import Dominio.Solicitante;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -16,18 +14,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware, SessionAware {
 
     private Empleador empleadorAEliminar;
     private String mensaje;
+    private boolean existe;
     private HttpServletRequest request;
+    public SessionMap<String, Object> sessionMap;
 
     public EliminarEmpleadorAction() {
     }
@@ -40,7 +43,12 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     @Override
     public void prepare() throws Exception {
         empleadorAEliminar = new Empleador();
-        mensaje = "";
+        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
+        existe = true;
+        if (request.getParameter("id") != null) {
+            int idSolicitante = Integer.parseInt(request.getParameter("id"));
+            empleadorAEliminar.setId(idSolicitante);
+        }
     }
 
     @Override
@@ -60,10 +68,17 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     public String eliminar() throws DataException {
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        boolean eliminado = true;
         try {
             empleadorBusiness.eliminarEmpleador(empleadorAEliminar.getId());
-            return SUCCESS;
         } catch (SQLException e) {
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La categoría fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
             return ERROR;
         }
     }
@@ -90,6 +105,11 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

@@ -1,7 +1,7 @@
 <%-- 
-    Document   : buscarCategorias
-    Created on : 04-ene-2016, 15:29:39
-    Author     : Tin
+    Document   : buscarAdministradores
+    Created on : Dec 15, 2015, 8:03:39 PM
+    Author     : JonathanA
 --%>
 
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Categorías | Bolsa de Empleo</title>  
+        <title>Buscar empleadores | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -90,8 +90,10 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarCategoriasProcess" method="get">
+                        <s:form action="buscarEmpleadoresProcess" method="post">
+                            <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="apellidos" label="Apellidos"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
                     </div>
@@ -160,3 +162,4 @@
 
     </body>
 </html>
+

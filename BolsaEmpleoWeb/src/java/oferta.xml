@@ -61,11 +61,19 @@
         
         <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitante">
             <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
         </action>
         
         <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitanteProcess" method="buscar">
-            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
+            <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/usuarios/verOfertas.jsp</result>
+        </action>
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministrador">
+            <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
         </action>
         
+        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministradorProcess" method="buscar">
+            <result name="buscarOfertasAdministrador" type="dispatcher">/recursos/Ofertas/mantenerOfertas.jsp</result>
+        </action>
     </package>
 </struts>

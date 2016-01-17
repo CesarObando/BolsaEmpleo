@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
             </div>
         </header>
         <section>
@@ -92,28 +92,18 @@
 
                             <s:else>
                                 <thead>
-                                <td>Id del solicitante</td>
                                 <td>Cédula</td>
                                 <td>Nombre</td>
                                 <td>Apellidos</td>
-                                <th>Edit</th>
                                 <th>Delete</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="solicitantes" var="solicitanteActual">
                                         <tr>
-                                            <td><s:textfield name="id"/></td>
                                             <td><s:property value="#solicitanteActual.cedula"/></td>
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                    <s:url action="editarSolicitante" var="url">
-                                                        <s:param name="id" value="#solicitanteActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
-
-                                                </p>
-                                            </td>
+                                            
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                                     <s:url action="eliminarSolicitante" var="url">
                                                         <s:param name="id" value="#solicitanteActual.id"/>

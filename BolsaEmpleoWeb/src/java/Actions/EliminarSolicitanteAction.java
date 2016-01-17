@@ -46,6 +46,16 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     public void prepare() throws Exception {
         solicitanteAEliminar = new Solicitante();
         solicitanteAEliminar = (Solicitante) sessionMap.get("solicitante");
+        existe = true;
+        if (request.getParameter("id") != null) {
+            int idSolicitante = Integer.parseInt(request.getParameter("id"));
+            try {
+                solicitanteAEliminar = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
+            } catch (SQLException e) {
+                existe = false;
+            }
+        }
+
     }
 
     @Override
@@ -65,11 +75,18 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
 
     public String eliminar() throws DataException {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        boolean eliminado = true;
         try {
             solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
-            sessionMap.put("solicitante", this.solicitanteAEliminar);
             return SUCCESS;
         } catch (SQLException e) {
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La categoría fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
             return ERROR;
         }
     }
