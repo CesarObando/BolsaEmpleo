@@ -224,5 +224,18 @@
             <result type="dispatcher" name="error">/recursos/administrador/eliminarAdministrador.jsp</result>
             <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
+        
+        <action name="insertarAdministrador" class="Actions.InsertarAdministradorAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
+        </action>
+        
+        <action name="insertarAdministradorProcess" method="insertar" class="Actions.InsertarAdministradorAction">
+            <result name="input" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
+            <result name="error" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+        </action>
     </package>
 </struts>

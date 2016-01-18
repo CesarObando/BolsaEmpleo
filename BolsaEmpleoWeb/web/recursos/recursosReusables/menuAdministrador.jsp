@@ -49,6 +49,9 @@
                     <li>
                         <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener información</a>
                     </li>
+                    <li>
+                        <a href="../administrador/insertarAdministrador.jsp" class="" >Nuevo Administrador</a>
+                    </li>
                 </ul>
             </div>                                
         </div>                          
