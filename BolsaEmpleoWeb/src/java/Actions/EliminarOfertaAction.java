@@ -7,6 +7,7 @@ package Actions;
 
 import Business.OfertaBusiness;
 import Dominio.Oferta;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -55,8 +56,11 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
         return this.ofertaAEliminar;
     }
 
-    public String eliminar() {
+    public String eliminar() throws SQLException, DataException {
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        int idOferta = Integer.parseInt(request.getParameter("id"));
+
+        ofertaAEliminar = new OfertaBusiness().buscarOferta(idOferta);
         boolean eliminado = true;
         try {
             ofertaBusiness.eliminarOferta(ofertaAEliminar.getId());

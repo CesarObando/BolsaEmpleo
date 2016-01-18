@@ -1,8 +1,9 @@
 <%-- 
-    Document   : insertarOferta
-    Created on : 04-ene-2016, 9:21:35
-    Author     : Tin
+    Document   : insertar_usuario
+    Created on : Sep 23, 2015, 10:13:30 AM
+    Author     : JonathanA
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -15,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Eliminar Oferta | Bolsa de Empleo</title>  
+        <title>Registrar Usuario | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,9 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
-
-
+                <jsp:include page="../recursosReusables/principalAdministrador.jsp"/>
             </div>
         </header>
         <section>
@@ -91,11 +90,11 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="eliminarOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
-                            <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta"/>
-                        </s:form>
+                        <s:form action="eliminarOfertaAdministradorProcess">
+                                <s:textfield name="id" label="Id" readonly="true"/>
+                                <s:textfield name="puesto" label="Puesto" readonly="true"/>
+                                <s:submit action="eliminarOfertaAdministradorProcess" value="Eliminar Oferta"/>
+                            </s:form>
                     </div>
                 </aside> 
             </div>            

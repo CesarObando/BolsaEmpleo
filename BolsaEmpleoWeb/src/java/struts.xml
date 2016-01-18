@@ -69,7 +69,7 @@
         
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
-            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarOferta.jsp</result>
             <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
@@ -153,12 +153,12 @@
         </action>
         
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministrador">
-            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarOfertaAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministradorProcess" method="eliminar">
-            <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
-            <result type="dispatcher" name="error">/recursos/Ofertas/eliminarOferta.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarOfertaAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/eliminarOfertaAdministrador.jsp</result>
             <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
