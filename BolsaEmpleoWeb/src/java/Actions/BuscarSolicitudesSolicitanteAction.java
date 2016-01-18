@@ -54,17 +54,15 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         solicitudes = solicitudBusiness.buscarSolicitudesFiltradas(idSolicitante, 0);
-        for (Solicitud solicitud : solicitudes) {
-            int i = 0;
+        for (int i = 0; i < solicitudes.size(); i++) {
+            Solicitud solicitud = solicitudes.get(i);
             int idOferta = solicitud.getOferta().getId();
             Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
             int idEmpleador = oferta.getEmpleador().getId();
             Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
             oferta.setEmpleador(empleador);
             solicitud.setOferta(oferta);
-            solicitudes.remove(i);
-            solicitudes.add(solicitud);
-            i++;
+            solicitudes.set(i, solicitud);
         }
     }
 
@@ -77,17 +75,15 @@ public class BuscarSolicitudesSolicitanteAction extends ActionSupport implements
         try {
             solicitudes = solicitudBusiness.buscarSolicitudesFiltradas(idSolicitante, 0);
 
-            for (Solicitud solicitud : solicitudes) {
-                int i = 0;
+            for (int i = 0; i < solicitudes.size(); i++) {
+                Solicitud solicitud = solicitudes.get(i);
                 int idOferta = solicitud.getOferta().getId();
                 Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
                 int idEmpleador = oferta.getEmpleador().getId();
                 Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
                 oferta.setEmpleador(empleador);
                 solicitud.setOferta(oferta);
-                solicitudes.remove(i);
-                solicitudes.add(solicitud);
-                i++;
+                solicitudes.set(i, solicitud);
             }
 
         } catch (SQLException e) {
