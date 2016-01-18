@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="../recursosReusables/principalAdministrador.jsp"/>
             </div>
         </header>
         <section>
@@ -91,7 +91,7 @@
                         </s:if>
 
                         <s:form action="eliminarAdministradorProcess">
-                            <s:textfield name="id" label="Id del Administrador" readonly="true"/>
+                            <s:label name="id" label="Id del Administrador" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <s:submit value="Eliminar" action="eliminarAdministradorProcess"/>

@@ -46,6 +46,7 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     @Override
     public void prepare() throws Exception {
+        administradorEditar = new Administrador();
         administradorEditar = (Administrador) sessionMap.get("administrador");
     }
 
@@ -80,6 +81,8 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     public String editar() throws DataException {
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        administradorEditar = new Administrador();
+        administradorEditar = (Administrador) sessionMap.get("administrador");
         boolean insertado = true;
         try {
             administradorBusiness.editarAdministrador(administradorEditar);

@@ -143,13 +143,13 @@
             <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
-        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministrador">
-            <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
+        <action  class="Actions.BuscarOfertasAdministradorAction" name="buscarOfertasAdministrador">
+            <result name="input" type="dispatcher">/recursos/administrador/buscarOfertasAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/buscarOfertasAdministrador.jsp</result>
         </action>
         
-        <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasAdministradorProcess" method="buscar">
-            <result name="buscarOfertasAdministrador" type="dispatcher">/recursos/Ofertas/mantenerOfertas.jsp</result>
+        <action  class="Actions.BuscarOfertasAdministradorAction" name="buscarOfertasAdministradorProcess" method="buscar">
+            <result name="buscarOfertasAdministrador" type="dispatcher">/recursos/administrador/mantenerOfertasAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministrador">
@@ -159,7 +159,7 @@
         <action class="Actions.EliminarOfertaAction" name="eliminarOfertaAdministradorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/Ofertas/eliminarOferta.jsp</result>
             <result type="dispatcher" name="error">/recursos/Ofertas/eliminarOferta.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarEmpleadoresAction" name="buscarEmpleadores">
@@ -180,14 +180,49 @@
             <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
-        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorAdministrador">
-            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
+        <action class="Actions.EliminarEmpleadorAdministradorAction" name="eliminarEmpleadorAdministrador">
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarEmpleadorAdministrador.jsp</result>
         </action>
         
-        <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorAdministradorProcess" method="eliminar">
-            <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
-            <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalAdministrador.jsp</result>
+        <action class="Actions.EliminarEmpleadorAdministradorAction" name="eliminarEmpleadorAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarEmpleadorAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/eliminarEmpleadorAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministrador"> 
+            <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministradorProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/perfilAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/perfilAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarAdministradorAction" name="editarAdministrador">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/administrador/editarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/editarAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarAdministradorAction" name="editarAdministradorProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/administrador/editarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/editarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+        </action> 
+        
+        <action class="Actions.EliminarAdministradorAction" name="eliminarAdministrador">
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/eliminarAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarAdministradorAction" name="eliminarAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/eliminarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
     </package>
 </struts>

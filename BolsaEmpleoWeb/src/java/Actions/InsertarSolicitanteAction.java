@@ -77,9 +77,9 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         if (solicitanteAInsertar.getPassword().length() < 6) {
             addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
         }
-        if(solicitanteAInsertar.getFoto() == null){
-            addFieldError("archivoImagen","Debe seleccionar una foto");
-        }
+//        if(solicitanteAInsertar.getFoto() == null){
+//            addFieldError("archivoImagen","Debe seleccionar una foto");
+//        }
     }
 
     public String insertar() {

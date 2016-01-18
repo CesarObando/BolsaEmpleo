@@ -45,24 +45,33 @@
             <interceptor-ref name="defaultStack">
                 <param name="validation.excludeMethods">execute</param>
             </interceptor-ref>
-            <result type="dispatcher" name="input">/recursos/usuarios/editarAdministrador.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/editarAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EditarAdministradorAction" name="editarAdministradorProcess" method="editar">
-            <result type="dispatcher" name="input">/recursos/usuarios/editarAdministrador.jsp</result>
-            <result type="dispatcher" name="error">/recursos/usuarios/editarAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/editarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/editarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarAdministradorAction" name="eliminarAdministrador">
-            <result type="dispatcher" name="input">/recursos/usuarios/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarAdministradorAction" name="eliminarAdministradorProcess" method="eliminar">
-            <result type="dispatcher" name="input">/recursos/usuarios/eliminarAdministrador.jsp</result>
-            <result type="dispatcher" name="error">/recursos/usuarios/eliminarAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/pantallaPrincipal.jsp</result>
+            <result type="dispatcher" name="input">/recursos/administrador/eliminarAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/eliminarAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
+        <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministrador"> 
+            <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministradorProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/administrador/perfilAdministrador.jsp</result>
+            <result name="success" type="redirect">/recursos/administrador/perfilAdministrador.jsp</result>
+        </action>
     </package>
 </struts>

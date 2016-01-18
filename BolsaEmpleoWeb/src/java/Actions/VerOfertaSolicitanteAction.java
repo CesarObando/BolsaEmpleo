@@ -10,6 +10,7 @@ import Business.SolicitudBusiness;
 import Dominio.Oferta;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -56,10 +57,12 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
         }
     }
 
-    public String solicitar() {
+    public String solicitar() throws SQLException, DataException {
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
         Solicitud solicitud = new Solicitud();
         Solicitante solicitante = new Solicitante();
+        int idOferta = Integer.parseInt(request.getParameter("id"));
+        ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
         boolean insertado = true;
         try {
             solicitante = (Solicitante) sessionMap.get("solicitante");

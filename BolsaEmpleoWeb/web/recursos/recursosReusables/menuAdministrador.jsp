@@ -37,7 +37,7 @@
                     <li>
                         <a>Oferta</a> 
                         <ul>
-                            <s:a action="buscarOfertasSolicitante" >Mantener</s:a>
+                            <s:a action="buscarOfertasAdministrador" >Mantener</s:a>
                         </ul>
                     </li>
                     <li>
@@ -45,6 +45,9 @@
                         <ul>
                             <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>
                         </ul>
+                    </li>
+                    <li>
+                        <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener información</a>
                     </li>
                 </ul>
             </div>                                

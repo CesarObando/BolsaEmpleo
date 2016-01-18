@@ -50,12 +50,7 @@
                         </div>
                     </div>
                 </div>
-                <c:if test="${sessionScope.empleador != null}">
-                    <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
-                </c:if>
-                <c:if test="${sessionScope.administrador != null}">
-                    <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
-                </c:if>
+                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
             </div>
         </header>
         <section>
@@ -89,22 +84,13 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <c:if test="${sessionScope.empleador != null}">
-                            <s:form action="eliminarEmpleadorProcess" method="post">
-                                <s:label name="id" label="Id Del Empleador"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarEmpleadorProcess"/>
-                            </s:form>
-                        </c:if>
-                        <c:if test="${sessionScope.administrador != null}">
-                            <s:form action="eliminarEmpleadorAdministradorProcess" method="post">
-                                <s:label name="id" label="Id Del Empleador"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarEmpleadorAdministradorProcess"/>
-                            </s:form>
-                        </c:if>
+                        <s:form action="eliminarEmpleadorProcess" method="post">
+                            <s:label name="id" label="Id Del Empleador"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <s:submit value="Eliminar" action="eliminarEmpleadorProcess"/>
+                        </s:form>
+
 
 
                     </div>

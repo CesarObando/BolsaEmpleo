@@ -110,7 +110,7 @@
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="idiomas" label="Idiomas que domina"/>
-                            <s:submit method="insertar" value="Insertar Solicitante"/>
+                            <s:submit method="insertar" value="Insertar Solicitante" action="insertarSolicitanteProcess"/>
                         </s:form>
                     </div>
                 </aside> 

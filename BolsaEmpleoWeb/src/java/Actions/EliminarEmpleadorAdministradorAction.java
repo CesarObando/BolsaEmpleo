@@ -5,59 +5,56 @@
  */
 package Actions;
 
+import Business.AdministradorBusiness;
+import Business.CategoriaBusiness;
 import Business.EmpleadorBusiness;
-import Business.SolicitanteBusiness;
+import Dominio.Categoria;
 import Dominio.Empleador;
 import Exception.DataException;
-import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.opensymphony.xwork2.util.ValueStack;
 import java.sql.SQLException;
-import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
-import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Tin
+ * @author Cesar
  */
-public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware, SessionAware {
+public class EliminarEmpleadorAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
-    private Empleador empleadorAEliminar;
+    private Empleador empleadorAEmpleador;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    public SessionMap<String, Object> sessionMap;
 
-    public EliminarEmpleadorAction() {
+    public EliminarEmpleadorAdministradorAction() {
     }
 
     @Override
     public String execute() throws Exception {
-        return INPUT;
+        if (existe) {
+            return INPUT;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
     public void prepare() throws Exception {
         existe = true;
-        empleadorAEliminar = new Empleador();
-        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
-    }
-
-    @Override
-    public void validate() {
-
+        int idEmpleador = Integer.parseInt(request.getParameter("id"));
+        try {
+            empleadorAEmpleador = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
+        } catch (SQLException e) {
+            existe = false;
+        }
     }
 
     @Override
     public Empleador getModel() {
-        return this.empleadorAEliminar;
+        return this.empleadorAEmpleador;
     }
 
     @Override
@@ -66,14 +63,13 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     }
 
     public String eliminar() throws DataException, SQLException {
-        boolean eliminado = true;
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
-        empleadorAEliminar = new Empleador();
-        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
-        int idEmpleador = empleadorAEliminar.getId();
+        int idEmpleador = Integer.parseInt(request.getParameter("id"));
+        empleadorAEmpleador = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
+        boolean eliminado = true;
         try {
-            empleadorBusiness.eliminarEmpleador(idEmpleador);
-            } catch (SQLException e) {
+            empleadorBusiness.eliminarEmpleador(empleadorAEmpleador.getId());
+        } catch (SQLException e) {
             eliminado = !eliminado;
         }
         if (eliminado) {
@@ -85,13 +81,15 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
         }
     }
 
-    public Empleador getEmpleadorAEliminar() {
-        return empleadorAEliminar;
+    public Empleador getEmpleadorAEmpleador() {
+        return empleadorAEmpleador;
     }
 
-    public void setEmpleadorAEliminar(Empleador empleadorAEliminar) {
-        this.empleadorAEliminar = empleadorAEliminar;
+    public void setEmpleadorAEmpleador(Empleador empleadorAEmpleador) {
+        this.empleadorAEmpleador = empleadorAEmpleador;
     }
+
+    
 
     public String getMensaje() {
         return mensaje;
@@ -115,11 +113,6 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     public void setExiste(boolean existe) {
         this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

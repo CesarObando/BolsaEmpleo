@@ -43,6 +43,7 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
 
     @Override
     public void prepare() throws Exception {
+        administradorEliminar = new Administrador();
         administradorEliminar = (Administrador) sessionMap.get("administrador");
     }
 
@@ -58,6 +59,8 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
 
     public String eliminar() throws DataException {
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        administradorEliminar = new Administrador();
+        administradorEliminar = (Administrador) sessionMap.get("administrador");
         boolean eliminado = true;
         try {
             administradorBusiness.eliminarAdministrador(administradorEliminar.getId());

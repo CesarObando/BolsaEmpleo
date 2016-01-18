@@ -95,7 +95,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post">
+                        <s:form method="post" action="insertarSolicitudProcess">
                             <s:textfield name="id" label="Id" readonly="true"/>
                             <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>

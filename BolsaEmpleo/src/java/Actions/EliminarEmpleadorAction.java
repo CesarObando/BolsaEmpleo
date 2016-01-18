@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package Actions;
-
-import Business.EmpleadorBusiness;
 import Dominio.Empleador;
 import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -47,7 +45,7 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
         existe = true;
         if (request.getParameter("id") != null) {
             int idSolicitante = Integer.parseInt(request.getParameter("id"));
-            empleadorAEliminar.setId(idSolicitante);
+            empleadorAEliminar = new EmpleadorBusiness()
         }
     }
 
