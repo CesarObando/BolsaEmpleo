@@ -84,6 +84,11 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
 
+                        <s:form action="buscarCategoriasProcess" method="get">
+                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:submit method="buscar" value="Buscar"/>
+                        </s:form>
+                        
                         <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{solicitantes.isEmpty()}">

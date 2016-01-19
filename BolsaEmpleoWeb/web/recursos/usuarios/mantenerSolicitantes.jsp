@@ -84,6 +84,12 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
 
+                        <s:form action="buscarSolicitantesProcess" method="get">
+                            <s:textfield name="cedula" label="Cédula"/>
+                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="apellidos" label="Apellidos"/>
+                            <s:submit method="buscar" value="Buscar"/>
+                        </s:form>
                         <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{solicitantes.isEmpty()}">
@@ -103,7 +109,7 @@
                                             <td><s:property value="#solicitanteActual.cedula"/></td>
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
-                                            
+
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                                     <s:url action="eliminarSolicitante" var="url">
                                                         <s:param name="id" value="#solicitanteActual.id"/>

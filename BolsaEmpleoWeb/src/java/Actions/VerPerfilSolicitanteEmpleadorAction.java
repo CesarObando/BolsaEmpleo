@@ -28,15 +28,14 @@ import org.apache.struts2.interceptor.ServletRequestAware;
  *
  * @author Tin
  */
-public class VerOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware {
 
-    private Oferta ofertaAVer;
-    private LinkedList<Solicitud> solicitudes;
+    private Solicitante solicitanteAVer;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
 
-    public VerOfertaAction() {
+    public VerPerfilSolicitanteEmpleadorAction() {
     }
 
     @Override
@@ -51,26 +50,17 @@ public class VerOfertaAction extends ActionSupport implements Preparable, ModelD
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int idOferta = Integer.parseInt(request.getParameter("id"));
+        int idSolicitante = Integer.parseInt(request.getParameter("id"));
         try {
-            solicitudes = new SolicitudBusiness().buscarSolicitudesFiltradas(0, idOferta);
-            for (int i = 0; i < solicitudes.size(); i++) {
-                Solicitud solicitud = new Solicitud();
-                solicitud = solicitudes.get(i);
-                Solicitante solicitante = new Solicitante();
-                solicitante = new SolicitanteBusiness().buscarSolicitante(solicitud.getSolicitante().getId());
-                solicitud.setSolicitante(solicitante);
-                solicitudes.set(i, solicitud);
-            }
-            ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+            solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
         } catch (SQLException e) {
             existe = false;
         }
     }
 
     @Override
-    public Oferta getModel() {
-        return this.ofertaAVer;
+    public Solicitante getModel() {
+        return this.solicitanteAVer;
     }
 
     @Override
@@ -78,12 +68,12 @@ public class VerOfertaAction extends ActionSupport implements Preparable, ModelD
         this.request = hsr;
     }
 
-    public Oferta getOfertaAEliminar() {
-        return ofertaAVer;
+    public Solicitante getSolicitanteAVer() {
+        return solicitanteAVer;
     }
 
-    public void setOfertaAEliminar(Oferta ofertaAEliminar) {
-        this.ofertaAVer = ofertaAEliminar;
+    public void setSolicitanteAVer(Solicitante solicitanteAVer) {
+        this.solicitanteAVer = solicitanteAVer;
     }
 
     public String getMensaje() {
@@ -108,14 +98,6 @@ public class VerOfertaAction extends ActionSupport implements Preparable, ModelD
 
     public void setExiste(boolean existe) {
         this.existe = existe;
-    }
-
-    public LinkedList<Solicitud> getSolicitudes() {
-        return solicitudes;
-    }
-
-    public void setSolicitudes(LinkedList<Solicitud> solicitudes) {
-        this.solicitudes = solicitudes;
     }
 
 }

@@ -237,5 +237,37 @@
             <result name="error" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
             <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
+        
+        <action class="Actions.EliminarSolicitudAction" name="eliminarSolicitudEmpleador">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarSolicitudAction" name="eliminarSolicitudEmpleadorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarSolicitudAction" name="editarSolicitudEmpleador">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarSolicitudAction" name="editarSolicitudEmpleadorProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilSolicitanteEmpleadorAction" name="verPerfilSolicitanteEmpleador"> 
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+        </action>
+        
+        <action class="Actions.VerPerfilSolicitanteEmpleadorAction" name="verPerfilSolicitanteEmpleadorProcess" method="ver">
+            <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+        </action>
     </package>
 </struts>

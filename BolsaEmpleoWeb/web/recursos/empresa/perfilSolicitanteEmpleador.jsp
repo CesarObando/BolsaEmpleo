@@ -1,9 +1,3 @@
-<%-- 
-    Document   : insertar_usuario
-    Created on : Sep 23, 2015, 10:13:30 AM
-    Author     : JonathanA
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -16,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Editar Información | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -56,7 +50,8 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
+
+                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
             </div>
         </header>
         <section>
@@ -83,43 +78,30 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionErrors()">
+                            <s:actionerror />
+                        </s:if>
+                        <s:if test="hasActionMessages()">
+                            <s:actionmessage />
+                        </s:if>
 
-                        <s:form action="buscarOfertasAdministradorProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar" action="buscarOfertasAdministradorProcess"/>
+                        <s:form method="get">
+                            <s:label name="id" label="Id"/>
+                            <s:label name="cedula" label="Cedula" readonly="true"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                            <s:label name="edad" label="Edad"/>
+                            <s:label name="sexo" label="Sexo" readonly="true"/>
+                            <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
+                            <s:label name="titulos" label="Titulos"/>
+                            <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
+                            <s:label name="telefonoFijo" label="Teléfono Casa"/> 
+                            <s:label name="telefonoMovil" label="Teléfono Celular"/>
+                            <s:label name="correo" label="Email"/>
+                            <s:label name="idiomas" label="Idiomas que domina"/>
                         </s:form>
-                        <table id="mytable" class="table table-bordred table-striped">
-
-                            <s:if test="%{ofertas.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
-
-                            <s:else>
-                                <thead>
-                                <td>Puesto</td>
-                                <th>Delete</th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="ofertas" var="ofertaActual">
-                                        <tr>
-                                            <td><s:property value="#ofertaActual.puesto"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarOfertaAdministrador" var="url">
-                                                        <s:param name="id" value="#ofertaActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>  
-
-
                     </div>
                 </aside> 
             </div>            

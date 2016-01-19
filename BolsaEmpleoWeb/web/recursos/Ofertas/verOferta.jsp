@@ -101,6 +101,55 @@
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
 
+                        <table id="mytable" class="table table-bordred table-striped">
+
+
+                            <s:if test="%{solicitudes.isEmpty()}">
+                                <h2>No hay solicitudes para esta oferta</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Nombre</td>
+                                <td>Apellidos</td>
+                                <th>Eliminar</th>
+                                <th>Favorito</th>
+                                <th>Ver</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="solicitudes" var="solicitudActual">
+                                        <tr>
+                                            <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
+                                            <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="eliminarSolicitudEmpleadorProcess" var="url">
+                                                        <s:param name="id" value="#solicitudActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="editarSolicitudEmpleadorProcess" var="url">
+                                                        <s:param name="id" value="#solicitudActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="verPerfilSolicitanteEmpleador" var="url">
+                                                        <s:param name="id" value="#solicitudActual.solicitante.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
+
                     </div>
                 </aside> 
             </div>            

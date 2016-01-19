@@ -84,6 +84,13 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
 
+                        <s:form action="buscarAdministradoresProcess" method="get">
+                            <s:textfield name="cedula" label="Cédula"/>
+                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="apellidos" label="Apellidos"/>
+                            <s:submit method="buscar" value="Buscar"/>
+                        </s:form>
+                        
                         <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{administradores.isEmpty()}">

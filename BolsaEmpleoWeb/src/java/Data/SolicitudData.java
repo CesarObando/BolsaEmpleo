@@ -42,6 +42,23 @@ public class SolicitudData extends BaseData {
         conexion.close();
         return solicitud;
     }
+    
+    public Solicitud editarSolicitud(Solicitud solicitudAEditar) throws SQLException, DataException {
+        Connection conexion = super.getConnection();
+        String sqlEditarSolicitud = "{Call editar_solicitud (?,?)}";
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlEditarSolicitud);
+            statement.setInt(1, solicitudAEditar.getId());
+            statement.setBoolean(2, solicitudAEditar.isFavorito());
+            statement.executeUpdate();
+            conexion.commit();
+        } catch (Exception e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return solicitudAEditar;
+    }
+
 
     public void eliminarSolicitud(int id) throws SQLException {
         String sqlEliminarSolicitud = "{CALL eliminar_solicitud(?)}";

@@ -14,16 +14,18 @@ public class Solicitud {
     private int id;
     private Solicitante solicitante;
     private Oferta oferta;
+    private boolean favorito;
 
     public Solicitud() {
         this.solicitante = new Solicitante();
         this.oferta = new Oferta();
     }
 
-    public Solicitud(int id, Solicitante solicitante, Oferta oferta) {
+    public Solicitud(int id, Solicitante solicitante, Oferta oferta, boolean favorito) {
         this.id = id;
         this.solicitante = solicitante;
         this.oferta = oferta;
+        this.favorito = favorito;
     }
 
     public int getId() {
@@ -48,6 +50,14 @@ public class Solicitud {
 
     public void setOferta(Oferta oferta) {
         this.oferta = oferta;
+    }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 
 }

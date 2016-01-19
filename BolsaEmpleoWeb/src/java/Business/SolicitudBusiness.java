@@ -26,6 +26,10 @@ public class SolicitudBusiness {
     public Solicitud insertarSolicitud(Solicitud solicitud) throws SQLException {
         return solicitudData.insertarSolicitud(solicitud);
     }
+    
+    public Solicitud editarSolicitud(Solicitud solicitudAEditar) throws SQLException, DataException {
+        return solicitudData.editarSolicitud(solicitudAEditar);
+    }
 
     public void eliminarSolicitud(int id) throws SQLException {
         solicitudData.eliminarSolicitud(id);
