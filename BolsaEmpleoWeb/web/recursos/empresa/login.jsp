@@ -4,6 +4,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML+RDFa 1.1//EN">
 <html lang="es" >
     <head>
+        <style >
+            
+        </style>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
@@ -14,10 +17,11 @@
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
         <link rel="stylesheet" type="text/css" href="../css/system.messages.css">
         <link rel="stylesheet" type="text/css" href="../css/system.theme.css">
-
+        <link rel="stylesheet" type="text/css" href="../css/LoginEmpleador.css" >
         <!--menu-->
         <link rel="stylesheet" type="text/css" href="../css/superfish.css" media="screen">       
-        <link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">  
+        <link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">
+   
 
         <link rel="stylesheet" type="text/css" href="../css/omega-text.css">
         <link rel="stylesheet" type="text/css" href="../css/omega-branding.css">
@@ -52,7 +56,7 @@
             </div>
         </header>
         <section >
-            <div id="zone-content" class="clearfix container-12">     
+            <div  align="center" id="zone-content" class="clearfix container-12">     
                 <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
                     <div class=" block-menu-block-1" id="block-menu-block-1">
                         <div class="content clearfix">                            
@@ -76,15 +80,15 @@
                 <c:if test="${sessionScope.empleador == null}" >
                     <aside class="grid-3 region" id="region-sidebar-second">
                         <div class="grid-9 region-content" id="region-content">
-                            <h3>Iniciar Sesión</h3>
+                            <h3>Iniciar Sesión </h3>
                             <s:if test="hasActionMessages()">
                                 <s:actionmessage />
                             </s:if>
                             <s:else>
-                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador">
-                                    <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                                    <s:password name="clave" placeholder="Contraseña"/>
-                                    <s:submit action="iniciarSesionempleador" value="Iniciar Sesion" class="button-submit"/>
+                                <s:form method="post"  align="center" enctype="multipart/form-data" action="iniciarSesionEmpleador " cssClass="css/LoginEmpleador.css">
+                                    <s:textfield  align="center" name="nombreUsuario" placeholder="Nombre Usuario o Correo" style=""/>
+                                    <s:password  align="center" name="clave" placeholder="Contraseña"/>
+                                    <s:submit  align="center" action="iniciarSesionempleador" value="Iniciar Sesion" class="button-submit"/>
                                 </s:form>
                             </s:else>
                         </div>
