@@ -5,9 +5,8 @@
  */
 package Actions;
 
-import Business.CategoriaBusiness;
+import Business.AdministradorBusiness;
 import Business.SolicitudBusiness;
-import Dominio.Categoria;
 import Dominio.Solicitud;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,20 +21,19 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Cesar
+ * @author JonathanA
  */
-public class EditarSolicitudAction extends ActionSupport implements Preparable, ModelDriven<Solicitud>, ServletRequestAware, SessionAware {
+public class EliminarSolicitudEmpleadorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
-    private Solicitud solicitudAEditar;
+    private Solicitud solicitudEliminar;
     private String mensaje;
-    private HttpServletRequest request;
     private boolean existe;
-    private SessionMap<String,Object> sessionMap;
+    private HttpServletRequest request;
+    private SessionMap<String, Object> sessionMap;
 
-    public EditarSolicitudAction() {
+    public EliminarSolicitudEmpleadorAction() {
     }
 
-    @Override
     public String execute() throws Exception {
         if (existe) {
             return INPUT;
@@ -47,13 +45,12 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
     @Override
     public void prepare() throws Exception {
         existe = true;
-        solicitudAEditar = (Solicitud) sessionMap.get("solicitud");
-        
+        solicitudEliminar = (Solicitud) sessionMap.get("solicitud");
     }
 
     @Override
     public Solicitud getModel() {
-        return this.solicitudAEditar;
+        return this.solicitudEliminar;
     }
 
     @Override
@@ -61,37 +58,31 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
         this.request = hsr;
     }
 
-    public String editar() throws DataException {
+    public String eliminar() throws DataException {
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
-        boolean editado = true;
+        boolean eliminado = true;
         try {
-            if(solicitudAEditar.isFavorito()){
-                solicitudAEditar.setFavorito(false);
-            }
-            else{
-                solicitudAEditar.setFavorito(true);
-            }     
-            solicitudBusiness.editarSolicitud(solicitudAEditar);
+            solicitudBusiness.eliminarSolicitud(solicitudEliminar.getId());
         } catch (SQLException e) {
-            editado = false;
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            eliminado = !eliminado;
         }
-        if (editado == true) {
-            this.mensaje = "La solicitud fue editada correctamente";
+        if (eliminado) {
+            mensaje = "La solicitud fue eliminada correctamente.";
             return SUCCESS;
         } else {
+            mensaje = "Ocurrió un problema al eliminar.";
             return ERROR;
         }
     }
 
-    public Solicitud getSolicitudAEditar() {
-        return solicitudAEditar;
+    public Solicitud getSolicitudEliminar() {
+        return solicitudEliminar;
     }
 
-    public void setSolicitudAEditar(Solicitud solicitudAEditar) {
-        this.solicitudAEditar = solicitudAEditar;
+    public void setSolicitudEliminar(Solicitud solicitudEliminar) {
+        this.solicitudEliminar = solicitudEliminar;
     }
-    
+
     public String getMensaje() {
         return mensaje;
     }
@@ -100,20 +91,20 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
         this.mensaje = mensaje;
     }
 
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
     public boolean isExiste() {
         return existe;
     }
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 
     @Override

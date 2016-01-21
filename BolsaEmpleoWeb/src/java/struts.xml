@@ -238,12 +238,12 @@
             <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
-        <action class="Actions.EliminarSolicitudAction" name="eliminarSolicitudEmpleador">
+        <action class="Actions.EliminarSolicitudEmpleadorAction" name="eliminarSolicitudEmpleador">
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
         </action>
         
-        <action class="Actions.EliminarSolicitudAction" name="eliminarSolicitudEmpleadorProcess" method="eliminar">
+        <action class="Actions.EliminarSolicitudEmpleadorAction" name="eliminarSolicitudEmpleadorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>

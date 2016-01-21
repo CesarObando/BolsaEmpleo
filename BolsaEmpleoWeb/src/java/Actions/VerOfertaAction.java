@@ -5,17 +5,13 @@
  */
 package Actions;
 
-import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;
 import Business.SolicitudBusiness;
-import Dominio.Empleador;
 import Dominio.Oferta;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;

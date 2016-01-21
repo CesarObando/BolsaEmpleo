@@ -105,6 +105,7 @@ public class SolicitudData extends BaseData {
             solicitudActual.setId(resultSet.getInt("id"));
             solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
             solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
+            solicitudActual.setFavorito(resultSet.getBoolean("favorito"));
             solicitudes.add(solicitudActual);
         }
         return solicitudes;
@@ -122,6 +123,7 @@ public class SolicitudData extends BaseData {
                 solicitud.setId(resultSet.getInt("id"));
                 solicitud.getSolicitante().setId(resultSet.getInt("solicitante"));
                 solicitud.getOferta().setId(resultSet.getInt("oferta"));
+                solicitud.setFavorito(resultSet.getBoolean("favorito"));
                 return solicitud;
             }
         } catch (SQLException e) {
