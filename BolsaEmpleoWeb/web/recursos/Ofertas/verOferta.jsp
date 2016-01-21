@@ -110,37 +110,35 @@
 
                             <s:else>
                                 <thead>
-                                <td>Nombre</td>
-                                <td>Apellidos</td>
-                                <th>Eliminar</th>
-                                <th>Favorito</th>
+                                <th>Nombre</th>
+                                <td></td>
+                                <th>Apellidos</th>
+                                <td></td>
                                 <th>Ver</th>
+                                <th>Favorito</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="solicitudes" var="solicitudActual">
                                         <tr>
                                             <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
+                                            <td></td>
                                             <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                    <s:url action="eliminarSolicitudEmpleadorProcess" var="url">
-                                                        <s:param name="id" value="#solicitudActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                    <s:url action="editarSolicitudEmpleadorProcess" var="url">
-                                                        <s:param name="id" value="#solicitudActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
+                                            <td></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                     <s:url action="verPerfilSolicitanteEmpleador" var="url">
-                                                        <s:param name="id" value="#solicitudActual.solicitante.id"/>
+                                                        <s:param name="id" value="#solicitudActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+
+                                                    <a href='<s:property value="#url"/>'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
+                                            </td>
+                                            <td>
+                                                <s:if test="%{#solicitudActual.favorito == true}">
+                                                    <img src="../imagenes/Favorito.jpeg"/>
+                                                </s:if>
+                                                <s:if test="%{#solicitudActual.favorito == false}">
+                                                    <img src="../imagenes/NoFavorito.jpeg"/>
+                                                </s:if>
                                             </td>
                                         </tr>
                                     </s:iterator>

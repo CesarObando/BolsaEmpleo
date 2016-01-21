@@ -102,6 +102,15 @@
                             <s:label name="correo" label="Email"/>
                             <s:label name="idiomas" label="Idiomas que domina"/>
                         </s:form>
+
+
+                        <c:if test="${sessionScope.solicitud.favorito == true}">
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="">Desmarcar como favorito</a>
+                        </c:if>
+                        <c:if test="${sessionScope.solicitud.favorito == false}">
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="">Marcar como favorito</a>
+                        </c:if>
+                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="">Eliminar</a>
                     </div>
                 </aside> 
             </div>            
