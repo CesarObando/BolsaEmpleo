@@ -90,7 +90,7 @@
                         </s:if>
 
                         <s:form method="post" action="verOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Nombre de empleador" readonly="true"/>
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
@@ -100,6 +100,8 @@
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
+                        <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
+                        <a href="../Ofertas/eliminarOferta.action" class="">Eliminar Oferta</a>
 
                         <table id="mytable" class="table table-bordred table-striped">
 

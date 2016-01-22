@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Mantener Ofertas | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -97,18 +97,24 @@
 
                             <s:else>
                                 <thead>
-                                <td>Puesto</td>
-                                <th>Delete</th>
+                                <th>Puesto</th>
+                                <th>Empleador</th>
+                                <th>Apellidos</th>
+                                <th>Empresa</th>
+                                <th>Eliminar</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="ofertas" var="ofertaActual">
                                         <tr>
                                             <td><s:property value="#ofertaActual.puesto"/></td>
+                                            <td><s:property value="#ofertaActual.empleador.nombre"/></td>
+                                            <td><s:property value="#ofertaActual.empleador.apellidos"/></td>
+                                            <td><s:property value="#ofertaActual.empleador.nombreEmpresa"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
                                                     <s:url action="eliminarOfertaAdministrador" var="url">
                                                         <s:param name="id" value="#ofertaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -118,7 +124,18 @@
                             </div       
                             </tbody>
                         </table>  
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la oferta?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
 
                     </div>
                 </aside> 

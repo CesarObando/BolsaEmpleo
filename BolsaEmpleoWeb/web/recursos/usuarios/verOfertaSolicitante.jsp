@@ -96,7 +96,7 @@
                         </s:if>
 
                         <s:form method="post" action="insertarSolicitudProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
@@ -106,13 +106,26 @@
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                             <c:if test="${sessionScope.solicitante != null}">
-                                <s:submit value="Solicitar" action="insertarSolicitudProcess"/>
+                                <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
                             </c:if>
                         </s:form>
 
                         <c:if test="${sessionScope.solicitante == null}">
                             <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
                         </c:if>
+
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea registrar la solicitud?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

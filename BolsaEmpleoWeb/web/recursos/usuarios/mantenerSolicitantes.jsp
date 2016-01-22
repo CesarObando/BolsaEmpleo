@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Mantener Solicitantes | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -98,10 +98,10 @@
 
                             <s:else>
                                 <thead>
-                                <td>Cédula</td>
-                                <td>Nombre</td>
-                                <td>Apellidos</td>
-                                <th>Delete</th>
+                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Eliminar</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="solicitantes" var="solicitanteActual">
@@ -111,10 +111,10 @@
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
 
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarSolicitante" var="url">
+                                                    <s:url action="eliminarSolicitanteAdministradorProcess" var="url">
                                                         <s:param name="id" value="#solicitanteActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -124,7 +124,18 @@
                             </div       
                             </tbody>
                         </table>     
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar al solicitante?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
 
                     </div>
                 </aside> 

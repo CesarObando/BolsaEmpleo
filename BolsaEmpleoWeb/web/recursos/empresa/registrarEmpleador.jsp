@@ -77,7 +77,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        
+
                         <s:if test="hasActionErrors()">
                             <s:actionerror />
                         </s:if>
@@ -86,19 +86,31 @@
                         </s:if>
 
                         <s:form method="post" action="registrarEmpleadorProcess" enctype="multipart/form-data">
-                            <s:textfield name="cedula" label="Cedula"/>
+                            <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="cedulaJuridica" label="Cedula Juridica"/>
+                            <s:textfield name="cedulaJuridica" label="Cédula Jurídica"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
-                            <s:textfield name="direccion" label="Direccion"/>
+                            <s:textfield name="direccion" label="Dirección"/>
                             <s:password name="pass" label="Clave"/>
                             <s:textfield name="username" label="Nombre Usuario"/>
-                            <s:submit action="registrarEmpleadorProcess" value="Registrar Empleador"/>
+                            <s:submit action="registrarEmpleadorProcess" value="Registrar Empleador" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea registrar el empleador?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

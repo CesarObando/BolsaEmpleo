@@ -92,10 +92,22 @@
                         </s:if>
 
                         <s:form action="eliminarOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto" readonly="true"/>
-                            <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta"/>
+                            <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la oferta?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

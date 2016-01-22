@@ -91,11 +91,22 @@
                         </s:if>
 
                         <s:form action="eliminarCategoriaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="nombre" label="Nombre" readonly="true"/>
-
-                            <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría"/>
+                            <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox(){
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la categoría?");
+                                if(answer==true){
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

@@ -90,7 +90,7 @@
                         </s:if>
 
                         <s:form method="post" action="editarOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto" readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
@@ -98,9 +98,20 @@
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
                             <s:textarea name="requerimientos" label="Requerimientos "/>
                             <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="editarOfertaProcess" value="Editar Oferta"/>
+                            <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                         </s:form>
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea editar la oferta?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

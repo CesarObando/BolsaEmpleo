@@ -14,19 +14,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class EliminarOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class EliminarOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
     private Oferta ofertaAEliminar;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
+    private SessionMap<String,Object> sessionMap;
 
     public EliminarOfertaAction() {
     }
@@ -43,12 +47,7 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int idOferta = Integer.parseInt(request.getParameter("id"));
-        try {
-            ofertaAEliminar = new OfertaBusiness().buscarOferta(idOferta);
-        } catch (SQLException e) {
-            existe = false;
-        }
+        ofertaAEliminar = (Oferta) sessionMap.get("oferta");
     }
 
     @Override
@@ -58,9 +57,6 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     public String eliminar() throws SQLException, DataException {
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        int idOferta = Integer.parseInt(request.getParameter("id"));
-
-        ofertaAEliminar = new OfertaBusiness().buscarOferta(idOferta);
         boolean eliminado = true;
         try {
             ofertaBusiness.eliminarOferta(ofertaAEliminar.getId());
@@ -111,6 +107,11 @@ public class EliminarOfertaAction extends ActionSupport implements Preparable, M
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

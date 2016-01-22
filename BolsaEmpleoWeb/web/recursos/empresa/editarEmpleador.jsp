@@ -11,7 +11,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Información | Bolsa de Empleo</title>  
+        <title>Editar Empleador | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -86,20 +86,32 @@
                         </s:if>
 
                         <s:form method="get" action="editarEmpleadorProcess">
-                            <s:textfield name="id" label="Id" readonly="True"/>
-                            <s:textfield name="cedula" label="Cedula" readonly="true"/>
+                            <s:hidden name="id"/>
+                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="telefonoFijo" label="Teléfono Fijo"/> 
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="cedulaJuridica" label="Cedula Juridica" readonly="true"/>
+                            <s:textfield name="cedulaJuridica" label="Cédula Jurídica" readonly="true"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
-                            <s:textfield name="direccion" label="Direccion"/>
+                            <s:textfield name="direccion" label="Dirección"/>
                             <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
                             <s:password name="pass" label="Clave"/>
-                            <s:submit action="editarEmpleadorProcess" value="Editar Empleador"/>
+                            <s:submit action="editarEmpleadorProcess" value="Editar Empleador" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea editar la información?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

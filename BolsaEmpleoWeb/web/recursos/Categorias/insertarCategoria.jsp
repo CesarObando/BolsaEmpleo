@@ -91,11 +91,21 @@
                         </s:if>
 
                         <s:form method="post" action="insertarCategoriaProcess">
-
                             <s:textfield name="nombre" label="Nombre"/>
-
-                            <s:submit action="insertarCategoriaProcess" value="Insertar Categoria"/>
+                            <s:submit action="insertarCategoriaProcess" value="Insertar Categoría" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox(){
+                                var answer;
+                                answer = window.confirm("¿Desea registrar la categoría?");
+                                if(answer==true){
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

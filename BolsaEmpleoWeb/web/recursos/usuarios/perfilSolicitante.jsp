@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Información | Bolsa de Empleo</title>  
+        <title>Perfil Solicitante | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -85,8 +85,8 @@
                         </s:if>
 
                         <s:form method="get" action="editarSolicitanteProcess">
-                            <s:label name="id" label="Id"/>
-                            <s:label name="cedula" label="Cedula" readonly="true"/>
+                            <s:hidden name="id"/>
+                            <s:label name="cedula" label="Cédula" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
@@ -94,7 +94,7 @@
                             <s:label name="edad" label="Edad"/>
                             <s:label name="sexo" label="Sexo" readonly="true"/>
                             <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
-                            <s:label name="titulos" label="Titulos"/>
+                            <s:label name="titulos" label="Títulos"/>
                             <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
                             <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
                             <s:label name="telefonoFijo" label="Teléfono Casa"/> 
@@ -103,7 +103,19 @@
                             <s:label name="idiomas" label="Idiomas que domina"/>
                         </s:form>
                         <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
-                        <a href="../usuarios/eliminarSolicitante.action" class="">Eliminar</a>
+                        <a href="../usuarios/eliminarSolicitanteProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar su perfil?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

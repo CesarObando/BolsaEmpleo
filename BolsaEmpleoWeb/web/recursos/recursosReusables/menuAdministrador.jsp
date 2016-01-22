@@ -41,6 +41,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a>Solicitud</a> 
+                        <ul>
+                            <s:a action="buscarSolicitudesAdministrador" >Mantener</s:a>
+                        </ul>
+                    </li>
+                    <li>
                         <a>Empleador</a> 
                         <ul>
                             <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>

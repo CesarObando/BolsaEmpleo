@@ -97,29 +97,12 @@
                                 <s:else>
                                     <thead>
                                     <td>Puesto</td>
-                                    <th>Edit</th>
-                                    <th>Delete</th>
                                     <th>Ver</th>
                                     </thead>
                                     <tbody>
                                         <s:iterator value="ofertas" var="ofertaActual">
                                             <tr>
                                                 <td><s:property value="#ofertaActual.puesto"/></td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                        <s:url action="editarOferta" var="url">
-                                                            <s:param name="id" value="#ofertaActual.id"/>
-                                                        </s:url>
-                                                        <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
-
-                                                    </p>
-                                                </td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                        <s:url action="eliminarOferta" var="url">
-                                                            <s:param name="id" value="#ofertaActual.id"/>
-                                                        </s:url>
-                                                        <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                    </p>
-                                                </td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                         <s:url action="verOferta" var="url">
                                                             <s:param name="id" value="#ofertaActual.id"/>

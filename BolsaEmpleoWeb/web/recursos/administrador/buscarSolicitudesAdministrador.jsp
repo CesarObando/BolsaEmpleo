@@ -1,6 +1,6 @@
 <%-- 
-    Document   : insertar_usuario
-    Created on : Sep 23, 2015, 10:13:30 AM
+    Document   : buscarAdministradores
+    Created on : Dec 15, 2015, 8:03:39 PM
     Author     : JonathanA
 --%>
 
@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Administrador | Bolsa de Empleo</title>  
+        <title>Buscar Solicitudes | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -68,7 +68,7 @@
                                 <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
                                 <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
                                 <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                            
+                                <li class="leaf"><a href="#">Contáctenos</a></li>                                            
                             </ul>                                
                         </div>
                     </div>
@@ -90,27 +90,11 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post" action="editarAdministradorProcess">
-                            <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:password name="password" label="Clave"/> 
-                            <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
+                        <s:form action="buscarSolicitudesAdministradorProcess">
+                            <s:textfield name="puesto" label="Puesto"/>
+                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                            <s:submit method="buscar" value="Buscar" action="buscarSolicitudesAdministradorProcess"/>
                         </s:form>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea editar la información?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            
@@ -177,3 +161,4 @@
 
     </body>
 </html>
+
