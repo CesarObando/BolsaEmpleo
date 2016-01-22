@@ -236,6 +236,9 @@ public class SolicitanteData extends BaseData {
                 solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
             }
         } catch (Exception e) {
+            if(e.getMessage().equalsIgnoreCase("The statement did not return a result set.")){
+                return solicitante;
+            }
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
         conexion.close();

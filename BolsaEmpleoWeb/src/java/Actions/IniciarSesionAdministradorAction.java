@@ -67,8 +67,8 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         try {
             administrador = administradorBusiness.iniciarSesion(nombreUsuario, clave);
-            if (administrador == null || administrador.getCedula().equals("")) {
-                this.addActionMessage("Usuario o contraseña incorrectas");
+            if (administrador.getId()==0) {
+                this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }
             sessionMap.put("administrador", administrador);

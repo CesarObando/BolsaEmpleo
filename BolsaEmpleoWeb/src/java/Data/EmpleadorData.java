@@ -213,6 +213,9 @@ public class EmpleadorData extends BaseData {
                 empleador.setPass(resultSet.getString("passwd"));
             }
         } catch (Exception e) {
+            if(e.getMessage().equalsIgnoreCase("The statement did not return a result set.")){
+                return empleador;
+            }
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
         conexion.close();

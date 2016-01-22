@@ -481,5 +481,8 @@
             <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
+        <action class="Actions.CerrarSesionAction" name="cerrarSesion">
+            <result type="dispatcher" name="success">/recursos/solicitante/pantallaPrincipal.jsp</result>
+        </action>
     </package>
 </struts>
