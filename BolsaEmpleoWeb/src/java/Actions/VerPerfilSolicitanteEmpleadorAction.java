@@ -9,6 +9,7 @@ import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;
 import Business.SolicitudBusiness;
+import Data.BaseData;
 import Dominio.Empleador;
 import Dominio.Oferta;
 import Dominio.Solicitante;
@@ -19,22 +20,35 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.sql.Connection;
 import java.sql.SQLException;
+import java.util.HashMap;
 import java.util.LinkedList;
+import java.util.Map;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
+
 
 /**
  *
  * @author Tin
  */
-public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware {
+public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
 
     private Solicitante solicitanteAVer;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-
+    private Connection conexion;
+    private Map parametros;
+     public SessionMap<String, Object> sessionMap;
     public VerPerfilSolicitanteEmpleadorAction() {
     }
 
@@ -51,12 +65,22 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     public void prepare() throws Exception {
         existe = true;
         int idSolicitante = Integer.parseInt(request.getParameter("id"));
+     
         try {
             solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
+            sessionMap.put("solicitante", solicitanteAVer);
         } catch (SQLException e) {
             existe = false;
         }
     }
+
+//    public String reportePDF() throws SQLException, IOException {
+//        BaseData bas=new BaseData();
+//        setConexion(bas.getConnection());
+//        parametros=new HashMap();
+//        parametros.put("idSolicitante",solicitanteAVer.getId());
+//        return "reporte";
+//    }
 
     @Override
     public Solicitante getModel() {
@@ -98,6 +122,27 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+//
+//    public Connection getConexion() {
+//        return conexion;
+//    }
+//
+//    public void setConexion(Connection conexion) {
+//        this.conexion = conexion;
+//    }
+//
+//    public Map getParametros() {
+//        return parametros;
+//    }
+//
+//    public void setParametros(Map parametros) {
+//        this.parametros = parametros;
+//    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+         this.sessionMap = (SessionMap<String, Object>) map; //To change body of generated methods, choose Tools | Templates.
     }
 
 }

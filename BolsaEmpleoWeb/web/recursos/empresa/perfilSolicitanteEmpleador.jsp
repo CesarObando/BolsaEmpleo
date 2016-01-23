@@ -85,7 +85,7 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="get">
+                        <s:form method="get" action="reporte">
                             <s:label name="id" label="Id"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
@@ -101,7 +101,10 @@
                             <s:label name="telefonoMovil" label="Teléfono Celular"/>
                             <s:label name="correo" label="Email"/>
                             <s:label name="idiomas" label="Idiomas que domina"/>
+                            <s:submit name="reporte" value="Exportar a PDF"></s:submit>
+                            
                         </s:form>
+                           
                     </div>
                 </aside> 
             </div>            
