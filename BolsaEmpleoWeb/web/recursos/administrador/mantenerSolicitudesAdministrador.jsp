@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Administrador | Bolsa de Empleo</title>  
+        <title>Mantener Solicitudes | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -83,26 +83,56 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
 
-                        <s:form method="post" action="editarAdministradorProcess">
-                            <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:password name="password" label="Clave"/> 
-                            <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
+                        <s:form action="buscarSolicitudesAdministradorProcess">
+                            <s:textfield name="puesto" label="Puesto"/>
+                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                            <s:submit method="buscar" value="Buscar" action="buscarSolicitudesAdministradorProcess"/>
                         </s:form>
+                        <table id="mytable" class="table table-bordred table-striped">
+
+                            <s:if test="%{solicitudes.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <th>Puesto</th>
+                                <th>Nombre Solicitante</th>
+                                <th>Apellidos Solicitante</th>
+                                <th>Nombre Empleador</th>
+                                <th>Apellidos Empleador</th>
+                                <th>Nombre Empresa</th>
+                                <th>Eliminar</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="solicitudes" var="solicitudActual">
+                                        <tr>
+                                            <td><s:property value="#solicitudActual.oferta.puesto"/></td>
+                                            <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
+                                            <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
+                                            <td><s:property value="#solicitudActual.oferta.empleador.nombre"/></td>
+                                            <td><s:property value="#solicitudActual.oferta.empleador.apellidos"/></td>
+                                            <td><s:property value="#solicitudActual.oferta.empleador.nombreEmpresa"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                    <s:url action="eliminarSolicitudAdministrador" var="url">
+                                                        <s:param name="id" value="#solicitudActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>  
+
                         <script>
                             function confirmBox() {
                                 var answer;
-                                answer = window.confirm("¿Desea editar la información?");
+                                answer = window.confirm("¿Desea eliminar la solicitud?");
                                 if (answer == true) {
                                     return true;
                                 }

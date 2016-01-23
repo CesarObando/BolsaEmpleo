@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Perfil Administrador | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -91,15 +91,27 @@
                         </s:if>
 
                         <s:form method="post">
-                            <s:label name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:label name="cedula" label="Cédula" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
                         </s:form>
                         <a href="../administrador/editarAdministrador.action" class="">Editar</a>
-                        <a href="../administrador/eliminarAdministrador.action" class="">Eliminar</a>
+                        <a href="../administrador/eliminarAdministrador.action" class="" onclick="return confirmBox();">Eliminar</a>
                     </div>
+                    <script>
+                        function confirmBox() {
+                            var answer;
+                            answer = window.confirm("¿Desea eliminar su perfil?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
                 </aside> 
             </div>            
         </section>

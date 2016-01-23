@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Mantener empleadores | Bolsa de Empleo</title>  
+        <title>Mantener Empleadores | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -97,11 +97,11 @@
 
                             <s:else>
                                 <thead>
-                                <td>Cédula</td>
-                                <td>Nombre</td>
-                                <td>Apellidos</td>
-                                <td>Nombre de empresa</td>
-                                <th>Delete</th>
+                                <th>Cédula</th>
+                                <th>Nombre</th>
+                                <th>Apellidos</th>
+                                <th>Nombre de empresa</td>
+                                <th>Eliminar</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="empleadores" var="empleadorActual">
@@ -114,7 +114,7 @@
                                                     <s:url action="eliminarEmpleadorAdministrador" var="url">
                                                         <s:param name="id" value="#empleadorActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -124,7 +124,18 @@
                             </div       
                             </tbody>
                         </table>     
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar al empleador?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
 
                     </div>
                 </aside> 

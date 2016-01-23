@@ -23,7 +23,7 @@
                             <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
                         </li>
                         <li>
-                        <s:a action="buscarSolicitudesSolicitante" >Administrar Solicitudes</s:a>
+                        <s:a action="buscarSolicitudesSolicitantes" >Administrar Solicitudes</s:a>
                     </li>
                 </ul>
             </div>                                

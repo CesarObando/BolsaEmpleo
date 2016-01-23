@@ -42,7 +42,7 @@ public class SolicitudData extends BaseData {
         conexion.close();
         return solicitud;
     }
-    
+
     public Solicitud editarSolicitud(Solicitud solicitudAEditar) throws SQLException, DataException {
         Connection conexion = super.getConnection();
         String sqlEditarSolicitud = "{Call editar_solicitud (?,?)}";
@@ -58,7 +58,6 @@ public class SolicitudData extends BaseData {
         conexion.close();
         return solicitudAEditar;
     }
-
 
     public void eliminarSolicitud(int id) throws SQLException {
         String sqlEliminarSolicitud = "{CALL eliminar_solicitud(?)}";
@@ -105,6 +104,7 @@ public class SolicitudData extends BaseData {
             solicitudActual.setId(resultSet.getInt("id"));
             solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
             solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
+            solicitudActual.setFavorito(resultSet.getBoolean("favorito"));
             solicitudes.add(solicitudActual);
         }
         return solicitudes;
@@ -122,6 +122,7 @@ public class SolicitudData extends BaseData {
                 solicitud.setId(resultSet.getInt("id"));
                 solicitud.getSolicitante().setId(resultSet.getInt("solicitante"));
                 solicitud.getOferta().setId(resultSet.getInt("oferta"));
+                solicitud.setFavorito(resultSet.getBoolean("favorito"));
                 return solicitud;
             }
         } catch (SQLException e) {
@@ -129,5 +130,26 @@ public class SolicitudData extends BaseData {
         }
         conexion.close();
         return null;
+    }
+
+    public LinkedList<Solicitud> getOfertasPorCategorias(int categoria, String puesto) throws SQLException {
+
+        String sqlSelect = "{CALL buscar_solicitudes_categoria(?,?)}";
+        Connection conexion = super.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlSelect);
+        statement.setString(1, puesto);
+        statement.setInt(2, categoria);
+        ResultSet resultSet = statement.executeQuery();
+
+        LinkedList<Solicitud> solicitudes = new LinkedList<Solicitud>();
+        while (resultSet.next()) {
+            Solicitud solicitud = new Solicitud();
+            solicitud.setId(resultSet.getInt("id"));
+            solicitud.getSolicitante().setId(resultSet.getInt("solicitante"));
+            solicitud.getOferta().setId(resultSet.getInt("oferta"));
+            solicitud.setFavorito(resultSet.getBoolean("favorito"));
+            solicitudes.add(solicitud);
+        }
+        return solicitudes;
     }
 }

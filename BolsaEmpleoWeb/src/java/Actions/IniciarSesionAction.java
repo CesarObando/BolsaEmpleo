@@ -8,11 +8,9 @@ package Actions;
 import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
 import Exception.DataException;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.opensymphony.xwork2.util.ValueStack;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -69,8 +67,8 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
             solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante == null || solicitante.getCedula().equals("")) {
-                this.addActionMessage("Usuario o contraseña incorrectas");
+            if (solicitante.getId()==0) {
+                this.addFieldError("nombreUsuario", "Usuario o contraseña incorrecta");
                 return ERROR;
             }
             sessionMap.put("solicitante", solicitante);

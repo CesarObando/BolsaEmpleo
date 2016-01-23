@@ -50,7 +50,11 @@
                                 <!--<a href="http://www.ucr.ac.cr" target="blank">Universidad de Costa Ric</a>-->
                                 <img class="img-responsive" src="../imagenes/logo-ucr.png" alt="" />
                             </div>
-                            <div class="logo-img">                   
+                            <div class="logo-img">
+                                <c:if test="${sessionScope.solicitante != null}">
+                                    <s:url action="cerrarSesion" var="url"></s:url>
+                                    <a href='<s:property value="#url" />'><h5 class="site-name">Cerrar Sesion</h5></a>
+                                </c:if>
                                 <!--aqui va un logo de la oficina de orientacion o bolsa de empleo-->
                                 <!--<a href="http://www.ucr.ac.cr"><img class="img-responsive" src="//placehold.it/130x55&text=Logo" class="img-responsive" alt="Imagen responsive"></a>-->
                                 <h3 class="site-name">Bolsa de Empleo</h3>                                    

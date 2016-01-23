@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Mantener Administradores | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -99,17 +99,15 @@
 
                             <s:else>
                                 <thead>
-                                <td>Id del administrador</td>
                                 <td>Cédula</td>
                                 <td>Nombre</td>
                                 <td>Apellidos</td>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="administradores" var="administradorActual">
                                         <tr>
-                                            <td><s:property value="#administradorActual.id"/></td>
                                             <td><s:property value="#administradorActual.cedula"/></td>
                                             <td><s:property value="#administradorActual.nombre"/></td>
                                             <td><s:property value="#administradorActual.apellidos"/></td>

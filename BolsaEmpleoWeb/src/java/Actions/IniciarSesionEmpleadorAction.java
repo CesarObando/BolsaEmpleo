@@ -72,8 +72,8 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         try {
             empleador = empleadorBusiness.inicioSesion(nombreUsuario, clave);
-            if (empleador == null || empleador.getCedula().equals("")) {
-                this.addActionMessage("Usuario o contraseña incorrectas");
+            if (empleador.getId()==0) {
+                this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }
             sessionMap.put("empleador", empleador);

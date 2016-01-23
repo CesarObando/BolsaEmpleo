@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Registrar Usuario | Bolsa de Empleo</title>  
+        <title>Eliminar Empleador | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -91,11 +91,23 @@
                         </s:if>
 
                         <s:form action="eliminarEmpleadorAdministradorProcess" method="post">
-                            <s:textfield name="id" label="Id Del Empleador" readonly="true"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarEmpleadorAdministradorProcess"/>
-                            </s:form>
+                            <s:hidden name="id"/>
+                            <s:label name="nombre" label="Nombre"/>
+                            <s:label name="apellidos" label="Apellidos"/>
+                            <s:submit value="Eliminar" action="eliminarEmpleadorAdministradorProcess" onclick="return confirmBox();"/>
+                        </s:form>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar al empleador?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

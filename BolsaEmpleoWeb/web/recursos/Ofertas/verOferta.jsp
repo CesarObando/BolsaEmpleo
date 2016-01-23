@@ -90,7 +90,7 @@
                         </s:if>
 
                         <s:form method="post" action="verOfertaProcess">
-                            <s:textfield name="id" label="Id" readonly="true"/>
+                            <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto " readonly="true"/>
                             <s:textfield name="empleador.nombre" label="Nombre de empleador" readonly="true"/>
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
@@ -100,6 +100,8 @@
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
+                        <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
+                        <a href="../Ofertas/eliminarOferta.action" class="">Eliminar Oferta</a>
 
                         <table id="mytable" class="table table-bordred table-striped">
 
@@ -110,37 +112,35 @@
 
                             <s:else>
                                 <thead>
-                                <td>Nombre</td>
-                                <td>Apellidos</td>
-                                <th>Eliminar</th>
-                                <th>Favorito</th>
+                                <th>Nombre</th>
+                                <td></td>
+                                <th>Apellidos</th>
+                                <td></td>
                                 <th>Ver</th>
+                                <th>Favorito</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="solicitudes" var="solicitudActual">
                                         <tr>
                                             <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
+                                            <td></td>
                                             <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                    <s:url action="eliminarSolicitudEmpleadorProcess" var="url">
-                                                        <s:param name="id" value="#solicitudActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                    <s:url action="editarSolicitudEmpleadorProcess" var="url">
-                                                        <s:param name="id" value="#solicitudActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
-                                                </p>
-                                            </td>
+                                            <td></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                     <s:url action="verPerfilSolicitanteEmpleador" var="url">
-                                                        <s:param name="id" value="#solicitudActual.solicitante.id"/>
+                                                        <s:param name="id" value="#solicitudActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+
+                                                    <a href='<s:property value="#url"/>'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
+                                            </td>
+                                            <td>
+                                                <s:if test="%{#solicitudActual.favorito == true}">
+                                                    <img src="../imagenes/Favorito.jpeg"/>
+                                                </s:if>
+                                                <s:if test="%{#solicitudActual.favorito == false}">
+                                                    <img src="../imagenes/NoFavorito.jpeg"/>
+                                                </s:if>
                                             </td>
                                         </tr>
                                     </s:iterator>

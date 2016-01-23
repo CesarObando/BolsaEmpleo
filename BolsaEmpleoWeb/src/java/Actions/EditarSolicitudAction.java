@@ -14,19 +14,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Cesar
  */
-public class EditarSolicitudAction extends ActionSupport implements Preparable, ModelDriven<Solicitud>, ServletRequestAware {
+public class EditarSolicitudAction extends ActionSupport implements Preparable, ModelDriven<Solicitud>, ServletRequestAware, SessionAware {
 
     private Solicitud solicitudAEditar;
     private String mensaje;
     private HttpServletRequest request;
     private boolean existe;
+    private SessionMap<String,Object> sessionMap;
 
     public EditarSolicitudAction() {
     }
@@ -43,8 +47,8 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int id = Integer.parseInt(request.getParameter("id"));
-        solicitudAEditar = new SolicitudBusiness().buscarSolicitud(id);
+        solicitudAEditar = (Solicitud) sessionMap.get("solicitud");
+        
     }
 
     @Override
@@ -61,7 +65,12 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
         boolean editado = true;
         try {
-            solicitudAEditar.setFavorito(true);
+            if(solicitudAEditar.isFavorito()){
+                solicitudAEditar.setFavorito(false);
+            }
+            else{
+                solicitudAEditar.setFavorito(true);
+            }     
             solicitudBusiness.editarSolicitud(solicitudAEditar);
         } catch (SQLException e) {
             editado = false;
@@ -105,6 +114,11 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Eliminar Usuario | Bolsa de Empleo</title>  
+        <title>Eliminar Solicitante | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -102,22 +102,33 @@
 
                         <c:if test="${sessionScope.administrador != null}">
                             <s:form action="eliminarSolicitanteAdministradorProcess" method="post">
-                            <s:textfield name="id" label="Id del Solicitante" readonly="true"/>
-                            <s:label name="nombre" label="Nombre"/>
-                            <s:label name="apellidos" label="Apellidos"/>
-                            <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess"/>
-                        </s:form>
+                                <s:hidden name="id"/>
+                                <s:label name="nombre" label="Nombre"/>
+                                <s:label name="apellidos" label="Apellidos"/>
+                                <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox();"/>
+                            </s:form>
                         </c:if>
                         <c:if test="${sessionScope.solicitante != null}">
                             <s:form action="eliminarSolicitanteProcess" method="post">
-                            <s:textfield name="id" label="Id del Solicitante" readonly="true"/>
-                            <s:label name="nombre" label="Nombre"/>
-                            <s:label name="apellidos" label="Apellidos"/>
-                            <s:submit value="Eliminar" action="eliminarSolicitanteProcess"/>
-                        </s:form>
+                                <s:hidden name="id"/>
+                                <s:label name="nombre" label="Nombre"/>
+                                <s:label name="apellidos" label="Apellidos"/>
+                                <s:submit value="Eliminar" action="eliminarSolicitanteProcess" onclick="return confirmBox();"/>
+                            </s:form>
                         </c:if>
 
-                        
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

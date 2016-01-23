@@ -96,8 +96,20 @@
                             <s:textarea name="requerimientos" label="Requerimientos "/>
                             <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre"/>            
                             <s:textarea name="descripcion" label="Descripción"/>
-                            <s:submit action="insertarOfertaProcess" value="Insertar Oferta"/>
+                            <s:submit action="insertarOfertaProcess" value="Insertar Oferta" onclick="return confirmBox();"/>
                         </s:form>
+                        <script>
+                            function confirmBox(){
+                                var answer;
+                                answer = window.confirm("¿Desea registrar la oferta?");
+                                if(answer==true){
+                                    return true;
+                                }
+                                else{
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

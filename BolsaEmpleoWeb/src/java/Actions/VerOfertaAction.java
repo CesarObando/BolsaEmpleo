@@ -5,36 +5,36 @@
  */
 package Actions;
 
-import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;
 import Business.SolicitudBusiness;
-import Dominio.Empleador;
 import Dominio.Oferta;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
 import java.util.LinkedList;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class VerOfertaAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class VerOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
     private Oferta ofertaAVer;
     private LinkedList<Solicitud> solicitudes;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
+    private SessionMap<String, Object> sessionMap;
 
     public VerOfertaAction() {
     }
@@ -63,6 +63,7 @@ public class VerOfertaAction extends ActionSupport implements Preparable, ModelD
                 solicitudes.set(i, solicitud);
             }
             ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+            sessionMap.put("oferta", ofertaAVer);
         } catch (SQLException e) {
             existe = false;
         }
@@ -116,6 +117,11 @@ public class VerOfertaAction extends ActionSupport implements Preparable, ModelD
 
     public void setSolicitudes(LinkedList<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

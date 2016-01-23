@@ -82,11 +82,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:form action="buscarOfertasSolicitanteProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar" action="buscarOfertasSolicitanteProcess"/>
-                        </s:form>
+
                         <table id="mytable" class="table table-bordred table-striped">
 
 
@@ -111,7 +107,7 @@
                                                     <s:url action="eliminarSolicitudSolicitanteProcess" var="url">
                                                         <s:param name="id" value="#solicitudActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url"/>' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -121,6 +117,18 @@
                             </div       
                             </tbody>
                         </table>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la solicitud?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

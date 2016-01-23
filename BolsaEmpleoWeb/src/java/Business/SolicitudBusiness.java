@@ -46,4 +46,8 @@ public class SolicitudBusiness {
     public Solicitud buscarSolicitud(int id) throws SQLException, DataException {
         return solicitudData.buscarSolicitud(id);
     }
+    
+    public LinkedList<Solicitud> getOfertasPorCategorias(int categoria, String puesto) throws SQLException {
+        return  solicitudData.getOfertasPorCategorias(categoria, puesto);
+    }
 }

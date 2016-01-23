@@ -6,35 +6,6 @@
 
 <struts>
     <package name="solicitud" namespace="/solicitud" extends="struts-default">
-    
-        <action name="insertarSolicitud" class="Actions.VerOfertaSolicitanteAction">
-            <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
-        </action>
-        
-        <action name="insertarSolicitudProcess" method="solicitar" class="Actions.VerOfertaSolicitanteAction">
-            <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
-            <result name="error" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
-        </action>
-        
-        
-        <action  class="Actions.BuscarSolicitudesSolicitanteAction" name="buscarSolicitudesSolicitante">
-            <result name="input" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-        </action>
-        
-        <action  class="Actions.BuscarSolicitudesSolicitanteAction" name="buscarSolicitudesSolicitantesProcess" method="buscar">
-            <result name="buscarSolicitudesSolicitantes" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-        </action>
-        
-        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitudSolicitante">
-            <result type="dispatcher" name="input">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-            <result type="dispatcher" name="error">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-        </action>
-        
-        <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitudSolicitanteProcess" method="eliminar">
-            <result type="dispatcher" name="input">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-            <result type="dispatcher" name="error">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-            <result name="success" type="dispatcher">/recursos/usuarios/mantenerOfertasSolicitante.jsp</result>
-        </action>
+
     </package>
 </struts>

@@ -5,11 +5,10 @@
  */
 package Actions;
 
-import Business.OfertaBusiness;
-import Dominio.Oferta;
+import Business.AdministradorBusiness;
+import Business.SolicitudBusiness;
+import Dominio.Solicitud;
 import Exception.DataException;
-import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -22,20 +21,19 @@ import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
- * @author Tin
+ * @author JonathanA
  */
-public class EliminarOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class EliminarSolicitudEmpleadorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
-    private Oferta ofertaAEliminar;
+    private Solicitud solicitudEliminar;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
-    public EliminarOfertaAction() {
+    public EliminarSolicitudEmpleadorAction() {
     }
 
-    @Override
     public String execute() throws Exception {
         if (existe) {
             return INPUT;
@@ -47,29 +45,12 @@ public class EliminarOfertaAction extends ActionSupport implements SessionAware,
     @Override
     public void prepare() throws Exception {
         existe = true;
-        ofertaAEliminar = (Oferta) sessionMap.get("oferta");
+        solicitudEliminar = (Solicitud) sessionMap.get("solicitud");
     }
 
     @Override
-    public Oferta getModel() {
-        return this.ofertaAEliminar;
-    }
-
-    public String eliminar() throws SQLException, DataException {
-        OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        boolean eliminado = true;
-        try {
-            ofertaBusiness.eliminarOferta(ofertaAEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "La oferta fue eliminada correctamente.";
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            return ERROR;
-        }
+    public Solicitud getModel() {
+        return this.solicitudEliminar;
     }
 
     @Override
@@ -77,12 +58,29 @@ public class EliminarOfertaAction extends ActionSupport implements SessionAware,
         this.request = hsr;
     }
 
-    public Oferta getOfertaAEliminar() {
-        return ofertaAEliminar;
+    public String eliminar() throws DataException {
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        boolean eliminado = true;
+        try {
+            solicitudBusiness.eliminarSolicitud(solicitudEliminar.getId());
+        } catch (SQLException e) {
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La solicitud fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
+            return ERROR;
+        }
     }
 
-    public void setOfertaAEliminar(Oferta ofertaAEliminar) {
-        this.ofertaAEliminar = ofertaAEliminar;
+    public Solicitud getSolicitudEliminar() {
+        return solicitudEliminar;
+    }
+
+    public void setSolicitudEliminar(Solicitud solicitudEliminar) {
+        this.solicitudEliminar = solicitudEliminar;
     }
 
     public String getMensaje() {
@@ -93,20 +91,20 @@ public class EliminarOfertaAction extends ActionSupport implements SessionAware,
         this.mensaje = mensaje;
     }
 
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
     public boolean isExiste() {
         return existe;
     }
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
     }
 
     @Override

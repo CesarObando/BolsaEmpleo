@@ -10,7 +10,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Información | Bolsa de Empleo</title>  
+        <title>Perfil Solicitante | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -85,16 +85,22 @@
                             <s:actionmessage />
                         </s:if>
 
+<<<<<<< HEAD
                         <s:form method="get" action="reporte">
                             <s:label name="id" label="Id"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
+=======
+                        <s:form method="get">
+                            <s:hidden name="id"/>
+                            <s:label name="cedula" label="Cédula" readonly="true"/>
+>>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                             <s:label name="edad" label="Edad"/>
                             <s:label name="sexo" label="Sexo" readonly="true"/>
                             <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
-                            <s:label name="titulos" label="Titulos"/>
+                            <s:label name="titulos" label="Títulos"/>
                             <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
                             <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
                             <s:label name="telefonoFijo" label="Teléfono Casa"/> 
@@ -104,8 +110,56 @@
                             <s:submit name="reporte" value="Exportar a PDF"></s:submit>
                             
                         </s:form>
+<<<<<<< HEAD
                            
+=======
+
+
+                        <c:if test="${sessionScope.solicitud.favorito == true}">
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox();">Desmarcar como favorito</a>
+                        </c:if>
+                        <c:if test="${sessionScope.solicitud.favorito == false}">
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();">Marcar como favorito</a>
+                        </c:if>
+                            <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();">Eliminar</a>
+>>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
                     </div>
+                    <script>
+                        function confirmBox() {
+                            var answer;
+                            answer = window.confirm("¿Desea desmarcar al solicitante como favorito?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
+                    <script>
+                        function confirmBox1() {
+                            var answer;
+                            answer = window.confirm("¿Desea marcar al solicitante como favorito?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
+                    <script>
+                        function confirmBox2() {
+                            var answer;
+                            answer = window.confirm("¿Desea eliminar al solicitante?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
                 </aside> 
             </div>            
         </section>

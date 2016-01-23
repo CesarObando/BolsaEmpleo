@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Mantenimiento Categoría | Bolsa de Empleo</title>  
+        <title>Mantener Categorías | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -88,7 +88,7 @@
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
-                        
+
                         <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{solicitantes.isEmpty()}">
@@ -97,15 +97,13 @@
 
                             <s:else>
                                 <thead>
-                                <td>Id de Categoria</td>
-                                <td>Nombre</td>
-                                <th>Edit</th>
-                                <th>Delete</th>
+                                <th>Nombre</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="categorias" var="categoriaActual">
                                         <tr>
-                                            <td><s:property value="#categoriaActual.id"/></td>
                                             <td><s:property value="#categoriaActual.nombre"/></td>
 
                                             <td><p data-placement="top" data-toggle="tooltip" title="Edit">
@@ -117,10 +115,10 @@
                                                 </p>
                                             </td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarCategoria" var="url">
+                                                    <s:url action="eliminarCategoriaProcess" var="url">
                                                         <s:param name="id" value="#categoriaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -131,7 +129,18 @@
                             </tbody>
                         </table>     
 
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la categoría?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

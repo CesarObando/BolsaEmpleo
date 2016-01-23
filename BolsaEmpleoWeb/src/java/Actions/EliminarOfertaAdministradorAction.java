@@ -5,17 +5,14 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.OfertaBusiness;
-import Dominio.Administrador;
 import Dominio.Oferta;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.sun.xml.ws.runtime.dev.SessionManager;
 import java.sql.SQLException;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
@@ -27,15 +24,15 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Tin
  */
-public class EditarOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class EliminarOfertaAdministradorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
-    private Oferta ofertaAEditar;
+    private Oferta ofertaAEliminar;
     private String mensaje;
-    private HttpServletRequest request;
     private boolean existe;
+    private HttpServletRequest request;
     private SessionMap<String,Object> sessionMap;
 
-    public EditarOfertaAction() {
+    public EliminarOfertaAdministradorAction() {
     }
 
     @Override
@@ -50,13 +47,30 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
     @Override
     public void prepare() throws Exception {
         existe = true;
-            ofertaAEditar = (Oferta) sessionMap.get("oferta");
-
+        int idOferta = Integer.parseInt(request.getParameter("id"));
+        ofertaAEliminar = new OfertaBusiness().buscarOferta(idOferta);
     }
 
     @Override
     public Oferta getModel() {
-        return this.ofertaAEditar;
+        return this.ofertaAEliminar;
+    }
+
+    public String eliminar() throws SQLException, DataException {
+        OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        boolean eliminado = true;
+        try {
+            ofertaBusiness.eliminarOferta(ofertaAEliminar.getId());
+        } catch (SQLException e) {
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            mensaje = "La oferta fue eliminada correctamente.";
+            return SUCCESS;
+        } else {
+            mensaje = "Ocurrió un problema al eliminar.";
+            return ERROR;
+        }
     }
 
     @Override
@@ -64,43 +78,12 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
         this.request = hsr;
     }
 
-    @Override
-    public void validate() {
-        if (ofertaAEditar.getPuesto().length() == 0) {
-            addFieldError("puesto", "Debe ingresar el puesto vacante");
-        }
-        if (ofertaAEditar.getRequerimientos().length() == 0) {
-            addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
-        }
-        if (ofertaAEditar.getCantidadVacantes() == 0) {
-            addFieldError("cantidadVacantes", "Debe seleccionar una catidad de vacantes");
-        }
-
+    public Oferta getOfertaAEliminar() {
+        return ofertaAEliminar;
     }
 
-    public String editar() {
-        OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        boolean editado = true;
-        try {
-            ofertaBusiness.editarOferta(ofertaAEditar);
-        } catch (SQLException e) {
-            editado = false;
-            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-        }
-        if (editado == true) {
-            this.mensaje = "La oferta fue editada correctamente";
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
-    }
-
-    public Oferta getOfertaAEditar() {
-        return ofertaAEditar;
-    }
-
-    public void setOfertaAEditar(Oferta ofertaAEditar) {
-        this.ofertaAEditar = ofertaAEditar;
+    public void setOfertaAEliminar(Oferta ofertaAEliminar) {
+        this.ofertaAEliminar = ofertaAEliminar;
     }
 
     public String getMensaje() {

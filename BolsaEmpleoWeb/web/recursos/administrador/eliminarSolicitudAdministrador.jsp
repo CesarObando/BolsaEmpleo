@@ -16,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Editar Administrador | Bolsa de Empleo</title>  
+        <title>Eliminar Solicitud | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -90,19 +90,19 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form method="post" action="editarAdministradorProcess">
+                        <s:form action="eliminarSolicitudAdministradorProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:password name="password" label="Clave"/> 
-                            <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
+                            <s:textfield name="oferta.puesto" label="Puesto" readonly="true"/>
+                            <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>
+                            <s:textfield name="solicitante.apellidos" label="Apellidos del solicitante" readonly="true"/>
+                            <s:textfield name="oferta.empleador.nombre" label="Nombre del empleador" readonly="true"/>
+                            <s:textfield name="oferta.empleador.nombreEmpresa" label="Nombre de la empresa" readonly="true"/>
+                            <s:submit action="eliminarSolicitudAdministradorProcess" value="Eliminar Solicitud" onclick="return confirmBox();"/>
                         </s:form>
                         <script>
                             function confirmBox() {
                                 var answer;
-                                answer = window.confirm("¿Desea editar la información?");
+                                answer = window.confirm("¿Desea eliminar la solicitud?");
                                 if (answer == true) {
                                     return true;
                                 }
