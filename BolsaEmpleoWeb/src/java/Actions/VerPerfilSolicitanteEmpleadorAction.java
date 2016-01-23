@@ -29,42 +29,28 @@ import java.sql.SQLException;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.Map;
-<<<<<<< HEAD
 import javax.imageio.ImageIO;
-=======
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
-<<<<<<< HEAD
-
-=======
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
 
 /**
  *
  * @author Tin
  */
-<<<<<<< HEAD
+
 public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
-=======
-public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitante>, ServletRequestAware {
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
+
 
     private Solicitante solicitanteAVer;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-<<<<<<< HEAD
     private Connection conexion;
     private Map parametros;
-     public SessionMap<String, Object> sessionMap;
-=======
     private SessionMap<String, Object> sessionMap;
     private int idSolicitud;
-
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
     public VerPerfilSolicitanteEmpleadorAction() {
     }
 
@@ -80,7 +66,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     @Override
     public void prepare() throws Exception {
         existe = true;
-<<<<<<< HEAD
+
         int idSolicitante = Integer.parseInt(request.getParameter("id"));
      
         try {
@@ -89,14 +75,8 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
         } catch (SQLException e) {
             existe = false;
         }
-=======
-        idSolicitud = Integer.parseInt(request.getParameter("id"));
-        Solicitud solicitud = new SolicitudBusiness().buscarSolicitud(idSolicitud);
-        sessionMap.put("solicitud", solicitud);
 
-        int idSolicitante = solicitud.getSolicitante().getId();
-        solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
+      
     }
 
 //    public String reportePDF() throws SQLException, IOException {
@@ -170,10 +150,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
          this.sessionMap = (SessionMap<String, Object>) map; //To change body of generated methods, choose Tools | Templates.
     }
 
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
-    }
+    
 
     public int getIdSolicitud() {
         return idSolicitud;
