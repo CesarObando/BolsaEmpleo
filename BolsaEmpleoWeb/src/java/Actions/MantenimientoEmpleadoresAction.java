@@ -5,9 +5,7 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Administrador;
 import Dominio.Empleador;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
