@@ -1,5 +1,7 @@
 package Dominio;
 
+import java.sql.Date;
+
 public class Empleador {
 
     private int id;
@@ -14,6 +16,8 @@ public class Empleador {
     private String username;
     private String pass;
     private String direccion;
+    private Date ultimaActualizacion;
+
 
     public Empleador() {
     }
@@ -129,4 +133,12 @@ public class Empleador {
         this.username = username;
     }
 
+    public Date getUltimaActualizacion() {
+        return ultimaActualizacion;
+    }
+
+    public void setUltimaActualizacion(Date ultimaActualizacion) {
+        this.ultimaActualizacion = ultimaActualizacion;
+    }
+    
 }

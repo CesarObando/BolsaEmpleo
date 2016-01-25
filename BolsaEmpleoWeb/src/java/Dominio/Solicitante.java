@@ -5,6 +5,8 @@
  */
 package Dominio;
 
+import java.sql.Date;
+
 /**
  *
  * @author Cesar
@@ -28,6 +30,7 @@ public class Solicitante {
     private String telefonoMovil;
     private String correo;
     private String idiomas;
+    private Date ultimaActualizacion;
 
     public Solicitante() {
     }
@@ -191,4 +194,14 @@ public class Solicitante {
     public String getFotoString() {
         return new String(this.foto);
     }
+
+    public Date getUltimaActualizacion() {
+        return ultimaActualizacion;
+    }
+
+    public void setUltimaActualizacion(Date ultimaActualizacion) {
+        this.ultimaActualizacion = ultimaActualizacion;
+    }
+    
+    
 }

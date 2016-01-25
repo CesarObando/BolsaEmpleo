@@ -118,6 +118,7 @@ public class EmpleadorData extends BaseData {
                 empleadorActual.setDireccion(resultSet.getString("direccion"));
                 empleadorActual.setUsername(resultSet.getString("username"));
                 empleadorActual.setPass(resultSet.getString("passwd"));
+                empleadorActual.setUltimaActualizacion(resultSet.getDate("ultima_actualizacion"));
                 empleadores.add(empleadorActual);
             }
         } catch (SQLException e) {
@@ -150,6 +151,7 @@ public class EmpleadorData extends BaseData {
                 empleadorActual.setDireccion(resultSet.getString("direccion"));
                 empleadorActual.setUsername(resultSet.getString("username"));
                 empleadorActual.setPass(resultSet.getString("passwd"));
+                empleadorActual.setUltimaActualizacion(resultSet.getDate("ultima_actualizacion"));
                 empleadores.add(empleadorActual);
             }
         } catch (SQLException e) {
@@ -179,6 +181,7 @@ public class EmpleadorData extends BaseData {
                 empleador.setDireccion(resultSet.getString("direccion"));
                 empleador.setUsername(resultSet.getString("username"));
                 empleador.setPass(resultSet.getString("passwd"));
+                empleador.setUltimaActualizacion(resultSet.getDate("ultima_actualizacion"));
             }
         } catch (SQLException e) {
             throw new DataException("Ha ocurrido un error con la base de datos");

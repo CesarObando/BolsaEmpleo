@@ -126,6 +126,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setSexo(rs.getString("sexo"));
                 solicitante.setCorreo(rs.getString("correo"));
                 solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
+                solicitante.setUltimaActualizacion(rs.getDate("ultima_actualizacion"));
                 solicitantes.add(solicitante);
             }
         } catch (Exception e) {
@@ -164,6 +165,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setSexo(rs.getString("sexo"));
                 solicitante.setCorreo(rs.getString("correo"));
                 solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
+                solicitante.setUltimaActualizacion(rs.getDate("ultima_actualizacion"));
                 solicitantes.add(solicitante);
             }
         } catch (Exception e) {
@@ -199,6 +201,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setSexo(rs.getString("sexo"));
                 solicitante.setCorreo(rs.getString("correo"));
                 solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
+                solicitante.setUltimaActualizacion(rs.getDate("ultima_actualizacion"));
             }
         } catch (Exception e) {
             throw new DataException("Ha ocurrido un error con la base de datos");
