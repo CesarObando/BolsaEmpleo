@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Buscar Servicios | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -89,8 +89,8 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
+                        <s:form action="buscarServiciosProcess">
+                            <s:textfield name="titulo" label="Título"/>
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>

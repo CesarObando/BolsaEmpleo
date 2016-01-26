@@ -481,7 +481,6 @@
             <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
-<<<<<<< HEAD
         <action class="Actions.VerPerfilSolicitanteEmpleadorAction" name="verPerfilSolicitanteEmpleador"> 
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
         </action>
@@ -491,10 +490,91 @@
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             
-=======
         <action class="Actions.CerrarSesionAction" name="cerrarSesion">
             <result type="dispatcher" name="success">/recursos/solicitante/pantallaPrincipal.jsp</result>
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
+        </action>
+        
+        <!--***************************SERVICIO*******************************************-->
+        
+        <action name="insertarServicio" class="Actions.InsertarServicioAction">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result name="input" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
+        </action>
+        
+        <action name="insertarServicioProcess" method="insertar" class="Actions.InsertarServicioAction">
+            <result name="input" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
+            <result name="error" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
+            <result name="success" type="redirect">/recursos/empresa/principalSolicitante.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosAction" name="buscarServicios">
+            <result name="input" type="dispatcher">/recursos/servicio/buscarServicios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicio/buscarServicios.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosAction" name="buscarServiciosProcess" method="buscar">
+            <result name="buscarServicios" type="dispatcher">/recursos/servicio/mantenerServicios.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarServicioAction" name="editarServicio">
+            <interceptor-ref name="defaultStack">
+                <param name="validation.excludeMethods">execute</param>
+            </interceptor-ref>
+            <result type="dispatcher" name="input">/recursos/servicio/editarServicio.jsp</result>
+        </action>
+        
+        <action class="Actions.EditarServicioAction" name="editarServicioProcess" method="editar">
+            <result type="dispatcher" name="input">/recursos/servicio/editarServicio.jsp</result>
+            <result type="dispatcher" name="error">/recursos/servicio/editarServicio.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarServicioAction" name="eliminarServicio">
+            <result type="dispatcher" name="input">/recursos/servicio/eliminarServicio.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarServicioAction" name="eliminarServicioProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/servicio/eliminarServicio.jsp</result>
+            <result type="dispatcher" name="error">/recursos/servicio/eliminarServicio.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalSolicitante.jsp</result>
+        </action>
+        
+        <action class="Actions.VerServicioAction" name="verServicio">
+            <result type="dispatcher" name="input">/recursos/servicio/verServicio.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosEmpleadorAction" name="buscarServiciosEmpleador">
+            <result name="input" type="dispatcher">/recursos/servicio/buscarServiciosEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicio/buscarServiciosEmpleador.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosEmpleadorAction" name="buscarServiciosEmpleadorProcess" method="buscar">
+            <result name="buscarServiciosEmpleador" type="dispatcher">/recursos/servicio/verServicios.jsp</result>
+        </action>
+        
+        <action class="Actions.VerServicioAction" name="verServicioEmpleador">
+            <result type="dispatcher" name="input">/recursos/servicio/verServicioEmpleador.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosAdministradorAction" name="buscarServiciosAdministrador">
+            <result name="input" type="dispatcher">/recursos/servicio/buscarServiciosAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicio/buscarServiciosAdministrador.jsp</result>
+        </action>
+        
+        <action  class="Actions.BuscarServiciosAdministradorAction" name="buscarServiciosAdministradorProcess" method="buscar">
+            <result name="buscarServiciosAdministrador" type="dispatcher">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarServicioAdministradorAction" name="eliminarServicioAdministrador">
+            <result type="dispatcher" name="input">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
+        </action>
+        
+        <action class="Actions.EliminarServicioAdministradorAction" name="eliminarServicioAdministradorProcess" method="eliminar">
+            <result type="dispatcher" name="input">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
+            <result type="dispatcher" name="error">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
     </package>

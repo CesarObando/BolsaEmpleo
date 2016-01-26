@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Eliminar Servicio | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,9 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+
+
             </div>
         </header>
         <section>
@@ -89,12 +91,23 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
+                        <s:form action="eliminarServicioProcess">
+                            <s:hidden name="id"/>
+                            <s:textfield name="titulo" label="Título" readonly="true"/>
+                            <s:submit action="eliminarServicioProcess" value="Eliminar Servicio" onclick="return confirmBox();"/>
                         </s:form>
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar el servicio?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Ver Servicio | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -65,9 +65,9 @@
                         <div class="content clearfix">                            
                             <ul class="menu">
                                 <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
-                                <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Curriculo?</a></li>                                              
-                                <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraiso</a></li>
-                                <li class="leaf"><a href="#">Contactenos</a></li>                                            
+                                <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">¿Cómo hacer un Curriculo?</a></li>                                              
+                                <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraíso</a></li>
+                                <li class="leaf"><a href="#">Contáctenos</a></li>                                            
                             </ul>                                
                         </div>
                     </div>
@@ -89,11 +89,15 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
+                        <s:form method="post" action="verServicioProcess">
+                            <s:hidden name="id"/>
+                            <s:textfield name="titulo" label="Título" readonly="true"/>
+                            <s:textarea name="descripcion" label="Descripción" readonly="true"/>
+                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
+                            
                         </s:form>
+                        <a href="../Ofertas/editarServicio.action" class="">Editar</a>
+                        <a href="../Ofertas/eliminarServicio.action" class="">Eliminar</a>
 
                     </div>
                 </aside> 

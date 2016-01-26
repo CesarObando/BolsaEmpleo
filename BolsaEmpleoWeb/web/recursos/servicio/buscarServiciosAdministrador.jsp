@@ -1,8 +1,9 @@
 <%-- 
-    Document   : insertarOferta
-    Created on : 04-ene-2016, 9:21:35
-    Author     : Tin
+    Document   : buscarAdministradores
+    Created on : Dec 15, 2015, 8:03:39 PM
+    Author     : JonathanA
 --%>
+
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -15,7 +16,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Buscar Servicios | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
             </div>
         </header>
         <section>
@@ -89,12 +90,11 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
+                        <s:form action="buscarServiciosAdministradorProcess">
+                            <s:textfield name="titulo" label="Título"/>
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
+                            <s:submit method="buscar" value="Buscar" action="buscarServiciosAdministradorProcess"/>
                         </s:form>
-
                     </div>
                 </aside> 
             </div>            
@@ -161,3 +161,4 @@
 
     </body>
 </html>
+

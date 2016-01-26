@@ -53,6 +53,12 @@
                         </ul>
                     </li>
                     <li>
+                        <a>Servicios</a> 
+                        <ul>
+                            <s:a action="buscarServiciosAdministrador" >Mantener</s:a>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener información</a>
                     </li>
                     <li>

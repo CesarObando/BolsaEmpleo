@@ -20,6 +20,9 @@
                             </ul>
                         </li>
                     </c:if>
+                    <li>
+                        <s:a action="buscarServiciosEmpleador" >Buscar Servicios</s:a>
+                    </li>
                 </ul>
             </div>                                
         </div>                          

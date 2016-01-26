@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Editar Servicio | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
             </div>
         </header>
         <section>
@@ -89,12 +89,25 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
+                        <s:form method="post" action="editarServicioProcess">
+                            <s:hidden name="id"/>
+                            <s:textfield name="titulo" label="Título"/>
+                            <s:textarea name="descripcion" label="Descripción"/>
+                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerValue="categoria.nombre" headerKey="categoria.id"/>            
+                            <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
                         </s:form>
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea editar el servicio?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

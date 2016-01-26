@@ -17,13 +17,13 @@
                         </li>
                     </c:if>
                     <li>
-
                         <s:a action="insertarOferta" >Registrar Oferta</s:a>
-
-
-                        </li>
-                        <li>
-                        <s:a action="buscarOfertas" >Buscar Ofertas</s:a>
+                    </li>
+                    <li>
+                        <s:a action="buscarOfertas" >Mantener Ofertas</s:a>
+                    </li>
+                    <li>
+                        <s:a action="buscarServiciosEmpleador" >Buscar Servicios</s:a>
                     </li>
                     <li>
                         <a href="../empresa/verPerfilEmpleador.action" class="" >Mantener información</a>

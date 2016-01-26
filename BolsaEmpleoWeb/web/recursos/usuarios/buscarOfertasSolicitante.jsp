@@ -56,7 +56,13 @@
                     </div>
                 </div>
 
-                <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                <c:if test="${sessionScope.solicitante == null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
+
+                <c:if test="${sessionScope.solicitante != null}">
+                    <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                </c:if>
 
             </div>
         </header>

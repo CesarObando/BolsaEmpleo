@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Ver Servicio | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,13 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                <c:if test="${sessionScope.empleador == null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
+
+                <c:if test="${sessionScope.empleador != null}">
+                    <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                </c:if>
             </div>
         </header>
         <section>
@@ -89,12 +95,14 @@
                             <s:actionmessage />
                         </s:if>
 
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
+                        <s:form method="post" action="insertarServicioProcess">
+                            <s:hidden name="id"/>
+                            <s:textfield name="titulo" label="Título " readonly="true"/>
+                            <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>
+                            <s:textfield name="solicitante.apellidos" label="Apellidos del solicitante" readonly="true"/>
+                            <s:textarea name="descripcion" label="Descripción" readonly="true"/>
+                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                         </s:form>
-
                     </div>
                 </aside> 
             </div>            

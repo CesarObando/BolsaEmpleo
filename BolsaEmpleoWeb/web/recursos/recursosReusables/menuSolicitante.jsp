@@ -18,13 +18,21 @@
                     </c:if>
                     <li>
                         <s:a action="buscarOfertasSolicitante" >Buscar Ofertas</s:a>
-                        </li>
-                        <li>
-                            <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
-                        </li>
-                        <li>
-                        <s:a action="buscarSolicitudesSolicitantes" >Administrar Solicitudes</s:a>
                     </li>
+                    <li>
+                        <s:a action="buscarSolicitudesSolicitantes" >Mantener Solicitudes</s:a>
+                    </li>
+                    <li>
+                        <a>Servicios</a> 
+                        <ul>
+                            <s:a action="insertarServicio" >Registrar</s:a>
+                            <s:a action="buscarServicios" >Mantener</s:a>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
+                    </li>
+
                 </ul>
             </div>                                
         </div>                          

@@ -15,7 +15,7 @@
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-        <title>Buscar Ofertas | Bolsa de Empleo</title>  
+        <title>Ver Servicios | Bolsa de Empleo</title>  
 
         <link rel="stylesheet" type="text/css" href="../css/system.base.css">
         <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -55,7 +55,15 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+
+                <c:if test="${sessionScope.empleador == null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
+
+                <c:if test="${sessionScope.empleador != null}">
+                    <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                </c:if>
+
             </div>
         </header>
         <section>
@@ -82,19 +90,46 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
-                        <s:if test="hasActionMessages()">
-                            <s:actionmessage />
-                        </s:if>
-
-                        <s:form action="buscarOfertasProcess">
-                            <s:textfield name="puesto" label="Puesto"/>
+                        <s:form action="buscarServiciosEmpleadorProcess">
+                            <s:textfield name="titulo" label="Título"/>
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
+                        <table id="mytable" class="table table-bordred table-striped">
 
+
+
+                            <s:if test="%{servicios.isEmpty()}">
+                                <h2>No hay resultados que mostrar</h2>
+                            </s:if>
+
+                            <s:else>
+                                <thead>
+                                <td>Título</td>
+                                <td>Solicitante</td>
+                                <td>Apellidos</td>
+                                <th>Ver</th>
+                                </thead>
+                                <tbody>
+                                    <s:iterator value="servicios" var="servicioActual">
+                                        <tr>
+                                            <td><s:property value="#servicioActual.titulo"/></td>
+                                            <td><s:property value="#servicioActual.solicitante.nombre"/></td>
+                                            <td><s:property value="#servicioActual.solicitante.nombreEmpresa"/></td>
+                                            <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                    <s:url action="verServicioEmpleador" var="url">
+                                                        <s:param name="id" value="#servicioActual.id"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete"><span class="fa fa-trash" ></span></button> </a>
+                                                </p>
+                                            </td>
+                                        </tr>
+                                    </s:iterator>
+                                </s:else>
+                            <div>
+                            </div       
+                            </tbody>
+                        </table>
                     </div>
                 </aside> 
             </div>            
