@@ -575,7 +575,7 @@
         
         <action class="Actions.EliminarServicioAdministradorAction" name="eliminarServicioAdministradorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
-            <result type="dispatcher" name="error">/recursos/servicio/buscarServiciosAdministrador.action</result>
+            <result type="dispatcher" name="error">/recursos/servicio/mantenerServiciosAdministrador.jsp</result>
             <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
