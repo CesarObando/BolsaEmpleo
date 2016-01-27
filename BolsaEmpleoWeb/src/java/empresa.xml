@@ -95,9 +95,14 @@
             <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/principalAdministrador.jsp</result>
         </action>
+<<<<<<< HEAD
 
         <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
             <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
+=======
+            <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
+                <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
+>>>>>>> 83726e9a7d645c9cf41a298dd7279d1f9160b8ca
 
         </action>
         <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
