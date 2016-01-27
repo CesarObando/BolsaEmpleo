@@ -98,8 +98,9 @@
 
         <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
             <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
-            <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
-                <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
+        </action>
+        <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
+            <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
         </action>
         <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
             <result name="success" type="jasper">
