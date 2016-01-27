@@ -489,6 +489,7 @@
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+        </action>
             
         <action class="Actions.CerrarSesionAction" name="cerrarSesion">
             <result type="dispatcher" name="success">/recursos/solicitante/pantallaPrincipal.jsp</result>
