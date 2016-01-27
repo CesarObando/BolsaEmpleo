@@ -85,15 +85,12 @@
                             <s:actionmessage />
                         </s:if>
 
-<<<<<<< HEAD
                         <s:form method="get" action="reporte">
                             <s:label name="id" label="Id"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
-=======
                         <s:form method="get">
                             <s:hidden name="id"/>
                             <s:label name="cedula" label="Cédula" readonly="true"/>
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
                             <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
@@ -110,9 +107,6 @@
                             <s:submit name="reporte" value="Exportar a PDF"></s:submit>
                             
                         </s:form>
-<<<<<<< HEAD
-                           
-=======
 
 
                         <c:if test="${sessionScope.solicitud.favorito == true}">
@@ -122,7 +116,6 @@
                             <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();">Marcar como favorito</a>
                         </c:if>
                             <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();">Eliminar</a>
->>>>>>> 5b10cc4a08073ea288811c116660da5957f4ce3b
                     </div>
                     <script>
                         function confirmBox() {

@@ -93,7 +93,7 @@
                             <s:hidden name="id"/>
                             <s:textfield name="titulo" label="Título"/>
                             <s:textarea name="descripcion" label="Descripción"/>
-                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerValue="categoria.nombre" headerKey="categoria.id"/>            
+                            <s:select name="categoria.id" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                             <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

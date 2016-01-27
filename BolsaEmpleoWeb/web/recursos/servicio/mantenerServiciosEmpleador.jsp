@@ -115,7 +115,7 @@
                                         <tr>
                                             <td><s:property value="#servicioActual.titulo"/></td>
                                             <td><s:property value="#servicioActual.solicitante.nombre"/></td>
-                                            <td><s:property value="#servicioActual.solicitante.nombreEmpresa"/></td>
+                                            <td><s:property value="#servicioActual.solicitante.apellidos"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                     <s:url action="verServicioEmpleador" var="url">
                                                         <s:param name="id" value="#servicioActual.id"/>

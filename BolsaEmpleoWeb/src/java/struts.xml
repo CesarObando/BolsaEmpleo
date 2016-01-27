@@ -508,7 +508,7 @@
         <action name="insertarServicioProcess" method="insertar" class="Actions.InsertarServicioAction">
             <result name="input" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
             <result name="error" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalSolicitante.jsp</result>
+            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action  class="Actions.BuscarServiciosSolicitanteAction" name="buscarServicios">
@@ -530,7 +530,7 @@
         <action class="Actions.EditarServicioAction" name="editarServicioProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/servicio/editarServicio.jsp</result>
             <result type="dispatcher" name="error">/recursos/servicio/editarServicio.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EliminarServicioAction" name="eliminarServicio">
@@ -540,7 +540,7 @@
         <action class="Actions.EliminarServicioAction" name="eliminarServicioProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/servicio/eliminarServicio.jsp</result>
             <result type="dispatcher" name="error">/recursos/servicio/eliminarServicio.jsp</result>
-            <result name="success" type="dispatcher">/recursos/empresa/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action class="Actions.VerServicioAction" name="verServicio">
@@ -553,7 +553,7 @@
         </action>
         
         <action  class="Actions.BuscarServiciosEmpleadorAction" name="buscarServiciosEmpleadorProcess" method="buscar">
-            <result name="buscarServiciosEmpleador" type="dispatcher">/recursos/servicio/verServicios.jsp</result>
+            <result name="buscarServiciosEmpleador" type="dispatcher">/recursos/servicio/mantenerServiciosEmpleador.jsp</result>
         </action>
         
         <action class="Actions.VerServicioAction" name="verServicioEmpleador">
