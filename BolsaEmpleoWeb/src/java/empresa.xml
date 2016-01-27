@@ -94,19 +94,19 @@
             <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/principalAdministrador.jsp</result>
+        </action>
 
-            <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
-                <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
+        <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
+            <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
 
-            </action>
-            <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
-                <result name="success" type="jasper">
-                    <param name="location">/Reportes/curriculum.jasper</param>
-                    <param name="format">PDF</param>
-                    <param name="connection">conexion</param>   
-                    <param name="reportParameters">parametros</param>         
-                </result>
-            
-            </action>
+        </action>
+        <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
+            <result name="success" type="jasper">
+                <param name="location">/Reportes/curriculum.jasper</param>
+                <param name="format">PDF</param>
+                <param name="connection">conexion</param>   
+                <param name="reportParameters">parametros</param>         
+            </result>
+        </action>
     </package>
 </struts>
