@@ -78,7 +78,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:form action="buscarEmpleadoresProcess" method="post">
+                        <s:form action="verEstadisticasEmpleadoresProcess" method="post">
                             <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>

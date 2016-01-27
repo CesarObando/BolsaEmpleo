@@ -78,7 +78,7 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:form action="buscarEmpleadoresProcess" method="post">
+                        <s:form action="verEstadisticasSolicitantesProcess" method="post">
                             <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
@@ -89,13 +89,11 @@
                             <s:if test="%{solicitantes.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>
-
                             <s:else>
                                 <thead>
                                 <th>Cédula</th>
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
-                                <th>Nombre de empresa</th>
                                 <th>Ultima Actualización de datos</th>
                                 </thead>
                                 <tbody>
@@ -104,7 +102,6 @@
                                             <td><s:property value="#solicitanteActual.cedula"/></td>
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
-                                            <td><s:property value="#solicitanteActual.nombreEmpresa"/></td>
                                             <td><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
                                         </tr>
                                     </s:iterator>

@@ -32,6 +32,7 @@
                         <a>Solicitante</a> 
                         <ul>
                             <li><a href="../usuarios/buscarSolicitantes.jsp" >Mantener</a> </li>
+                            <li><a href="../administrador/estadisticasSolicitantes.jsp" >Estadisticas</a> </li>
                         </ul>
                     </li>
                     <li>
@@ -50,6 +51,7 @@
                         <a>Empleador</a> 
                         <ul>
                             <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>
+                            <li><a href="../administrador/estadisticasEmpleadores.jsp">Estadisticas</a> </li>
                         </ul>
                     </li>
                     <li>
