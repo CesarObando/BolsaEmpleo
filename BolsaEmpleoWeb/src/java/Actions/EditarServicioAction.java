@@ -16,6 +16,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -29,6 +30,7 @@ import org.apache.struts2.interceptor.SessionAware;
 public class EditarServicioAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Servicio>, ServletRequestAware {
 
     private Servicio servicioAEditar;
+    private LinkedList<Categoria> categorias;
     private String mensaje;
     private HttpServletRequest request;
     private boolean existe;
@@ -49,6 +51,7 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
     @Override
     public void prepare() throws Exception {
         existe = true;
+        categorias = new CategoriaBusiness().getCategorias();
         servicioAEditar = (Servicio) sessionMap.get("servicio");
         int idCategoria = servicioAEditar.getCategoria().getId();
         Categoria categoria = new CategoriaBusiness().buscarCategoria(idCategoria);
@@ -131,6 +134,14 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    public LinkedList<Categoria> getCategorias() {
+        return categorias;
+    }
+
+    public void setCategorias(LinkedList<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
 }

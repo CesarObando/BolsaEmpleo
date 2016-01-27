@@ -5,31 +5,17 @@
  */
 package Actions;
 
-import Business.EmpleadorBusiness;
-import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;
 import Business.SolicitudBusiness;
-import Data.BaseData;
-import Dominio.Empleador;
-import Dominio.Oferta;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
-import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import java.awt.image.BufferedImage;
-import java.io.ByteArrayInputStream;
-import java.io.IOException;
-import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashMap;
-import java.util.LinkedList;
 import java.util.Map;
-import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -67,7 +53,9 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     public void prepare() throws Exception {
         existe = true;
 
-        int idSolicitante = Integer.parseInt(request.getParameter("id"));
+        int idSolicitud = Integer.parseInt(request.getParameter("id"));
+        Solicitud solicitud = new SolicitudBusiness().buscarSolicitud(idSolicitud);
+        int idSolicitante = solicitud.getSolicitante().getId();
      
         try {
             solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);

@@ -18,6 +18,8 @@ public class Servicio {
     private Categoria categoria;
 
     public Servicio() {
+        solicitante = new Solicitante();
+        categoria = new Categoria();
     }
 
     public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria) {

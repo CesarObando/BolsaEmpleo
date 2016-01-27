@@ -94,10 +94,9 @@
                             <s:textfield name="titulo" label="Título" readonly="true"/>
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
-                            
                         </s:form>
-                        <a href="../Ofertas/editarServicio.action" class="">Editar</a>
-                        <a href="../Ofertas/eliminarServicio.action" class="">Eliminar</a>
+                        <a href="../servicio/editarServicio.action" class="">Editar</a>
+                        <a href="../servicio/eliminarServicio.action" class="">Eliminar</a>
 
                     </div>
                 </aside> 
