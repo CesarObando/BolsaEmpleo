@@ -11,7 +11,7 @@
                     <li>
                         <a href="../usuarios/pantallaPrincipal.jsp" class="">Inicio</a>
                     </li>
-                    <c:if test="${sessionScope.solicitante == null}">
+                    <c:if test="${sessionScope.solicitante == null || sessionScope.empleador == null}">
                         <li>
                             <a>Registrate</a> 
                             <ul>
@@ -23,6 +23,15 @@
                     <li>
                         <s:a action="buscarServiciosEmpleador" >Buscar Servicios</s:a>
                     </li>
+                    <c:if test="${sessionScope.solicitante == null || sessionScope.empleador == null}">
+                        <li>
+                            <a>Iniciar Sesión</a> 
+                            <ul>
+                                <li><a href="../empresa/login.jsp" >Empleador</a></li>
+                                <li><a href="../usuarios/login.jsp" >Usuario</a> </li>
+                            </ul>
+                        </li>
+                    </c:if>
                 </ul>
             </div>                                
         </div>                          

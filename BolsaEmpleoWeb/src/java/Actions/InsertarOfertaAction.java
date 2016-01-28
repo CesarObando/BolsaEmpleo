@@ -66,16 +66,21 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
 
     @Override
     public void validate() {
-        if (ofertaAInsertar.getPuesto().length() == 0 ) {
+        if (ofertaAInsertar.getPuesto().length() == 0) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
-        if (ofertaAInsertar.getRequerimientos().length() == 0 ) {
+        if (ofertaAInsertar.getRequerimientos().length() == 0) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
-        if (ofertaAInsertar.getCantidadVacantes() <= 0) {
-            addFieldError("cantidadVacantes", "Debe seleccionar una catidad de vacantes");
+        if (ofertaAInsertar.getCantidadVacantes() < 0) {
+            addFieldError("cantidadVacantes", "Debe ingresar una cantidad de vacantes válida.");
         }
-
+        if (ofertaAInsertar.getDescripcion().length() == 0) {
+            addFieldError("descripcion", "Debe ingresar una descripción.");
+        }
+        if (ofertaAInsertar.getCategoria().getId() == -1) {
+            addFieldError("categoria.id", "Debe seleccionar una categoría.");
+        }
     }
 
     public String insertar() {

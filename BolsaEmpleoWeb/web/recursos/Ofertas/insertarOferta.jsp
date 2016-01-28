@@ -90,12 +90,12 @@
                         </s:if>
 
                         <s:form method="post" action="insertarOfertaProcess">
-                            <s:textfield name="puesto" label="Puesto "/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre"/>            
-                            <s:textarea name="descripcion" label="Descripción"/>
+                            <s:textfield name="puesto" label="Puesto " requiredLabel="true"/>
+                            <s:textfield name="salario" label="Salario " type="number"/>
+                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" type="number"/>
+                            <s:textarea name="requerimientos" label="Requerimientos " requiredLabel="true"/>
+                            <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerKey="-1" headerValue="Seleccione una categoría"/>            
+                            <s:textarea name="descripcion" label="Descripción" requiredLabel="true"/>
                             <s:submit action="insertarOfertaProcess" value="Insertar Oferta" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

@@ -91,14 +91,14 @@
 
                         <s:form method="post" action="editarOfertaProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
-                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
-                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario "/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
+                            <s:textfield name="puesto" label="Puesto" readonly="true" disabled="true"/>
+                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true" disabled="true"/>
+                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true" disabled="true"/>
+                            <s:textfield name="salario" label="Salario " type="number"/>
+                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" type="number"/>
                             <s:textarea name="requerimientos" label="Requerimientos "/>
                             <s:textarea name="descripcion" label="Descripción"/>
-                            <s:select name="categoria.id" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
+                            <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                             <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

@@ -92,11 +92,11 @@
 
                         <s:form method="post" action="editarAdministradorProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:password name="password" label="Clave"/> 
+                            <s:textfield name="cedula" label="Cédula" readonly="true" disabled="true"/>
+                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
+                            <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
+                            <s:textfield name="username" label="Nombre Usuario" readonly="true" disabled="true"/>
+                            <s:password name="password" label="Clave" requiredLabel="true"/> 
                             <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

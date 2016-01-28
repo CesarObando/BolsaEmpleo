@@ -78,12 +78,12 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
         boolean eliminado = true;
         try {
             solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
-            return SUCCESS;
         } catch (SQLException e) {
             eliminado = !eliminado;
         }
         if (eliminado) {
             mensaje = "La categoría fue eliminada correctamente.";
+            sessionMap.remove("solicitante");
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";

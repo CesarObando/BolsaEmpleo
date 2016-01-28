@@ -78,6 +78,7 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
         }
         if (eliminado) {
             mensaje = "El empleador fue eliminada correctamente.";
+            sessionMap.remove("empleador");
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";

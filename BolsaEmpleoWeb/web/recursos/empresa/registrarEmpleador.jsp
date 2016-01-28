@@ -86,17 +86,17 @@
                         </s:if>
 
                         <s:form method="post" action="registrarEmpleadorProcess" enctype="multipart/form-data">
-                            <s:textfield name="cedula" label="Cédula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
+                            <s:textfield name="cedula" label="Cédula" type="number" requiredLabel="true"/>
+                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
+                            <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
+                            <s:textfield name="correo" label="Email" type="email" requiredLabel="true"/>
+                            <s:textfield name="telefonoFijo" label="Teléfono Fijo"/> 
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="cedulaJuridica" label="Cédula Jurídica"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
                             <s:textarea name="direccion" label="Dirección"/>
-                            <s:password name="pass" label="Clave"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
+                            <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
+                            <s:password name="pass" label="Clave" requiredLabel="true"/>
                             <s:submit action="registrarEmpleadorProcess" value="Registrar Empleador" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

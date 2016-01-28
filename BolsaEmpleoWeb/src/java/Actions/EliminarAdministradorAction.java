@@ -69,6 +69,7 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
         }
         if (eliminado) {
             mensaje = "El administrador fue eliminado correctamente.";
+            sessionMap.remove("administrador");
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";

@@ -110,7 +110,7 @@
                                                     <s:url action="editarCategoria" var="url">
                                                         <s:param name="id" value="#categoriaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
+                                                    <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar1.png"/> </button> </a>
 
                                                 </p>
                                             </td>
@@ -118,7 +118,7 @@
                                                     <s:url action="eliminarCategoriaProcess" var="url">
                                                         <s:param name="id" value="#categoriaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
                                                 </p>
                                             </td>
                                         </tr>

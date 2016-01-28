@@ -86,23 +86,23 @@
 
                         <s:form method="get" action="editarSolicitanteProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
-                            <s:password name="password" label="Clave"/> 
+                            <s:textfield name="cedula" label="Cédula" disabled="true"/>
+                            <s:textfield name="nombre" label="Nombre" type="text" requiredLabel="true"/>
+                            <s:textfield name="apellidos" label="Apellidos" type="text" requiredLabel="true"/>
+                            <s:textfield name="username" label="Nombre Usuario" disabled="true"/>
+                            <s:password name="password" label="Clave" requiredLabel="true"/> 
                             <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                             <s:file name="archivoImagen" label="Seleccione una foto para su perfil"/>
-                            <s:textfield name="edad" label="Edad"/>
-                            <s:select label="Género" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo"/>
-                            <s:select label="Escolaridad" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>
-                            <s:textfield name="titulos" label="Títulos"/>
+                            <s:textfield name="edad" label="Edad" type="number" requiredLabel="true"/>
+                            <s:select label="Género" requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo"/>
+                            <s:select label="Escolaridad" requiredLabel="true" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>
+                            <s:textarea name="titulos" label="Títulos"/>
                             <s:textfield name="experienciaLaboral" label="Años de Experiencia Laboral" type="number"/>
                             <s:textarea name="detalleExperienciaLaboral" label="Detalle de Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa" type="number"/> 
+                            <s:textfield name="telefonoFijo" label="Teléfono Fijo" type="number"/> 
                             <s:textfield name="telefonoMovil" label="Teléfono Celular" type="number"/>
-                            <s:textfield name="correo" label="Email"/>
-                            <s:textfield name="idiomas" label="Idiomas que domina"/>
+                            <s:textfield name="correo" label="Email" type="email" requiredLabel="true"/>
+                            <s:textfield name="idiomas" label="Idiomas que domina" type="text"/>
                             <s:submit action="editarSolicitanteProcess" value="Editar Solicitante" onclick="return confirmBox();"/>
                         </s:form>
                         <script>
