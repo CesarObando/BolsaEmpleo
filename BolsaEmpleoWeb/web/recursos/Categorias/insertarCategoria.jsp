@@ -91,7 +91,7 @@
                         </s:if>
 
                         <s:form method="post" action="insertarCategoriaProcess">
-                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
                             <s:submit action="insertarCategoriaProcess" value="Insertar Categoría" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

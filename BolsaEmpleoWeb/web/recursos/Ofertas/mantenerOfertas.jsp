@@ -107,7 +107,7 @@
                                                         <s:url action="verOferta" var="url">
                                                             <s:param name="id" value="#ofertaActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/ver.png"/> </button> </a>
                                                     </p>
                                                 </td>
                                             </tr>

@@ -5,10 +5,8 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
-import Dominio.Administrador;
 import Dominio.Categoria;
 import Dominio.Oferta;
 import static com.opensymphony.xwork2.Action.ERROR;
@@ -17,7 +15,6 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.sun.xml.ws.runtime.dev.SessionManager;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Map;
@@ -77,10 +74,15 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
         if (ofertaAEditar.getRequerimientos().length() == 0) {
             addFieldError("requerimientos", "Debe ingresar los requerimientos del puesto.");
         }
-        if (ofertaAEditar.getCantidadVacantes() == 0) {
+        if (ofertaAEditar.getCantidadVacantes() < 0) {
             addFieldError("cantidadVacantes", "Debe seleccionar una catidad de vacantes");
         }
-
+        if (ofertaAEditar.getDescripcion().length() == 0) {
+            addFieldError("descripcion", "Debe ingresar una descripción del puesto.");
+        }
+        if (ofertaAEditar.getCategoria().getId() == -1) {
+            addFieldError("categoria.id", "Debe seleccionar una categoría.");
+        }
     }
 
     public String editar() {

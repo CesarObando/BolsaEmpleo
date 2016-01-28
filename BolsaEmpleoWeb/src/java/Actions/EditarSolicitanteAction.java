@@ -90,8 +90,17 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
         if (solicitanteAEditar.getPassword().length() < 6) {
             addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
         }
-        if(solicitanteAEditar.getFoto() == null){
-            addFieldError("archivoImagen","Debe seleccionar una foto");
+        if (solicitanteAEditar.getEscolaridad().equals("-1")) {
+            addFieldError("escolaridad", "Debe seleccionar una escolaridad");
+        }
+        if (solicitanteAEditar.getSexo().equals("-1")) {
+            addFieldError("sexo", "Debe seleccionar un género");
+        }
+        if (solicitanteAEditar.getEdad() <= 0) {
+            addFieldError("edad", "Debe ingresar una edad válida");
+        }
+        if (solicitanteAEditar.getExperienciaLaboral() < 0) {
+            addFieldError("experienciaLaboral", "Debe ingresar un número válido");
         }
     }
 

@@ -92,7 +92,7 @@
 
                         <s:form method="post" action="editarCategoriaProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="nombre" label="Nombre"/>
+                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
                             <s:submit action="editarCategoriaProcess" value="Editar Categoría" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

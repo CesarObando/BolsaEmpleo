@@ -92,7 +92,7 @@
 
                         <s:form action="eliminarOfertaAdministradorProcess">
                             <s:hidden name="id"/>
-                            <s:textfield name="puesto" label="Puesto" readonly="true"/>
+                            <s:label name="puesto" label="Puesto" readonly="true"/>
                             <s:submit action="eliminarOfertaAdministradorProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

@@ -91,11 +91,11 @@
                         </s:if>
 
                         <s:form method="post" action="insertarAdministradorProcess">
-                            <s:textfield name="cedula" label="Cedula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:textfield name="username" label="Nombre Usuario"/>
-                            <s:password name="password" label="Clave"/> 
+                            <s:textfield name="cedula" label="Cedula" type="number" requiredLabel="true"/>
+                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
+                            <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
+                            <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
+                            <s:password name="password" label="Clave" requiredLabel="true"/> 
                             <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

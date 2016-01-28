@@ -90,7 +90,7 @@
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>
-                        
+
                         <table id="mytable" class="table table-bordred table-striped">
 
                             <s:if test="%{administradores.isEmpty()}">
@@ -115,15 +115,15 @@
                                                     <s:url action="editarAdministrador" var="url">
                                                         <s:param name="id" value="#administradorActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-primary btn-xs" data-title="Edit" ><span class=" fa fa-pencil"></span></button> </a>
+                                                    <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar.png"/></button> </a>
 
                                                 </p>
                                             </td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarAdministrador" var="url">
+                                                    <s:url action="eliminarAdministradorProcess" var="url">
                                                         <s:param name="id" value="#administradorActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/></button> </a>
                                                 </p>
                                             </td>
                                         </tr>
@@ -133,7 +133,18 @@
                             </div       
                             </tbody>
                         </table>     
-
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar al administrador?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
 
                     </div>
                 </aside> 

@@ -111,10 +111,10 @@
                                             <td><s:property value="#ofertaActual.empleador.apellidos"/></td>
                                             <td><s:property value="#ofertaActual.empleador.nombreEmpresa"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarOfertaAdministrador" var="url">
+                                                    <s:url action="eliminarOfertaAdministradorProcess" var="url">
                                                         <s:param name="id" value="#ofertaActual.id"/>
                                                     </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button class="btn btn-danger btn-xs" data-title="Delete" ><span class="fa fa-trash"></span></button> </a>
+                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/></button> </a>
                                                 </p>
                                             </td>
                                         </tr>

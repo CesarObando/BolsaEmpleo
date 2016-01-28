@@ -90,9 +90,9 @@
                         </s:if>
 
                         <s:form method="post" action="insertarServicioProcess">
-                            <s:textfield name="titulo" label="Título"/>
-                            <s:textarea name="descripcion" label="Descripción"/>
-                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>            
+                            <s:textfield name="titulo" label="Título" requiredLabel="true"/>
+                            <s:textarea name="descripcion" label="Descripción" requiredLabel="true"/>
+                            <s:select name="categoria.id" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1" requiredLabel="true"/>            
                             <s:submit action="insertarServicioProcess" value="Insertar Servicio" onclick="return confirmBox();"/>
                         </s:form>
                         <script>
