@@ -36,7 +36,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     private Connection conexion;
     private Map parametros;
     private SessionMap<String, Object> sessionMap;
-    private int idSolicitud;
+   
     public VerPerfilSolicitanteEmpleadorAction() {
     }
 
@@ -140,12 +140,6 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
 
     
 
-    public int getIdSolicitud() {
-        return idSolicitud;
-    }
-
-    public void setIdSolicitud(int idSolicitud) {
-        this.idSolicitud = idSolicitud;
-    }
+   
 
 }
