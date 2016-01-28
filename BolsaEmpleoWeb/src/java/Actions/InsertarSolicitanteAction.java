@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
@@ -34,6 +35,7 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
     private File archivoImagen;
     private String imagenFileName;
     private String imagenContentType;
+    private LinkedList<String> escolaridades;
 
     public InsertarSolicitanteAction() {
 
@@ -46,6 +48,12 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     @Override
     public void prepare() throws Exception {
+        escolaridades = new LinkedList<>();
+        escolaridades.add("Educación Escolar");
+        escolaridades.add("Educación Media");
+        escolaridades.add("Educación Diversificada");
+        escolaridades.add("Educación Superior Universitaria");
+        escolaridades.add("Educación Superior no Universitaria");
         solicitanteAInsertar = new Solicitante();
         mensaje = "";
     }
@@ -77,9 +85,18 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         if (solicitanteAInsertar.getPassword().length() < 6) {
             addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
         }
-//        if(solicitanteAInsertar.getFoto() == null){
-//            addFieldError("archivoImagen","Debe seleccionar una foto");
-//        }
+        if (solicitanteAInsertar.getEscolaridad().equals("-1")) {
+            addFieldError("escolaridad", "Debe seleccionar una escolaridad");
+        }
+        if (solicitanteAInsertar.getSexo().equals("-1")) {
+            addFieldError("sexo", "Debe seleccionar un género");
+        }
+        if (solicitanteAInsertar.getEdad() <= 0) {
+            addFieldError("edad", "Debe ingresar una edad válida");
+        }
+        if (solicitanteAInsertar.getExperienciaLaboral() < 0) {
+            addFieldError("experienciaLaboral", "Debe ingresar un número válido");
+        }
     }
 
     public String insertar() {

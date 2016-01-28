@@ -98,6 +98,7 @@
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes"/>
                             <s:textarea name="requerimientos" label="Requerimientos "/>
                             <s:textarea name="descripcion" label="Descripción"/>
+                            <s:select name="categoria.id" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                             <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                         </s:form>
                         <script>

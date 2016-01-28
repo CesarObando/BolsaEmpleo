@@ -94,13 +94,13 @@
                             <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                             <s:file name="archivoImagen" label="Seleccione una foto para su perfil"/>
                             <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo" readonly="true"/>
-                            <s:textfield name="escolaridad" label="Escolaridad"/>
+                            <s:select label="Género" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo"/>
+                            <s:select label="Escolaridad" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>
                             <s:textfield name="titulos" label="Títulos"/>
-                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
+                            <s:textfield name="experienciaLaboral" label="Años de Experiencia Laboral" type="number"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle de Experiencia Laboral"/>
+                            <s:textfield name="telefonoFijo" label="Teléfono Casa" type="number"/> 
+                            <s:textfield name="telefonoMovil" label="Teléfono Celular" type="number"/>
                             <s:textfield name="correo" label="Email"/>
                             <s:textfield name="idiomas" label="Idiomas que domina"/>
                             <s:submit action="editarSolicitanteProcess" value="Editar Solicitante" onclick="return confirmBox();"/>

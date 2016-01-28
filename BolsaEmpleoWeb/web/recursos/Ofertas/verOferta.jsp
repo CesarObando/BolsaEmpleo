@@ -101,7 +101,20 @@
                             <s:textarea name="descripcion" label="Descripción" readonly="true"/>
                         </s:form>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
-                        <a href="../Ofertas/eliminarOferta.action" class="">Eliminar Oferta</a>
+                        <a href="../Ofertas/eliminarOfertaProcess.action" class="" onclick="return confirmBox();">Eliminar Oferta</a>
+
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar la oferta?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
 
                         <table id="mytable" class="table table-bordred table-striped">
 

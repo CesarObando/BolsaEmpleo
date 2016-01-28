@@ -98,7 +98,7 @@
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
                         </s:form>
                         <a href="../administrador/editarAdministrador.action" class="">Editar</a>
-                        <a href="../administrador/eliminarAdministrador.action" class="" onclick="return confirmBox();">Eliminar</a>
+                        <a href="../administrador/eliminarAdministradorProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
                     </div>
                     <script>
                         function confirmBox() {

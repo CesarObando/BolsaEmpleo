@@ -61,7 +61,7 @@ public class OfertaData extends BaseData {
     }
 
     public void editarOferta(Oferta oferta) throws SQLException {
-        String sqlEditar = "{CALL editar_oferta(?,?,?,?,?)}";
+        String sqlEditar = "{CALL editar_oferta(?,?,?,?,?,?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
         try {
@@ -71,6 +71,7 @@ public class OfertaData extends BaseData {
             statement.setInt(3, oferta.getCantidadVacantes());
             statement.setString(4, oferta.getRequerimientos());
             statement.setString(5, oferta.getDescripcion());
+            statement.setInt(6, oferta.getCategoria().getId());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {

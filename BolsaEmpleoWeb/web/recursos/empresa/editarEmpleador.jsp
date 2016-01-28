@@ -95,7 +95,7 @@
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="cedulaJuridica" label="Cédula Jurídica" readonly="true"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
-                            <s:textfield name="direccion" label="Dirección"/>
+                            <s:textarea name="direccion" label="Dirección"/>
                             <s:textfield name="username" label="Nombre Usuario" readonly="true"/>
                             <s:password name="pass" label="Clave"/>
                             <s:submit action="editarEmpleadorProcess" value="Editar Empleador" onclick="return confirmBox();"/>

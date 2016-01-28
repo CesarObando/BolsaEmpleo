@@ -96,9 +96,21 @@
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
                         </s:form>
                         <a href="../servicio/editarServicio.action" class="">Editar</a>
-                        <a href="../servicio/eliminarServicio.action" class="">Eliminar</a>
+                        <a href="../servicio/eliminarServicioProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
 
                     </div>
+                    <script>
+                        function confirmBox() {
+                            var answer;
+                            answer = window.confirm("¿Desea eliminar el servicio?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
                 </aside> 
             </div>            
         </section>

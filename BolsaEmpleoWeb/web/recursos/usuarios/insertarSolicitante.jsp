@@ -94,21 +94,21 @@
                         </s:if>
 
                         <s:form method="post" action="insertarSolicitanteProcess" enctype="multipart/form-data">
-                            <s:textfield name="cedula" label="Cédula"/>
+                            <s:textfield name="cedula" label="Cédula" type="number"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>
                             <s:textfield name="username" label="Nombre Usuario"/>
                             <s:password name="password" label="Clave"/> 
                             <s:file name="archivoImagen" label="Seleccione una foto para su perfil"/> 
-                            <s:textfield name="edad" label="Edad"/>
-                            <s:textfield name="sexo" label="Sexo"/>
-                            <s:textfield name="escolaridad" label="Escolaridad"/>
+                            <s:textfield name="edad" label="Edad" type="number"/>
+                            <s:select label="Género" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="-1" headerValue="Seleccione su género"/>
+                            <s:select label="Escolaridad" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="-1" headerValue="Seleccione su escolaridad"/>
                             <s:textfield name="titulos" label="Títulos"/>
-                            <s:textfield name="experienciaLaboral" label="Experiencia Laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral"/>
-                            <s:textfield name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:textfield name="correo" label="Email"/>
+                            <s:textfield name="experienciaLaboral" label="Años de Experiencia Laboral" type="number"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle de Experiencia Laboral"/>
+                            <s:textfield name="telefonoFijo" label="Teléfono Casa" type="number"/> 
+                            <s:textfield name="telefonoMovil" label="Teléfono Celular" type="number"/>
+                            <s:textfield name="correo" label="Email" type="email"/>
                             <s:textfield name="idiomas" label="Idiomas que domina"/>
                             <s:submit method="insertar" value="Insertar Solicitante" action="insertarSolicitanteProcess" onclick="return confirmBox();"/>
                         </s:form>

@@ -99,8 +99,33 @@
                             <s:label name="username" label="Nombre Usuario" readonly="true"/>
                         </s:form>
                         <a href="../empresa/editarEmpleador.action" class="">Editar</a>
-                        <a href="../empresa/eliminarEmpleador.action" class="">Eliminar</a>
+                        <a href="../empresa/eliminarEmpleadorProcess.action" class="" onclick="return confirmBox1();">Eliminar</a>
+                        <a href="../empresa/editarEmpleadorProcess.action" class="" onclick="return confirmBox();">Renovar cuenta</a>
                     </div>
+                    <script>
+                        function confirmBox() {
+                            var answer;
+                            answer = window.confirm("¿Desea renovar la información?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
+                    <script>
+                        function confirmBox1() {
+                            var answer;
+                            answer = window.confirm("¿Desea eliminar la cuenta?");
+                            if (answer == true) {
+                                return true;
+                            }
+                            else {
+                                return false;
+                            }
+                        }
+                    </script>
                 </aside> 
             </div>            
         </section>

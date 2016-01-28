@@ -56,7 +56,7 @@
                         </div>
                     </div>
                 </div>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
             </div>
         </header>
         <section>

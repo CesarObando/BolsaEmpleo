@@ -93,7 +93,7 @@
                             <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                             <s:label name="edad" label="Edad"/>
                             <s:label name="sexo" label="Sexo" readonly="true"/>
-                            <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
+                            <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
                             <s:label name="titulos" label="Títulos"/>
                             <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
                             <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
@@ -104,10 +104,23 @@
                         </s:form>
                         <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
                         <a href="../usuarios/eliminarSolicitanteProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
+                        <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox1();">Renovar cuenta</a>
                         <script>
                             function confirmBox() {
                                 var answer;
                                 answer = window.confirm("¿Desea eliminar su perfil?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
+                        <script>
+                            function confirmBox1() {
+                                var answer;
+                                answer = window.confirm("¿Desea renovar la información?");
                                 if (answer == true) {
                                     return true;
                                 }
