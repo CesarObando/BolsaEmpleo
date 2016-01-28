@@ -24,10 +24,10 @@ public class CerrarSesionAction extends ActionSupport implements SessionAware {
     }
 
     public String cerrarSesion() {
-        sessionMap.clear();
         sessionMap.remove("solicitante");
         sessionMap.remove("empleador");
         sessionMap.remove("administrador");
+        sessionMap.clear();
 
         return SUCCESS;
     }

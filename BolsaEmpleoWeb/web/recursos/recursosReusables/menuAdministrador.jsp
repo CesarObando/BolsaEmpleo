@@ -39,32 +39,36 @@
                         <a>Oferta</a> 
                         <ul>
                             <s:a action="buscarOfertasAdministrador" >Mantener</s:a>
-                        </ul>
-                    </li>
-                    <li>
-                        <a>Solicitud</a> 
-                        <ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Solicitud</a> 
+                            <ul>
                             <s:a action="buscarSolicitudesAdministrador" >Mantener</s:a>
-                        </ul>
-                    </li>
-                    <li>
-                        <a>Empleador</a> 
-                        <ul>
-                            <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>
-                            <li><a href="../administrador/estadisticasEmpleadores.jsp">Estadisticas</a> </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a>Servicios</a> 
-                        <ul>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Empleador</a> 
+                            <ul>
+                                <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>
+                                <li><a href="../administrador/estadisticasEmpleadores.jsp">Estadisticas</a> </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Servicios</a> 
+                            <ul>
                             <s:a action="buscarServiciosAdministrador" >Mantener</s:a>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener información</a>
-                    </li>
-                    <li>
-                        <a href="../administrador/insertarAdministrador.jsp" class="" >Nuevo Administrador</a>
+                            </ul>
+                        </li>
+                        <li>
+                            <a>Administrador</a>
+                            <ul>
+                                <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener</a>                        
+                                <a href="../administrador/insertarAdministrador.jsp" class="" >Nuevo Administrador</a>
+                            </ul>
+                        <li>
+                        <s:url action="cerrarSesion" var="url"></s:url>
+                        <a href='<s:property value="#url" />' class="">Cerrar Sesión</a>
                     </li>
                 </ul>
             </div>                                

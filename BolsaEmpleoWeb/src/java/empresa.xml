@@ -95,10 +95,6 @@
             <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result name="success" type="redirect">/recursos/empresa/principalAdministrador.jsp</result>
         </action>
-
-        <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
-            <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
-        </action>
         <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
             <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
         </action>
