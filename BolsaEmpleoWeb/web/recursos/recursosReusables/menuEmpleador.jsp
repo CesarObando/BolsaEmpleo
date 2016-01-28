@@ -28,6 +28,10 @@
                     <li>
                         <a href="../empresa/verPerfilEmpleador.action" class="" >Mantener información</a>
                     </li>
+                    <li>
+                        <s:url action="cerrarSesion" var="url"></s:url>
+                        <a href='<s:property value="#url" />' class="">Cerrar Sesión</a>
+                    </li>
                 </ul>
             </div>                                
         </div>                          

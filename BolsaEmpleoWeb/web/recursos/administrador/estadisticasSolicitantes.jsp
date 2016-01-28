@@ -86,7 +86,7 @@
                         </s:form>
                         <table id="mytable" class="table table-bordred table-striped">
 
-                            <s:if test="%{solicitantes.isEmpty()}">
+                            <s:if test="%{administradores.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>
                             <s:else>
@@ -95,6 +95,7 @@
                                 <th>Nombre</th>
                                 <th>Apellidos</th>
                                 <th>Ultima Actualización de datos</th>
+                                <th></th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="solicitantes" var="solicitanteActual">
@@ -103,6 +104,7 @@
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
                                             <td><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
+                                            <td><a href="mailto:<s:property value="#solicitanteActual.correo"/>?subject=Actualizar datos de su perfil de usuario.&body='Estimado usuario, se le solicita que por favor renueve los datos de su cuenta en nuestro sistema. Gracias'">Notificar</a></td>
                                         </tr>
                                     </s:iterator>
                                 </s:else>

@@ -97,6 +97,7 @@
                                 <th>Apellidos</th>
                                 <th>Nombre de empresa</th>
                                 <th>Ultima Actualización de datos</th>
+                                <th></th>
                                 </thead>
                                 <tbody>
                                     <s:iterator value="empleadores" var="empleadorActual">
@@ -106,6 +107,7 @@
                                             <td><s:property value="#empleadorActual.apellidos"/></td>
                                             <td><s:property value="#empleadorActual.nombreEmpresa"/></td>
                                             <td><s:property value="#empleadorActual.ultimaActualizacion"/></td>
+                                            <td><a href="mailto:<s:property value="#empleadorActual.correo"/>?subject=Actualizar datos de su perfil de usuario.&body='Estimado usuario, se le solicita que por favor renueve los datos de su cuenta en nuestro sistema. Gracias'">Notificar</a></td>
                                         </tr>
                                     </s:iterator>
                                 </s:else>
