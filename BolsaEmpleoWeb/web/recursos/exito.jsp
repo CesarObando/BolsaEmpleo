@@ -83,9 +83,13 @@
                 <div class="grid-9 region-content" id="region-content">
 
                     <s:if test="hasActionMessages()">
-                        <s:actionmessage />
+                        <s:actionmessage/>
                     </s:if>
-
+                    
+                    <script>
+                        window.alert("${sessionScope.mensaje}");
+                    </script>
+                    
 
                 </div>                          
             </div>            

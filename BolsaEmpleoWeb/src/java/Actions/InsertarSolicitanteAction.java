@@ -11,23 +11,27 @@ import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.awt.Window;
+import java.awt.event.WindowEvent;
 import java.awt.image.BufferedImage;
 import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
-import java.util.LinkedList;
+import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Cesar
  */
-public class InsertarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware {
+public class InsertarSolicitanteAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitante>, ServletRequestAware {
 
     private Solicitante solicitanteAInsertar;
     private String mensaje;
@@ -35,7 +39,8 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
     private File archivoImagen;
     private String imagenFileName;
     private String imagenContentType;
-    private LinkedList<String> escolaridades;
+    private boolean insertado;
+    private SessionMap<String, Object> sessionMap;
 
     public InsertarSolicitanteAction() {
 
@@ -48,12 +53,6 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     @Override
     public void prepare() throws Exception {
-        escolaridades = new LinkedList<>();
-        escolaridades.add("Educación Escolar");
-        escolaridades.add("Educación Media");
-        escolaridades.add("Educación Diversificada");
-        escolaridades.add("Educación Superior Universitaria");
-        escolaridades.add("Educación Superior no Universitaria");
         solicitanteAInsertar = new Solicitante();
         mensaje = "";
     }
@@ -101,7 +100,7 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     public String insertar() {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        boolean insertado = true;
+        insertado = true;
         try {
             cargarImagen();
             solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
@@ -111,6 +110,8 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
         }
         if (insertado == true) {
             this.mensaje = "El solicitante fue insertado correctamente";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             return ERROR;
@@ -179,6 +180,19 @@ public class InsertarSolicitanteAction extends ActionSupport implements Preparab
 
     public void setImagenContentType(String imagenContentType) {
         this.imagenContentType = imagenContentType;
+    }
+
+    public boolean isInsertado() {
+        return insertado;
+    }
+
+    public void setInsertado(boolean insertado) {
+        this.insertado = insertado;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }
