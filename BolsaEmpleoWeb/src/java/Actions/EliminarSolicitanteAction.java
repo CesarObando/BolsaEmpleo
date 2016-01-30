@@ -82,11 +82,15 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
             eliminado = !eliminado;
         }
         if (eliminado) {
-            mensaje = "La categoría fue eliminada correctamente.";
+            mensaje = "El solicitante fue eliminado correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             sessionMap.remove("solicitante");
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }

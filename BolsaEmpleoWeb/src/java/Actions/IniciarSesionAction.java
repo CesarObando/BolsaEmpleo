@@ -31,6 +31,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     private Solicitante solicitante;
     private String nombreUsuario;
     private String clave;
+    private String mensaje;
 
     @Override
     public void prepare() throws Exception {
@@ -71,14 +72,21 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrecta");
                 return ERROR;
             }
+            mensaje = "Ha iniciado sesión correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionMessage(mensaje);
             sessionMap.put("solicitante", solicitante);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         } catch (DataException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "\"Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\\nGracias\"";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         }
         return SUCCESS;
@@ -117,4 +125,13 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     public void setClave(String clave) {
         this.clave = clave;
     }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
+    }
+    
 }

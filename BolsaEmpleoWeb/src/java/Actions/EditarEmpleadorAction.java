@@ -78,9 +78,13 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
         }
         if (insertado == true) {
             this.mensaje = "El empleador fue editado correctamente";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             sessionMap.put("empleador", empleadorEditar);
             return SUCCESS;
         } else {

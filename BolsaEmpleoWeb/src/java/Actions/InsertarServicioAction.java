@@ -86,9 +86,13 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
         }
         if (insertado == true) {
             this.mensaje = "El servicio fue insertado correctamente";
+            addActionMessage(mensaje);
+            sessionMap.put("mensaje", mensaje);
             return SUCCESS;
         } else {
             return ERROR;

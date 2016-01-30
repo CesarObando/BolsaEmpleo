@@ -83,11 +83,15 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
                         <s:if test="hasActionMessages()">
-                            <s:actionmessage />
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <s:if test="hasActionErrors()">
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
                         </s:if>
 
                         <s:form action="eliminarAdministradorProcess">

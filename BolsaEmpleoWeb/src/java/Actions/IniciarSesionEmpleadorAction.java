@@ -11,11 +11,9 @@ import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.opensymphony.xwork2.util.ValueStack;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -36,6 +34,7 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
     private Empleador empleador;
     private String nombreUsuario;
     private String clave;
+    private String mensaje;
 
     @Override
     public void prepare() throws Exception {
@@ -76,14 +75,21 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }
+            mensaje = "Ha iniciado sesión correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionMessage(mensaje);
             sessionMap.put("empleador", empleador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "\"Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\\nGracias\"";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         } catch (DataException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "\"Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\\nGracias\"";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         }
         return SUCCESS;
@@ -121,5 +127,13 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }

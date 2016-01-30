@@ -92,9 +92,13 @@ public class EliminarSolicitudAdministradorAction extends ActionSupport implemen
         }
         if (eliminado) {
             mensaje = "La solicitud fue eliminada correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }

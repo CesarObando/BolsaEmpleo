@@ -78,11 +78,15 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
                         <s:if test="hasActionMessages()">
-                            <s:actionmessage />
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <s:if test="hasActionErrors()">
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
                         </s:if>
 
                         <s:form method="get" action="reporte">
@@ -104,7 +108,7 @@
                             <s:label name="correo" label="Email"/>
                             <s:label name="idiomas" label="Idiomas que domina"/>
                             <s:submit name="reporte" value="Exportar a PDF"></s:submit>
-                            
+
                         </s:form>
 
 
@@ -114,7 +118,7 @@
                         <c:if test="${sessionScope.solicitud.favorito == false}">
                             <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();">Marcar como favorito</a>
                         </c:if>
-                            <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();">Eliminar</a>
+                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();">Eliminar</a>
                     </div>
                     <script>
                         function confirmBox() {

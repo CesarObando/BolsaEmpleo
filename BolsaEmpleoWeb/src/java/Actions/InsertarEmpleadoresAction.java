@@ -13,18 +13,22 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Tin
  */
-public class InsertarEmpleadoresAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class InsertarEmpleadoresAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
     private Empleador empleadorInsertar;
     private String mensaje;
     private HttpServletRequest request;
+    public SessionMap<String, Object> sessionMap;
 
     public InsertarEmpleadoresAction() {
     }
@@ -70,9 +74,13 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
         }
         if (insertado == true) {
             this.mensaje = "El empleador fue insertado correctamente";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             return ERROR;
@@ -98,6 +106,11 @@ public class InsertarEmpleadoresAction extends ActionSupport implements Preparab
 
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

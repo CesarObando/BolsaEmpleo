@@ -55,23 +55,6 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
 
     }
 
-//    public String editar() {
-//        EmpleadorBusiness empleadorBussines = new EmpleadorBusiness();
-//        boolean insertado = true;
-//        try {
-//            empleadorBussines.editarEmpleador(empleador);;
-//        } catch (SQLException e) {
-//            insertado = false;
-//            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-//        }
-//        if (insertado == true) {
-//            this.mensaje = "El empleador fue editado correctamente";
-//            sessionMap.put("empleador", empleador);
-//            return SUCCESS;
-//        } else {
-//            return ERROR;
-//        }
-//    }
     public String getMensaje() {
         return mensaje;
     }

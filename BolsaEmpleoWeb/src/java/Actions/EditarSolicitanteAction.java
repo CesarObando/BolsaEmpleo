@@ -116,9 +116,13 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
         } catch (SQLException e) {
             editado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
         }
         if (editado == true) {
             this.mensaje = "El solicitante fue editado correctamente";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             return ERROR;

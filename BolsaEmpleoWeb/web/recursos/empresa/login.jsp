@@ -5,7 +5,7 @@
 <html lang="es" >
     <head>
         <style >
-            
+
         </style>
         <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
         <link rel="shortcut icon" href="../imagenes/favicon.ico" />
@@ -21,7 +21,7 @@
         <!--menu-->
         <link rel="stylesheet" type="text/css" href="../css/superfish.css" media="screen">       
         <link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">
-   
+
 
         <link rel="stylesheet" type="text/css" href="../css/omega-text.css">
         <link rel="stylesheet" type="text/css" href="../css/omega-branding.css">
@@ -82,7 +82,14 @@
                         <div class="grid-9 region-content" id="region-content">
                             <h3>Iniciar Sesión </h3>
                             <s:if test="hasActionMessages()">
-                                <s:actionmessage />
+                                <script>
+                                    window.alert("${sessionScope.mensaje}");
+                                </script>
+                            </s:if>
+                            <s:if test="hasActionErrors()">
+                                <script>
+                                    window.alert("${sessionScope.mensaje}");
+                                </script>
                             </s:if>
                             <s:else>
                                 <s:form method="post"  align="center" enctype="multipart/form-data" action="iniciarSesionEmpleador " cssClass="css/LoginEmpleador.css">

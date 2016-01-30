@@ -78,7 +78,14 @@
                         <div class="grid-9 region-content" id="region-content">
                             <h3>Iniciar Sesión</h3>
                             <s:if test="hasActionMessages()">
-                                <s:actionmessage />
+                                <script>
+                                    window.alert("${sessionScope.mensaje}");
+                                </script>
+                            </s:if>
+                            <s:if test="hasActionErrors()">
+                                <script>
+                                    window.alert("${sessionScope.mensaje}");
+                                </script>
                             </s:if>
                             <s:else>
                                 <s:form method="post" enctype="multipart/form-data" action="iniciarSesionAdministrador">

@@ -65,9 +65,13 @@ public class EliminarOfertaAction extends ActionSupport implements SessionAware,
         }
         if (eliminado) {
             mensaje = "La oferta fue eliminada correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }

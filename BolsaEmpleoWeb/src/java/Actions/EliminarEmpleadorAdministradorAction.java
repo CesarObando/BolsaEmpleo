@@ -15,19 +15,23 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
+import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 /**
  *
  * @author Cesar
  */
-public class EliminarEmpleadorAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class EliminarEmpleadorAdministradorAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
     private Empleador empleadorAEmpleador;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
+    private SessionMap<String,Object> sessionMap;
 
     public EliminarEmpleadorAdministradorAction() {
     }
@@ -74,9 +78,13 @@ public class EliminarEmpleadorAdministradorAction extends ActionSupport implemen
         }
         if (eliminado) {
             mensaje = "El empleador fue eliminada correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }
@@ -113,6 +121,11 @@ public class EliminarEmpleadorAdministradorAction extends ActionSupport implemen
 
     public void setExiste(boolean existe) {
         this.existe = existe;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

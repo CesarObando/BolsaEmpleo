@@ -83,11 +83,15 @@
                 </aside>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:if test="hasActionErrors()">
-                            <s:actionerror />
-                        </s:if>
                         <s:if test="hasActionMessages()">
-                            <s:actionmessage />
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <s:if test="hasActionErrors()">
+                            <script>
+                                    window.alert("${sessionScope.mensaje}");
+                            </script>
                         </s:if>
 
                         <s:form method="post" action="editarCategoriaProcess">
@@ -96,10 +100,10 @@
                             <s:submit action="editarCategoriaProcess" value="Editar Categoría" onclick="return confirmBox();"/>
                         </s:form>
                         <script>
-                            function confirmBox(){
+                                function confirmBox(){
                                 var answer;
                                 answer = window.confirm("¿Desea editar la categoría?");
-                                if(answer==true){
+                            if(answer==true){
                                     return true;
                                 }
                                 else{
@@ -149,7 +153,7 @@
         <div id="fb-root"></div>
         <script>(function (d, s, id) {
                 var js, fjs = d.getElementsByTagName(s)[0];
-                if (d.getElementById(id))
+            if (d.getElementById(id))
                     return;
                 js = d.createElement(s);
                 js.id = id;

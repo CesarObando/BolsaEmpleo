@@ -25,9 +25,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Tin
  */
-
 public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
-
 
     private Solicitante solicitanteAVer;
     private String mensaje;
@@ -36,7 +34,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     private Connection conexion;
     private Map parametros;
     private SessionMap<String, Object> sessionMap;
-   
+
     public VerPerfilSolicitanteEmpleadorAction() {
     }
 
@@ -56,7 +54,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
         int idSolicitud = Integer.parseInt(request.getParameter("id"));
         Solicitud solicitud = new SolicitudBusiness().buscarSolicitud(idSolicitud);
         int idSolicitante = solicitud.getSolicitante().getId();
-     
+
         try {
             solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
             sessionMap.put("solicitante", solicitanteAVer);
@@ -64,16 +62,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
             existe = false;
         }
 
-      
     }
-
-//    public String reportePDF() throws SQLException, IOException {
-//        BaseData bas=new BaseData();
-//        setConexion(bas.getConnection());
-//        parametros=new HashMap();
-//        parametros.put("idSolicitante",solicitanteAVer.getId());
-//        return "reporte";
-//    }
 
     @Override
     public Solicitante getModel() {
@@ -116,30 +105,10 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     public void setExiste(boolean existe) {
         this.existe = existe;
     }
-//
-//    public Connection getConexion() {
-//        return conexion;
-//    }
-//
-//    public void setConexion(Connection conexion) {
-//        this.conexion = conexion;
-//    }
-//
-//    public Map getParametros() {
-//        return parametros;
-//    }
-//
-//    public void setParametros(Map parametros) {
-//        this.parametros = parametros;
-//    }
 
     @Override
     public void setSession(Map<String, Object> map) {
-         this.sessionMap = (SessionMap<String, Object>) map; //To change body of generated methods, choose Tools | Templates.
+        this.sessionMap = (SessionMap<String, Object>) map; //To change body of generated methods, choose Tools | Templates.
     }
-
-    
-
-   
 
 }

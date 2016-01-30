@@ -107,6 +107,8 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
         } catch (SQLException | DataException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
         }
         if (insertado == true) {
             this.mensaje = "El solicitante fue insertado correctamente";

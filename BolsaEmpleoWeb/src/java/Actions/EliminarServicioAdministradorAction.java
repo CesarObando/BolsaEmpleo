@@ -66,9 +66,13 @@ public class EliminarServicioAdministradorAction extends ActionSupport implement
         }
         if (eliminado) {
             mensaje = "El servicio fue eliminado correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            addActionMessage(mensaje);
             return SUCCESS;
         } else {
             mensaje = "Ocurrió un problema al eliminar.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }

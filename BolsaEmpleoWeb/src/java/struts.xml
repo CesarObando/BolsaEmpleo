@@ -60,7 +60,7 @@
         <action name="insertarAdministradorProcess" method="insertar" class="Actions.InsertarAdministradorAction">
             <result name="input" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
             <result name="error" type="dispatcher">/recursos/administrador/insertarAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministrador"> 
@@ -70,7 +70,7 @@
         <action class="Actions.VerPerfilAdministradorAction" name="verPerfilAdministradorProcess" method="ver">
             <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
             <result type="dispatcher" name="error">/recursos/administrador/perfilAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/perfilAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/perfilAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EditarAdministradorAction" name="editarAdministrador">
@@ -84,7 +84,7 @@
         <action class="Actions.EditarAdministradorAction" name="editarAdministradorProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/administrador/editarAdministrador.jsp</result>
             <result type="dispatcher" name="error">/recursos/administrador/editarAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action> 
         
         <action class="Actions.EliminarAdministradorAction" name="eliminarAdministrador">
@@ -95,7 +95,7 @@
         <action class="Actions.EliminarAdministradorAction" name="eliminarAdministradorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/administrador/perfilAdministrador.jsp</result>
             <result type="dispatcher" name="error">/recursos/administrador/perfilAdministrador.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarAdministradoresAction" name="buscarAdministradores">
@@ -118,7 +118,7 @@
         <action name="insertarCategoriaProcess" method="insertar" class="Actions.InsertarCategoriaAction">
             <result name="input" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
             <result name="error" type="dispatcher">/recursos/Categorias/insertarCategoria.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarCategoriasAction" name="buscarCategoria">
@@ -139,7 +139,7 @@
         <action class="Actions.EditarCategoriaAction" name="editarCategoriaProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/Categorias/editarCategoria.jsp</result>
             <result type="dispatcher" name="error">/recursos/Categorias/editarCategoria.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <action class="Actions.EliminarCategoriaAction" name="eliminarCategoria">
@@ -149,7 +149,7 @@
         <action class="Actions.EliminarCategoriaAction" name="eliminarCategoriaProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/Categorias/mantenerCategorias.jsp</result>
             <result type="dispatcher" name="error">/recursos/Categorias/mantenerCategorias.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <!--***************************EMPLEADOR*******************************************-->
@@ -164,7 +164,7 @@
         <action name="iniciarSesionEmpleador" method="iniciarSesionEmpleador" class="Actions.IniciarSesionEmpleadorAction">
             <result name="input" type="dispatcher">/recursos/empresa/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/login.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action name="registrarEmpleador" class="Actions.InsertarEmpleadoresAction">
@@ -177,7 +177,7 @@
         <action name="registrarEmpleadorProcess" method="insertar" class="Actions.InsertarEmpleadoresAction">
             <result name="input" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
             <result name="error" type="dispatcher">/recursos/empresa/registrarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/login.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/login.jsp</result>
         </action>
         
         <action  class="Actions.BuscarEmpleadoresAction" name="buscarEmpleadores">
@@ -195,7 +195,7 @@
         <action class="Actions.VerPerfilEmpleadorAction" name="verPerfilEmpleadorProcess" method="ver">
             <result type="dispatcher" name="input">/recursos/empresa/perfilEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/perfilEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/perfilEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleador">
@@ -205,7 +205,7 @@
         <action class="Actions.EditarEmpleadorAction" name="editarEmpleadorProcess" method="editar">
             <result type="dispatcher" name="input">/recursos/empresa/editarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/editarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleador">
@@ -215,7 +215,7 @@
         <action class="Actions.EliminarEmpleadorAction" name="eliminarEmpleadorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/empresa/eliminarEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/eliminarEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarEmpleadoresAction" name="buscarEmpleadores">
@@ -233,7 +233,7 @@
         <action class="Actions.EliminarEmpleadorAdministradorAction" name="eliminarEmpleadorAdministradorProcess" method="eliminar">
             <result type="dispatcher" name="input">/recursos/administrador/mantenerEmpleadores.jsp</result>
             <result type="dispatcher" name="error">/recursos/administrador/mantenerEmpleadores.jsp</result>
-            <result name="success" type="redirect">/recursos/administrador/principalAdministrador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
         <!--***************************SOLICITANTE*******************************************-->
@@ -301,7 +301,7 @@
         <action class="Actions.VerPerfilSolicitanteAction" name="verPerfilSolicitanteProcess" method="ver">
             <result type="dispatcher" name="input">/recursos/usuarios/perfilSolicitante.jsp</result>
             <result type="dispatcher" name="error">/recursos/usuarios/perfilSolicitante.jsp</result>
-            <result name="success" type="redirect">/recursos/usuarios/perfilSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/perfilSolicitante.jsp</result>
         </action>
         
         <action class="Actions.EliminarSolicitanteAction" name="eliminarSolicitanteAdministrador">
@@ -322,7 +322,7 @@
         <action class="Actions.VerPerfilSolicitanteEmpleadorAction" name="verPerfilSolicitanteEmpleadorProcess" method="ver">
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
         </action>
         
         <!--***************************OFERTA*******************************************-->
@@ -337,7 +337,7 @@
         <action name="insertarOfertaProcess" method="insertar" class="Actions.InsertarOfertaAction">
             <result name="input" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
             <result name="error" type="dispatcher">/recursos/Ofertas/insertarOferta.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/principalEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/principalEmpleador.jsp</result>
         </action>
         
         <action  class="Actions.BuscarOfertasAction" name="buscarOfertas">
@@ -489,7 +489,7 @@
         <action class="Actions.VerPerfilSolicitanteEmpleadorAction" name="verPerfilSolicitanteEmpleadorProcess" method="ver">
             <result type="dispatcher" name="input">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
             <result type="dispatcher" name="error">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
-            <result name="success" type="redirect">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
         </action>
             
         <action class="Actions.CerrarSesionAction" name="cerrarSesion">
@@ -508,7 +508,7 @@
         <action name="insertarServicioProcess" method="insertar" class="Actions.InsertarServicioAction">
             <result name="input" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
             <result name="error" type="dispatcher">/recursos/servicio/insertarServicio.jsp</result>
-            <result name="success" type="redirect">/recursos/usuarios/principalSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action  class="Actions.BuscarServiciosSolicitanteAction" name="buscarServicios">

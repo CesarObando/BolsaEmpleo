@@ -36,6 +36,7 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
     private Administrador administrador;
     private String nombreUsuario;
     private String clave;
+    private String mensaje;
 
     @Override
     public void prepare() throws Exception {
@@ -71,14 +72,21 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }
+            mensaje = "Ha iniciado sesión correctamente.";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionMessage(mensaje);
             sessionMap.put("administrador", administrador);
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         } catch (DataException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            this.addActionMessage("Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias");
+            mensaje = "\"Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\\nGracias\"";
+            sessionMap.put("mensaje", mensaje);
+            this.addActionError(mensaje);
             return ERROR;
         }
         return SUCCESS;
@@ -121,5 +129,13 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
 
     public void setAdministrador(Administrador administrador) {
         this.administrador = administrador;
+    }
+
+    public String getMensaje() {
+        return mensaje;
+    }
+
+    public void setMensaje(String mensaje) {
+        this.mensaje = mensaje;
     }
 }
