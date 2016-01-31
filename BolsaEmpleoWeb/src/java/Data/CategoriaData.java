@@ -5,7 +5,6 @@
  */
 package Data;
 
-import Dominio.Administrador;
 import Dominio.Categoria;
 import Exception.DataException;
 import java.sql.CallableStatement;

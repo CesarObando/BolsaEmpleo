@@ -5,7 +5,6 @@
  */
 package Actions;
 
-import Business.SolicitanteBusiness;
 import Data.BaseData;
 import Dominio.Solicitante;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -26,41 +25,40 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Tin
  */
-public class CurriculumPDFAction  extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware,  SessionAware {
+public class CurriculumPDFAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
+
     private Connection conexion;
     private Map parametros;
     private boolean existe;
     private Solicitante solicitanteAVer;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
-    
-    
+
     public void prepare() throws Exception {
         existe = true;
-       
-      solicitanteAVer =(Solicitante) sessionMap.get("solicitante");
-        
+
+        solicitanteAVer = (Solicitante) sessionMap.get("solicitante");
+
     }
 
     public String reportePDF() throws SQLException, IOException {
-        BaseData bas=new BaseData();
+        BaseData bas = new BaseData();
         setConexion(bas.getConnection());
-        parametros=new HashMap();
-        parametros.put("idSolicitante",solicitanteAVer.getId());
+        parametros = new HashMap();
+        parametros.put("idSolicitante", solicitanteAVer.getId());
         return SUCCESS;
     }
 
-
     @Override
     public Solicitante getModel() {
-         return this.solicitanteAVer; //To change body of generated methods, choose Tools | Templates.
+        return this.solicitanteAVer; //To change body of generated methods, choose Tools | Templates.
     }
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr; //To change body of generated methods, choose Tools | Templates.
     }
-    
+
     public Connection getConexion() {
         return conexion;
     }
@@ -95,12 +93,11 @@ public class CurriculumPDFAction  extends ActionSupport implements Preparable, M
 
     @Override
     public void setSession(Map<String, Object> map) {
-       this.sessionMap = (SessionMap<String, Object>) map;//To change body of generated methods, choose Tools | Templates.
+        this.sessionMap = (SessionMap<String, Object>) map;//To change body of generated methods, choose Tools | Templates.
     }
 
     public SessionMap<String, Object> getSessionMap() {
         return sessionMap;
     }
-
 
 }

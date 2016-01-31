@@ -26,7 +26,7 @@ public class SolicitudBusiness {
     public Solicitud insertarSolicitud(Solicitud solicitud) throws SQLException {
         return solicitudData.insertarSolicitud(solicitud);
     }
-    
+
     public Solicitud editarSolicitud(Solicitud solicitudAEditar) throws SQLException, DataException {
         return solicitudData.editarSolicitud(solicitudAEditar);
     }
@@ -46,8 +46,8 @@ public class SolicitudBusiness {
     public Solicitud buscarSolicitud(int id) throws SQLException, DataException {
         return solicitudData.buscarSolicitud(id);
     }
-    
+
     public LinkedList<Solicitud> getOfertasPorCategorias(int categoria, String puesto) throws SQLException {
-        return  solicitudData.getOfertasPorCategorias(categoria, puesto);
+        return solicitudData.getOfertasPorCategorias(categoria, puesto);
     }
 }

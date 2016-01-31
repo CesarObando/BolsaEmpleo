@@ -71,7 +71,7 @@ public class IniciarSesionEmpleadorAction extends ActionSupport implements Prepa
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         try {
             empleador = empleadorBusiness.inicioSesion(nombreUsuario, clave);
-            if (empleador.getId()==0) {
+            if (empleador.getId() == 0) {
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }

@@ -7,10 +7,8 @@ package Actions;
 
 import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
-import Business.SolicitudBusiness;
 import Dominio.Empleador;
 import Dominio.Oferta;
-import Dominio.Solicitud;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;

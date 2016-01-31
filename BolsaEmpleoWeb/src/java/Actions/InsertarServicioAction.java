@@ -66,10 +66,10 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
 
     @Override
     public void validate() {
-        if (servicioAInsertar.getTitulo().length() == 0 ) {
+        if (servicioAInsertar.getTitulo().length() == 0) {
             addFieldError("titulo", "Debe ingresar el título del servicio.");
         }
-        if (servicioAInsertar.getDescripcion().length() == 0 ) {
+        if (servicioAInsertar.getDescripcion().length() == 0) {
             addFieldError("descripcion", "Debe ingresar una descripción del servicio.");
         }
         if (servicioAInsertar.getCategoria().getId() == -1) {

@@ -5,10 +5,7 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
-import Business.CategoriaBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Categoria;
 import Dominio.Empleador;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,13 +22,13 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class EliminarEmpleadorAdministradorAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class EliminarEmpleadorAdministradorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
     private Empleador empleadorAEmpleador;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EliminarEmpleadorAdministradorAction() {
     }
@@ -96,8 +93,6 @@ public class EliminarEmpleadorAdministradorAction extends ActionSupport implemen
     public void setEmpleadorAEmpleador(Empleador empleadorAEmpleador) {
         this.empleadorAEmpleador = empleadorAEmpleador;
     }
-
-    
 
     public String getMensaje() {
         return mensaje;

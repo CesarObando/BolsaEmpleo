@@ -5,7 +5,6 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Business.SolicitanteBusiness;

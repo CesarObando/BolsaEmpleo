@@ -11,11 +11,9 @@ import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
-import com.opensymphony.xwork2.util.ValueStack;
 import java.sql.SQLException;
 import java.util.Map;
 import java.util.logging.Level;
@@ -68,7 +66,7 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         try {
             administrador = administradorBusiness.iniciarSesion(nombreUsuario, clave);
-            if (administrador.getId()==0) {
+            if (administrador.getId() == 0) {
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrectas");
                 return ERROR;
             }

@@ -22,7 +22,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author JonathanA
  */
-public class InsertarSolicitudAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Solicitud>, ServletRequestAware {
+public class InsertarSolicitudAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
     private Solicitud solicitudInsertar;
     private String mensaje;

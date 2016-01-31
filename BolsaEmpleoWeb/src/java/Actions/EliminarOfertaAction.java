@@ -30,7 +30,7 @@ public class EliminarOfertaAction extends ActionSupport implements SessionAware,
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EliminarOfertaAction() {
     }

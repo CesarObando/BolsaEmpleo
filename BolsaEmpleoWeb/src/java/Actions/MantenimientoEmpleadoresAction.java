@@ -41,6 +41,4 @@ public class MantenimientoEmpleadoresAction extends ActionSupport implements Pre
         this.empleadorBusiness = empleadorBusiness;
     }
 
-    
-
 }

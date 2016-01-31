@@ -68,7 +68,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         try {
             solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante.getId()==0) {
+            if (solicitante.getId() == 0) {
                 this.addFieldError("nombreUsuario", "Usuario o contraseña incorrecta");
                 return ERROR;
             }
@@ -133,5 +133,5 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-    
+
 }

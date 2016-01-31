@@ -26,9 +26,8 @@ public class EmpleadorData extends BaseData {
         CallableStatement statement = conexion.prepareCall(sqlInsert);
 
         conexion.setAutoCommit(false);
-        //cargamos el statement con la informacion nueva
         try {
-            statement.registerOutParameter(1, Types.INTEGER);//variable de salida
+            statement.registerOutParameter(1, Types.INTEGER);
             statement.setString(2, empleador.getCedula());
             statement.setString(3, empleador.getNombre());
             statement.setString(4, empleador.getApellidos());
@@ -41,9 +40,7 @@ public class EmpleadorData extends BaseData {
             statement.setString(11, empleador.getUsername());
             statement.setString(12, empleador.getPass());
             statement.executeUpdate();
-
-            empleador.setId(statement.getInt(1));//solitamos el id generado
-
+            empleador.setId(statement.getInt(1));
             conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
@@ -58,9 +55,7 @@ public class EmpleadorData extends BaseData {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
-
         conexion.setAutoCommit(false);
-        //cargamos el statement con la informacion nueva
         try {
             statement.setInt(1, empleador.getId());
             statement.setString(2, empleador.getCedula());
@@ -71,7 +66,6 @@ public class EmpleadorData extends BaseData {
             statement.setString(7, empleador.getDireccion());
             statement.setString(8, empleador.getPass());
             statement.executeUpdate();
-
             conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
@@ -80,7 +74,6 @@ public class EmpleadorData extends BaseData {
         conexion.close();
     }
 
-    //elimina el empleador indicado 
     public void eliminarEmpleador(int id) throws SQLException {
         String sqlEliminar = "{CALL eliminar_empleador(?)}";
         Connection conexion = this.getConnection();
@@ -190,9 +183,7 @@ public class EmpleadorData extends BaseData {
         return empleador;
     }
 
-    //verifica que el usuario sea valido 
     public Empleador inicioSesion(String user, String pass) throws SQLException, DataException {
-
         String sqlSelect = "{CALL iniciar_sesion_empleador(?,?)}";
         Connection conexion = super.getConnection();
         Empleador empleador = new Empleador();
@@ -216,7 +207,7 @@ public class EmpleadorData extends BaseData {
                 empleador.setPass(resultSet.getString("passwd"));
             }
         } catch (Exception e) {
-            if(e.getMessage().equalsIgnoreCase("The statement did not return a result set.")){
+            if (e.getMessage().equalsIgnoreCase("The statement did not return a result set.")) {
                 return empleador;
             }
             throw new DataException("Ha ocurrido un error con la base de datos");
@@ -224,5 +215,4 @@ public class EmpleadorData extends BaseData {
         conexion.close();
         return empleador;
     }
-
 }

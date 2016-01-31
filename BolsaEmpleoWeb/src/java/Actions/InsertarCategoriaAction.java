@@ -25,7 +25,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Cesar
  */
-public class InsertarCategoriaAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Categoria>, ServletRequestAware {
+public class InsertarCategoriaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Categoria>, ServletRequestAware {
 
     private Categoria categoriaAInsertar;
     private String mensaje;
@@ -58,7 +58,7 @@ public class InsertarCategoriaAction extends ActionSupport implements SessionAwa
 
     @Override
     public void validate() {
-        if (categoriaAInsertar.getNombre().length() == 0 ){
+        if (categoriaAInsertar.getNombre().length() == 0) {
             addFieldError("nombre", "Debe ingresar un nombre.");
         }
     }

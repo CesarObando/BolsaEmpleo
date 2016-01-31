@@ -23,7 +23,6 @@ public class SolicitanteData extends BaseData {
     public SolicitanteData() {
     }
 
-    //Insertar Solicitante
     public Solicitante insertarSolicitante(Solicitante solicitanteAInsertar) throws SQLException, DataException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_solicitante (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)}";
@@ -239,7 +238,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
             }
         } catch (Exception e) {
-            if(e.getMessage().equalsIgnoreCase("The statement did not return a result set.")){
+            if (e.getMessage().equalsIgnoreCase("The statement did not return a result set.")) {
                 return solicitante;
             }
             throw new DataException("Ha ocurrido un error con la base de datos");
@@ -247,5 +246,4 @@ public class SolicitanteData extends BaseData {
         conexion.close();
         return solicitante;
     }
-
 }

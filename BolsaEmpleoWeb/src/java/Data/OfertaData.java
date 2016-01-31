@@ -7,14 +7,12 @@ package Data;
 
 import Business.CategoriaBusiness;
 import Business.EmpleadorBusiness;
-import Dominio.Administrador;
 import Dominio.Categoria;
 import Dominio.Empleador;
 import Dominio.Oferta;
 import Exception.DataException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
-import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Types;
@@ -29,16 +27,14 @@ public class OfertaData extends BaseData {
     public OfertaData() {
     }
 
-    //inserta una nueva oferta 
     public Oferta insertarOferta(Oferta newOferta) throws SQLException {
         Connection conexion = super.getConnection();
         String sqlInsert = "{CALL insertar_oferta(?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
 
         conexion.setAutoCommit(false);
-        //cargamos el statement con la informacion nueva
         try {
-            statement.registerOutParameter(1, Types.INTEGER);//variable de salida
+            statement.registerOutParameter(1, Types.INTEGER);
             statement.setString(2, newOferta.getPuesto());
             statement.setInt(3, newOferta.getEmpleador().getId());
             statement.setFloat(4, newOferta.getSalario());
@@ -47,9 +43,7 @@ public class OfertaData extends BaseData {
             statement.setInt(7, newOferta.getCategoria().getId());
             statement.setString(8, newOferta.getDescripcion());
             statement.executeUpdate();
-
-            newOferta.setId(statement.getInt(1));//solitamos el id generado
-
+            newOferta.setId(statement.getInt(1));
             conexion.commit();
         } catch (SQLException e) {
             conexion.rollback();
@@ -97,14 +91,12 @@ public class OfertaData extends BaseData {
         conexion.close();
     }
 
-    //retorna todas las ofertas existentes
     public LinkedList<Oferta> getOfertas() throws SQLException {
 
         String sqlSelect = "buscar_ofertas";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         ResultSet result = statement.executeQuery();
-
         LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
         while (result.next()) {
             Oferta oferta = new Oferta();
@@ -116,21 +108,18 @@ public class OfertaData extends BaseData {
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
             oferta.setDescripcion(result.getString("descripcion"));
-
             ofertas.add(oferta);
         }
         return ofertas;
     }
 
     public LinkedList<Oferta> getOfertasPorCategorias(int categoria, String puesto) throws SQLException {
-
         String sqlSelect = "{CALL buscar_ofertas_filtradas(?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, puesto);
         statement.setInt(2, categoria);
         ResultSet result = statement.executeQuery();
-
         LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
         while (result.next()) {
             Oferta oferta = new Oferta();
@@ -142,14 +131,12 @@ public class OfertaData extends BaseData {
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
             oferta.setDescripcion(result.getString("descripcion"));
-
             ofertas.add(oferta);
         }
         return ofertas;
     }
 
     public LinkedList<Oferta> getOfertasPorEmpleador(int categoria, String puesto, int empleador) throws SQLException {
-
         String sqlSelect = "{CALL buscar_ofertas_por_empleador(?,?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
@@ -157,7 +144,6 @@ public class OfertaData extends BaseData {
         statement.setInt(2, categoria);
         statement.setInt(3, empleador);
         ResultSet result = statement.executeQuery();
-
         LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
         while (result.next()) {
             Oferta oferta = new Oferta();
@@ -169,7 +155,6 @@ public class OfertaData extends BaseData {
             oferta.setPuesto(result.getString("puesto"));
             oferta.setRequerimientos(result.getString("requerimentos"));
             oferta.setDescripcion(result.getString("descripcion"));
-
             ofertas.add(oferta);
         }
         return ofertas;
@@ -192,12 +177,10 @@ public class OfertaData extends BaseData {
                 oferta.setPuesto(result.getString("puesto"));
                 oferta.setRequerimientos(result.getString("requerimentos"));
                 oferta.setDescripcion(result.getString("descripcion"));
-
                 int idEmpleador = oferta.getEmpleador().getId();
                 Empleador empleador = new Empleador();
                 empleador = new EmpleadorBusiness().buscarEmpleador(idEmpleador);
                 oferta.setEmpleador(empleador);
-
                 int idCategoria = oferta.getCategoria().getId();
                 Categoria categoria = new Categoria();
                 categoria = new CategoriaBusiness().buscarCategoria(idCategoria);

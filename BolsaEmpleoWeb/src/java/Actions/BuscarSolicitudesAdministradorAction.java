@@ -58,8 +58,8 @@ public class BuscarSolicitudesAdministradorAction extends ActionSupport implemen
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
-        if(request.getParameter("puesto")!=null){
-            puesto=request.getParameter("puesto");
+        if (request.getParameter("puesto") != null) {
+            puesto = request.getParameter("puesto");
         }
         solicitudes = solicitudBusiness.getOfertasPorCategorias(categoria, puesto);
 
@@ -93,18 +93,18 @@ public class BuscarSolicitudesAdministradorAction extends ActionSupport implemen
             solicitudes = solicitudBusiness.getOfertasPorCategorias(categoria, puesto);
 
             for (int i = 0; i < solicitudes.size(); i++) {
-            Solicitud solicitud = solicitudes.get(i);
-            int idSolicitante = solicitud.getSolicitante().getId();
-            int idOferta = solicitud.getOferta().getId();
-            Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
-            Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
-            int idEmpleador = oferta.getEmpleador().getId();
-            Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
-            oferta.setEmpleador(empleador);
-            solicitud.setSolicitante(solicitante);
-            solicitud.setOferta(oferta);
-            solicitudes.set(i, solicitud);
-        }
+                Solicitud solicitud = solicitudes.get(i);
+                int idSolicitante = solicitud.getSolicitante().getId();
+                int idOferta = solicitud.getOferta().getId();
+                Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
+                Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
+                int idEmpleador = oferta.getEmpleador().getId();
+                Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+                oferta.setEmpleador(empleador);
+                solicitud.setSolicitante(solicitante);
+                solicitud.setOferta(oferta);
+                solicitudes.set(i, solicitud);
+            }
         } catch (SQLException e) {
             Logger.getLogger(BuscarSolicitudesAdministradorAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -132,7 +132,6 @@ public class BuscarSolicitudesAdministradorAction extends ActionSupport implemen
         this.solicitudes = solicitudes;
     }
 
-    
     public HttpServletRequest getRequest() {
         return request;
     }

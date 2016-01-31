@@ -5,9 +5,7 @@
  */
 package Actions;
 
-import Business.CategoriaBusiness;
 import Business.SolicitudBusiness;
-import Dominio.Categoria;
 import Dominio.Solicitud;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -30,7 +28,7 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
     private String mensaje;
     private HttpServletRequest request;
     private boolean existe;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EditarSolicitudAction() {
     }
@@ -48,7 +46,7 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
     public void prepare() throws Exception {
         existe = true;
         solicitudAEditar = (Solicitud) sessionMap.get("solicitud");
-        
+
     }
 
     @Override
@@ -65,12 +63,11 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
         boolean editado = true;
         try {
-            if(solicitudAEditar.isFavorito()){
+            if (solicitudAEditar.isFavorito()) {
                 solicitudAEditar.setFavorito(false);
-            }
-            else{
+            } else {
                 solicitudAEditar.setFavorito(true);
-            }     
+            }
             solicitudBusiness.editarSolicitud(solicitudAEditar);
         } catch (SQLException e) {
             editado = false;
@@ -95,7 +92,7 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
     public void setSolicitudAEditar(Solicitud solicitudAEditar) {
         this.solicitudAEditar = solicitudAEditar;
     }
-    
+
     public String getMensaje() {
         return mensaje;
     }

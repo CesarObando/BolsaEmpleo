@@ -31,8 +31,6 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private Connection conexion;
-    private Map parametros;
     private SessionMap<String, Object> sessionMap;
 
     public VerPerfilSolicitanteEmpleadorAction() {
@@ -58,6 +56,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
         try {
             solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
             sessionMap.put("solicitante", solicitanteAVer);
+            sessionMap.put("solicitud", solicitud);
         } catch (SQLException e) {
             existe = false;
         }

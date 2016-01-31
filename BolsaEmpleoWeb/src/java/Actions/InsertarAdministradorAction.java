@@ -22,7 +22,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author JonathanA
  */
-public class InsertarAdministradorAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Administrador>, ServletRequestAware {
+public class InsertarAdministradorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Administrador>, ServletRequestAware {
 
     private Administrador administradorInsertar;
     private String mensaje;

@@ -5,7 +5,6 @@
  */
 package Actions;
 
-import Business.AdministradorBusiness;
 import Business.SolicitudBusiness;
 import Dominio.Solicitud;
 import Exception.DataException;

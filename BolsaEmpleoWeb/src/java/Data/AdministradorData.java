@@ -174,7 +174,7 @@ public class AdministradorData extends BaseData {
             }
 
         } catch (SQLException e) {
-            if(e.getMessage().equalsIgnoreCase("The statement did not return a result set.")){
+            if (e.getMessage().equalsIgnoreCase("The statement did not return a result set.")) {
                 return administrador;
             }
             throw new DataException("Ha ocurrido un error con la base de datos");

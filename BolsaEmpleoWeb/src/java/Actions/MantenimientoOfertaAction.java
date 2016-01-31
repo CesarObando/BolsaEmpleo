@@ -5,7 +5,6 @@
  */
 package Actions;
 
-import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
 import Dominio.Oferta;
 import static com.opensymphony.xwork2.Action.INPUT;

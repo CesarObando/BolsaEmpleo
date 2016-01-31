@@ -22,13 +22,13 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author JonathanA
  */
-public class EliminarSolicitudAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Solicitud>, ServletRequestAware {
+public class EliminarSolicitudAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
     private Solicitud solicitudEliminar;
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EliminarSolicitudAction() {
     }

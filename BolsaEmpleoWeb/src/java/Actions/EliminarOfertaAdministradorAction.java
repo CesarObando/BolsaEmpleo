@@ -30,7 +30,7 @@ public class EliminarOfertaAdministradorAction extends ActionSupport implements 
     private String mensaje;
     private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EliminarOfertaAdministradorAction() {
     }

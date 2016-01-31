@@ -6,7 +6,6 @@
 package Actions;
 
 import Dominio.Administrador;
-import Dominio.Empleador;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;

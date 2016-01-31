@@ -52,8 +52,8 @@ public class BuscarOfertasAdministradorAction extends ActionSupport implements P
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
-        if(request.getParameter("puesto")!=null){
-            puesto=request.getParameter("puesto");
+        if (request.getParameter("puesto") != null) {
+            puesto = request.getParameter("puesto");
         }
         ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
 

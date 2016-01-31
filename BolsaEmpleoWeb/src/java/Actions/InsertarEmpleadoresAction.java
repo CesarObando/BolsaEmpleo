@@ -23,7 +23,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Tin
  */
-public class InsertarEmpleadoresAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Empleador>, ServletRequestAware {
+public class InsertarEmpleadoresAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Empleador>, ServletRequestAware {
 
     private Empleador empleadorInsertar;
     private String mensaje;
