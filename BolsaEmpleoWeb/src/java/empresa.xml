@@ -100,7 +100,7 @@
         </action>
         <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
             <result name="success" type="jasper">
-                <param name="location">/Reportes/curriculum.jasper</param>
+                <param name="location">/recursos/Reportes/curriculum.jasper</param>
                 <param name="format">PDF</param>
                 <param name="connection">conexion</param>   
                 <param name="reportParameters">parametros</param>         
