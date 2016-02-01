@@ -32,6 +32,17 @@
             <result name="input" type="fotoSolicitante" />
         </action>
         
+        <action name="getImagenEmpleador" class="Actions.ImagenUtilAction">
+            <interceptor-ref name="defaultStack">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
+                </param>
+            </interceptor-ref>
+            <result name="success" type="fotoSolicitante" />
+            <result name="input" type="fotoSolicitante" />
+        </action>
+        
         <action name="menuPrincipal">
             <result name="input" type="dispatcher">/recursos/usuarios/menuPrincipal.jsp</result>
         </action>
