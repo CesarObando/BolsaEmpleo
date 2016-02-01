@@ -7,12 +7,14 @@ package Actions;
 
 import Business.EmpleadorBusiness;
 import Dominio.Empleador;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -66,15 +68,34 @@ public class InsertarEmpleadoresAction extends ActionSupport implements SessionA
         }
     }
 
-    public String insertar() {
+    public String insertar() throws DataException {
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         boolean insertado = true;
+        boolean existe = false;
         try {
-            empleadorBusiness.insertarEmpleador(empleadorInsertar);
+            LinkedList<Empleador> empleadores = new EmpleadorBusiness().buscarEmpleadores();
+            int i=0;
+            while (existe == false && i< empleadores.size()) {
+                Empleador empleador = empleadores.get(i);
+                if (empleadorInsertar.getCedula().equals(empleador.getCedula()) || empleadorInsertar.getCorreo().equals(empleador.getCorreo())
+                        || empleadorInsertar.getUsername().equals(empleador.getUsername())) {
+                    existe = true;
+                }
+                i++;
+            }
+            if (existe == false) {
+                empleadorBusiness.insertarEmpleador(empleadorInsertar);
+            } else {
+                insertado = false;
+                mensaje = "La cédula, correo o nombre de usuario ya se encuentran registrados. Inténtelo nuevamente.";
+                sessionMap.put("mensaje", mensaje);
+                addActionError(mensaje);
+                return ERROR;
+            }
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", e);
+            sessionMap.put("mensaje", mensaje);
             addActionError(mensaje);
         }
         if (insertado == true) {

@@ -53,18 +53,21 @@ public class EmpleadorData extends BaseData {
 
     public void editarEmpleador(Empleador empleador) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL editar_empleador(?,?,?,?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
         conexion.setAutoCommit(false);
         try {
             statement.setInt(1, empleador.getId());
             statement.setString(2, empleador.getCedula());
             statement.setString(3, empleador.getCorreo());
-            statement.setString(4, empleador.getTelefonoFijo());
-            statement.setString(5, empleador.getTelefonoMovil());
-            statement.setString(6, empleador.getNombreEmpresa());
-            statement.setString(7, empleador.getDireccion());
-            statement.setString(8, empleador.getPass());
+            statement.setString(4, empleador.getNombre());
+            statement.setString(5, empleador.getApellidos());
+            statement.setString(6, empleador.getTelefonoFijo());
+            statement.setString(7, empleador.getTelefonoMovil());
+            statement.setString(8, empleador.getCedulaJuridica());
+            statement.setString(9, empleador.getNombreEmpresa());
+            statement.setString(10, empleador.getDireccion());
+            statement.setString(11, empleador.getPass());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {

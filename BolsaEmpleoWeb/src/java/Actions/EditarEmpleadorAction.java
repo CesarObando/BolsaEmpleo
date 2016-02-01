@@ -7,12 +7,14 @@ package Actions;
 
 import Business.EmpleadorBusiness;
 import Dominio.Empleador;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -70,11 +72,29 @@ public class EditarEmpleadorAction extends ActionSupport implements Preparable, 
         }
     }
 
-    public String editar() {
-        EmpleadorBusiness empleadorBussines = new EmpleadorBusiness();
+    public String editar() throws DataException {
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         boolean insertado = true;
+        boolean existe = false;
         try {
-            empleadorBussines.editarEmpleador(empleadorEditar);;
+            LinkedList<Empleador> empleadores = new EmpleadorBusiness().buscarEmpleadores();
+            int i=0;
+            while (existe == false && i< empleadores.size()) {
+                Empleador empleador = empleadores.get(i);
+                if (empleadorEditar.getCorreo().equals(empleador.getCorreo()) && empleadorEditar.getId() != empleador.getId()) {
+                    existe = true;
+                }
+                i++;
+            }
+            if (existe == false) {
+                empleadorBusiness.editarEmpleador(empleadorEditar);
+            } else {
+                insertado = false;
+                mensaje = "El correo ya se encuentran registrado. Inténtelo nuevamente.";
+                sessionMap.put("mensaje", mensaje);
+                addActionError(mensaje);
+                return ERROR;
+            }
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";

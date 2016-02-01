@@ -16,6 +16,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.IOException;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -99,9 +100,28 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
     public String insertar() {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         insertado = true;
+        boolean existe = false;
         try {
-            cargarImagen();
-            solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
+            LinkedList<Solicitante> solicitantes = new SolicitanteBusiness().buscarSolicitantes();
+            int i = 0;
+            while (existe == false && i < solicitantes.size()) {
+                Solicitante solicitante = solicitantes.get(i);
+                if (solicitanteAInsertar.getCedula().equals(solicitante.getCedula()) || solicitanteAInsertar.getCorreo().equals(solicitante.getCorreo())
+                        || solicitanteAInsertar.getUsername().equals(solicitante.getUsername())) {
+                    existe = true;
+                }
+                i++;
+            }
+            if (existe == false) {
+                cargarImagen();
+                solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
+            } else {
+                insertado = false;
+                mensaje = "La cédula, correo o nombre de usuario ya se encuentran registrados. Inténtelo nuevamente.";
+                sessionMap.put("mensaje", mensaje);
+                addActionError(mensaje);
+                return ERROR;
+            }
         } catch (SQLException | DataException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";

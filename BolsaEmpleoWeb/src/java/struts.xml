@@ -611,5 +611,8 @@
             <result name="success" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
         </action>
         
+        <action class="Actions.PrincipalAction" name="principal">
+            <result name="sucess" type="dispatcher">/recursos/usuarios/pantallaPrincipal.jsp</result>            
+        </action>
     </package>
 </struts>

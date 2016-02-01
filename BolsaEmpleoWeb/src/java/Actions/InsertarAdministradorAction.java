@@ -12,6 +12,7 @@ import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -74,8 +75,26 @@ public class InsertarAdministradorAction extends ActionSupport implements Sessio
     public String insertar() throws DataException {
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
         boolean insertado = true;
+        boolean existe = false;
         try {
-            administradorBusiness.insertarAdministrador(administradorInsertar);
+            LinkedList<Administrador> administradores = new AdministradorBusiness().buscarAdministradores();
+            int i = 0;
+            while (existe == false && i < administradores.size()) {
+                Administrador administrador = administradores.get(i);
+                if (administradorInsertar.getCedula().equals(administrador.getCedula()) || administradorInsertar.getUsername().equals(administrador.getUsername())) {
+                    existe = true;
+                }
+                i++;
+            }
+            if (existe == false) {
+                administradorBusiness.insertarAdministrador(administradorInsertar);
+            } else {
+                insertado = false;
+                mensaje = "La cédula o nombre de usuario ya se encuentran registrados. Inténtelo nuevamente.";
+                sessionMap.put("mensaje", mensaje);
+                addActionError(mensaje);
+                return ERROR;
+            }
         } catch (SQLException e) {
             insertado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
