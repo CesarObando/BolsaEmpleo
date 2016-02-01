@@ -8,6 +8,7 @@ package Actions;
 import Business.SolicitanteBusiness;
 import Dominio.Solicitante;
 import Exception.DataException;
+import static com.opensymphony.xwork2.Action.ERROR;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -21,6 +22,7 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.Map;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -108,11 +110,28 @@ public class EditarSolicitanteAction extends ActionSupport implements Preparable
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         boolean editado = true;
         try {
-            if (this.archivoImagen != null) {
-                cargarImagen();
+            LinkedList<Solicitante> solicitantes = new SolicitanteBusiness().buscarSolicitantes();
+            int i = 0;
+            while (existe == false && i < solicitantes.size()) {
+                Solicitante solicitante = solicitantes.get(i);
+                if (solicitanteAEditar.getCorreo().equals(solicitante.getCorreo()) && solicitanteAEditar.getId() != solicitante.getId()) {
+                    existe = true;
+                }
+                i++;
             }
-            solicitanteBusiness.editarSolicitante(solicitanteAEditar);
-            sessionMap.put("solicitante", this.solicitanteAEditar);
+            if (existe == false) {
+                if (this.archivoImagen != null) {
+                    cargarImagen();
+                }
+                solicitanteBusiness.editarSolicitante(solicitanteAEditar);
+                sessionMap.put("solicitante", this.solicitanteAEditar);
+            } else {
+                editado = false;
+                mensaje = "El correo ya se encuentran registrado. Inténtelo nuevamente.";
+                sessionMap.put("mensaje", mensaje);
+                addActionError(mensaje);
+                return ERROR;
+            }
         } catch (SQLException e) {
             editado = false;
             mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";

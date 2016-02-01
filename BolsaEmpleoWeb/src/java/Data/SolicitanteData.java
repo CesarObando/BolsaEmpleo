@@ -112,7 +112,7 @@ public class SolicitanteData extends BaseData {
                 solicitante.setCedula(rs.getString("cedula"));
                 solicitante.setNombre(rs.getString("nombre"));
                 solicitante.setApellidos(rs.getString("apellidos"));
-                solicitante.setUsername(rs.getString("nombre_usuario"));
+                solicitante.setUsername(rs.getString("username"));
                 solicitante.setPassword(rs.getString("passwd"));
                 solicitante.setEdad(rs.getInt("edad"));
                 solicitante.setEscolaridad(rs.getString("escolaridad"));
