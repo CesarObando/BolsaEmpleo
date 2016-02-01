@@ -31,7 +31,11 @@
                             </script>
                         </s:if>
 
+<<<<<<< HEAD
                         <s:form method="post" action="editarSolicitanteProcess" enctype="multipart/form-data">
+=======
+                            <s:form method="post" action="editarSolicitanteProcess" enctype="multipart/form-data">
+>>>>>>> e5173eabff14fe7d5c02e0e6397532f7c67d68a7
                             <s:hidden name="id"/>
                             <s:textfield name="cedula" label="Cédula" disabled="true"/>
                             <s:textfield name="nombre" label="Nombre" type="text" requiredLabel="true"/>

@@ -38,7 +38,7 @@
                             <s:label name="cedula" label="Cédula" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>
-                            <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                            <img src="<s:url action="getImagenEmpleador" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                             <s:label name="edad" label="Edad"/>
                             <s:label name="sexo" label="Sexo" readonly="true"/>
                             <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>

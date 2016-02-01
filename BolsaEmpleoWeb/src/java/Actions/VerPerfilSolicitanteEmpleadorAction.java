@@ -49,7 +49,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
     public void prepare() throws Exception {
         existe = true;
 
-        int idSolicitud = Integer.parseInt(request.getParameter("id"));
+        int idSolicitud = Integer.parseInt(request.getParameter("idS"));
         Solicitud solicitud = new SolicitudBusiness().buscarSolicitud(idSolicitud);
         int idSolicitante = solicitud.getSolicitante().getId();
 
