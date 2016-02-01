@@ -79,7 +79,7 @@
                                             <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
                                             <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                     <s:url action="verPerfilSolicitanteEmpleador" var="url">
-                                                        <s:param name="id" value="#solicitudActual.id"/>
+                                                        <s:param name="idS" value="#solicitudActual.id"/>
                                                     </s:url>
 
                                                     <a href='<s:property value="#url"/>'> <button style="background-color: white"><img src="../imagenes/ver.png"/></button> </a>
