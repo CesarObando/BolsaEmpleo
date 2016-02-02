@@ -17,16 +17,17 @@
                         </li>
                     </c:if>
                     <li>
-                        <s:a action="insertarOferta" >Registrar Oferta</s:a>
+                        <a>Ofertas</a>  
+                        <ul>
+                            <li><a href="../Ofertas/insertarOferta.action">Registrar Oferta</a></li>
+                            <li><a href="../Ofertas/buscarOfertas.action">Actualizar/Eliminar</a></li>
+                        </ul>
                     </li>
                     <li>
-                        <s:a action="buscarOfertas" >Mantener Ofertas</s:a>
+                        <s:a action="buscarServiciosEmpleador" >Trabajos Independientes</s:a>
                     </li>
                     <li>
-                        <s:a action="buscarServiciosEmpleador" >Buscar Servicios</s:a>
-                    </li>
-                    <li>
-                        <a href="../empresa/verPerfilEmpleador.action" class="" >Mantener información</a>
+                        <a href="../empresa/verPerfilEmpleador.action" class="" >Actualizar/Eliminar perfil</a>
                     </li>
                     <li>
                         <s:url action="cerrarSesion" var="url"></s:url>
