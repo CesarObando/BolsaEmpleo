@@ -5,10 +5,14 @@
  */
 package Actions;
 
+import Business.SolicitudBusiness;
 import Dominio.Solicitante;
+import Dominio.Solicitud;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.sql.SQLException;
+import java.util.LinkedList;
 import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
@@ -23,6 +27,8 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
 
     private Solicitante solicitante;
     private String mensaje;
+    private int numFavoritos;
+    private int numSolicitudes;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
 
@@ -38,6 +44,18 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
     public void prepare() throws Exception {
         solicitante = (Solicitante) sessionMap.get("solicitante");
         solicitante = (Solicitante) request.getSession().getAttribute("solicitante");
+        getFavoritos();
+    }
+
+    public void getFavoritos() throws SQLException {
+        numFavoritos = 0;
+        LinkedList<Solicitud> solicitudes = new SolicitudBusiness().buscarSolicitudesFiltradas(solicitante.getId(), 0);
+        numSolicitudes = solicitudes.size();
+        for (Solicitud solicitud : solicitudes) {
+            if(solicitud.isFavorito()){
+                numFavoritos++;
+            }
+        }
     }
 
     @Override
@@ -82,6 +100,22 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
+    }
+
+    public int getNumFavoritos() {
+        return numFavoritos;
+    }
+
+    public void setNumFavoritos(int numFavoritos) {
+        this.numFavoritos = numFavoritos;
+    }
+
+    public int getNumSolicitudes() {
+        return numSolicitudes;
+    }
+
+    public void setNumSolicitudes(int numSolicitudes) {
+        this.numSolicitudes = numSolicitudes;
     }
 
 }

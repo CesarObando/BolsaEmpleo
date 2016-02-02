@@ -43,11 +43,23 @@
                             <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
                             <s:label name="titulos" label="Títulos"/>
                             <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" cols="30" rows="8"/>
                             <s:label name="telefonoFijo" label="Teléfono Casa"/> 
                             <s:label name="telefonoMovil" label="Teléfono Celular"/>
                             <s:label name="correo" label="Email"/>
                             <s:label name="idiomas" label="Idiomas que domina"/>
+                            <s:if test="numSolicitudes==0">
+                                <s:label name="solicitudes" value="No has solicitado empleo en ninguna oferta"/>
+                            </s:if>
+                            <s:else>
+                                <s:label name="numSolicitudes" label="Solicitudes de empleo"/>
+                            </s:else>
+                            <s:if test="numSolicitudes==0">
+                                <s:label name="favoritos" value="No has sido elegido como favorito en ninguna oferta"/>
+                            </s:if>
+                            <s:else>
+                                <s:label name="numFavoritos" label="Has sido elegido como favorito en"/>
+                            </s:else>
                         </s:form>
                         <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
                         <a href="../usuarios/eliminarSolicitanteProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
