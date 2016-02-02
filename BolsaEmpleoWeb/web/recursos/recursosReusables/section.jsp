@@ -15,7 +15,7 @@
                     <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
                     <li class="first collapsed"> <s:a action="download.action">¿Cómo hacer un Currículum?</s:a></li>                                              
                     <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraíso</a></li>
-                    <li class="leaf"><a href="#">Contáctenos</a></li>                                            
+                    <li class="leaf"><a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Contáctenos</a></li>                                            
                 </ul>                                
             </div>
         </div>
