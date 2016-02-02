@@ -20,17 +20,17 @@
                         <s:a action="buscarOfertasSolicitante" >Buscar Ofertas</s:a>
                         </li>
                         <li>
-                        <s:a action="buscarSolicitudesSolicitantes" >Mantener Solicitudes</s:a>
+                        <s:a action="buscarSolicitudesSolicitantes" >Eliminar Solicitudes</s:a>
                         </li>
                         <li>
-                            <a>Servicios</a> 
+                            <a>Trabajos Independientes</a> 
                             <ul>
                             <s:a action="insertarServicio" >Registrar</s:a>
-                            <s:a action="buscarServicios" >Mantener</s:a>
+                            <s:a action="buscarServicios" >Actualizar/Eliminar</s:a>
                             </ul>
                         </li>
                         <li>
-                            <a href="../empresa/verPerfilSolicitante.action" class="" >Mantener información</a>
+                            <a href="../empresa/verPerfilSolicitante.action" class="" >Actualizar/Eliminar perfil</a>
                         </li>
                         <li>
                         <s:url action="cerrarSesion" var="url"></s:url>

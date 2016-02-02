@@ -13,7 +13,7 @@
 <html>
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
-        <title>Mantener Categorías | Bolsa de Empleo</title>  
+        <title>Actualizar Categorías | Bolsa de Empleo</title>  
     </head>
     <body>
         <header>
@@ -27,6 +27,16 @@
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionMessages()">
+                            <script>
+                                window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <s:if test="hasActionErrors()">
+                            <script>
+                                window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
                         <s:form action="buscarCategoriasProcess" method="get">
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:submit method="buscar" value="Buscar"/>
@@ -34,7 +44,7 @@
 
                         <table id="mytable" class="table table-bordred table-striped">
 
-                            <s:if test="%{solicitantes.isEmpty()}">
+                            <s:if test="%{categorias.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
                             </s:if>
 
