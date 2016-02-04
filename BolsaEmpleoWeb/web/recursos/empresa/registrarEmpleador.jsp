@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="registrarEmpleadorProcess" enctype="multipart/form-data">
+                        <s:form method="post" action="registrarEmpleadorProcess" enctype="multipart/form-data" cssClass="form">
                             <s:textfield name="cedula" label="Cédula" type="number" requiredLabel="true"/>
                             <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
                             <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
@@ -40,7 +40,7 @@
                             <s:textfield name="telefonoMovil" label="Teléfono Celular"/>
                             <s:textfield name="cedulaJuridica" label="Cédula Jurídica"/>
                             <s:textfield name="nombreEmpresa" label="Nombre de la empresa"/>
-                            <s:textarea name="direccion" label="Dirección"/>
+                            <s:textarea name="direccion" label="Dirección" style="width:300px;height:150px"/>
                             <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
                             <s:password name="pass" label="Clave" requiredLabel="true"/>
                             <s:submit action="registrarEmpleadorProcess" value="Registrar Empleador" onclick="return confirmBox();"/>

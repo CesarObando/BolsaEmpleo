@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="buscarCategoriasProcess" method="get">
+                        <s:form action="buscarCategoriasProcess" method="post" cssClass="form">
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>

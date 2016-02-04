@@ -7,7 +7,7 @@
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Insertar Administrador | Bolsa de Empleo</title>  
-        <link rel="stylesheet" href="/css/Estilo.css"
+        
     </head>
     <body>
         <header>

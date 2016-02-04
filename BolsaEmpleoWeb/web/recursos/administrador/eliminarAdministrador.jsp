@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="eliminarAdministradorProcess">
+                        <s:form action="eliminarAdministradorProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>

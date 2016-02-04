@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="eliminarServicioProcess">
+                        <s:form action="eliminarServicioProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="titulo" label="Título" readonly="true"/>
                             <s:submit action="eliminarServicioProcess" value="Eliminar Servicio" onclick="return confirmBox();"/>

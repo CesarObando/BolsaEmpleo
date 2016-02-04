@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="insertarCategoriaProcess">
+                        <s:form method="post" action="insertarCategoriaProcess" cssClass="form">
                             <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
                             <s:submit action="insertarCategoriaProcess" value="Insertar Categoría" onclick="return confirmBox();"/>
                         </s:form>

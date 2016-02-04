@@ -31,7 +31,7 @@
                                     window.alert("${sessionScope.mensaje}");
                                 </script>
                             </s:if>
-                            <s:form method="post" enctype="multipart/form-data" action="iniciarSesion">
+                            <s:form method="post" enctype="multipart/form-data" action="iniciarSesion" cssClass="form">
                                 <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
                                 <s:password name="clave" placeholder="Contraseña"/>
                                 <s:submit action="iniciarSesion" value="Iniciar Sesion" class="button-submit"/>

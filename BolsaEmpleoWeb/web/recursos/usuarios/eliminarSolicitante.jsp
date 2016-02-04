@@ -41,7 +41,7 @@
                         </s:if>
 
                         <c:if test="${sessionScope.administrador != null}">
-                            <s:form action="eliminarSolicitanteAdministradorProcess" method="post">
+                            <s:form action="eliminarSolicitanteAdministradorProcess" method="post" cssClass="form">
                                 <s:hidden name="id"/>
                                 <s:label name="nombre" label="Nombre"/>
                                 <s:label name="apellidos" label="Apellidos"/>
