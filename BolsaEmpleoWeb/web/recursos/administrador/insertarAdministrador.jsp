@@ -7,6 +7,7 @@
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Insertar Administrador | Bolsa de Empleo</title>  
+        <link rel="stylesheet" href="/css/Estilo.css"
     </head>
     <body>
         <header>
@@ -31,7 +32,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="insertarAdministradorProcess">
+                        <s:form method="post" action="insertarAdministradorProcess" cssClass="form">
                             <s:textfield name="cedula" label="Cedula" type="number" requiredLabel="true"/>
                             <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
                             <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
