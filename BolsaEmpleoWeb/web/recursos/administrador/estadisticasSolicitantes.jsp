@@ -1,8 +1,9 @@
 
+<%@page import="Dominio.Solicitante"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
-<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page contentType="text/html" pageEncoding="UTF-8" import="Utilitarios.EnviarCorreos"%>
 
 <html>
     <head>
@@ -47,14 +48,32 @@
                                             <td><s:property value="#solicitanteActual.nombre"/></td>
                                             <td><s:property value="#solicitanteActual.apellidos"/></td>
                                             <td><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
-                                            <td><a href="mailto:<s:property value="#solicitanteActual.correo"/>?subject=Actualizar datos de su perfil de usuario.&body='Estimado usuario, se le solicita que por favor renueve los datos de su cuenta en nuestro sistema. Gracias'">Notificar</a></td>
+                                            <td>
+                                                <a onclick="return enviarCorreo(<s:property value="#solicitanteActual.correo"/>);">                                                
+                                                    Notificar
+                                                </a>
+
+                                            </td>
                                         </tr>
                                     </s:iterator>
                                 </s:else>
                             <div>
                             </div       
                             </tbody>
-                        </table>     
+                        </table>
+                        <script>
+                                function enviarCorreo(String destinatario){
+                            <%
+                                String asunto = "Solicitud de Actualización de datos";
+                                String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
+                                Solicitante solicitante = (Solicitante) session.getAttribute("solicitante");
+                                EnviarCorreos enviarCorreo = new EnviarCorreos();
+                                enviarCorreo.EnviarCorreo("cesar.b.c@hotmail.com", asunto, cuerpo);
+                            %>
+                                    ]
+                        </script>
+
+
                     </div>
                 </aside> 
             </div>            
