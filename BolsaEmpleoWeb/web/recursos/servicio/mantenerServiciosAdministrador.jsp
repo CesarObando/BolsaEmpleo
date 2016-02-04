@@ -21,7 +21,7 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
 
-                        <s:form action="buscarServiciosAdministradorProcess">
+                        <s:form action="buscarServiciosAdministradorProcess" cssClass="form">
                             <s:textfield name="titulo" label="Título"/>
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                             <s:submit method="buscar" value="Buscar" action="buscarServiciosAdministradorProcess"/>

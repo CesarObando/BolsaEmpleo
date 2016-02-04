@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="eliminarSolicitudAdministradorProcess">
+                        <s:form action="eliminarSolicitudAdministradorProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="oferta.puesto" label="Puesto" readonly="true"/>
                             <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>

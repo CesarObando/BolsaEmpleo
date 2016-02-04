@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="eliminarEmpleadorProcess" method="post">
+                        <s:form action="eliminarEmpleadorProcess" method="post" cssClass="form">
                             <s:hidden name="id"/>
                             <s:label name="nombre" label="Nombre"/>
                             <s:label name="apellidos" label="Apellidos"/>

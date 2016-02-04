@@ -37,7 +37,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="get" action="reporte">
+                        <s:form method="post" action="reporte" cssClass="form">
                             
                             <s:textfield name="titulo" label="Título " readonly="true"/>
                             <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>

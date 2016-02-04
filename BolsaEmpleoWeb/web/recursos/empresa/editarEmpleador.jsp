@@ -32,7 +32,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="get" action="editarEmpleadorProcess">
+                        <s:form method="post" action="editarEmpleadorProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="cedula" label="Cédula" readonly="true" disabled="true"/>
                             <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>

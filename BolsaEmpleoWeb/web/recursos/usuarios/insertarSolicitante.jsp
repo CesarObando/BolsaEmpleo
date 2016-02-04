@@ -32,7 +32,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="insertarSolicitanteProcess" enctype="multipart/form-data">
+                        <s:form method="post" action="insertarSolicitanteProcess" enctype="multipart/form-data" cssClass="form">
                             <s:textfield name="cedula" label="Cédula" type="number" requiredLabel="true"/>
                             <s:textfield name="nombre" label="Nombre" type="text" requiredLabel="true"/>
                             <s:textfield name="apellidos" label="Apellidos" type="text" requiredLabel="true"/>

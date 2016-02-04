@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="buscarAdministradoresProcess" method="get">
+                        <s:form action="buscarAdministradoresProcess" method="post" cssClass="form">
                             <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>

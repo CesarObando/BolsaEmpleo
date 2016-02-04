@@ -1,9 +1,3 @@
-<%-- 
-    Document   : newjsp
-    Created on : May 31, 2015, 11:15:16 AM
-    Author     : Cesar
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <div id="zone-branding" class="container-12">

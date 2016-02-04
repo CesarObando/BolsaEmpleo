@@ -1,9 +1,3 @@
-<%-- 
-    Document   : newjsp
-    Created on : May 31, 2015, 11:15:16 AM
-    Author     : Cesar
---%>
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../imagenes/favicon.ico" />

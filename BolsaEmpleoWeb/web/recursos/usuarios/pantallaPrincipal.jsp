@@ -32,7 +32,7 @@
                             </script>
                         </s:if>
 
-                        <s:form action="buscarOfertasSolicitanteProcess" method="post">
+                        <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form">
                             <s:textfield name="puesto" label="Puesto"/>
                             <s:submit method="buscar" value="Buscar"/>
                         </s:form>

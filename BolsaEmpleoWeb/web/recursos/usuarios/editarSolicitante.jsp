@@ -30,7 +30,7 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-                        <s:form method="post" action="editarSolicitanteProcess" enctype="multipart/form-data">
+                        <s:form method="post" action="editarSolicitanteProcess" enctype="multipart/form-data" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="cedula" label="Cédula" disabled="true"/>
                             <s:textfield name="nombre" label="Nombre" type="text" requiredLabel="true"/>

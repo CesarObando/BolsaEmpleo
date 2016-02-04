@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="editarServicioProcess">
+                        <s:form method="post" action="editarServicioProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="titulo" label="Título" requiredLabel="true"/>
                             <s:textarea name="descripcion" label="Descripción" requiredLabel="true"/>

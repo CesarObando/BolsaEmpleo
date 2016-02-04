@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="editarOfertaProcess">
+                        <s:form method="post" action="editarOfertaProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:textfield name="puesto" label="Puesto" readonly="true" disabled="true"/>
                             <s:textfield name="empleador.nombre" label="Empleador" readonly="true" disabled="true"/>

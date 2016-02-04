@@ -32,7 +32,7 @@
                                 </script>
                             </s:if>
                             <s:else>
-                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesionAdministrador">
+                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesionAdministrador" cssClass="form">
                                     <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
                                     <s:password name="clave" placeholder="Contraseña"/>
                                     <s:submit action="iniciarSesionAdministrador" value="Iniciar Sesion" class="button-submit"/>

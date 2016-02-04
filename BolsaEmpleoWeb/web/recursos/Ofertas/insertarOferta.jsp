@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="post" action="insertarOfertaProcess">
+                        <s:form method="post" action="insertarOfertaProcess" cssClass="form">
                             <s:textfield name="puesto" label="Puesto " requiredLabel="true"/>
                             <s:textfield name="salario" label="Salario " type="number"/>
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" type="number"/>

@@ -21,7 +21,7 @@
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
-                        <s:form action="verEstadisticasSolicitantesProcess" method="post">
+                        <s:form action="verEstadisticasSolicitantesProcess" method="post" cssClass="form">
                             <s:textfield name="cedula" label="Cédula"/>
                             <s:textfield name="nombre" label="Nombre"/>
                             <s:textfield name="apellidos" label="Apellidos"/>

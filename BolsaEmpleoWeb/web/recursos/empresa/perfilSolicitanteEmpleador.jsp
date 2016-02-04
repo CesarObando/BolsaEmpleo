@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="get" action="reporte">
+                        <s:form method="post" action="reporte" cssClass="form">
                             <s:label name="id" label="Id"/>
                             <s:label name="cedula" label="Cedula" readonly="true"/>
                             <s:hidden name="id"/>

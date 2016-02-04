@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
 
-                        <s:form method="get" action="editarSolicitanteProcess">
+                        <s:form method="post" action="editarSolicitanteProcess" cssClass="form">
                             <s:hidden name="id"/>
                             <s:label name="cedula" label="Cédula" readonly="true"/>
                             <s:label name="nombre" label="Nombre"/>
