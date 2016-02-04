@@ -25,45 +25,45 @@
                         <a>Categoría</a> 
                         <ul>
                             <li><a href="../Categorias/insertarCategoria.jsp" >Insertar</a></li>
-                            <li><a href="../Categorias/buscarCategorias.jsp" >Mantener</a> </li>
+                            <li><a href="../Categorias/buscarCategorias.jsp" >Actualizar/Eliminar</a> </li>
                         </ul>
                     </li>
                     <li>
                         <a>Solicitante</a> 
                         <ul>
-                            <li><a href="../usuarios/buscarSolicitantes.jsp" >Mantener</a> </li>
+                            <li><a href="../usuarios/buscarSolicitantes.jsp" >Eliminar</a> </li>
                             <li><a href="../administrador/estadisticasSolicitantes.jsp" >Estadisticas</a> </li>
                         </ul>
                     </li>
                     <li>
                         <a>Oferta</a> 
                         <ul>
-                            <s:a action="buscarOfertasAdministrador" >Mantener</s:a>
+                            <s:a action="buscarOfertasAdministrador" >Eliminar</s:a>
                             </ul>
                         </li>
                         <li>
                             <a>Solicitud</a> 
                             <ul>
-                            <s:a action="buscarSolicitudesAdministrador" >Mantener</s:a>
+                            <s:a action="buscarSolicitudesAdministrador" >Eliminar</s:a>
                             </ul>
                         </li>
                         <li>
                             <a>Empleador</a> 
                             <ul>
-                                <li><a href="../administrador/buscarEmpleadores.jsp" >Mantener</a> </li>
+                                <li><a href="../administrador/buscarEmpleadores.jsp" >Eliminar</a> </li>
                                 <li><a href="../administrador/estadisticasEmpleadores.jsp">Estadisticas</a> </li>
                             </ul>
                         </li>
                         <li>
                             <a>Servicios</a> 
                             <ul>
-                            <s:a action="buscarServiciosAdministrador" >Mantener</s:a>
+                            <s:a action="buscarServiciosAdministrador" >Eliminar</s:a>
                             </ul>
                         </li>
                         <li>
                             <a>Administrador</a>
                             <ul>
-                                <a href="../administrador/verPerfilAdministrador.action" class="" >Mantener</a>                        
+                                <a href="../administrador/verPerfilAdministrador.action" class="" >Actualizar/Eliminar perfil</a>                        
                                 <a href="../administrador/insertarAdministrador.jsp" class="" >Nuevo Administrador</a>
                             </ul>
                         <li>

@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib prefix="s" uri="/struts-tags" %>
 <!DOCTYPE html>
 <section>    
     <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
@@ -12,9 +13,9 @@
             <div class="content clearfix">                            
                 <ul class="menu">
                     <li class="first collapsed"><a href="http://www.muniparaiso.go.cr/" >¿Quiénes somos?</a></li>
-                    <li class="first collapsed"> <a href="../recursos/curriculo/Plantilla.doc">Cómo hacer un Currículum?</a></li>                                              
+                    <li class="first collapsed"> <s:a action="download.action">¿Cómo hacer un Currículum?</s:a></li>                                              
                     <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraíso</a></li>
-                    <li class="leaf"><a href="#">Contáctenos</a></li>                                            
+                    <li class="leaf"><a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Contáctenos</a></li>                                            
                 </ul>                                
             </div>
         </div>

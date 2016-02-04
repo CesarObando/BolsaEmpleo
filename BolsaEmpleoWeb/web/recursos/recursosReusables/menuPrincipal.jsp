@@ -16,19 +16,19 @@
                             <a>Registrate</a> 
                             <ul>
                                 <li><a href="../empresa/registrarEmpleador.jsp" >Empleador</a></li>
-                                <li><a href="../usuarios/insertarSolicitante.jsp" >Usuario</a> </li>
+                                <li><a href="../usuarios/insertarSolicitante.jsp" >Solicitante</a> </li>
                             </ul>
                         </li>
                     </c:if>
                     <li>
-                        <s:a action="buscarServiciosEmpleador" >Buscar Servicios</s:a>
+                        <s:a action="buscarServiciosEmpleador" >Trabajos Independientes</s:a>
                     </li>
                     <c:if test="${sessionScope.solicitante == null || sessionScope.empleador == null}">
                         <li>
                             <a>Iniciar Sesión</a> 
                             <ul>
                                 <li><a href="../empresa/login.jsp" >Empleador</a></li>
-                                <li><a href="../usuarios/login.jsp" >Usuario</a> </li>
+                                <li><a href="../usuarios/login.jsp" >Solicitante</a> </li>
                             </ul>
                         </li>
                     </c:if>
