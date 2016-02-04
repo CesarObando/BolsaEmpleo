@@ -25,8 +25,10 @@
                             <s:textfield name="puesto" label="Puesto"/>
                             <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                             <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
-                        <table id="mytable" class="table table-bordred table-striped">
+                        </s:form>   
+                        <s:form cssClass="form">
+                            
+                            <table    cclass="form" >
 
                             <s:if test="%{ofertas.isEmpty()}">
                                 <h2>No hay resultados que mostrar</h2>
@@ -55,6 +57,11 @@
                             </div       
                             </tbody>
                         </table>
+                        </s:form>
+                        
+
+
+
                     </div>
                 </aside> 
             </div>            
