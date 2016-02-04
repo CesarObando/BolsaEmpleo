@@ -58,64 +58,79 @@ and open the template in the editor.
     background: #cfe6ef;
     background: -moz-linear-gradient(top, #cfe6ef 0%, #edfcff 100%);
     background: -webkit-linear-gradient(top, #cfe6ef 0%,#edfcff 100%);
+
 }
-			/*TYPOGRAPHY*/
+.form input [type='table']{
+
+    table {     font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+                font-size: 12px;    margin: 45px;     width: 480px; text-align: left;    border-collapse: collapse; }
+
+    th {     font-size: 13px;     font-weight: normal;     padding: 8px;     background: #b9c9fe;
+             border-top: 4px solid #aabcfe;    border-bottom: 1px solid #fff; color: #039; }
+
+    td {    padding: 8px;     background: #e8edff;     border-bottom: 1px solid #fff;
+            color: #669;    border-top: 1px solid transparent; }
+
+    tr:hover td { background: #d0dafd; color: #339; }
+
+}
+/*TYPOGRAPHY*/
 h1 { 
-float : left;
-margin : 0;
-padding : 20px 0 20px 25px;
-font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
-letter-spacing : 5px;
-color : #fff;
+    float : left;
+    margin : 0;
+    padding : 20px 0 20px 25px;
+    font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    letter-spacing : 5px;
+    color : #fff;
 } 
 h2 { 
-float : right;
-margin : 0;
-padding : 5px 20px 20px 0;
-font : 90% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
-letter-spacing : 3px;
-color : #4592be;
+    float : right;
+    margin : 0;
+    padding : 5px 20px 20px 0;
+    font : 90% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    letter-spacing : 3px;
+    color : #4592be;
 } 
 h3 { 
-margin : 0;
-padding : 20px 0 20px 0;
-border-bottom : 1px solid #aaa;
-font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
-text-transform : uppercase;
-letter-spacing : 3px;
-color : #143c55;
+    margin : 0;
+    padding : 20px 0 20px 0;
+    border-bottom : 1px solid #aaa;
+    font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
+    text-transform : uppercase;
+    letter-spacing : 3px;
+    color : #143c55;
 }
 blockquote {
-font-weight : bold;
-font-style : italic;
-color : #b29b35;
+    font-weight : bold;
+    font-style : italic;
+    color : #b29b35;
 } 
-			/*LINKS*/
+/*LINKS*/
 a:link, a:visited { 
-color : #4592be;
-background : inherit;
-text-decoration : underline;
+    color : #4592be;
+    background : inherit;
+    text-decoration : underline;
 } 
 a:hover { 
-color : #aaa;
-background : inherit;
-text-decoration : none;
+    color : #aaa;
+    background : inherit;
+    text-decoration : none;
 } 
 a img {
-border: 0;
+    border: 0;
 }
-			/*IMAGES*/
+/*IMAGES*/
 .left { 
-float : left;
-border : 0 solid #656c4a;
-margin : 5px 0 10px 0;
-padding : 10px;
+    float : left;
+    border : 0 solid #656c4a;
+    margin : 5px 0 10px 0;
+    padding : 10px;
 } 
-			/*SEARCH BOX*/
+/*SEARCH BOX*/
 legend { 
-margin-bottom : 30px;
-color : #143c55;
+    margin-bottom : 30px;
+    color : #143c55;
 } 
 input { 
-background : #eee;
+    background : #eee;
 } 
