@@ -91,7 +91,7 @@ and open the template in the editor.
     background: -moz-linear-gradient(top, #e4f1f6 0%, #cfe6ef 100%);
     background: -webkit-linear-gradient(top, #e4f1f6 0%,#cfe6ef 100%);
     align: center;
-    
+
 }
 .form input[type='submit']:hover{
     background: #edfcff;
