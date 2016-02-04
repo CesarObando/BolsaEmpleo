@@ -38,9 +38,9 @@
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
                             <s:textfield name="salario" label="Salario " readonly="true"/>
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
-                            <s:textarea name="requerimientos" label="Requerimientos " readonly="true"/>
+                            <s:textarea name="requerimientos" label="Requerimientos " readonly="true" style="width:300px;height:150px"/>
                             <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
-                            <s:textarea name="descripcion" label="Descripción" readonly="true"/>
+                            <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
                         </s:form>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
                         <a href="../Ofertas/eliminarOfertaProcess.action" class="" onclick="return confirmBox();">Eliminar Oferta</a>

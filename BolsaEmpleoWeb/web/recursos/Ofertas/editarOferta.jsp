@@ -38,8 +38,8 @@
                             <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true" disabled="true"/>
                             <s:textfield name="salario" label="Salario " type="number"/>
                             <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" type="number"/>
-                            <s:textarea name="requerimientos" label="Requerimientos "/>
-                            <s:textarea name="descripcion" label="Descripción"/>
+                            <s:textarea name="requerimientos" label="Requerimientos" style="width:300px;height:150px"/>
+                            <s:textarea name="descripcion" label="Descripción" style="width:300px;height:150px"/>
                             <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                             <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                         </s:form>

@@ -41,9 +41,9 @@
                             <s:label name="edad" label="Edad"/>
                             <s:label name="sexo" label="Sexo" readonly="true"/>
                             <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
-                            <s:label name="titulos" label="Títulos"/>
+                            <s:textarea name="titulos" label="Títulos" readonly="true" style="width:300px;height:150px"/>
                             <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" cols="30" rows="8"/>
+                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" style="width:300px;height:150px"/>
                             <s:label name="telefonoFijo" label="Teléfono Casa"/> 
                             <s:label name="telefonoMovil" label="Teléfono Celular"/>
                             <s:label name="correo" label="Email"/>
