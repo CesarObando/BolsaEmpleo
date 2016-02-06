@@ -27,38 +27,36 @@
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>  
-                            <s:form cssClass="form">
 
-                                <table    cssclass="form" >
+                            <table    cssclass="form" >
 
-                                    <s:if test="%{ofertas.isEmpty()}">
-                                        <h2>No hay resultados que mostrar</h2>
-                                    </s:if>
+                                <s:if test="%{ofertas.isEmpty()}">
+                                    <h2>No hay resultados que mostrar</h2>
+                                </s:if>
 
-                                    <s:else>
-                                        <thead>
-                                        <td>Puesto</td>
-                                        <th>Ver</th>
-                                        </thead>
-                                        <tbody>
-                                            <s:iterator value="ofertas" var="ofertaActual">
-                                                <tr>
-                                                    <td><s:property value="#ofertaActual.puesto"/></td>
-                                                    <td><p data-placement="top" data-toggle="tooltip" title="Ver">
-                                                            <s:url action="verOferta" var="url">
-                                                                <s:param name="id" value="#ofertaActual.id"/>
-                                                            </s:url>
-                                                            <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/ver.png"/> </button> </a>
-                                                        </p>
-                                                    </td>
-                                                </tr>
-                                            </s:iterator>
-                                        </s:else>
-                                    <div>
-                                    </div       
-                                    </tbody>
-                                </table>
-                            </s:form>
+                                <s:else>
+                                    <thead>
+                                    <td>Puesto</td>
+                                    <th>Ver</th>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="ofertas" var="ofertaActual">
+                                            <tr>
+                                                <td><s:property value="#ofertaActual.puesto"/></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                                        <s:url action="verOferta" var="url">
+                                                            <s:param name="id" value="#ofertaActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: transparent"><img src="../imagenes/ver.png"/> </button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </s:iterator>
+                                    </s:else>
+                                <div>
+                                </div       
+                                </tbody>
+                            </table>
                         </center>
 
 

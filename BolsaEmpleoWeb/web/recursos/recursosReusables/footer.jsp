@@ -12,11 +12,11 @@
             <div class="region-inner region-footer-first-inner">
                 <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                     <div class="content clearfix">                                        
-                        © 2014 Oficina de Orientación, UCR |&nbsp;<a href="http://www.orientacion.ucr.ac.cr/">http://www.orientacion.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 1970</p>
-                        <a href="/" rel="home" title="Oficina de Orientación" class="active"><img src="../imagenes/menu-bg.png" alt="Oficina de Orientación" id="logo" /></a> 
+                        <p>© 2016 UNIVERSIDAD DE COSTA RICA |&nbsp;<a href="http://www.ucr.ac.cr/">http://www.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 0000</p>
+                        <img src="../imagenes/favicon.ico" alt="UCR" id="logo" style="width: 100px;height: 100px"/>
                         <hgroup class="site-name-slogan">      
-                            <h1 class="site-name"><a href="/" title="Inicio" class="active">Oficina de Orientación</a></h1>
-                            <h6 class="site-slogan">Al servicio de la comunidad estudiantil</h6>
+                            <h1 class="site-name"><a href="/" title="Inicio" class="active">UCR</a></h1>
+                            <h6 class="site-slogan">Al servicio de la comunidad</h6>
                         </hgroup>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                             <div class="view-content">
                                 <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
                                     <div class="views-field views-field-changed">    
-                                        <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">23/9/2015 - 8:57</span>  
+                                        <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">6/2/2015 - 13:30</span>  
                                     </div>  
                                 </div>
                             </div>
