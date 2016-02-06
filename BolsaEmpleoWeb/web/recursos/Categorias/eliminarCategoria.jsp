@@ -22,20 +22,22 @@
                     <div class="grid-9 region-content" id="region-content">
                         <s:if test="hasActionMessages()">
                             <script>
-                                    window.alert("${sessionScope.mensaje}");
+                                window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
                         <s:if test="hasActionErrors()">
                             <script>
-                                    window.alert("${sessionScope.mensaje}");
+                                window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="eliminarCategoriaProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="nombre" label="Nombre" readonly="true"/>
-                            <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form action="eliminarCategoriaProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="nombre" label="Nombre" readonly="true"/>
+                                <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

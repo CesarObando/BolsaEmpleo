@@ -7,7 +7,7 @@
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Insertar Administrador | Bolsa de Empleo</title>  
-        
+
     </head>
     <body>
         <header>
@@ -31,15 +31,17 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" action="insertarAdministradorProcess" cssClass="form">
-                            <s:textfield name="cedula" label="Cedula" type="number" requiredLabel="true"/>
-                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
-                            <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
-                            <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
-                            <s:password name="password" label="Clave" requiredLabel="true"/> 
-                            <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form method="post" action="insertarAdministradorProcess" cssClass="form">
+                                <s:textfield name="cedula" label="Cedula" type="number" requiredLabel="true"/>
+                                <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
+                                <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
+                                <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
+                                <s:password name="password" label="Clave" requiredLabel="true"/> 
+                                <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

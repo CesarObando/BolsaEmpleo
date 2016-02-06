@@ -20,7 +20,6 @@
                 <c:if test="${sessionScope.empleador == null}" >
                     <aside class="grid-3 region" id="region-sidebar-second">
                         <div class="grid-9 region-content" id="region-content">
-                            <h3>Iniciar Sesión </h3>
                             <s:if test="hasActionMessages()">
                                 <script>
                                     window.alert("${sessionScope.mensaje}");
@@ -32,11 +31,13 @@
                                 </script>
                             </s:if>
                             <s:else>
-                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador " cssClass="form">
-                                    <s:textfield  align="center" name="nombreUsuario" placeholder="Nombre Usuario o Correo" style=""/>
-                                    <s:password  align="center" name="clave" placeholder="Contraseña"/>
-                                    <s:submit  align="center" action="iniciarSesionempleador" value="Iniciar Sesion" class="button-submit"/>
-                                </s:form>
+                                <center>
+                                    <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador " cssClass="form">
+                                        <s:textfield  align="center" name="nombreUsuario" placeholder="Nombre Usuario o Correo" style=""/>
+                                        <s:password  align="center" name="clave" placeholder="Contraseña"/>
+                                        <s:submit  align="center" action="iniciarSesionempleador" value="Iniciar Sesión" class="button-submit"/>
+                                    </s:form>
+                                </center>
                             </s:else>
                         </div>
                     </aside>

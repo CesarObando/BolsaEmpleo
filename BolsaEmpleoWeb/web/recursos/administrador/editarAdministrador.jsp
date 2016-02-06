@@ -30,16 +30,18 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" action="editarAdministradorProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="cedula" label="Cédula" readonly="true" disabled="true"/>
-                            <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
-                            <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
-                            <s:textfield name="username" label="Nombre Usuario" readonly="true" disabled="true"/>
-                            <s:password name="password" label="Clave" requiredLabel="true"/> 
-                            <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form method="post" action="editarAdministradorProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="cedula" label="Cédula" readonly="true" disabled="true"/>
+                                <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
+                                <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
+                                <s:textfield name="username" label="Nombre Usuario" readonly="true" disabled="true"/>
+                                <s:password name="password" label="Clave" requiredLabel="true"/> 
+                                <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

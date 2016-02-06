@@ -37,51 +37,51 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-                        <s:form action="buscarCategoriasProcess" method="post" cssClass="form">
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                        <center>
+                            <s:form action="buscarCategoriasProcess" method="post" cssClass="form">
+                                <s:textfield name="nombre" label="Nombre"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>
+                            <table id="mytable" class="table table-bordred table-striped">
 
-                        <table id="mytable" class="table table-bordred table-striped">
+                                <s:if test="%{categorias.isEmpty()}">
+                                    <h2>No hay resultados que mostrar</h2>
+                                </s:if>
 
-                            <s:if test="%{categorias.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
+                                <s:else>
+                                    <thead>
+                                    <th>Nombre</th>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="categorias" var="categoriaActual">
+                                            <tr>
+                                                <td><s:property value="#categoriaActual.nombre"/></td>
 
-                            <s:else>
-                                <thead>
-                                <th>Nombre</th>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="categorias" var="categoriaActual">
-                                        <tr>
-                                            <td><s:property value="#categoriaActual.nombre"/></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                        <s:url action="editarCategoria" var="url">
+                                                            <s:param name="id" value="#categoriaActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar1.png"/> </button> </a>
 
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                    <s:url action="editarCategoria" var="url">
-                                                        <s:param name="id" value="#categoriaActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar1.png"/> </button> </a>
-
-                                                </p>
-                                            </td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarCategoriaProcess" var="url">
-                                                        <s:param name="id" value="#categoriaActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>     
-
+                                                    </p>
+                                                </td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <s:url action="eliminarCategoriaProcess" var="url">
+                                                            <s:param name="id" value="#categoriaActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </s:iterator>
+                                    </s:else>
+                                <div>
+                                </div       
+                                </tbody>
+                            </table>     
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

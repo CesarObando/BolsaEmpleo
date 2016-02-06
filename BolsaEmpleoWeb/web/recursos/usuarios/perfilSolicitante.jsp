@@ -30,37 +30,38 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" action="editarSolicitanteProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:label name="cedula" label="Cédula" readonly="true"/>
-                            <s:label name="nombre" label="Nombre"/>
-                            <s:label name="apellidos" label="Apellidos"/>
-                            <s:label name="username" label="Nombre Usuario" readonly="true"/>
-                            <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                            <s:label name="edad" label="Edad"/>
-                            <s:label name="sexo" label="Sexo" readonly="true"/>
-                            <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
-                            <s:textarea name="titulos" label="Títulos" readonly="true" style="width:300px;height:150px"/>
-                            <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                            <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" style="width:300px;height:150px"/>
-                            <s:label name="telefonoFijo" label="Teléfono Casa"/> 
-                            <s:label name="telefonoMovil" label="Teléfono Celular"/>
-                            <s:label name="correo" label="Email"/>
-                            <s:label name="idiomas" label="Idiomas que domina"/>
-                            <s:if test="numSolicitudes==0">
-                                <s:label name="solicitudes" value="No has solicitado empleo en ninguna oferta"/>
-                            </s:if>
-                            <s:else>
-                                <s:label name="numSolicitudes" label="Solicitudes de empleo"/>
-                            </s:else>
-                            <s:if test="numSolicitudes==0">
-                                <s:label name="favoritos" value="No has sido elegido como favorito en ninguna oferta"/>
-                            </s:if>
-                            <s:else>
-                                <s:label name="numFavoritos" label="Has sido elegido como favorito en"/>
-                            </s:else>
-                        </s:form>
+                        <center>
+                            <s:form method="post" action="editarSolicitanteProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:label name="cedula" label="Cédula" readonly="true"/>
+                                <s:label name="nombre" label="Nombre"/>
+                                <s:label name="apellidos" label="Apellidos"/>
+                                <s:label name="username" label="Nombre Usuario" readonly="true"/>
+                                <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                                <s:label name="edad" label="Edad"/>
+                                <s:label name="sexo" label="Sexo" readonly="true"/>
+                                <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
+                                <s:textarea name="titulos" label="Títulos" readonly="true" style="width:300px;height:150px"/>
+                                <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
+                                <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" style="width:300px;height:150px"/>
+                                <s:label name="telefonoFijo" label="Teléfono Casa"/> 
+                                <s:label name="telefonoMovil" label="Teléfono Celular"/>
+                                <s:label name="correo" label="Email"/>
+                                <s:label name="idiomas" label="Idiomas que domina"/>
+                                <s:if test="numSolicitudes==0">
+                                    <s:label name="solicitudes" value="No has solicitado empleo en ninguna oferta"/>
+                                </s:if>
+                                <s:else>
+                                    <s:label name="numSolicitudes" label="Solicitudes de empleo"/>
+                                </s:else>
+                                <s:if test="numSolicitudes==0">
+                                    <s:label name="favoritos" value="No has sido elegido como favorito en ninguna oferta"/>
+                                </s:if>
+                                <s:else>
+                                    <s:label name="numFavoritos" label="Has sido elegido como favorito en"/>
+                                </s:else>
+                            </s:form>
+                        </center>
                         <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
                         <a href="../usuarios/eliminarSolicitanteProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
                         <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox1();">Renovar cuenta</a>

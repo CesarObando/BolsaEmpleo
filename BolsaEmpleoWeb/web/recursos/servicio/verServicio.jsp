@@ -30,13 +30,14 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" action="verServicioProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="titulo" label="Título" readonly="true"/>
-                            <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
-                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
-                        </s:form>
+                        <center>
+                            <s:form method="post" action="verServicioProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="titulo" label="Título" readonly="true"/>
+                                <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
+                                <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
+                            </s:form>
+                        </center>
                         <a href="../servicio/editarServicio.action" class="">Editar</a>
                         <a href="../servicio/eliminarServicioProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
 

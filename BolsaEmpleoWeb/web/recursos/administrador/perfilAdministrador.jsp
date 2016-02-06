@@ -30,14 +30,15 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:label name="cedula" label="Cédula" readonly="true"/>
-                            <s:label name="nombre" label="Nombre"/>
-                            <s:label name="apellidos" label="Apellidos"/>
-                            <s:label name="username" label="Nombre Usuario" readonly="true"/>
-                        </s:form>
+                        <center>
+                            <s:form method="post" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:label name="cedula" label="Cédula" readonly="true"/>
+                                <s:label name="nombre" label="Nombre"/>
+                                <s:label name="apellidos" label="Apellidos"/>
+                                <s:label name="username" label="Nombre Usuario" readonly="true"/>
+                            </s:form>
+                        </center>
                         <a href="../administrador/editarAdministrador.action" class="">Editar</a>
                         <a href="../administrador/eliminarAdministradorProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
                     </div>

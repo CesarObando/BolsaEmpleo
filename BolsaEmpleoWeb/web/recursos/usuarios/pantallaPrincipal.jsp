@@ -31,11 +31,12 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form">
-                            <s:textfield name="puesto" label="Puesto"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                        <center>
+                            <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form">
+                                <s:textfield name="puesto" label="Puesto"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>
+                        </center>
                         <table id="tablaDeIconos" align="center">
                             <td><a href="http://www.muni-carta.go.cr/bolsa-de-empleo-del-canton.html"><img class="img-responsive" src="../imagenes/IconosRelacionados/MuniCartago.png" /></a></td>
                             <td></td>
