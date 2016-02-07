@@ -44,15 +44,15 @@
                                     <tbody>
                                         <s:iterator value="solicitantes" var="solicitanteActual">
                                             <tr>
-                                                <td ><s:property value="#solicitanteActual.cedula"/></td>
-                                                <td ><s:property value="#solicitanteActual.nombre"/></td>
-                                                <td ><s:property value="#solicitanteActual.apellidos"/></td>
-                                                <td ><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
-                                                <td >
+                                                <td align="center"><s:property value="#solicitanteActual.cedula"/></td>
+                                                <td align="center"><s:property value="#solicitanteActual.nombre"/></td>
+                                                <td align="center"><s:property value="#solicitanteActual.apellidos"/></td>
+                                                <td align="center"><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
+                                                <td align="center">
                                                     <s:url action="enviarCorreoSolicitanteProcess" var="url">
                                                             <s:param name="correo" value="#solicitanteActual.correo"/>
                                                     </s:url>
-                                                    <a href="<s:property value="#url"/>">Notificar</a>
+                                                    <a href="<s:property value="#url" />">Notificar</a>
                                                 </td>
                                                 </tr>
                                         </s:iterator>
