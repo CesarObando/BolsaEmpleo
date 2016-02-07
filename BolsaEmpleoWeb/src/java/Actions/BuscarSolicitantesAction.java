@@ -11,6 +11,8 @@ import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -103,5 +105,5 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-
+    
 }
