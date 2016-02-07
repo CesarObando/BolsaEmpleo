@@ -17,7 +17,7 @@ and open the template in the editor.
 }
 
 #zone-branding {
-    background-image: url('../imagenes/horizonte.png'), url('../imagenes/favicon.ico');
+    background-image: url('../imagenes/horizonte.png'), url('../imagenes/encabezadoPeq.png');
     background-repeat: no-repeat, no-repeat;
     background-position: center top, center bottom;
 }
