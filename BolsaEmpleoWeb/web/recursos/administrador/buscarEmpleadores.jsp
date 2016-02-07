@@ -30,13 +30,14 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="buscarEmpleadoresProcess" method="post" cssClass="form">
-                            <s:textfield name="cedula" label="Cédula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                        <center>
+                            <s:form action="buscarEmpleadoresProcess" method="post" cssClass="form">
+                                <s:textfield name="cedula" label="Cédula"/>
+                                <s:textfield name="nombre" label="Nombre"/>
+                                <s:textfield name="apellidos" label="Apellidos"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>
+                        </center>
                     </div>
                 </aside> 
             </div>            

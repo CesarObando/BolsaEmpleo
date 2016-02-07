@@ -20,45 +20,46 @@
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <center>
+                            <s:form action="buscarServiciosAdministradorProcess" cssClass="form">
+                                <s:textfield name="titulo" label="Título"/>
+                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:submit method="buscar" value="Buscar" action="buscarServiciosAdministradorProcess"/>
+                            </s:form>
+                            <table id="mytable" class="table table-bordred table-striped">
 
-                        <s:form action="buscarServiciosAdministradorProcess" cssClass="form">
-                            <s:textfield name="titulo" label="Título"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar" action="buscarServiciosAdministradorProcess"/>
-                        </s:form>
-                        <table id="mytable" class="table table-bordred table-striped">
+                                <s:if test="%{servicios.isEmpty()}">
+                                    <h2>No hay resultados que mostrar</h2>
+                                </s:if>
 
-                            <s:if test="%{servicios.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
-
-                            <s:else>
-                                <thead>
-                                <th>Título</th>
-                                <th>Solicitante</th>
-                                <th>Apellidos</th>
-                                <th>Eliminar</th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="servicios" var="servicioActual">
-                                        <tr>
-                                            <td><s:property value="#servicioActual.titulo"/></td>
-                                            <td><s:property value="#servicioActual.solicitante.nombre"/></td>
-                                            <td><s:property value="#servicioActual.solicitante.apellidos"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarServicioAdministradorProcess" var="url">
-                                                        <s:param name="id" value="#servicioActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>  
+                                <s:else>
+                                    <thead>
+                                    <th>Título</th>
+                                    <th>Solicitante</th>
+                                    <th>Apellidos</th>
+                                    <th>Eliminar</th>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="servicios" var="servicioActual">
+                                            <tr>
+                                                <td><s:property value="#servicioActual.titulo"/></td>
+                                                <td><s:property value="#servicioActual.solicitante.nombre"/></td>
+                                                <td><s:property value="#servicioActual.solicitante.apellidos"/></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <s:url action="eliminarServicioAdministradorProcess" var="url">
+                                                            <s:param name="id" value="#servicioActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </s:iterator>
+                                    </s:else>
+                                <div>
+                                </div       
+                                </tbody>
+                            </table> 
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

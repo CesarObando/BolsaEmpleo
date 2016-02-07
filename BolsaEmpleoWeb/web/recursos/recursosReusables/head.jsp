@@ -3,7 +3,7 @@
 <link rel="shortcut icon" href="../imagenes/favicon.ico" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no" />
 
-<link rel="stylesheet" href="../css/Estilo.css">
+<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
 
 <link rel="stylesheet" type="text/css" href="../css/system.base.css">
 <link rel="stylesheet" type="text/css" href="../css/system.menus.css">
@@ -21,6 +21,6 @@
 <link rel="stylesheet" type="text/css" href="../css/global.css">
 <!--responsive-->
 <style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
-    @import url("../css/omega-obas-alpha-default.css");            
+    @import url("../css/omega-obas-alpha-default_1.css");            
     @import url("../css/alpha-default-normal-12.css");            
 </style>

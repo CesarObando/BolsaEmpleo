@@ -36,26 +36,27 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
+                        <center>
+                            <s:form method="post" action="insertarSolicitudProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="puesto" label="Puesto " readonly="true"/>
+                                <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
+                                <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
+                                <s:textfield name="salario" label="Salario " readonly="true"/>
+                                <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
+                                <s:textarea name="requerimientos" label="Requerimientos " readonly="true" style="width:300px;height:150px"/>
+                                <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
+                                <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
+                                <c:if test="${sessionScope.solicitante != null}">
+                                    <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
+                                </c:if>
+                            </s:form>
 
-                        <s:form method="post" action="insertarSolicitudProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="puesto" label="Puesto " readonly="true"/>
-                            <s:textfield name="empleador.nombre" label="Empleador" readonly="true"/>
-                            <s:textfield name="empleador.nombreEmpresa" label="Empresa" readonly="true"/>
-                            <s:textfield name="salario" label="Salario " readonly="true"/>
-                            <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
-                            <s:textarea name="requerimientos" label="Requerimientos " readonly="true" style="width:300px;height:150px"/>
-                            <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
-                            <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
-                            <c:if test="${sessionScope.solicitante != null}">
-                                <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
+                            <c:if test="${sessionScope.solicitante == null}">
+                                <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
                             </c:if>
-                        </s:form>
 
-                        <c:if test="${sessionScope.solicitante == null}">
-                            <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
-                        </c:if>
-
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

@@ -30,12 +30,14 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="eliminarOfertaAdministradorProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:label name="puesto" label="Puesto" readonly="true"/>
-                            <s:submit action="eliminarOfertaAdministradorProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form action="eliminarOfertaAdministradorProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:label name="puesto" label="Puesto" readonly="true"/>
+                                <s:submit action="eliminarOfertaAdministradorProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

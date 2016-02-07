@@ -30,14 +30,16 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form method="post" action="editarServicioProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="titulo" label="Título" requiredLabel="true"/>
-                            <s:textarea name="descripcion" label="Descripción" requiredLabel="true" style="width:300px;height:150px"/>
-                            <s:select name="categoria.id" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true"/>            
-                            <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form method="post" action="editarServicioProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="titulo" label="Título" requiredLabel="true"/>
+                                <s:textarea name="descripcion" label="Descripción" requiredLabel="true" style="width:300px;height:150px"/>
+                                <s:select name="categoria.id" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true"/>            
+                                <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;
