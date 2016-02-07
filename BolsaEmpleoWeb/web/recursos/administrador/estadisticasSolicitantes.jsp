@@ -30,38 +30,7 @@
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                             <table id="mytable" class="table table-bordred table-striped">
-
-<<<<<<< HEAD
-                            <s:if test="%{solicitantes.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
-                            <s:else>
-                                <thead>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Ultima Actualización de datos</th>
-                                <th></th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="solicitantes" var="solicitanteActual">
-                                        <tr>
-                                            <td align="center"><s:property value="#solicitanteActual.cedula"/></td>
-                                            <td align="center"><s:property value="#solicitanteActual.nombre"/></td>
-                                            <td align="center"><s:property value="#solicitanteActual.apellidos"/></td>
-                                            <td align="center"><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
-                                            <td align="center">
-                                                
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>
-=======
-                                <s:if test="%{administradores.isEmpty()}">
+                                <s:if test="%{solicitantes.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
                                 <s:else>
@@ -75,17 +44,17 @@
                                     <tbody>
                                         <s:iterator value="solicitantes" var="solicitanteActual">
                                             <tr>
-                                                <td><s:property value="#solicitanteActual.cedula"/></td>
-                                                <td><s:property value="#solicitanteActual.nombre"/></td>
-                                                <td><s:property value="#solicitanteActual.apellidos"/></td>
-                                                <td><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
-                                                <td>
-                                                    <a onclick="return enviarCorreo(<s:property value="#solicitanteActual.correo"/>);">                                                
-                                                        Notificar
-                                                    </a>
-
+                                                <td ><s:property value="#solicitanteActual.cedula"/></td>
+                                                <td ><s:property value="#solicitanteActual.nombre"/></td>
+                                                <td ><s:property value="#solicitanteActual.apellidos"/></td>
+                                                <td ><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
+                                                <td >
+                                                    <s:url action="enviarCorreoSolicitanteProcess" var="url">
+                                                            <s:param name="correo" value="#solicitanteActual.correo"/>
+                                                    </s:url>
+                                                    <a href="<s:property value="#url"/>">Notificar</a>
                                                 </td>
-                                            </tr>
+                                                </tr>
                                         </s:iterator>
                                     </s:else>
                                 <div>
@@ -93,20 +62,6 @@
                                 </tbody>
                             </table>
                         </center>
-                        <script>
-                            function enviarCorreo(String destinatario){
-                            <%
-                                String asunto = "Solicitud de Actualización de datos";
-                                String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
-                                Solicitante solicitante = (Solicitante) session.getAttribute("solicitante");
-                                EnviarCorreos enviarCorreo = new EnviarCorreos();
-                                enviarCorreo.EnviarCorreo("cesar.b.c@hotmail.com", asunto, cuerpo);
-                            %>
-                            ]
-                        </script>
-
-
->>>>>>> bc209fe5c3e89aae1d580037b748b571c4ed6540
                     </div>
                 </aside> 
             </div>            
