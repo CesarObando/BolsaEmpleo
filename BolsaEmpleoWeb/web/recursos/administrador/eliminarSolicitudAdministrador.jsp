@@ -30,16 +30,18 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="eliminarSolicitudAdministradorProcess" cssClass="form">
-                            <s:hidden name="id"/>
-                            <s:textfield name="oferta.puesto" label="Puesto" readonly="true"/>
-                            <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>
-                            <s:textfield name="solicitante.apellidos" label="Apellidos del solicitante" readonly="true"/>
-                            <s:textfield name="oferta.empleador.nombre" label="Nombre del empleador" readonly="true"/>
-                            <s:textfield name="oferta.empleador.nombreEmpresa" label="Nombre de la empresa" readonly="true"/>
-                            <s:submit action="eliminarSolicitudAdministradorProcess" value="Eliminar Solicitud" onclick="return confirmBox();"/>
-                        </s:form>
+                        <center>
+                            <s:form action="eliminarSolicitudAdministradorProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <s:textfield name="oferta.puesto" label="Puesto" readonly="true"/>
+                                <s:textfield name="solicitante.nombre" label="Nombre del solicitante" readonly="true"/>
+                                <s:textfield name="solicitante.apellidos" label="Apellidos del solicitante" readonly="true"/>
+                                <s:textfield name="oferta.empleador.nombre" label="Nombre del empleador" readonly="true"/>
+                                <s:textfield name="oferta.empleador.nombreEmpresa" label="Nombre de la empresa" readonly="true"/>
+                                <s:submit action="eliminarSolicitudAdministradorProcess" value="Eliminar Solicitud" onclick="return confirmBox();"/>
+                            </s:form>
+                            <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

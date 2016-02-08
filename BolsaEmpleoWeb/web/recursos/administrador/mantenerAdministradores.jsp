@@ -20,56 +20,56 @@
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <center>
+                            <s:form action="buscarAdministradoresProcess" method="post" cssClass="form">
+                                <s:textfield name="cedula" label="Cédula"/>
+                                <s:textfield name="nombre" label="Nombre"/>
+                                <s:textfield name="apellidos" label="Apellidos"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>
+                            <table id="mytable" class="table table-bordred table-striped">
 
-                        <s:form action="buscarAdministradoresProcess" method="post" cssClass="form">
-                            <s:textfield name="cedula" label="Cédula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
+                                <s:if test="%{administradores.isEmpty()}">
+                                    <h2>No hay resultados que mostrar</h2>
+                                </s:if>
 
-                        <table id="mytable" class="table table-bordred table-striped">
+                                <s:else>
+                                    <thead>
+                                    <td>Cédula</td>
+                                    <td>Nombre</td>
+                                    <td>Apellidos</td>
+                                    <th>Editar</th>
+                                    <th>Eliminar</th>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="administradores" var="administradorActual">
+                                            <tr>
+                                                <td><s:property value="#administradorActual.cedula"/></td>
+                                                <td><s:property value="#administradorActual.nombre"/></td>
+                                                <td><s:property value="#administradorActual.apellidos"/></td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Edit">
+                                                        <s:url action="editarAdministrador" var="url">
+                                                            <s:param name="id" value="#administradorActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar.png"/></button> </a>
 
-                            <s:if test="%{administradores.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
-
-                            <s:else>
-                                <thead>
-                                <td>Cédula</td>
-                                <td>Nombre</td>
-                                <td>Apellidos</td>
-                                <th>Editar</th>
-                                <th>Eliminar</th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="administradores" var="administradorActual">
-                                        <tr>
-                                            <td><s:property value="#administradorActual.cedula"/></td>
-                                            <td><s:property value="#administradorActual.nombre"/></td>
-                                            <td><s:property value="#administradorActual.apellidos"/></td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Edit">
-                                                    <s:url action="editarAdministrador" var="url">
-                                                        <s:param name="id" value="#administradorActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar.png"/></button> </a>
-
-                                                </p>
-                                            </td>
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarAdministradorProcess" var="url">
-                                                        <s:param name="id" value="#administradorActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/></button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>     
+                                                    </p>
+                                                </td>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <s:url action="eliminarAdministradorProcess" var="url">
+                                                            <s:param name="id" value="#administradorActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/></button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </s:iterator>
+                                    </s:else>
+                                <div>
+                                </div       
+                                </tbody>
+                            </table> 
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

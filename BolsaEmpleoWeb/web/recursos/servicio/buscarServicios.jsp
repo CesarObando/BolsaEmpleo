@@ -30,13 +30,13 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
-
-                        <s:form action="buscarServiciosProcess" cssClass="form">
-                            <s:textfield name="titulo" label="Título"/>
-                            <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
-
+                        <center>
+                            <s:form action="buscarServiciosProcess" cssClass="form">
+                                <s:textfield name="titulo" label="Título"/>
+                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>                            
+                        </center>
                     </div>
                 </aside> 
             </div>            

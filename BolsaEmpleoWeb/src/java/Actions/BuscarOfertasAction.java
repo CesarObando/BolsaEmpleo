@@ -59,7 +59,12 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     public String buscar() throws DataException {
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         puesto = request.getParameter("puesto");
-        categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        if (request.getParameter("categoria.id")==null) {
+            categoria=-1;
+        }
+        else{
+            categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        }
         idEmpleador = empleador.getId();
         try {
             ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto, idEmpleador);

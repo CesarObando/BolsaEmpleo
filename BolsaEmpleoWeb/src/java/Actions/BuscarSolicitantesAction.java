@@ -11,11 +11,14 @@ import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
+import Utilitarios.EnviarCorreos;
 
 /**
  *
@@ -29,6 +32,7 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     private String cedula;
     private String nombre;
     private String apellidos;
+    private String correo;
 
     public BuscarSolicitantesAction() {
     }
@@ -39,12 +43,9 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
 
     @Override
     public void prepare() throws Exception {
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        cedula = request.getParameter("cedula");
-        nombre = request.getParameter("nombre");
-        apellidos = request.getParameter("apellidos");
-        solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
     }
+    
+    
 
     public String buscar() throws DataException {
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
@@ -53,10 +54,19 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         apellidos = request.getParameter("apellidos");
         try {
             solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
+            correo = request.getParameter("correo");
         } catch (SQLException e) {
             Logger.getLogger(BuscarSolicitantesAction.class.getName()).log(Level.SEVERE, null, e);
         }
         return BUSCAR_SOLICITANTES;
+    }
+
+    public String enviarCorreo() {
+        EnviarCorreos enviarCorreos = new EnviarCorreos();
+        String asunto = "Solicitud de Actualización de datos";
+        String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
+        correo = request.getParameter("correo");
+        return enviarCorreos.EnviarCorreo(correo, asunto, cuerpo);
     }
 
     @Override
@@ -104,4 +114,23 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         this.apellidos = apellidos;
     }
 
+    public String getCorreo() {
+        return correo;
+    }
+
+    public void setCorreo(String correo) {
+        this.correo = correo;
+    }
+
+//    <script>
+//                            function enviarCorreo(String destinatario){
+//                            <%
+//                                String asunto = "Solicitud de Actualización de datos";
+//                                String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
+//                                Solicitante solicitante = (Solicitante) session.getAttribute("solicitante");
+//                                EnviarCorreos enviarCorreo = new EnviarCorreos();
+//                                enviarCorreo.EnviarCorreo("cesar.b.c@hotmail.com", asunto, cuerpo);
+//                            %>
+//                            ]
+//                        </script>
 }

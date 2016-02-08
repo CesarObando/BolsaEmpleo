@@ -20,47 +20,48 @@
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
+                        <center>
+                            <s:form action="buscarSolicitantesProcess" method="post" cssClass="form">
+                                <s:textfield name="cedula" label="Cédula"/>
+                                <s:textfield name="nombre" label="Nombre"/>
+                                <s:textfield name="apellidos" label="Apellidos"/>
+                                <s:submit method="buscar" value="Buscar"/>
+                            </s:form>
+                            <table id="mytable" class="table table-bordred table-striped">
 
-                        <s:form action="buscarSolicitantesProcess" method="post" cssClass="form">
-                            <s:textfield name="cedula" label="Cédula"/>
-                            <s:textfield name="nombre" label="Nombre"/>
-                            <s:textfield name="apellidos" label="Apellidos"/>
-                            <s:submit method="buscar" value="Buscar"/>
-                        </s:form>
-                        <table id="mytable" class="table table-bordred table-striped">
+                                <s:if test="%{solicitantes.isEmpty()}">
+                                    <h2>No hay resultados que mostrar</h2>
+                                </s:if>
 
-                            <s:if test="%{solicitantes.isEmpty()}">
-                                <h2>No hay resultados que mostrar</h2>
-                            </s:if>
+                                <s:else>
+                                    <thead>
+                                    <th>Cédula</th>
+                                    <th>Nombre</th>
+                                    <th>Apellidos</th>
+                                    <th>Eliminar</th>
+                                    </thead>
+                                    <tbody>
+                                        <s:iterator value="solicitantes" var="solicitanteActual">
+                                            <tr>
+                                                <td><s:property value="#solicitanteActual.cedula"/></td>
+                                                <td><s:property value="#solicitanteActual.nombre"/></td>
+                                                <td><s:property value="#solicitanteActual.apellidos"/></td>
 
-                            <s:else>
-                                <thead>
-                                <th>Cédula</th>
-                                <th>Nombre</th>
-                                <th>Apellidos</th>
-                                <th>Eliminar</th>
-                                </thead>
-                                <tbody>
-                                    <s:iterator value="solicitantes" var="solicitanteActual">
-                                        <tr>
-                                            <td><s:property value="#solicitanteActual.cedula"/></td>
-                                            <td><s:property value="#solicitanteActual.nombre"/></td>
-                                            <td><s:property value="#solicitanteActual.apellidos"/></td>
-
-                                            <td><p data-placement="top" data-toggle="tooltip" title="Delete">
-                                                    <s:url action="eliminarSolicitanteAdministradorProcess" var="url">
-                                                        <s:param name="id" value="#solicitanteActual.id"/>
-                                                    </s:url>
-                                                    <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
-                                                </p>
-                                            </td>
-                                        </tr>
-                                    </s:iterator>
-                                </s:else>
-                            <div>
-                            </div       
-                            </tbody>
-                        </table>     
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <s:url action="eliminarSolicitanteAdministradorProcess" var="url">
+                                                            <s:param name="id" value="#solicitanteActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
+                                        </s:iterator>
+                                    </s:else>
+                                <div>
+                                </div       
+                                </tbody>
+                            </table> 
+                        </center>
                         <script>
                             function confirmBox() {
                                 var answer;

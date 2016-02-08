@@ -41,20 +41,26 @@
                         </s:if>
 
                         <c:if test="${sessionScope.administrador != null}">
-                            <s:form action="eliminarSolicitanteAdministradorProcess" method="post" cssClass="form">
-                                <s:hidden name="id"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox();"/>
-                            </s:form>
+                            <center>
+                                <s:form action="eliminarSolicitanteAdministradorProcess" method="post" cssClass="form">
+                                    <s:hidden name="id"/>
+                                    <s:label name="nombre" label="Nombre"/>
+                                    <s:label name="apellidos" label="Apellidos"/>
+                                    <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox();"/>
+                                </s:form>
+                                <a href="../usuarios/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                            </center>
                         </c:if>
                         <c:if test="${sessionScope.solicitante != null}">
-                            <s:form action="eliminarSolicitanteProcess" method="post">
-                                <s:hidden name="id"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarSolicitanteProcess" onclick="return confirmBox();"/>
-                            </s:form>
+                            <center>
+                                <s:form action="eliminarSolicitanteProcess" method="post">
+                                    <s:hidden name="id"/>
+                                    <s:label name="nombre" label="Nombre"/>
+                                    <s:label name="apellidos" label="Apellidos"/>
+                                    <s:submit value="Eliminar" action="eliminarSolicitanteProcess" onclick="return confirmBox();"/>
+                                </s:form>
+                                <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent">Cancelar</a>
+                            </center>
                         </c:if>
 
                         <script>
