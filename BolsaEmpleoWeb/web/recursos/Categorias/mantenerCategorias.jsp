@@ -42,21 +42,21 @@
                                 <s:textfield name="nombre" label="Nombre"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
                                 <s:if test="%{categorias.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Nombre</th>
                                     <th>Editar</th>
                                     <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="categorias" var="categoriaActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#categoriaActual.nombre"/></td>
 
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Edit">
