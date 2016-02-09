@@ -26,14 +26,14 @@
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                                 <s:submit method="buscar" value="Buscar" action="buscarSolicitudesAdministradorProcess"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
                                 <s:if test="%{solicitudes.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Puesto</th>
                                     <th>Nombre Solicitante</th>
                                     <th>Apellidos Solicitante</th>
@@ -42,9 +42,9 @@
                                     <th>Nombre Empresa</th>
                                     <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="solicitudes" var="solicitudActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#solicitudActual.oferta.puesto"/></td>
                                                 <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
                                                 <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>

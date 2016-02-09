@@ -21,22 +21,22 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
                         <center>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
                                 <s:if test="%{solicitudes.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Puesto</th>
                                     <th>Empleador</th>
                                     <th>Apellidos</th>
                                     <th>Empresa</td>
                                     <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="solicitudes" var="solicitudActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#solicitudActual.oferta.puesto"/></td>
                                                 <td><s:property value="#solicitudActual.oferta.empleador.nombre"/></td>
                                                 <td><s:property value="#solicitudActual.oferta.empleador.apellidos"/></td>
