@@ -28,22 +28,22 @@
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>  
 
-                            <table    cssclass="form" >
+                            <table    class="table" >
 
                                 <s:if test="%{ofertas.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
-                                    <td>Puesto</td>
-                                    <th>Ver</th>
+                                    <thead class="th" >
+                                    <th >Puesto</th>
+                                    <th >Ver </th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="ofertas" var="ofertaActual">
-                                            <tr>
-                                                <td><s:property value="#ofertaActual.puesto"/></td>
-                                                <td><p data-placement="top" data-toggle="tooltip" title="Ver">
+                                            <tr class="tr">
+                                                <td ><s:property value="#ofertaActual.puesto"/></td>
+                                                <td ><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                         <s:url action="verOferta" var="url">
                                                             <s:param name="id" value="#ofertaActual.id"/>
                                                         </s:url>

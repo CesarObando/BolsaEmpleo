@@ -17,6 +17,7 @@ import org.apache.struts2.interceptor.SessionAware;
 public class CerrarSesionAction extends ActionSupport implements SessionAware {
 
     private SessionMap<String, Object> sessionMap;
+    private String sesionCerrada;
 
     @Override
     public void setSession(Map<String, Object> map) {
@@ -28,8 +29,17 @@ public class CerrarSesionAction extends ActionSupport implements SessionAware {
         sessionMap.remove("empleador");
         sessionMap.remove("administrador");
         sessionMap.clear();
-
+        sesionCerrada = "La sesión se ha cerrado. No puedes regresar a la pantalla anterior.";
+        sessionMap.put("sesionCerrada", sesionCerrada);
         return SUCCESS;
+    }
+
+    public String getSesionCerrada() {
+        return sesionCerrada;
+    }
+
+    public void setSesionCerrada(String sesionCerrada) {
+        this.sesionCerrada = sesionCerrada;
     }
 
 }

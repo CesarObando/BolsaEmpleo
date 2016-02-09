@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Perfil Empleador | Bolsa de Empleo</title>  
     </head>
-    <body>
+    <body onload="nobackbutton();">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>

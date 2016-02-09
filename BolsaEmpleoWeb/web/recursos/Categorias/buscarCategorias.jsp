@@ -30,6 +30,14 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
+                        <c:if test="${sessionScope.administrador == null}">
+                            <script>
+                                function redireccion(){
+                                    window.location.href="http://www.google.com";
+                                }
+                                setTimeout("redireccion()",0);
+                            </script>
+                        </c:if>
                         <center>
                             <s:form action="buscarCategoriasProcess" method="post" cssClass="form">
                                 <s:textfield name="nombre" label="Nombre"/>

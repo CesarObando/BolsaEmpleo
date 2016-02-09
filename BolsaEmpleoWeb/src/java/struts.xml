@@ -503,8 +503,8 @@
             <result name="success" type="dispatcher">/recursos/empresa/perfilSolicitanteEmpleador.jsp</result>
         </action>
             
-        <action class="Actions.CerrarSesionAction" name="cerrarSesion">
-            <result type="dispatcher" name="success">/recursos/solicitante/pantallaPrincipal.jsp</result>
+        <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
+            <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
         </action>
         
         <!--***************************SERVICIO*******************************************-->

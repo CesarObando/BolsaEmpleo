@@ -15,7 +15,7 @@
             </div>
         </header>
         <section>
-            <div id="zone-content" class="clearfix container-12">  
+            <div id="zone-content" class="clearfix container-12" >  
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <c:if test="${sessionScope.empleador == null}" >
                     <aside class="grid-3 region" id="region-sidebar-second">
