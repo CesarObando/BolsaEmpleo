@@ -45,9 +45,9 @@
                                 <s:label name="username" label="Nombre Usuario" readonly="true"/>
                             </s:form>
                         </center>
-                        <a href="../empresa/editarEmpleador.action" class="">Editar</a>
-                        <a href="../empresa/eliminarEmpleadorProcess.action" class="" onclick="return confirmBox1();">Eliminar</a>
-                        <a href="../empresa/editarEmpleadorProcess.action" class="" onclick="return confirmBox();">Renovar cuenta</a>
+                        <a href="../empresa/editarEmpleador.action" class="" style="background: transparent">Editar</a>
+                        <a href="../empresa/eliminarEmpleadorProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Eliminar</a>
+                        <a href="../empresa/editarEmpleadorProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Renovar cuenta</a>
                     </div>
                     <script>
                         function confirmBox() {

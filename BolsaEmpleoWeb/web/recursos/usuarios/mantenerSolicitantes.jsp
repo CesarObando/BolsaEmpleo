@@ -51,7 +51,7 @@
                                                         <s:url action="eliminarSolicitanteAdministradorProcess" var="url">
                                                             <s:param name="id" value="#solicitanteActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
                                                     </p>
                                                 </td>
                                             </tr>

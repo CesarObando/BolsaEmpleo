@@ -55,12 +55,12 @@
 
                         </center>
                         <c:if test="${sessionScope.solicitud.favorito == true}">
-                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox();">Desmarcar como favorito</a>
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Desmarcar como favorito</a>
                         </c:if>
                         <c:if test="${sessionScope.solicitud.favorito == false}">
-                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();">Marcar como favorito</a>
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Marcar como favorito</a>
                         </c:if>
-                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();">Eliminar</a>
+                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();" style="background: transparent">Eliminar</a>
                     </div>
                     <script>
                         function confirmBox() {

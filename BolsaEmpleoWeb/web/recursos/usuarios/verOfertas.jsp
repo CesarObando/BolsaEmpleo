@@ -57,7 +57,7 @@
                                                         <s:url action="verOfertaSolicitante" var="url">
                                                             <s:param name="id" value="#ofertaActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/ver.png"/> </button> </a>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: transparent"><img src="../imagenes/ver.png"/> </button> </a>
                                                     </p>
                                                 </td>
                                             </tr>
