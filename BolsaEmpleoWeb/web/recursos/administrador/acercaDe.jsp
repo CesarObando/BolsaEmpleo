@@ -11,7 +11,18 @@
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
-                <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                <c:if test="${sessionScope.administrador!=null}">
+                    <jsp:include page="../recursosReusables/menuAdministrador.jsp"/>
+                </c:if>
+                <c:if test="${sessionScope.solicitante!=null}">
+                    <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                </c:if>
+                <c:if test="${sessionScope.empleador!=null}">
+                    <jsp:include page="../recursosReusables/menuEmpleador.jsp"/>
+                </c:if>
+                <c:if test="${sessionScope.administrador==null && sessionScope.solicitante==null && sessionScope==null}">
+                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                </c:if>
             </div>
         </header>
         <section >
@@ -31,13 +42,15 @@
                                 </script>
                             </s:if>
                             <s:else>
-                                <center>
-                                    <s:form method="post" enctype="multipart/form-data" action="iniciarSesionAdministrador" cssClass="form">
-                                        <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                                        <s:password name="clave" placeholder="Contraseña"/>
-                                        <s:submit action="iniciarSesionAdministrador" value="Iniciar Sesión" class="button-submit"/>
-                                    </s:form>
-                                </center>
+                                <h1 class="h1">Bolsa de Empleo</h1><br>
+                                <br><br><br><h2 class="h2">¿Quiénes somos?</h2><br><br>
+                                <br><p>Somos un grupo de estudiantes de la Universidad de Costa Rica que se encarga de realizar, ofrecer y mantener este servicio
+                                    de bolsa de empleo perteneciente al Trabajo Comunal de dicha institución.</p>
+                                <h2 class="h2">Misión</h2><br><br>
+                                <br><p>Ofrecer el servicio de bolsa de empleo a personas de toda la comunidad incluyendo tanto profesionales como no profesionales.</p>
+                                <h2 class="h2">Visión</h2><br><br>
+                                <br><p>Facilitar a los usuarios el proceso de buscar empleo y ofrecer sus servicios como trabajadores independientes.</p>
+                                <center><img src="../imagenes/tcu.jpg" id="logo" style="width: 200px;height: 200px"/></center>
                             </s:else>
                         </div>
                     </aside>

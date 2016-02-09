@@ -118,21 +118,23 @@ and open the template in the editor.
 
 
 /*TYPOGRAPHY*/
-h1 { 
+.h1 { 
     float : left;
     margin : 0;
     padding : 20px 0 20px 25px;
     font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
     letter-spacing : 5px;
-    color : #fff;
+    color : lightblue;
+    font-size: 30px;
 } 
-h2 { 
-    float : right;
+.h2 { 
+    float : left;
     margin : 0;
-    padding : 5px 20px 20px 0;
+    padding : 20px 0 20px 0;
     font : 90% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
     letter-spacing : 3px;
     color : #4592be;
+    font-size: 20px;
 } 
 h3 { 
     margin : 0;
