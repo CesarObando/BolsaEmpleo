@@ -136,14 +136,14 @@ and open the template in the editor.
     color : #4592be;
     font-size: 20px;
 } 
-h3 { 
+.h3 { 
     margin : 0;
     padding : 20px 0 20px 0;
-    border-bottom : 1px solid #aaa;
     font : 150% "Trebuchet MS", Helvetica, Arial, Tahoma, sans-serif;
     text-transform : uppercase;
     letter-spacing : 3px;
     color : #143c55;
+    font-size: 15px;
 }
 blockquote {
     font-weight : bold;
