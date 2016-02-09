@@ -609,13 +609,12 @@
         <action  class="Actions.BuscarSolicitantesAction" name="verEstadisticasSolicitantesProcess" method="buscar">
             <result name="buscarSolicitantes" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
             <result name="success" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
-            <result name="chain" type="chain">enviarCorreoSolicitanteProcess</result>
         </action>
         
         <action  class="Actions.EnviarCorreoAction" name="enviarCorreoSolicitanteProcess" method="enviarCorreo">
-            <result name="No enviado" type="chain">estadisticasSolicitantes.jsp</result>
-            <result name="Enviado" type="chain">estadisticasSolicitantes.jsp</result>
-            <result name="success" type="chain">/recursos/administrador/estadisticasSolicitantes.jsp</result>
+            <result name="No enviado" type="dispatcher">estadisticasSolicitantes.jsp</result>
+            <result name="Enviado" type="dispatcher">estadisticasSolicitantes.jsp</result>
+            <result name="success" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
         </action>
         
         <action class="Actions.PrincipalAction" name="principal">

@@ -53,7 +53,7 @@
                                                             <s:param name="correo" value="#solicitanteActual.correo"/>
                                                     </s:url>
                                                     
-                                                    <a href="#" onclick="return enviarCorreo('cesar');">Notificar</a>
+                                                    <a href="<s:property value="#url" />">Notificar</a>
                                                     
                                                 </td>
                                                 </tr>
@@ -64,18 +64,6 @@
                                 </tbody>
                             </table>
                         </center>
-                        <script>
-                            function enviarCorreo($correo) {
-                                var answer;
-                                answer = window.confirm($correo);
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            
