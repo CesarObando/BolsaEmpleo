@@ -51,7 +51,7 @@
                                                         <s:url action="editarAdministrador" var="url">
                                                             <s:param name="id" value="#administradorActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />'>  <button style="background-color: white"><img src="../imagenes/editar.png"/></button> </a>
+                                                        <a href='<s:property value="#url" />'>  <button style="background-color: transparent"><img src="../imagenes/editar.png"/></button> </a>
 
                                                     </p>
                                                 </td>
@@ -59,7 +59,7 @@
                                                         <s:url action="eliminarAdministradorProcess" var="url">
                                                             <s:param name="id" value="#administradorActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: white"><img src="../imagenes/eliminar.png"/></button> </a>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/></button> </a>
                                                     </p>
                                                 </td>
                                             </tr>

@@ -95,6 +95,9 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
         if (solicitanteAInsertar.getExperienciaLaboral() < 0) {
             addFieldError("experienciaLaboral", "Debe ingresar un número válido");
         }
+        if (archivoImagen == null) {
+            addFieldError("archivoImagen", "Debe seleccionar una foto");
+        }
     }
 
     public String insertar() {

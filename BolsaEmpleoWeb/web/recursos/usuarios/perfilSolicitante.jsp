@@ -62,9 +62,9 @@
                                 </s:else>
                             </s:form>
                         </center>
-                        <a href="../usuarios/editarSolicitante.action" class="">Editar</a>
-                        <a href="../usuarios/eliminarSolicitanteProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
-                        <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox1();">Renovar cuenta</a>
+                            <a href="../usuarios/editarSolicitante.action" class="" style="background: transparent">Editar</a>
+                        <a href="../usuarios/eliminarSolicitanteProcess.action" class="" style="background: transparent" onclick="return confirmBox();" >Eliminar</a>
+                        <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Renovar cuenta</a>
                         <script>
                             function confirmBox() {
                                 var answer;
