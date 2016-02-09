@@ -51,9 +51,11 @@
                                                 <td align="center">
                                                     <s:url action="enviarCorreoSolicitanteProcess" var="url">
                                                             <s:param name="correo" value="#solicitanteActual.correo"/>
+                                                            <s:param name="asunto" value="Solicitud de actualización de datos"/>
+                                                            <s:param name="cuerpo" value="El equipo de administradores de la pagina BolsaEmpleoPublica solicita la actualización de sus datos de usuario"/>
                                                     </s:url>
                                                     
-                                                    <a href="#" onclick="return enviarCorreo('cesar');">Notificar</a>
+                                                    <a href="<s:property value="#url" />">Notificar</a>
                                                     
                                                 </td>
                                                 </tr>
@@ -64,18 +66,6 @@
                                 </tbody>
                             </table>
                         </center>
-                        <script>
-                            function enviarCorreo($correo) {
-                                var answer;
-                                answer = window.confirm($correo);
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            
