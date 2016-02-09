@@ -26,22 +26,22 @@
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                                 <s:submit method="buscar" value="Buscar" action="buscarServiciosAdministradorProcess"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
                                 <s:if test="%{servicios.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Título</th>
                                     <th>Solicitante</th>
                                     <th>Apellidos</th>
                                     <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="servicios" var="servicioActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#servicioActual.titulo"/></td>
                                                 <td><s:property value="#servicioActual.solicitante.nombre"/></td>
                                                 <td><s:property value="#servicioActual.solicitante.apellidos"/></td>

@@ -27,14 +27,14 @@
                                 <s:textfield name="apellidos" label="Apellidos"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
                                 <s:if test="%{empleadores.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Cédula</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
@@ -42,9 +42,9 @@
                                     <th>Ultima Actualización de datos</th>
                                     <th></th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="empleadores" var="empleadorActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#empleadorActual.cedula"/></td>
                                                 <td><s:property value="#empleadorActual.nombre"/></td>
                                                 <td><s:property value="#empleadorActual.apellidos"/></td>

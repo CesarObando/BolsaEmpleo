@@ -58,7 +58,7 @@
                             }
                         </script>
                         <center>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
 
                                 <s:if test="%{solicitudes.isEmpty()}">
@@ -66,15 +66,15 @@
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Ver</th>
                                     <th>Favorito</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="solicitudes" var="solicitudActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#solicitudActual.solicitante.nombre"/></td>
                                                 <td><s:property value="#solicitudActual.solicitante.apellidos"/></td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Ver">
