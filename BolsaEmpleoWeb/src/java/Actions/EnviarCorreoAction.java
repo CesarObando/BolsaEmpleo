@@ -31,13 +31,16 @@ public class EnviarCorreoAction extends ActionSupport implements Preparable, Ser
 
     @Override
     public void prepare() throws Exception {
-        
+        asunto = "";
+        correo = "";
+        cuerpo = "";
     }
     
     public String enviarCorreo() {
         EnviarCorreos enviarCorreos = new EnviarCorreos();
-        correo = request.getParameter("correo");
         asunto = request.getParameter("asunto");
+        correo = request.getParameter("correo");
+        
         cuerpo = request.getParameter("cuerpo");
         return enviarCorreos.EnviarCorreo(correo, asunto, cuerpo);
     }
@@ -62,4 +65,22 @@ public class EnviarCorreoAction extends ActionSupport implements Preparable, Ser
     public void setCorreo(String correo) {
         this.correo = correo;
     }
+
+    public String getAsunto() {
+        return asunto;
+    }
+
+    public void setAsunto(String asunto) {
+        this.asunto = asunto;
+    }
+
+    public String getCuerpo() {
+        return cuerpo;
+    }
+
+    public void setCuerpo(String cuerpo) {
+        this.cuerpo = cuerpo;
+    }
+    
+    
 }
