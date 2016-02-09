@@ -27,22 +27,22 @@
                                 <s:textfield name="apellidos" label="Apellidos"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
                                 <s:if test="%{solicitantes.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
+                                    <thead class="th">
                                     <th>Cédula</th>
                                     <th>Nombre</th>
                                     <th>Apellidos</th>
                                     <th>Eliminar</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="solicitantes" var="solicitanteActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#solicitanteActual.cedula"/></td>
                                                 <td><s:property value="#solicitanteActual.nombre"/></td>
                                                 <td><s:property value="#solicitanteActual.apellidos"/></td>

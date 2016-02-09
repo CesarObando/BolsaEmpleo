@@ -32,7 +32,7 @@
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
-                            <table id="mytable" class="table table-bordred table-striped">
+                            <table id="mytable" class="table">
 
 
 
@@ -41,15 +41,15 @@
                                 </s:if>
 
                                 <s:else>
-                                    <thead>
-                                    <td>Puesto</td>
-                                    <td>Empleador</td>
-                                    <td>Empresa</td>
+                                    <thead class="th">
+                                    <th>Puesto</th>
+                                    <th>Empleador</th>
+                                    <th>Empresa</th>
                                     <th>Ver</th>
                                     </thead>
-                                    <tbody>
+                                    <tbody class="td">
                                         <s:iterator value="ofertas" var="ofertaActual">
-                                            <tr>
+                                            <tr class="tr">
                                                 <td><s:property value="#ofertaActual.puesto"/></td>
                                                 <td><s:property value="#ofertaActual.empleador.nombre"/></td>
                                                 <td><s:property value="#ofertaActual.empleador.nombreEmpresa"/></td>
