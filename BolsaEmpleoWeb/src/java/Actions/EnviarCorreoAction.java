@@ -19,7 +19,9 @@ public class EnviarCorreoAction extends ActionSupport implements Preparable, Ser
 
     private HttpServletRequest request;
     private String correo;
-
+    private String asunto;
+    private String cuerpo;
+    
     public EnviarCorreoAction() {
     }
 
@@ -29,15 +31,14 @@ public class EnviarCorreoAction extends ActionSupport implements Preparable, Ser
 
     @Override
     public void prepare() throws Exception {
-        correo = "";
-        correo = request.getParameter("correo");
+        
     }
     
     public String enviarCorreo() {
         EnviarCorreos enviarCorreos = new EnviarCorreos();
-        String asunto = "Solicitud de Actualización de datos";
-        String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
-       correo = request.getParameter("correo");
+        correo = request.getParameter("correo");
+        asunto = request.getParameter("asunto");
+        cuerpo = request.getParameter("cuerpo");
         return enviarCorreos.EnviarCorreo(correo, asunto, cuerpo);
     }
 

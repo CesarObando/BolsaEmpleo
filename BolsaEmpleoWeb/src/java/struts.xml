@@ -612,8 +612,8 @@
         </action>
         
         <action  class="Actions.EnviarCorreoAction" name="enviarCorreoSolicitanteProcess" method="enviarCorreo">
-            <result name="No enviado" type="dispatcher">estadisticasSolicitantes.jsp</result>
-            <result name="Enviado" type="dispatcher">estadisticasSolicitantes.jsp</result>
+            <result name="No enviado" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
+            <result name="Enviado" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
             <result name="success" type="dispatcher">/recursos/administrador/estadisticasSolicitantes.jsp</result>
         </action>
         
