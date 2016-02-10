@@ -9,9 +9,6 @@ and open the template in the editor.
 */
 
 .form{
-    border-style: outset;
-    border-color: #EEF5F7;
-    border-width: 10px;
 }.form input[type='text'], .form textarea{
     padding: 4px 6px;
     width: 450px;
