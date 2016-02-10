@@ -35,7 +35,7 @@
                                 <s:hidden name="id"/>
                                 <s:textfield name="puesto" readonly="true" label="Puesto"/>
                                 <s:if test="salario==0">
-                                    <s:textfield name="salario" value="No especificado" label="Salario"/>
+                                    <s:textfield name="salario" value="No especificado" label="Salario" readonly="true"/>
                                 </s:if>
                                 <s:else>
                                     <s:textfield name="salario" readonly="true" label="Salario"/>
