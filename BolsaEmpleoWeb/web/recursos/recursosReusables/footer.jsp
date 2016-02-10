@@ -13,7 +13,7 @@
                 <div class="block block-block block-6 block-block-6 odd block-without-title" id="block-block-6">
                     <div class="content clearfix">                                        
                         <p>© 2016 UNIVERSIDAD DE COSTA RICA |&nbsp;<a href="http://www.ucr.ac.cr/">http://www.ucr.ac.cr/</a>&nbsp;| teléfono 2511- 0000</p>
-                        <img src="../imagenes/firma-ucr-ico1.png" alt="UCR" id="logo" style="width: 100px;height: 100px"/>
+                        <img src="../imagenes/firma-ucr-ico1.png" alt="UCR" id="logo" style="width: 100px;height: 80px"/>
                         <hgroup class="site-name-slogan">      
                             <h1 class="site-name"><a href="/" title="Inicio" class="active">UCR</a></h1>
                             <h6 class="site-slogan">Al servicio de la comunidad</h6>

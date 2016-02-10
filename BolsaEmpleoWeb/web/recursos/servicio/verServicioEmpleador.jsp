@@ -38,11 +38,11 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="reporte" cssClass="form">
-                                <s:label name="titulo" readonly="true"/>
-                                <s:label name="solicitante.nombre" readonly="true"/>
-                                <s:label name="solicitante.apellidos" readonly="true"/>
-                                <s:label name="descripcion" readonly="true" style="width:450px;height:150px"/>
-                                <s:label name="categoria.nombre" readonly="true"/>
+                                <s:textfield name="titulo" readonly="true" label="Nombre"/>
+                                <s:textfield name="solicitante.nombre" readonly="true" label="Nombre del solicitante"/>
+                                <s:textfield name="solicitante.apellidos" readonly="true" label="Apellidos"/>
+                                <s:textarea name="descripcion" readonly="true" label="Descripción"/>
+                                <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
                                 <s:submit name="reporte" value="Ver información del solicitante"></s:submit>
                             </s:form>
                         </center>

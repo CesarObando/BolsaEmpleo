@@ -33,9 +33,9 @@
                         <center>
                             <s:form method="post" action="editarServicioProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true"/>
-                                <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true"/>
-                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true"/>            
+                                <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true" label="Nombre"/>
+                                <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true" label="Descripción"/>
+                                <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true" label="Categoría"/>            
                                 <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

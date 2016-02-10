@@ -33,20 +33,20 @@
                         <center>
                             <s:form method="post" action="reporte" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="cedula" readonly="true"/>
-                                <s:label name="nombre"/>
-                                <s:label name="apellidos"/>
+                                <s:textfield name="cedula" readonly="true" label="Cédula"/>
+                                <s:textfield name="nombre" readonly="true" label="Nombre"/>
+                                <s:textfield name="apellidos" readonly="true" label="Apellidos"/>
                                 <img src="<s:url action="getImagenEmpleador" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                                <s:label name="edad" label="Edad"/>
-                                <s:label name="sexo" readonly="true"/>
-                                <s:label name="escolaridad" readonly="true"/>
-                                <s:label name="titulos" style="width:450px;height:150px"/>
-                                <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                                <s:label name="detalleExperienciaLaboral" style="width:450px;height:150px"/>
-                                <s:label name="telefonoFijo"/> 
-                                <s:label name="telefonoMovil"/>
-                                <s:label name="correo"/>
-                                <s:label name="idiomas"/>
+                                <s:textfield name="edad" readonly="true" label="Edad"/>
+                                <s:textfield name="sexo" readonly="true" label="Género"/>
+                                <s:textfield name="escolaridad" readonly="true" label="Escolaridad"/>
+                                <s:textarea name="titulos" readonly="true" label="Títulos"/>
+                                <s:textfield name="experienciaLaboral" readonly="true" label="Años de experiencia laboral"/>
+                                <s:textarea name="detalleExperienciaLaboral" readonly="true" label="Detalle de experiencia laboral"/>
+                                <s:textfield name="telefonoFijo" readonly="true" label="Teléfono fijo"/> 
+                                <s:textfield name="telefonoMovil" readonly="true" label="Teléfono móvil"/>
+                                <s:textfield name="correo" readonly="true" label="Correo electrónico"/>
+                                <s:textfield name="idiomas" readonly="true" label="Idiomas"/>
                                 <s:submit name="reporte" value="Exportar a PDF"></s:submit>
 
                             </s:form>

@@ -33,32 +33,32 @@
                         <center>
                             <s:form method="post" action="editarSolicitanteProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="cedula" readonly="true"/>
-                                <s:label name="nombre"/>
-                                <s:label name="apellidos"/>
+                                <s:textfield name="cedula" readonly="true" label="Cédula"/>
+                                <s:textfield name="nombre" readonly="true" label="Nombre"/>
+                                <s:textfield name="apellidos" readonly="true" label="Apellidos"/>
                                 <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                                <s:label name="edad"/>
-                                <s:label name="sexo"/>
-                                <s:label name="escolaridad" readonly="true"/>
-                                <s:label name="titulos" readonly="true" style="width:450px;height:150px"/>
-                                <s:label name="experienciaLaboral"/>
-                                <s:label name="detalleExperienciaLaboral" readonly="true" style="width:450px;height:150px"/>
-                                <s:label name="telefonoFijo"/> 
-                                <s:label name="telefonoMovil"/>
-                                <s:label name="correo"/>
-                                <s:label name="idiomas"/>
-                                <s:label name="username"/>
+                                <s:textfield name="edad" readonly="true" label="Edad"/>
+                                <s:textfield name="sexo" readonly="true" label="Género"/>
+                                <s:textfield name="escolaridad" readonly="true" label="Escolaridad"/>
+                                <s:textarea name="titulos" readonly="true" label="Títulos"/>
+                                <s:textfield name="experienciaLaboral" readonly="true" label="Años de experiencia laboral"/>
+                                <s:textarea name="detalleExperienciaLaboral" readonly="true" label="Detalle de experiencia laboral"/>
+                                <s:textfield name="telefonoFijo" readonly="true" label="Teléfono fijo"/> 
+                                <s:textfield name="telefonoMovil" readonly="true" label="Teléfono móvil"/>
+                                <s:textfield name="correo" readonly="true" label="Correo electrónico"/>
+                                <s:textfield name="idiomas" readonly="true" label="Idiomas"/>
+                                <s:textfield name="username" readonly="true" label="Nombre de usuario"/>
                                 <s:if test="numSolicitudes==0">
                                     <s:label name="solicitudes" value="No has solicitado empleo en ninguna oferta"/>
                                 </s:if>
                                 <s:else>
-                                    <s:label name="numSolicitudes" label="Solicitudes de empleo"/>
+                                    <s:textfield name="numSolicitudes" readonly="true" label="Solicitudes de empleo"/>
                                 </s:else>
                                 <s:if test="numSolicitudes==0">
                                     <s:label name="favoritos" value="No has sido elegido como favorito en ninguna oferta"/>
                                 </s:if>
                                 <s:else>
-                                    <s:label name="numFavoritos" label="Has sido elegido como favorito en"/>
+                                    <s:textfield name="numFavoritos" readonly="true" label="Has sido elegido como favorito en"/>
                                 </s:else>
                             </s:form>
                         </center>

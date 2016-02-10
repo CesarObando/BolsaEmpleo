@@ -39,15 +39,20 @@
                         <center>
                             <s:form method="post" action="insertarSolicitudProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="puesto" readonly="true"/>
-                                <s:label name="empleador.nombre" readonly="true"/>
-                                <s:label name="empleador.apellidos" readonly="true"/>
-                                <s:label name="empleador.nombreEmpresa" readonly="true"/>
-                                <s:label name="salario" readonly="true"/>
-                                <s:label name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
-                                <s:label name="requerimientos" readonly="true" style="width:300px;height:150px"/>
-                                <s:label name="categoria.nombre" readonly="true"/>
-                                <s:label name="descripcion" readonly="true" style="width:300px;height:150px"/>
+                                <s:textfield name="puesto" readonly="true" label="Puesto"/>
+                                <s:textfield name="empleador.nombre" readonly="true" label="Nombre de empleador"/>
+                                <s:textfield name="empleador.apellidos" readonly="true" label="Apellidos"/>
+                                <s:textfield name="empleador.nombreEmpresa" readonly="true" label="Nombre de la empresa"/>
+                                <s:if test="salario==0">
+                                    <s:textfield name="salario" value="No especificado" label="Salario" readonly="true"/>
+                                </s:if>
+                                <s:else>
+                                    <s:textfield name="salario" readonly="true" label="Salario"/>
+                                </s:else>
+                                <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" readonly="true"/>
+                                <s:textarea name="requerimientos" readonly="true" label="Requerimientos"/>
+                                <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
+                                <s:textarea name="descripcion" readonly="true" label="Descripción"/>
                                 <c:if test="${sessionScope.solicitante != null}">
                                     <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
                                 </c:if>

@@ -33,12 +33,17 @@
                         <center>
                             <s:form method="post" action="verOfertaProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="puesto" readonly="true"/>
-                                <s:label name="salario" readonly="true"/>
-                                <s:label name="cantidadVacantes" readonly="true"/>
-                                <s:label name="requerimientos" readonly="true" style="width:450px;height:150px"/>
-                                <s:label name="categoria.nombre" readonly="true"/>
-                                <s:label name="descripcion" readonly="true" style="width:450px;height:150px"/>
+                                <s:textfield name="puesto" readonly="true" label="Puesto"/>
+                                <s:if test="salario==0">
+                                    <s:textfield name="salario" value="No especificado" label="Salario" readonly="true"/>
+                                </s:if>
+                                <s:else>
+                                    <s:textfield name="salario" readonly="true" label="Salario"/>
+                                </s:else>
+                                <s:textfield name="cantidadVacantes" readonly="true" label="Cantidad de vacantes"/>
+                                <s:textarea name="requerimientos" readonly="true" label="Requerimientos"/>
+                                <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
+                                <s:textarea name="descripcion" readonly="true" label="Descripción"/>
                             </s:form>
                         </center>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
