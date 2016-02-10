@@ -33,23 +33,23 @@
                         <center>
                             <s:form method="post" action="editarSolicitanteProcess" enctype="multipart/form-data" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" disabled="true"/>
-                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" type="text" requiredLabel="true"/>
-                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" type="text" requiredLabel="true"/>
+                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" disabled="true" label="Cédula"/>
+                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" type="text" requiredLabel="true" label="Nombre"/>
+                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" type="text" requiredLabel="true" label="Apellidos"/>
                                 <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                                <s:file name="archivoImagen"/>
-                                <s:textfield name="edad" placeholder="Ingresa tu edad" type="number" requiredLabel="true"/>
-                                <s:select requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo"/>
-                                <s:select requiredLabel="true" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>
-                                <s:textarea name="titulos" placeholder="Ingresa los títulos que posees"/>
-                                <s:textfield name="experienciaLaboral" placeholder="Ingresa los años de experiencia laboral que tienes" type="number"/>
-                                <s:textarea name="detalleExperienciaLaboral" placeholder="Describe tu experiencia laboral detalladamente"/>
-                                <s:textfield name="telefonoFijo" placeholder="Ingresa tu número fijo" type="number"/> 
-                                <s:textfield name="telefonoMovil" placeholder="Ingresa tu número móvil" type="number"/>
-                                <s:textfield name="correo" placeholder="Ingresa tu correo electrónico" type="email" requiredLabel="true"/>
-                                <s:textfield name="idiomas" placeholder="Ingresa los idiomas que dominas" type="text"/>
-                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" disabled="true"/>
-                                <s:password name="password" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true"/> 
+                                <s:file name="archivoImagen" label="Foto"/>
+                                <s:textfield name="edad" placeholder="Ingresa tu edad" type="number" requiredLabel="true" label="Edad"/>
+                                <s:select requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo" label="Género"/>
+                                <s:select requiredLabel="true" label="Escolaridad" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>
+                                <s:textarea name="titulos" placeholder="Ingresa los títulos que posees" label="Títulos"/>
+                                <s:textfield name="experienciaLaboral" placeholder="Ingresa los años de experiencia laboral que tienes" type="number" label="Años de experiencia laboral"/>
+                                <s:textarea name="detalleExperienciaLaboral" placeholder="Describe tu experiencia laboral detalladamente" label="Detalle de experiencia laboral"/>
+                                <s:textfield name="telefonoFijo" placeholder="Ingresa tu número fijo" type="number" label="Teléfono fijo"/> 
+                                <s:textfield name="telefonoMovil" placeholder="Ingresa tu número móvil" type="number" label="Teléfono móvil"/>
+                                <s:textfield name="correo" placeholder="Ingresa tu correo electrónico" type="email" requiredLabel="true" label="Correo electrónico"/>
+                                <s:textfield name="idiomas" placeholder="Ingresa los idiomas que dominas" type="text" label="Idiomas"/>
+                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" disabled="true" label="Nombre de usuario"/>
+                                <s:password name="password" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true" label="Contraseña"/> 
                                 <s:submit action="editarSolicitanteProcess" value="Editar Solicitante" onclick="return confirmBox();"/>
                             </s:form>
                                 <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

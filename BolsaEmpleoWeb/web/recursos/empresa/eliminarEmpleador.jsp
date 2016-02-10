@@ -33,8 +33,8 @@
                         <center>
                             <s:form action="eliminarEmpleadorProcess" method="post" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="nombre"/>
-                                <s:label name="apellidos"/>
+                                <s:label name="nombre" label="Nombre"/>
+                                <s:label name="apellidos" label="Apellidos"/>
                                 <s:submit value="Eliminar" action="eliminarEmpleadorProcess" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

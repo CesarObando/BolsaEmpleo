@@ -8,7 +8,9 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Inicio | Bolsa de Empleo</title>  
     </head>
-    <body onload="if(${sessionScope.sesionCerrada != null}){nobackbutton();}">
+    <body onload="if (${sessionScope.sesionCerrada != null}) {
+                nobackbutton();
+            }">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -37,13 +39,15 @@
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                         </center>
-                        <table id="tablaDeIconos" align="center">
-                            <td><a href="http://www.muni-carta.go.cr/bolsa-de-empleo-del-canton.html"><img class="img-responsive" src="../imagenes/IconosRelacionados/MuniCartago.png" /></a></td>
-                            <td></td>
-                            <td><a href="http://www.mtss.go.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/mtss.png" alt="" /></a></td>
-                            <td></td>
-                            <td><a href="http://www.ina.ac.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/ina.png" alt="" /></a></td>
-                        </table>
+                        <center>
+                            <table id="tablaDeIconos" class="table">
+                                <td><a href="http://www.muni-carta.go.cr/bolsa-de-empleo-del-canton.html"><img class="img-responsive" src="../imagenes/IconosRelacionados/MuniCartago.png" /></a></td>
+                                <td></td>
+                                <td><a href="http://www.mtss.go.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/mtss.png" alt="" /></a></td>
+                                <td></td>
+                                <td><a href="http://www.ina.ac.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/ina.png" alt="" /></a></td>
+                            </table>
+                        </center>
                     </div>
                 </aside> 
             </div>            

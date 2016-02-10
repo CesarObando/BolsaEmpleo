@@ -33,16 +33,16 @@
                         <center>
                             <s:form method="post" action="editarEmpleadorProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="cedula"/>
-                                <s:label name="nombre"/>
-                                <s:label name="apellidos"/>
-                                <s:label name="correo" />
-                                <s:label name="telefonoFijo"/> 
-                                <s:label name="telefonoMovil"/>
-                                <s:label name="cedulaJuridica"/>
-                                <s:label name="nombreEmpresa"/>
-                                <s:label name="direccion" style="width:450px;height:150px"/>
-                                <s:label name="username"/>
+                                <s:textfield name="cedula" readonly="true" label="Cédula"/>
+                                <s:textfield name="nombre" readonly="true" label="Nombre"/>
+                                <s:textfield name="apellidos" readonly="true" label="Apellidos"/>
+                                <s:textfield name="correo" readonly="true" label="Correo electrónico"/>
+                                <s:textfield name="telefonoFijo" readonly="true" label="Teléfono fijo"/> 
+                                <s:textfield name="telefonoMovil" readonly="true" label="Teléfono móvil"/>
+                                <s:textfield name="cedulaJuridica" readonly="true" label="Cédula jurídica"/>
+                                <s:textfield name="nombreEmpresa" readonly="true" label="Nombre de la empresa"/>
+                                <s:textarea name="direccion"readonly="true" label="Dirección"/>
+                                <s:textfield name="username" readonly="true" label="Nombre de usuario"/>
                             </s:form>
                         </center>
                         <a href="../empresa/editarEmpleador.action" class="" style="background: transparent">Editar</a>

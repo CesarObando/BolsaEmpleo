@@ -33,10 +33,10 @@
                         <center>
                             <s:form method="post" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="cedula" readonly="true"/>
-                                <s:label name="nombre"/>
-                                <s:label name="apellidos"/>
-                                <s:label name="username" readonly="true"/>
+                                <s:textfield name="cedula" readonly="true" label="Cédula"/>
+                                <s:textfield name="nombre" readonly="true" label="Nombre"/>
+                                <s:textfield name="apellidos" readonly="true" label="Apellidos"/>
+                                <s:textfield name="username" readonly="true" label="Nombre de usuario"/>
                             </s:form>
                         </center>
                         <a href="../administrador/editarAdministrador.action" class="" style="background: transparent">Editar</a>

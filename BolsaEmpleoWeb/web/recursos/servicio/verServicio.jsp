@@ -33,8 +33,8 @@
                         <center>
                             <s:form method="post" action="verServicioProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="titulo" readonly="true"/>
-                                <s:label name="descripcion" readonly="true" style="width:450px;height:150px"/>
+                                <s:textfield name="titulo" readonly="true" label="Nombre"/>
+                                <s:textarea name="descripcion" readonly="true" label="Descripción"/>
                                 <s:label name="categoria.nombre" readonly="true"/>
                             </s:form>
                         </center>
