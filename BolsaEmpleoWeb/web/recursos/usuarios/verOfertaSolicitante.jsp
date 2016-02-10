@@ -57,9 +57,12 @@
                                     <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
                                 </c:if>
                             </s:form>
-
+                            <c:if test="${sessionScope.solicitante != null}">
+                                <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                            </c:if>
                             <c:if test="${sessionScope.solicitante == null}">
                                 <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
+                                <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>
 
                         </center>

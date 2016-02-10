@@ -68,6 +68,7 @@
                                 </tbody>
                             </table>
                         </center>
+                        <a href="../usuarios/insertarSolicitante.jsp" style="background: transparent;float: left">Para ofrecer tu servicio como trabajador independiente registrate como solicitante</a>
                     </div>
                 </aside> 
             </div>            
