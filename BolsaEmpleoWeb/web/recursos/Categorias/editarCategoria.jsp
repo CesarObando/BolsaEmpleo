@@ -33,7 +33,7 @@
                         <center>
                             <s:form method="post" action="editarCategoriaProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="nombre" requiredLabel="true" placeholder="Ingresa el nombre de la categoría"/>
+                                <s:textfield name="nombre" requiredLabel="true" placeholder="Ingresa el nombre de la categoría" label="Nombre"/>
                                 <s:submit action="editarCategoriaProcess" value="Editar Categoría" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

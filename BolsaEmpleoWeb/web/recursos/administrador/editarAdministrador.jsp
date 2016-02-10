@@ -33,11 +33,11 @@
                         <center>
                             <s:form method="post" action="editarAdministradorProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" readonly="true" disabled="true"/>
-                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" requiredLabel="true"/>
-                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" requiredLabel="true"/>
-                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" readonly="true" disabled="true"/>
-                                <s:password name="password" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true"/> 
+                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" readonly="true" disabled="true" label="Cédula"/>
+                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" requiredLabel="true" label="Nombre"/>
+                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" requiredLabel="true" label="Apellidos"/>
+                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" readonly="true" disabled="true" label="Nombre de usuario"/>
+                                <s:password name="password" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true" label="Contraseña"/> 
                                 <s:submit action="editarAdministradorProcess" value="Editar Administrador" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

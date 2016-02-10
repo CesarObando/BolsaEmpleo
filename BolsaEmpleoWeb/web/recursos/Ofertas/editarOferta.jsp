@@ -33,11 +33,11 @@
                         <center>
                             <s:form method="post" action="editarOfertaProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="puesto" placeholder="Ingresa el nombre del puesto" readonly="true" disabled="true"/>
-                                <s:textfield name="salario" placeholder="Ingresa el salario" type="number"/>
-                                <s:textfield name="cantidadVacantes" placeholder="Ingresa la cantidad de vacantes" type="number"/>
-                                <s:textarea name="requerimientos" placeholder="Ingresa los requerimientos"/>
-                                <s:textarea name="descripcion" placeholder="Ingresa la descripción de la oferta"/>
+                                <s:textfield name="puesto" placeholder="Ingresa el nombre del puesto" readonly="true" disabled="true" label="Puesto"/>
+                                <s:textfield name="salario" placeholder="Ingresa el salario" type="number" label="Salario"/>
+                                <s:textfield name="cantidadVacantes" placeholder="Ingresa la cantidad de vacantes" type="number" label="Cantidad de vacantes"/>
+                                <s:textarea name="requerimientos" placeholder="Ingresa los requerimientos" label="Requerimientos"/>
+                                <s:textarea name="descripcion" placeholder="Ingresa la descripción de la oferta" label="Descripción"/>
                                 <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                                 <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                             </s:form>

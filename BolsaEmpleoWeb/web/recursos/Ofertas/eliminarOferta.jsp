@@ -33,7 +33,7 @@
                         <center>
                             <s:form action="eliminarOfertaProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="puesto" readonly="true"/>
+                                <s:textfield name="puesto" readonly="true" label="Puesto"/>
                                 <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

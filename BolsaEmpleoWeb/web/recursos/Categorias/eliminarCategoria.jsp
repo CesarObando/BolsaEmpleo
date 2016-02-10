@@ -33,7 +33,7 @@
                         <center>
                             <s:form action="eliminarCategoriaProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="nombre" readonly="true"/>
+                                <s:textfield name="nombre" readonly="true" label="Nombre"/>
                                 <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

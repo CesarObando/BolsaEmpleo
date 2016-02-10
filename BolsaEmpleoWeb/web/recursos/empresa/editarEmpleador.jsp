@@ -34,17 +34,17 @@
                         <center>
                             <s:form method="post" action="editarEmpleadorProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" readonly="true" disabled="true"/>
-                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" requiredLabel="true"/>
-                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" requiredLabel="true"/>
-                                <s:textfield name="correo" placeholder="Ingresa tu correo electrónico" requiredLabel="true" type="email"/>
-                                <s:textfield name="telefonoFijo" placeholder="Ingresa tu número fijo"/> 
-                                <s:textfield name="telefonoMovil" placeholder="Ingresa tu número móvil"/>
-                                <s:textfield name="cedulaJuridica" placeholder="Ingresa tu cédula jurídica"/>
-                                <s:textfield name="nombreEmpresa" placeholder="Ingresa el nombre de tu empresa"/>
-                                <s:textarea name="direccion" placeholder="Ingresa tu dirección"/>
-                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" readonly="true" disabled="true"/>
-                                <s:password name="pass" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true"/>
+                                <s:textfield name="cedula" placeholder="Ingresa tu cédula con 9 dígitos" readonly="true" disabled="true" label="Cédula"/>
+                                <s:textfield name="nombre" placeholder="Ingresa tu nombre" requiredLabel="true" label="Nombre"/>
+                                <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" requiredLabel="true" label="Apellidos"/>
+                                <s:textfield name="correo" placeholder="Ingresa tu correo electrónico" requiredLabel="true" type="email" label="Correo electrónico"/>
+                                <s:textfield name="telefonoFijo" placeholder="Ingresa tu número fijo" label="Teléfono fijo"/> 
+                                <s:textfield name="telefonoMovil" placeholder="Ingresa tu número móvil" label="Teléfono móvil"/>
+                                <s:textfield name="cedulaJuridica" placeholder="Ingresa tu cédula jurídica" label="Cédula jurídica"/>
+                                <s:textfield name="nombreEmpresa" placeholder="Ingresa el nombre de tu empresa" label="Nombre de la empresa"/>
+                                <s:textarea name="direccion" placeholder="Ingresa tu dirección" label="Dirección"/>
+                                <s:textfield name="username" placeholder="Ingresa un nombre de usuario" readonly="true" disabled="true" label="Nombre de usuario"/>
+                                <s:password name="pass" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true" label="Contraseña"/>
                                 <s:submit action="editarEmpleadorProcess" value="Editar Empleador" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
