@@ -10,7 +10,9 @@ import Dominio.Empleador;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
+import java.sql.Date;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -53,10 +55,32 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
         apellidos = request.getParameter("apellidos");
         try {
             empleadores = empleadorBusiness.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
+            ordenarLista();
         } catch (SQLException e) {
             Logger.getLogger(BuscarEmpleadoresAction.class.getName()).log(Level.SEVERE, null, e);
         }
         return BUSCAR_EMPLEADORES;
+    }
+
+    public void ordenarLista() {
+        java.util.Date fechaActual = new java.util.Date();
+        java.sql.Date fechaUltimaActualizacion;
+        for (Empleador empleador : empleadores) {
+            fechaUltimaActualizacion = empleador.getUltimaActualizacion();
+            if (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth() > 0 && fechaActual.getYear() == fechaUltimaActualizacion.getYear()) {
+                if(fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()==1){
+                    empleador.setDireccion("Hace " + (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()) + " mes");
+                }else{
+                    empleador.setDireccion("Hace " + (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()) + " meses");
+                }
+            } else if (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth() == 0 && fechaActual.getYear() == fechaUltimaActualizacion.getYear()) {
+                empleador.setDireccion("Hace menos de un mes");
+            } else {
+                if (fechaActual.getYear() - fechaUltimaActualizacion.getYear() == 1) {
+                    empleador.setDireccion("Hace " + ((fechaActual.getMonth() + 11) - fechaUltimaActualizacion.getMonth()) + " meses");
+                }
+            }
+        }
     }
 
     @Override
