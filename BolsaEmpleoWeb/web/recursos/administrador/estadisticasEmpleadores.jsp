@@ -49,8 +49,12 @@
                                                 <td><s:property value="#empleadorActual.nombre"/></td>
                                                 <td><s:property value="#empleadorActual.apellidos"/></td>
                                                 <td><s:property value="#empleadorActual.nombreEmpresa"/></td>
-                                                <td><s:property value="#empleadorActual.ultimaActualizacion"/></td>
-                                                <td><a href="mailto:<s:property value="#empleadorActual.correo"/>?subject=Actualizar datos de su perfil de usuario.&body='Estimado usuario, se le solicita que por favor renueve los datos de su cuenta en nuestro sistema. Gracias'">Notificar</a></td>
+                                                <td><s:property value="#empleadorActual.direccion"/></td>
+                                                <td>
+                                                    <s:url action="enviarCorreoEmpresaProcess" var="url">
+                                                            <s:param name="correo" value="#empleadorActual.correo"/>
+                                                    </s:url>
+                                                    <a href='<s:property value="#url" />'>Notificar</a>
                                             </tr>
                                         </s:iterator>
                                     </s:else>
