@@ -102,6 +102,11 @@ and open the template in the editor.
     background: -webkit-linear-gradient(top, #cfe6ef 0%,#edfcff 100%);
 
 }
+.form input [type='form'] .form form{
+     border: 1px solid #CED5D7;
+     color: darkblue;
+    
+}
 label{
     border: 1px solid #CED5D7;
     resize: none;
