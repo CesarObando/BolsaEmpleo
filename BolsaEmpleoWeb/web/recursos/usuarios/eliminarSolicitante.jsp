@@ -44,8 +44,8 @@
                             <center>
                                 <s:form action="eliminarSolicitanteAdministradorProcess" method="post" cssClass="form">
                                     <s:hidden name="id"/>
-                                    <s:label name="nombre" label="Nombre"/>
-                                    <s:label name="apellidos" label="Apellidos"/>
+                                    <s:label name="nombre"/>
+                                    <s:label name="apellidos"/>
                                     <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox();"/>
                                 </s:form>
                                 <a href="../usuarios/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

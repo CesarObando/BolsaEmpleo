@@ -33,7 +33,7 @@
                             <s:else>
                                 <center>
                                     <s:form method="post" enctype="multipart/form-data" action="iniciarSesionAdministrador" cssClass="form">
-                                        <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
+                                        <s:textfield name="nombreUsuario" placeholder="Nombre de usuario"/>
                                         <s:password name="clave" placeholder="Contraseña"/>
                                         <s:submit action="iniciarSesionAdministrador" value="Iniciar Sesión" class="button-submit"/>
                                     </s:form>

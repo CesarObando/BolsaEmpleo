@@ -33,9 +33,9 @@
                         <center>
                             <s:form method="post" action="verServicioProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:textfield name="titulo" label="Título" readonly="true"/>
-                                <s:textarea name="descripcion" label="Descripción" readonly="true" style="width:300px;height:150px"/>
-                                <s:textfield name="categoria.nombre" label="Categoría" readonly="true"/>
+                                <s:label name="titulo" readonly="true"/>
+                                <s:label name="descripcion" readonly="true" style="width:450px;height:150px"/>
+                                <s:label name="categoria.nombre" readonly="true"/>
                             </s:form>
                         </center>
                         <a href="../servicio/editarServicio.action" class="">Editar</a>

@@ -38,7 +38,7 @@
                         </s:if>
                         <center>
                             <s:form action="buscarServiciosEmpleadorProcess" cssClass="form">
-                                <s:textfield name="titulo" label="Título"/>
+                                <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente a buscar"/>
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
                                 <s:submit method="buscar" value="Buscar" action="buscarServiciosEmpleadorProcess"/>
                             </s:form>

@@ -22,9 +22,9 @@
                     <div class="grid-9 region-content" id="region-content">
                         <center>
                             <s:form action="buscarSolicitantesProcess" method="post" cssClass="form">
-                                <s:textfield name="cedula" label="Cédula"/>
-                                <s:textfield name="nombre" label="Nombre"/>
-                                <s:textfield name="apellidos" label="Apellidos"/>
+                                <s:textfield name="cedula" placeholder="Ingresa la cédula a buscar"/>
+                                <s:textfield name="nombre" placeholder="Ingresa el nombre a buscar"/>
+                                <s:textfield name="apellidos" placeholder="Ingresa los apellidos a buscar"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                             <table id="mytable" class="table">

@@ -33,11 +33,11 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="insertarAdministradorProcess" cssClass="form">
-                                <s:textfield name="cedula" label="Cedula" type="number" requiredLabel="true"/>
-                                <s:textfield name="nombre" label="Nombre" requiredLabel="true"/>
-                                <s:textfield name="apellidos" label="Apellidos" requiredLabel="true"/>
-                                <s:textfield name="username" label="Nombre Usuario" requiredLabel="true"/>
-                                <s:password name="password" label="Clave" requiredLabel="true"/> 
+                                <s:textfield name="cedula" type="number" requiredLabel="true" placeholder="Ingresa tu cédula con 9 dígitos"/>
+                                <s:textfield name="nombre" requiredLabel="true" placeholder="Ingresa tu nombre"/>
+                                <s:textfield name="apellidos" requiredLabel="true" placeholder="Ingresa tus apellidos"/>
+                                <s:textfield name="username" requiredLabel="true" placeholder="Ingresa un nombre de usuario"/>
+                                <s:password name="password" requiredLabel="true" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres"/> 
                                 <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

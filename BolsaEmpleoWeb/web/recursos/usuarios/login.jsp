@@ -17,29 +17,27 @@
         <section>
             <div id="zone-content" class="clearfix container-12">  
                 <jsp:include page="../recursosReusables/section.jsp"/>
-                <c:if test="${sessionScope.solicitante == null}" >
-                    <aside class="grid-3 region" id="region-sidebar-second">
-                        <div class="grid-9 region-content" id="region-content">
-                            <s:if test="hasActionMessages()">
-                                <script>
-                                    window.alert("${sessionScope.mensaje}");
-                                </script>
-                            </s:if>
-                            <s:if test="hasActionErrors()">
-                                <script>
-                                    window.alert("${sessionScope.mensaje}");
-                                </script>
-                            </s:if>
-                            <center>
-                                <s:form method="post" enctype="multipart/form-data" action="iniciarSesion" cssClass="form">
-                                    <s:textfield name="nombreUsuario" placeholder="Nombre Usuario o Correo"/>
-                                    <s:password name="clave" placeholder="Contraseña"/>
-                                    <s:submit action="iniciarSesion" value="Iniciar Sesion" class="button-submit"/>
-                                </s:form>
-                            </center>
-                        </div>
-                    </aside>
-                </c:if>
+                <aside class="grid-3 region" id="region-sidebar-second">
+                    <div class="grid-9 region-content" id="region-content">
+                        <s:if test="hasActionMessages()">
+                            <script>
+                                window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <s:if test="hasActionErrors()">
+                            <script>
+                                window.alert("${sessionScope.mensaje}");
+                            </script>
+                        </s:if>
+                        <center>
+                            <s:form method="post" enctype="multipart/form-data" action="iniciarSesion" cssClass="form">
+                                <s:textfield name="nombreUsuario" placeholder="Nombre de Usuario"/>
+                                <s:password name="clave" placeholder="Contraseña"/>
+                                <s:submit action="iniciarSesion" value="Iniciar Sesion" class="button-submit"/>
+                            </s:form>
+                        </center>
+                    </div>
+                </aside>
             </div>            
         </section> 
     </body>

@@ -33,7 +33,7 @@
                         </s:if>
                         <center>
                             <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form">
-                                <s:textfield name="puesto" label="Puesto"/>
+                                <s:textfield name="puesto" placeholder="Ingresa el puesto de la oferta a buscar"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                         </center>

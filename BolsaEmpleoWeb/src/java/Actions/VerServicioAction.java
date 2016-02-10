@@ -48,7 +48,13 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int idServicio = Integer.parseInt(request.getParameter("idS"));
+        int idServicio;
+        if (request.getParameter("idS") != null) {
+            idServicio = Integer.parseInt(request.getParameter("idS"));
+        }
+        else {
+            idServicio = Integer.parseInt(request.getParameter("id"));
+        }
         servicioAVer = new ServicioBusiness().buscarServicio(idServicio);
         int idCategoria = servicioAVer.getCategoria().getId();
         int idSolicitante = servicioAVer.getSolicitante().getId();

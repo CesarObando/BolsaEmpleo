@@ -33,7 +33,7 @@
                             <s:else>
                                 <center>
                                     <s:form method="post" enctype="multipart/form-data" action="iniciarSesionEmpleador " cssClass="form">
-                                        <s:textfield  align="center" name="nombreUsuario" placeholder="Nombre Usuario o Correo" style=""/>
+                                        <s:textfield  align="center" name="nombreUsuario" placeholder="Nombre de Usuario" style=""/>
                                         <s:password  align="center" name="clave" placeholder="Contraseña"/>
                                         <s:submit  align="center" action="iniciarSesionempleador" value="Iniciar Sesión" class="button-submit"/>
                                     </s:form>

@@ -32,16 +32,16 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="insertarOfertaProcess" cssClass="form">
-                                <s:textfield name="puesto" label="Puesto " requiredLabel="true"/>
-                                <s:textfield name="salario" label="Salario " type="number"/>
-                                <s:textfield name="cantidadVacantes" label="Cantidad de Vacantes" type="number"/>
-                                <s:textarea name="requerimientos" label="Requerimientos " requiredLabel="true"/>
-                                <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerKey="-1" headerValue="Seleccione una categoría"/>            
-                                <s:textarea name="descripcion" label="Descripción" requiredLabel="true"/>
+                                <s:textfield name="puesto" requiredLabel="true" placeholder="Ingresa el nombre del puesto"/>
+                                <s:textfield name="salario" type="number" placeholder="Ingresa el salario"/>
+                                <s:textfield name="cantidadVacantes" type="number" placeholder="Ingresa la cantidad de vacantes"/>
+                                <s:textarea name="requerimientos" requiredLabel="true" placeholder="Ingresa los requerimientos"/>
+                                <s:textarea name="descripcion" requiredLabel="true" placeholder="Ingresa la descripción de la oferta"/>
+                                <s:select name="categoria.id" requiredLabel="true" list="listaCategorias" listKey="id" listValue="nombre" headerKey="-1" headerValue="Seleccione una categoría"/>            
                                 <s:submit action="insertarOfertaProcess" value="Insertar Oferta" onclick="return confirmBox();"/>
-                                <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </s:form>
                         </center>
+                        <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         <script>
                             function confirmBox() {
                                 var answer;

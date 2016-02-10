@@ -40,7 +40,7 @@
                         </c:if>
                         <center>
                             <s:form action="buscarCategoriasProcess" method="post" cssClass="form">
-                                <s:textfield name="nombre" label="Nombre"/>
+                                <s:textfield name="nombre" placeholder="Ingresa el nombre de la categoría a buscar"/>
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                         </center>

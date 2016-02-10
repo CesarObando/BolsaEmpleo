@@ -33,21 +33,21 @@
                         <center>
                             <s:form method="post" action="editarSolicitanteProcess" cssClass="form">
                                 <s:hidden name="id"/>
-                                <s:label name="cedula" label="Cédula" readonly="true"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
-                                <s:label name="username" label="Nombre Usuario" readonly="true"/>
+                                <s:label name="cedula" readonly="true"/>
+                                <s:label name="nombre"/>
+                                <s:label name="apellidos"/>
                                 <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                                <s:label name="edad" label="Edad"/>
-                                <s:label name="sexo" label="Sexo" readonly="true"/>
-                                <s:label name="escolaridad" label="Escolaridad" readonly="true"/>
-                                <s:textarea name="titulos" label="Títulos" readonly="true" style="width:300px;height:150px"/>
-                                <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                                <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true" style="width:300px;height:150px"/>
-                                <s:label name="telefonoFijo" label="Teléfono Casa"/> 
-                                <s:label name="telefonoMovil" label="Teléfono Celular"/>
-                                <s:label name="correo" label="Email"/>
-                                <s:label name="idiomas" label="Idiomas que domina"/>
+                                <s:label name="edad"/>
+                                <s:label name="sexo"/>
+                                <s:label name="escolaridad" readonly="true"/>
+                                <s:label name="titulos" readonly="true" style="width:450px;height:150px"/>
+                                <s:label name="experienciaLaboral"/>
+                                <s:label name="detalleExperienciaLaboral" readonly="true" style="width:450px;height:150px"/>
+                                <s:label name="telefonoFijo"/> 
+                                <s:label name="telefonoMovil"/>
+                                <s:label name="correo"/>
+                                <s:label name="idiomas"/>
+                                <s:label name="username"/>
                                 <s:if test="numSolicitudes==0">
                                     <s:label name="solicitudes" value="No has solicitado empleo en ninguna oferta"/>
                                 </s:if>

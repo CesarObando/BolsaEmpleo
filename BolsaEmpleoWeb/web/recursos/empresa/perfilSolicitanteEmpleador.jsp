@@ -32,23 +32,21 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="reporte" cssClass="form">
-                                <s:label name="id" label="Id"/>
-                                <s:label name="cedula" label="Cedula" readonly="true"/>
                                 <s:hidden name="id"/>
-                                <s:label name="cedula" label="Cédula" readonly="true"/>
-                                <s:label name="nombre" label="Nombre"/>
-                                <s:label name="apellidos" label="Apellidos"/>
+                                <s:label name="cedula" readonly="true"/>
+                                <s:label name="nombre"/>
+                                <s:label name="apellidos"/>
                                 <img src="<s:url action="getImagenEmpleador" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                                 <s:label name="edad" label="Edad"/>
-                                <s:label name="sexo" label="Sexo" readonly="true"/>
-                                <s:textarea name="escolaridad" label="Escolaridad" readonly="true"/>
-                                <s:label name="titulos" label="Títulos"/>
+                                <s:label name="sexo" readonly="true"/>
+                                <s:label name="escolaridad" readonly="true"/>
+                                <s:label name="titulos" style="width:450px;height:150px"/>
                                 <s:label name="experienciaLaboral" label="Años de experiencia laboral"/>
-                                <s:textarea name="detalleExperienciaLaboral" label="Detalle Experiencia Laboral" readonly="true"/>
-                                <s:label name="telefonoFijo" label="Teléfono Casa"/> 
-                                <s:label name="telefonoMovil" label="Teléfono Celular"/>
-                                <s:label name="correo" label="Email"/>
-                                <s:label name="idiomas" label="Idiomas que domina"/>
+                                <s:label name="detalleExperienciaLaboral" style="width:450px;height:150px"/>
+                                <s:label name="telefonoFijo"/> 
+                                <s:label name="telefonoMovil"/>
+                                <s:label name="correo"/>
+                                <s:label name="idiomas"/>
                                 <s:submit name="reporte" value="Exportar a PDF"></s:submit>
 
                             </s:form>
