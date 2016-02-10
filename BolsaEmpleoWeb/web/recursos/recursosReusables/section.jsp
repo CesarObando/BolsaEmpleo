@@ -5,11 +5,19 @@
     <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
         <div class=" block-menu-block-1" id="block-menu-block-1">
             <div class="content clearfix">                            
-                <ul class="menu">
+                <ul class="menu sf-menu sf-horizontal">
                     <li class="first collapsed"><a href="../recursosReusables/acercaDe.jsp" >¿Quiénes somos?</a></li>
                     <li class="first collapsed"> <s:a action="download.action">¿Cómo hacer un Currículum?</s:a></li>                                              
                     <li class="leaf"><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraíso</a></li>
-                    <li class="leaf"><a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Contáctenos</a></li>                                            
+                    <li class="leaf"><a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Contáctenos</a></li>
+                    
+                    
+                    
+                    <li class="leaf"><a >Contactenos</a>
+                        <ul>
+                            <a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Blog</a>
+                        </ul>
+                    </li>                                            
                 </ul>                                
             </div>
         </div>

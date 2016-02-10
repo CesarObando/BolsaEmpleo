@@ -31,17 +31,13 @@ public class EnviarCorreoAction extends ActionSupport implements Preparable, Ser
 
     @Override
     public void prepare() throws Exception {
-        asunto = "";
-        correo = "";
-        cuerpo = "";
     }
     
     public String enviarCorreo() {
         EnviarCorreos enviarCorreos = new EnviarCorreos();
-        asunto = request.getParameter("asunto");
+        String asunto = "Solicitud de actualización de datos";
+        String cuerpo = "El equipo de administradores de la pagina BolsaEmpleoPublica solicita la actualización de sus datos de usuario en nuestra pagina web";
         correo = request.getParameter("correo");
-        
-        cuerpo = request.getParameter("cuerpo");
         return enviarCorreos.EnviarCorreo(correo, asunto, cuerpo);
     }
 
