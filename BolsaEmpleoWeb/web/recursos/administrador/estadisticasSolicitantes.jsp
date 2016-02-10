@@ -50,14 +50,9 @@
                                                 <td align="center"><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
                                                 <td align="center">
                                                     <s:url action="enviarCorreoSolicitanteProcess" var="url">
-                                                        <var id="asunto">Solicitud de actualización de datos</var>>
-                                                            <s:param name="asunto" value="#asunto"/>
                                                             <s:param name="correo" value="#solicitanteActual.correo"/>
-                                                            <s:param name="cuerpo" value="El equipo de administradores de la pagina BolsaEmpleoPublica solicita la actualización de sus datos de usuario"/>
                                                     </s:url>
-                                                    
                                                     <a href='<s:property value="#url" />'>Notificar</a>
-                                                    
                                                 </td>
                                                 </tr>
                                         </s:iterator>
