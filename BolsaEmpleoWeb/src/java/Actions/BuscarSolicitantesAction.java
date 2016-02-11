@@ -6,6 +6,7 @@
 package Actions;
 
 import Business.SolicitanteBusiness;
+import Dominio.Empleador;
 import Dominio.Solicitante;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
@@ -32,7 +33,6 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     private String cedula;
     private String nombre;
     private String apellidos;
-    private String correo;
 
     public BuscarSolicitantesAction() {
     }
@@ -54,19 +54,32 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         apellidos = request.getParameter("apellidos");
         try {
             solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
-            correo = request.getParameter("correo");
+            ordenarLista();
         } catch (SQLException e) {
             Logger.getLogger(BuscarSolicitantesAction.class.getName()).log(Level.SEVERE, null, e);
         }
         return BUSCAR_SOLICITANTES;
     }
-
-    public String enviarCorreo() {
-        EnviarCorreos enviarCorreos = new EnviarCorreos();
-        String asunto = "Solicitud de Actualización de datos";
-        String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
-        correo = request.getParameter("correo");
-        return enviarCorreos.EnviarCorreo(correo, asunto, cuerpo);
+    
+    public void ordenarLista() {
+        java.util.Date fechaActual = new java.util.Date();
+        java.sql.Date fechaUltimaActualizacion;
+        for (Solicitante solicitante : solicitantes) {
+            fechaUltimaActualizacion = solicitante.getUltimaActualizacion();
+            if (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth() > 0 && fechaActual.getYear() == fechaUltimaActualizacion.getYear()) {
+                if(fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()==1){
+                    solicitante.setEscolaridad("Hace " + (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()) + " mes");
+                }else{
+                    solicitante.setEscolaridad("Hace " + (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth()) + " meses");
+                }
+            } else if (fechaActual.getMonth() - fechaUltimaActualizacion.getMonth() == 0 && fechaActual.getYear() == fechaUltimaActualizacion.getYear()) {
+                solicitante.setEscolaridad("Hace menos de un mes");
+            } else {
+                if (fechaActual.getYear() - fechaUltimaActualizacion.getYear() == 1) {
+                    solicitante.setEscolaridad("Hace " + ((fechaActual.getMonth() + 11) - fechaUltimaActualizacion.getMonth()) + " meses");
+                }
+            }
+        }
     }
 
     @Override
@@ -113,24 +126,4 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     public void setApellidos(String apellidos) {
         this.apellidos = apellidos;
     }
-
-    public String getCorreo() {
-        return correo;
-    }
-
-    public void setCorreo(String correo) {
-        this.correo = correo;
-    }
-
-//    <script>
-//                            function enviarCorreo(String destinatario){
-//                            <%
-//                                String asunto = "Solicitud de Actualización de datos";
-//                                String cuerpo = "Por favor actualizar los datos de su cuenta de usuario en nuestra pagina web";
-//                                Solicitante solicitante = (Solicitante) session.getAttribute("solicitante");
-//                                EnviarCorreos enviarCorreo = new EnviarCorreos();
-//                                enviarCorreo.EnviarCorreo("cesar.b.c@hotmail.com", asunto, cuerpo);
-//                            %>
-//                            ]
-//                        </script>
 }

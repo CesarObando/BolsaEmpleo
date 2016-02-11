@@ -47,7 +47,7 @@
                                                 <td align="center"><s:property value="#solicitanteActual.cedula"/></td>
                                                 <td align="center"><s:property value="#solicitanteActual.nombre"/></td>
                                                 <td align="center"><s:property value="#solicitanteActual.apellidos"/></td>
-                                                <td align="center"><s:property value="#solicitanteActual.ultimaActualizacion"/></td>
+                                                <td align="center"><s:property value="#solicitanteActual.escolaridad"/></td>
                                                 <td align="center">
                                                     <s:url action="enviarCorreoSolicitanteProcess" var="url">
                                                             <s:param name="correo" value="#solicitanteActual.correo"/>
