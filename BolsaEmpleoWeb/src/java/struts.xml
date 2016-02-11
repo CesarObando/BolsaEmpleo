@@ -645,5 +645,13 @@
                 <param name="bufferSize">1024</param>
             </result>
         </action>
+        <action name="descargarEjemplo" class="Actions.DownloadEjemploAction">
+            <result name="success" type="stream">
+                <param name="contentType">application/octet-stream</param>
+                <param name="inputName">fileInputStream</param>
+                <param name="contentDisposition">attachment;filename="Ejemplo.doc"</param>
+                <param name="bufferSize">1024</param>
+            </result>
+        </action>
     </package>
 </struts>
