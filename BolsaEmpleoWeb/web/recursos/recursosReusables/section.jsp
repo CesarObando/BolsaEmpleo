@@ -5,12 +5,12 @@
     <aside class="grid-3 region-sidebar-first" id="region-sidebar-first">                            
         <div class=" block-menu-block-1" id="block-menu-block-1">
             <div class="content clearfix">
-                <div class="grid-12">                        
+                <div class="grid-3">                        
                     <div class="main-menu">
                         <div class="content clearfix">
                             <ul class="menu sf-menu sf-horizontal">
                                 <li ><a href="../recursosReusables/acercaDe.jsp" >¿Quiénes somos?</a></li>
-                                <li > <a>¿Cómo hacer un Currículum?</a>
+                                <li > <a>Ejemplo de Currículums</a>
                                     <ul>
                                         <s:a action="download.action">Descargar plantilla</s:a>
                                         <s:a action="descargarEjemplo.action">Descargar ejemplo</s:a>
