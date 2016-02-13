@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Editar Oferta | Bolsa de Empleo</title>  
     </head>
-    <body>
+    <body onload="cambiarCanton()">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -31,7 +31,7 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form method="post" action="editarOfertaProcess" cssClass="form">
+                            <s:form method="post" action="editarOfertaProcess" cssClass="form" name="f1">
                                 <s:hidden name="id"/>
                                 <s:textfield name="puesto" placeholder="Ingresa el nombre del puesto" readonly="true" disabled="true" label="Puesto"/>
                                 <s:textfield name="salario" placeholder="Ingresa el salario" type="number" label="Salario"/>
@@ -39,6 +39,8 @@
                                 <s:textarea name="requerimientos" placeholder="Ingresa los requerimientos" label="Requerimientos"/>
                                 <s:textarea name="descripcion" placeholder="Ingresa la descripción de la oferta" label="Descripción"/>
                                 <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
+                                <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" label="Provincia" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="provincia"/>
+                                <s:select name="canton" requiredLabel="true" label="Cantón" list="#{}" headerKey="canton"/>
                                 <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

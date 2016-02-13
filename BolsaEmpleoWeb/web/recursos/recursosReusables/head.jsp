@@ -1,4 +1,4 @@
-
+<script type="text/javascript" src="../js/cantones.js"></script>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="shortcut icon" href="../imagenes/favicon.ico" />

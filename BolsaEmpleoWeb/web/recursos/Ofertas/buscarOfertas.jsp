@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Buscar Ofertas | Bolsa de Empleo</title>  
     </head>
-    <body>
+    <body onload="cambiarCanton()">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -31,9 +31,11 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form action="buscarOfertasProcess" cssClass="form">
+                            <s:form action="buscarOfertasProcess" cssClass="form" name="f1">
                                 <s:textfield name="puesto" placeholder="Ingresa el puesto de la oferta a buscar"/>
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:select name="provincia" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia" onchange="cambiarCanton()"/>
+                                <s:select name="canton" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                         </center>

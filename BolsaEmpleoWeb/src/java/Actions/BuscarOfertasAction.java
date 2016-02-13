@@ -34,6 +34,8 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     private HttpServletRequest request;
     private String puesto;
     private int categoria;
+    private String provincia;
+    private String canton;
     private int idEmpleador;
     private LinkedList categorias;
     private Empleador empleador;
@@ -65,9 +67,21 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
         else{
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
+        if (request.getParameter("provincia")==null) {
+            provincia="";
+        }
+        else{
+            provincia = request.getParameter("provincia");
+        }
+        if (request.getParameter("canton")==null) {
+            canton="";
+        }
+        else{
+            canton = request.getParameter("canton");
+        }
         idEmpleador = empleador.getId();
         try {
-            ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto, idEmpleador);
+            ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto, idEmpleador, provincia,canton);
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -151,6 +165,22 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
 
     public void setIdEmpleador(int idEmpleador) {
         this.idEmpleador = idEmpleador;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }

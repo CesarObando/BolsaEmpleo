@@ -75,6 +75,12 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
         if (servicioAInsertar.getCategoria().getId() == -1) {
             addFieldError("categoria.id", "Debe seleccionar una categoría.");
         }
+        if (servicioAInsertar.getProvincia().length() == 0) {
+            addFieldError("provincia", "Debe seleccionar una provincia.");
+        }
+        if (servicioAInsertar.getCanton().length() == 0) {
+            addFieldError("canton", "Debe seleccionar un cantón.");
+        }
     }
 
     public String insertar() {

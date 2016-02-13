@@ -10,14 +10,14 @@
                         <div class="content clearfix">
                             <ul class="menu sf-menu sf-horizontal">
                                 <li ><a href="../recursosReusables/acercaDe.jsp" >¿Quiénes somos?</a></li>
-                                <li > <a>Ejemplo de Currículums</a>
+                                <li > <a>¿Cómo hacer un currículum?</a>
                                     <ul>
                                         <s:a action="download.action">Descargar plantilla</s:a>
                                         <s:a action="descargarEjemplo.action">Descargar ejemplo</s:a>
                                     </ul>
                                 </li>                                              
                                 <li ><a href="https://www.facebook.com/recintodeparaiso.ucr">Recinto de Paraíso</a></li>
-                                <li ><a >Contactenos</a>
+                                <li ><a >Contáctenos</a>
                                     <ul>
                                         <a href="http://bolsaempleocomentariosyquejas.blogspot.com/">Blog</a>
                                     </ul>

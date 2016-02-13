@@ -34,6 +34,8 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
     private HttpServletRequest request;
     private String titulo;
     private int categoria;
+    private String provincia;
+    private String canton;
     private int idSolicitante;
     private LinkedList categorias;
     private Solicitante solicitante;
@@ -60,9 +62,11 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
         ServicioBusiness servicioBusiness = new ServicioBusiness();
         titulo = request.getParameter("titulo");
         categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        provincia = request.getParameter("provincia");
+        canton = request.getParameter("canton");
         idSolicitante = solicitante.getId();
         try {
-            servicios = servicioBusiness.buscarServiciosPorSolicitante(categoria, titulo, idSolicitante);
+            servicios = servicioBusiness.buscarServiciosPorSolicitante(categoria, titulo, idSolicitante, provincia,canton);
         } catch (SQLException e) {
             Logger.getLogger(BuscarServiciosSolicitanteAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -138,6 +142,22 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
 
     public void setSolicitante(Solicitante solicitante) {
         this.solicitante = solicitante;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }

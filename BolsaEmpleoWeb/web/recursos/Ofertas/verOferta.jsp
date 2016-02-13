@@ -44,6 +44,8 @@
                                 <s:textarea name="requerimientos" readonly="true" label="Requerimientos"/>
                                 <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
                                 <s:textarea name="descripcion" readonly="true" label="Descripción"/>
+                                <s:textfield name="provincia" readonly="true" label="Provincia"/>
+                                <s:textfield name="canton" readonly="true" label="Cantón"/>
                             </s:form>
                         </center>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>

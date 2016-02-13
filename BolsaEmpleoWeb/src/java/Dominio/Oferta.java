@@ -19,13 +19,15 @@ public class Oferta {
     private String requerimientos;
     private Categoria categoria;
     private String descripcion;
+    private String provincia;
+    private String canton;
 
     public Oferta() {
         categoria = new Categoria();
         empleador = new Empleador();
     }
 
-    public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria, String descripcion) {
+    public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria, String descripcion, String provincia, String canton) {
         this.id = id;
         this.puesto = puesto;
         this.empleador = empleador;
@@ -34,6 +36,8 @@ public class Oferta {
         this.requerimientos = requerimientos;
         this.categoria = categoria;
         this.descripcion = descripcion;
+        this.provincia = provincia;
+        this.canton = canton;
     }
 
     public int getId() {
@@ -98,6 +102,22 @@ public class Oferta {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }

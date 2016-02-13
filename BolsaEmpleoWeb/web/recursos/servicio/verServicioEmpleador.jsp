@@ -43,6 +43,8 @@
                                 <s:textfield name="solicitante.apellidos" readonly="true" label="Apellidos"/>
                                 <s:textarea name="descripcion" readonly="true" label="Descripción"/>
                                 <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
+                                <s:textfield name="provincia" readonly="true" label="Provincia"/>
+                                <s:textfield name="cantón" readonly="true" label="Cantón"/>
                                 <s:submit name="reporte" value="Ver información del solicitante"></s:submit>
                             </s:form>
                         </center>

@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Editar Servicio | Bolsa de Empleo</title>  
     </head>
-    <body>
+    <body onload="cambiarCanton()">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -31,11 +31,13 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form method="post" action="editarServicioProcess" cssClass="form">
+                            <s:form method="post" action="editarServicioProcess" cssClass="form" name="f1">
                                 <s:hidden name="id"/>
                                 <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true" label="Nombre"/>
                                 <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true" label="Descripción"/>
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true" label="Categoría"/>            
+                                <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" label="Provincia" onselect="" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="provincia"/>
+                                <s:select name="canton" requiredLabel="true" label="Cantón" list="#{}" headerKey="canton" />
                                 <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
                             </s:form>
                             <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

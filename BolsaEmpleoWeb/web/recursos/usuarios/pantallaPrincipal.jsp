@@ -10,7 +10,7 @@
     </head>
     <body onload="if (${sessionScope.sesionCerrada != null}) {
                 nobackbutton();
-            }">
+            }; cambiarCanton()">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -34,8 +34,10 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form">
+                            <s:form action="buscarOfertasSolicitanteProcess" method="post" cssClass="form" name="f1">
                                 <s:textfield name="puesto" placeholder="Ingresa el puesto de la oferta a buscar"/>
+                                <s:select name="provincia" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia" onchange="cambiarCanton()"/>
+                                <s:select name="canton" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
                         </center>

@@ -31,6 +31,8 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
     private HttpServletRequest request;
     private String titulo;
     private int categoria;
+    private String provincia;
+    private String canton;
     private LinkedList categorias;
 
     public BuscarServiciosAdministradorAction() {
@@ -49,13 +51,21 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
         this.categorias = categoriaBusiness.getCategorias();
         titulo = "";
         categoria = -1;
+        provincia = "";
+        canton = "";
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        }
+        if (request.getParameter("provincia") != null) {
+            provincia = request.getParameter("provincia");
+        }
+        if (request.getParameter("canton") != null) {
+            canton = request.getParameter("canton");
         }
         if (request.getParameter("titulo") != null) {
             titulo = request.getParameter("titulo");
         }
-        servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo);
+        servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
 
         for (int i = 0; i < servicios.size(); i++) {
             Servicio servicio = servicios.get(i);
@@ -72,11 +82,19 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         titulo = request.getParameter("titulo");
         categoria = -1;
+        provincia = "";
+        canton = "";
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
+        if (request.getParameter("provincia") != null) {
+            provincia = request.getParameter("provincia");
+        }
+        if (request.getParameter("canton") != null) {
+            canton = request.getParameter("canton");
+        }
         try {
-            servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo);
+            servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
 
             for (int i = 0; i < servicios.size(); i++) {
                 Servicio servicio = servicios.get(i);
@@ -134,6 +152,22 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
 
     public void setCategorias(LinkedList categorias) {
         this.categorias = categorias;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }

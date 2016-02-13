@@ -81,6 +81,12 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
         if (ofertaAInsertar.getCategoria().getId() == -1) {
             addFieldError("categoria.id", "Debe seleccionar una categoría.");
         }
+        if (ofertaAInsertar.getProvincia().length() == 0) {
+            addFieldError("provincia", "Debe seleccionar una provincia.");
+        }
+        if (ofertaAInsertar.getCanton().length() == 0) {
+            addFieldError("canton", "Debe seleccionar un cantón.");
+        }
     }
 
     public String insertar() {

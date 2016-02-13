@@ -45,16 +45,16 @@ public class OfertaBusiness {
         return ofertaData.getOfertas();
     }
 
-    public LinkedList<Oferta> getOfertasPorCategoria(int categoria, String puesto) throws SQLException {
+    public LinkedList<Oferta> getOfertasPorCategoria(int categoria, String puesto, String provincia,String canton) throws SQLException {
 
-        return ofertaData.getOfertasPorCategorias(categoria, puesto);
+        return ofertaData.getOfertasPorCategorias(categoria, puesto, provincia,canton);
     }
 
     public Oferta buscarOferta(int id) throws SQLException, DataException {
         return ofertaData.buscarOferta(id);
     }
 
-    public LinkedList<Oferta> getOfertasPorEmpleador(int categoria, String puesto, int empleador) throws SQLException {
-        return ofertaData.getOfertasPorEmpleador(categoria, puesto, empleador);
+    public LinkedList<Oferta> getOfertasPorEmpleador(int categoria, String puesto, int empleador, String provincia,String canton) throws SQLException {
+        return ofertaData.getOfertasPorEmpleador(categoria, puesto, empleador, provincia,canton);
     }
 }

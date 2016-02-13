@@ -35,12 +35,12 @@ public class ServicioBusiness {
         return servicioData.buscarServicios();
     }
 
-    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo) throws SQLException {
-        return servicioData.buscarServiciosFiltrados(categoria, titulo);
+    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo, String provincia,String canton) throws SQLException {
+        return servicioData.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
     }
 
-    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante) throws SQLException {
-        return servicioData.buscarServiciosPorSolicitante(categoria, titulo, solicitante);
+    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante, String provincia,String canton) throws SQLException {
+        return servicioData.buscarServiciosPorSolicitante(categoria, titulo, solicitante, provincia,canton);
     }
 
     public Servicio buscarServicio(int id) throws SQLException, DataException {

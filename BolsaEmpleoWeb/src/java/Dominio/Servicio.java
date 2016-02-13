@@ -16,18 +16,22 @@ public class Servicio {
     private String descripcion;
     private Solicitante solicitante;
     private Categoria categoria;
+    private String provincia;
+    private String canton;
 
     public Servicio() {
         solicitante = new Solicitante();
         categoria = new Categoria();
     }
 
-    public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria) {
+    public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria, String provincia, String canton) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
         this.solicitante = solicitante;
         this.categoria = categoria;
+        this.provincia = provincia;
+        this.canton = canton;
     }
 
     public int getId() {
@@ -68,6 +72,22 @@ public class Servicio {
 
     public void setCategoria(Categoria categoria) {
         this.categoria = categoria;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }

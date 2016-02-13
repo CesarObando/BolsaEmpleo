@@ -79,7 +79,12 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
         if (servicioAEditar.getCategoria().getId() == -1) {
             addFieldError("categoria.id", "Debe seleccionar una categoría.");
         }
-
+        if (servicioAEditar.getProvincia().length() == 0) {
+            addFieldError("provincia", "Debe seleccionar una provincia.");
+        }
+        if (servicioAEditar.getCanton().length() == 0) {
+            addFieldError("canton", "Debe seleccionar un canton.");
+        }
     }
 
     public String editar() {

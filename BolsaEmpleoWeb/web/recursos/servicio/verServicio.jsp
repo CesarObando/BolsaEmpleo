@@ -35,7 +35,9 @@
                                 <s:hidden name="id"/>
                                 <s:textfield name="titulo" readonly="true" label="Nombre"/>
                                 <s:textarea name="descripcion" readonly="true" label="Descripción"/>
-                                <s:label name="categoria.nombre" readonly="true"/>
+                                <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
+                                <s:textfield name="provincia" readonly="true" label="Provincia"/>
+                                <s:textfield name="canton" readonly="true" label="Cantón"/>
                             </s:form>
                         </center>
                         <a href="../servicio/editarServicio.action" class="">Editar</a>

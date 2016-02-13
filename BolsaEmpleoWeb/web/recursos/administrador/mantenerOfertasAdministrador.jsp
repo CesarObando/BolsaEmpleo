@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Mantener Ofertas | Bolsa de Empleo</title>  
     </head>
-    <body>
+    <body onload="cambiarCanton()">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -21,9 +21,11 @@
                 <aside class="grid-3 region" id="region-sidebar-second">
                     <div class="grid-9 region-content" id="region-content">
                         <center>
-                            <s:form action="buscarOfertasAdministradorProcess" cssClass="form">
+                            <s:form action="buscarOfertasAdministradorProcess" cssClass="form" name="f1">
                                 <s:textfield name="puesto" placeholder="Ingresa el puesto a buscar"/>
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1"/>
+                                <s:select name="provincia" onchange="cambiarCanton()" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia"/>
+                                <s:select name="canton" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
                                 <s:submit method="buscar" value="Buscar" action="buscarOfertasAdministradorProcess"/>
                             </s:form>
                             <table id="mytable" class="table">

@@ -21,7 +21,7 @@ public class ServicioData extends BaseData {
 
     public Servicio insertarServicio(Servicio servicio) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insertar_servicio(?,?,?,?,?)}";
+        String sqlInsert = "{CALL insertar_servicio(?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
@@ -31,6 +31,8 @@ public class ServicioData extends BaseData {
             statement.setString(3, servicio.getDescripcion());
             statement.setInt(4, servicio.getSolicitante().getId());
             statement.setInt(5, servicio.getCategoria().getId());
+            statement.setString(6, servicio.getProvincia());
+            statement.setString(7, servicio.getCanton());
             statement.executeUpdate();
             servicio.setId(statement.getInt(1));
             conexion.commit();
@@ -43,7 +45,7 @@ public class ServicioData extends BaseData {
     }
 
     public void editarServicio(Servicio servicio) throws SQLException {
-        String sqlEditar = "{CALL editar_servicio(?,?,?,?)}";
+        String sqlEditar = "{CALL editar_servicio(?,?,?,?,?,?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
         try {
@@ -52,6 +54,8 @@ public class ServicioData extends BaseData {
             statement.setString(2, servicio.getTitulo());
             statement.setString(3, servicio.getDescripcion());
             statement.setInt(4, servicio.getCategoria().getId());
+            statement.setString(5, servicio.getProvincia());
+            statement.setString(6, servicio.getCanton());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {
@@ -92,18 +96,22 @@ public class ServicioData extends BaseData {
             servicio.setDescripcion(resultSet.getString("descripcion"));
             servicio.getSolicitante().setId(resultSet.getInt("solicitante"));
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
+            servicio.setProvincia(resultSet.getString("provincia"));
+            servicio.setCanton(resultSet.getString("canton"));
             servicios.add(servicio);
         }
         return servicios;
     }
 
-    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo) throws SQLException {
+    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo, String provincia,String canton) throws SQLException {
 
-        String sqlSelect = "{CALL buscar_servicios_filtrados(?,?)}";
+        String sqlSelect = "{CALL buscar_servicios_filtrados(?,?,?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, titulo);
         statement.setInt(2, categoria);
+        statement.setString(3, provincia);
+        statement.setString(4, canton);
         ResultSet resultSet = statement.executeQuery();
         LinkedList<Servicio> servicios = new LinkedList<Servicio>();
         while (resultSet.next()) {
@@ -113,18 +121,22 @@ public class ServicioData extends BaseData {
             servicio.setDescripcion(resultSet.getString("descripcion"));
             servicio.getSolicitante().setId(resultSet.getInt("solicitante"));
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
+            servicio.setProvincia(resultSet.getString("provincia"));
+            servicio.setCanton(resultSet.getString("canton"));
             servicios.add(servicio);
         }
         return servicios;
     }
 
-    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante) throws SQLException {
-        String sqlSelect = "{CALL buscar_servicios_por_solicitante(?,?,?)}";
+    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante, String provincia, String canton) throws SQLException {
+        String sqlSelect = "{CALL buscar_servicios_por_solicitante(?,?,?,?,?)}";
         Connection conexion = super.getConnection();
         CallableStatement statement = conexion.prepareCall(sqlSelect);
         statement.setString(1, titulo);
         statement.setInt(2, categoria);
-        statement.setInt(3, solicitante);
+        statement.setString(3, provincia);
+        statement.setString(4, canton);
+        statement.setInt(5, solicitante);
         ResultSet resultSet = statement.executeQuery();
         LinkedList<Servicio> servicios = new LinkedList<Servicio>();
         while (resultSet.next()) {
@@ -134,6 +146,8 @@ public class ServicioData extends BaseData {
             servicio.setDescripcion(resultSet.getString("descripcion"));
             servicio.getSolicitante().setId(resultSet.getInt("solicitante"));
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
+            servicio.setProvincia(resultSet.getString("provincia"));
+            servicio.setCanton(resultSet.getString("canton"));
             servicios.add(servicio);
         }
         return servicios;
@@ -153,6 +167,8 @@ public class ServicioData extends BaseData {
                 servicio.setDescripcion(resultSet.getString("descripcion"));
                 servicio.getSolicitante().setId(resultSet.getInt("solicitante"));
                 servicio.getCategoria().setId(resultSet.getInt("categoria"));
+                servicio.setProvincia(resultSet.getString("provincia"));
+                servicio.setCanton(resultSet.getString("canton"));
             }
         } catch (SQLException e) {
             throw new DataException("Ha ocurrido un error con la base de datos");

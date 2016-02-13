@@ -83,6 +83,12 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
         if (ofertaAEditar.getCategoria().getId() == -1) {
             addFieldError("categoria.id", "Debe seleccionar una categoría.");
         }
+        if (ofertaAEditar.getProvincia().length() == 0) {
+            addFieldError("provincia", "Debe seleccionar una provincia.");
+        }
+        if (ofertaAEditar.getCanton().length() == 0) {
+            addFieldError("canton", "Debe seleccionar un cantón.");
+        }
     }
 
     public String editar() {

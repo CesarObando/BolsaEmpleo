@@ -31,6 +31,8 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
     private HttpServletRequest request;
     private String puesto;
     private int categoria;
+    private String provincia;
+    private String canton;
     private LinkedList categorias;
 
     public BuscarOfertasSolicitanteAction() {
@@ -49,13 +51,21 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         this.categorias = categoriaBusiness.getCategorias();
         puesto = "";
         categoria = -1;
+        provincia = "";
+        canton = "";
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
+        }
+        if (request.getParameter("provincia") != null) {
+            provincia = request.getParameter("provincia");
+        }
+        if (request.getParameter("canton") != null) {
+            canton = request.getParameter("canton");
         }
         if (request.getParameter("puesto") != null) {
             puesto = request.getParameter("puesto");
         }
-        ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+        ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto,provincia,canton);
 
         for (int i = 0; i < ofertas.size(); i++) {
             Oferta oferta = ofertas.get(i);
@@ -72,11 +82,19 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         puesto = request.getParameter("puesto");
         categoria = -1;
+        provincia="";
+        canton = "";
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
+        if (request.getParameter("provincia") != null) {
+            provincia = request.getParameter("provincia");
+        }
+        if (request.getParameter("canton") != null) {
+            canton = request.getParameter("canton");
+        }
         try {
-            ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto);
+            ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto,provincia,canton);
 
             for (int i = 0; i < ofertas.size(); i++) {
                 Oferta oferta = ofertas.get(i);
@@ -142,6 +160,22 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
 
     public void setCategoria(int categoria) {
         this.categoria = categoria;
+    }
+
+    public String getProvincia() {
+        return provincia;
+    }
+
+    public void setProvincia(String provincia) {
+        this.provincia = provincia;
+    }
+
+    public String getCanton() {
+        return canton;
+    }
+
+    public void setCanton(String canton) {
+        this.canton = canton;
     }
 
 }
