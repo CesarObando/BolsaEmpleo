@@ -9,13 +9,15 @@ and open the template in the editor.
 */
 
 .form{
+    
 }.form input[type='text'], .form textarea{
+    
     padding: 4px 6px;
     width: 450px;
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
@@ -29,7 +31,7 @@ and open the template in the editor.
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
@@ -43,7 +45,7 @@ and open the template in the editor.
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
@@ -57,13 +59,14 @@ and open the template in the editor.
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
 .form input[type='select']:focus, .form select:focus{
     outline: none;
     box-shadow:0 0 0 3px #dde9ec;
+    margin: 20px 0;
 }
 .form input[type='password'], .form textarea{
     padding: 4px 6px;
@@ -71,7 +74,7 @@ and open the template in the editor.
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 5px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
@@ -80,6 +83,7 @@ and open the template in the editor.
     box-shadow:0 0 0 3px #dde9ec;
 }
 .form input[type='submit']{
+    margin: 10px 0;
     border: 1px solid #CED5D7;
     box-shadow:0 0 0 3px #EEF5F7;
     padding: 8px 16px;
@@ -108,12 +112,10 @@ and open the template in the editor.
     
 }
 label{
-    border: 1px solid #CED5D7;
     resize: none;
-    
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
-    font-size: 20px;
+    font-size: 18px;
     color: darkblue;
 }
 
@@ -124,7 +126,7 @@ textarea{
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 0px 0;
+    margin: 10px 0;
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }

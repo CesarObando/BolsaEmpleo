@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Editar Oferta | Bolsa de Empleo</title>  
     </head>
-    <body onload="cambiarCanton()">
+    <body onload="editarCanton('<s:property value="canton"/>','<s:property value="provincia"/>')">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
