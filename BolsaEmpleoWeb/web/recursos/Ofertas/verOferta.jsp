@@ -63,7 +63,7 @@
                             }
                         </script>
                         <center>
-                            <table id="mytable" class="table">
+                            <table id="mytable" class="table" title="Solicitantes">
 
 
                                 <s:if test="%{solicitudes.isEmpty()}">
@@ -92,10 +92,10 @@
                                                 </td>
                                                 <td>
                                                     <s:if test="%{#solicitudActual.favorito == true}">
-                                                        <img src="../imagenes/Favorito.jpeg"/>
+                                                        <img src="../imagenes/favorito.jpg"/>
                                                     </s:if>
                                                     <s:if test="%{#solicitudActual.favorito == false}">
-                                                        <img src="../imagenes/NoFavorito.jpeg"/>
+                                                        <img src="../imagenes/noFavorito.jpg"/>
                                                     </s:if>
                                                 </td>
                                             </tr>
