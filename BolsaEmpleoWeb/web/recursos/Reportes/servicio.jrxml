@@ -3,7 +3,7 @@
 	<property name="ireport.zoom" value="1.0"/>
 	<property name="ireport.x" value="0"/>
 	<property name="ireport.y" value="0"/>
-	<parameter name="idSolicitante" class="java.lang.String"/>
+	<parameter name="idSolicitante" class="java.lang.Integer"/>
 	<queryString>
 		<![CDATA[SELECT
      Solicitante."id" As Solicitante_id,
@@ -49,7 +49,7 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 	<pageHeader>
 		<band height="198" splitType="Stretch">
 			<staticText>
-				<reportElement x="90" y="13" width="444" height="29"/>
+				<reportElement x="32" y="11" width="293" height="29"/>
 				<textElement>
 					<font fontName="Castellar" size="18" isBold="true" isUnderline="false"/>
 				</textElement>
@@ -64,14 +64,14 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_nombre}+" "+$F{Solicitante_apellidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
-				<reportElement x="35" y="53" width="100" height="20"/>
+				<reportElement x="32" y="53" width="100" height="20"/>
 				<textElement>
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
 				<text><![CDATA[Nombre:]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="35" y="93" width="100" height="20"/>
+				<reportElement x="32" y="93" width="100" height="20"/>
 				<textElement>
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
@@ -125,17 +125,17 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 			</staticText>
 			<staticText>
 				<reportElement x="247" y="41" width="100" height="20"/>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
 				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
-				<reportElement x="32" y="10" width="444" height="29"/>
-				<textElement>
+				<reportElement x="32" y="0" width="277" height="29"/>
+				<textElement textAlignment="Center">
 					<font fontName="Castellar" size="18" isBold="true" isUnderline="false"/>
 				</textElement>
-				<text><![CDATA[            Servicio que ofrece]]></text>
+				<text><![CDATA[ServicioS que ofrece]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
@@ -150,7 +150,7 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 			</textField>
 			<textField>
 				<reportElement x="209" y="28" width="325" height="20"/>
-				<textElement>
+				<textElement textAlignment="Center">
 					<font fontName="Arial" size="14"/>
 				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Servicio_descripcion}]]></textFieldExpression>

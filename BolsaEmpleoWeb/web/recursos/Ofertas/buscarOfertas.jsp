@@ -26,6 +26,7 @@
                             </script>
                         </s:if>
                         <s:if test="hasActionErrors()">
+                            <a href="../servicio/mantenerServiciosEmpleador.jsp"></a>
                             <script>
                                 window.alert("${sessionScope.mensaje}");
                             </script>
