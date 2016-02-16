@@ -20,7 +20,7 @@
                         <a>Ofertas</a>  
                         <ul>
                             <li><a href="../Ofertas/insertarOferta.action">Registrar Oferta</a></li>
-                            <li><a href="../Ofertas/buscarOfertas.action">Actualizar/Eliminar</a></li>
+                            <li><a href="../Ofertas/buscarOfertas.action">Ver/Actualizar/Eliminar</a></li>
                         </ul>
                     </li>
                     <li>

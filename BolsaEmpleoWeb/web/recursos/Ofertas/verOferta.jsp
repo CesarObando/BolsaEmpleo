@@ -92,10 +92,10 @@
                                                 </td>
                                                 <td>
                                                     <s:if test="%{#solicitudActual.favorito == true}">
-                                                        <img src="../imagenes/favorito.jpg"/>
+                                                        <img src="../imagenes/favorito.png"/>
                                                     </s:if>
                                                     <s:if test="%{#solicitudActual.favorito == false}">
-                                                        <img src="../imagenes/noFavorito.jpg"/>
+                                                        <img src="../imagenes/noFavorito.png"/>
                                                     </s:if>
                                                 </td>
                                             </tr>

@@ -40,6 +40,7 @@
                                     <th>Apellidos</th>
                                     <th>Ultima Actualización de datos</th>
                                     <th></th>
+                                    <th>Eliminar</th>
                                     </thead>
                                     <tbody class="td">
                                         <s:iterator value="solicitantes" var="solicitanteActual">
@@ -50,11 +51,18 @@
                                                 <td align="center"><s:property value="#solicitanteActual.escolaridad"/></td>
                                                 <td align="center">
                                                     <s:url action="enviarCorreoSolicitanteProcess" var="url">
-                                                            <s:param name="correo" value="#solicitanteActual.correo"/>
+                                                        <s:param name="correo" value="#solicitanteActual.correo"/>
                                                     </s:url>
                                                     <a href='<s:property value="#url" />'>Notificar</a>
                                                 </td>
-                                                </tr>
+                                                <td><p data-placement="top" data-toggle="tooltip" title="Delete">
+                                                        <s:url action="eliminarSolicitanteAdministradorProcess" var="url">
+                                                            <s:param name="id" value="#solicitanteActual.id"/>
+                                                        </s:url>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                    </p>
+                                                </td>
+                                            </tr>
                                         </s:iterator>
                                     </s:else>
                                 <div>
@@ -62,6 +70,18 @@
                                 </tbody>
                             </table>
                         </center>
+                        <script>
+                            function confirmBox() {
+                                var answer;
+                                answer = window.confirm("¿Desea eliminar al solicitante?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
                     </div>
                 </aside> 
             </div>            

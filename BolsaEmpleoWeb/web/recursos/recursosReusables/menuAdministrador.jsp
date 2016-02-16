@@ -31,8 +31,7 @@
                     <li>
                         <a>Solicitante</a> 
                         <ul>
-                            <li><a href="../usuarios/buscarSolicitantes.jsp" >Eliminar</a> </li>
-                            <li><a href="../administrador/estadisticasSolicitantes.jsp" >Estadisticas</a> </li>
+                            <li><a href="../administrador/estadisticasSolicitantes.jsp" >Notificar/Eliminar</a> </li>
                         </ul>
                     </li>
                     <li>
@@ -50,8 +49,7 @@
                         <li>
                             <a>Empleador</a> 
                             <ul>
-                                <li><a href="../administrador/buscarEmpleadores.jsp" >Eliminar</a> </li>
-                                <li><a href="../administrador/estadisticasEmpleadores.jsp">Estadisticas</a> </li>
+                                <li><a href="../administrador/estadisticasEmpleadores.jsp">Notificar/Eliminar</a> </li>
                             </ul>
                         </li>
                         <li>

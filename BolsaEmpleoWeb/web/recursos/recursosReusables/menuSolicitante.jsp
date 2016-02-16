@@ -26,7 +26,7 @@
                             <a>Trabajos Independientes</a> 
                             <ul>
                             <s:a action="insertarServicio" >Registrar</s:a>
-                            <s:a action="buscarServicios" >Actualizar/Eliminar</s:a>
+                            <s:a action="buscarServicios" >Ver/Actualizar/Eliminar</s:a>
                             </ul>
                         </li>
                         <li>
