@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
 	<property name="ireport.zoom" value="1.0"/>
-	<property name="ireport.x" value="10"/>
-	<property name="ireport.y" value="50"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
 	<parameter name="idSolicitante" class="java.lang.String"/>
 	<queryString>
 		<![CDATA[SELECT
@@ -57,48 +57,59 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 ]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="135" y="53" width="112" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_nombre}]]></textFieldExpression>
+				<reportElement x="135" y="53" width="399" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_nombre}+" "+$F{Solicitante_apellidos}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="35" y="53" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Nombre:]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="274" y="53" width="124" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_apellidos}]]></textFieldExpression>
-			</textField>
 			<staticText>
 				<reportElement x="35" y="93" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Correo:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="147" y="93" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="147" y="93" width="387" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_correo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="32" y="132" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Telefono:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="147" y="132" width="147" height="20"/>
-				<textElement/>
+				<reportElement x="147" y="132" width="387" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_telefono_fijo}]]></textFieldExpression>
 			</textField>
 			<staticText>
 				<reportElement x="32" y="177" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Celular:]]></text>
 			</staticText>
 			<textField>
-				<reportElement x="147" y="177" width="147" height="20"/>
-				<textElement/>
+				<reportElement x="147" y="177" width="387" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Solicitante_telefono_movil}]]></textFieldExpression>
 			</textField>
 		</band>
@@ -107,12 +118,16 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 		<band height="61" splitType="Stretch">
 			<staticText>
 				<reportElement x="17" y="41" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Servicio]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="247" y="41" width="100" height="20"/>
-				<textElement/>
+				<textElement>
+					<font fontName="Arial Rounded MT Bold" size="14"/>
+				</textElement>
 				<text><![CDATA[Descripcion]]></text>
 			</staticText>
 			<staticText>
@@ -120,20 +135,24 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 				<textElement>
 					<font fontName="Castellar" size="18" isBold="true" isUnderline="false"/>
 				</textElement>
-				<text><![CDATA[            Servicios que ofrece]]></text>
+				<text><![CDATA[            Servicio que ofrece]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
 	<detail>
 		<band height="125" splitType="Stretch">
 			<textField>
-				<reportElement x="17" y="28" width="100" height="20"/>
-				<textElement/>
+				<reportElement x="17" y="28" width="162" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Servicio_titulo}]]></textFieldExpression>
 			</textField>
 			<textField>
-				<reportElement x="209" y="28" width="165" height="20"/>
-				<textElement/>
+				<reportElement x="209" y="28" width="325" height="20"/>
+				<textElement>
+					<font fontName="Arial" size="14"/>
+				</textElement>
 				<textFieldExpression class="java.lang.String"><![CDATA[$F{Servicio_descripcion}]]></textFieldExpression>
 			</textField>
 		</band>
