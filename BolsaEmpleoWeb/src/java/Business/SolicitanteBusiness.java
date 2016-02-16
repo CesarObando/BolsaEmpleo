@@ -42,6 +42,10 @@ public class SolicitanteBusiness {
     public LinkedList<Solicitante> buscarSolicitantesFiltrados(String cedula, String nombre, String apellidos) throws SQLException, DataException {
         return solicitanteData.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
     }
+    
+    public Solicitante buscarSolicitantePorNombreUsuario(String nombreUsuario) throws SQLException, DataException{
+        return solicitanteData.buscarSolicitantePorNombreUsuario(nombreUsuario);
+    }
 
     public Solicitante buscarSolicitante(int id) throws SQLException, DataException {
         return solicitanteData.buscarSolicitante(id);

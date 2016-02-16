@@ -208,6 +208,41 @@ public class SolicitanteData extends BaseData {
         conexion.close();
         return solicitante;
     }
+    
+     public Solicitante buscarSolicitantePorNombreUsuario(String username) throws SQLException, DataException {
+        Connection conexion = super.getConnection();
+        String sqlBuscar = "{CALL buscar_solicitante_por_nombre_usuario (?)}";
+        Solicitante solicitante = new Solicitante();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscar);
+            statement.setString(1, username);
+            ResultSet rs = statement.executeQuery();
+            while (rs.next()) {
+                solicitante.setId(rs.getInt("id"));
+                solicitante.setCedula(rs.getString("cedula"));
+                solicitante.setNombre(rs.getString("nombre"));
+                solicitante.setApellidos(rs.getString("apellidos"));
+                solicitante.setUsername(rs.getString("username"));
+                solicitante.setPassword(rs.getString("passwd"));
+                solicitante.setEdad(rs.getInt("edad"));
+                solicitante.setEscolaridad(rs.getString("escolaridad"));
+                solicitante.setExperienciaLaboral(rs.getInt("años_experiencia_laboral"));
+                solicitante.setFoto(rs.getBytes("foto"));
+                solicitante.setIdiomas(rs.getString("idiomas"));
+                solicitante.setTelefonoFijo(rs.getString("telefono_fijo"));
+                solicitante.setTelefonoMovil(rs.getString("telefono_movil"));
+                solicitante.setTitulos(rs.getString("titulos"));
+                solicitante.setSexo(rs.getString("sexo"));
+                solicitante.setCorreo(rs.getString("correo"));
+                solicitante.setDetalleExperienciaLaboral(rs.getString("detalle_experiencia_laboral"));
+                solicitante.setUltimaActualizacion(rs.getDate("ultima_actualizacion"));
+            }
+        } catch (Exception e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return solicitante;
+    }
 
     public Solicitante iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
         Solicitante solicitante = new Solicitante();

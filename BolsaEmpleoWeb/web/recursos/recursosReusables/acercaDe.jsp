@@ -5,7 +5,7 @@
 <html>
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
-        <title>Iniciar Sesión | Bolsa de Empleo</title>  
+        <title>Acerca de.. | Bolsa de Empleo</title>  
     </head>
     <body>
         <header>

@@ -185,6 +185,36 @@ public class EmpleadorData extends BaseData {
         conexion.close();
         return empleador;
     }
+    
+     public Empleador buscarEmpleadorPorNombreUsuario(String nombreUsuario) throws SQLException, DataException {
+        String sqlBuscarEmpleador = "{CALL buscar_empleador_por_nombre_usuario (?)}";
+        Connection conexion = this.getConnection();
+        Empleador empleador = new Empleador();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarEmpleador);
+            statement.setString(1, nombreUsuario);
+            ResultSet resultSet = statement.executeQuery();
+            if (resultSet.next()) {
+                empleador.setId(resultSet.getInt("id"));
+                empleador.setCedula(resultSet.getString("cedula"));
+                empleador.setNombre(resultSet.getString("nombre"));
+                empleador.setApellidos(resultSet.getString("apellidos"));
+                empleador.setCorreo(resultSet.getString("correo"));
+                empleador.setTelefonoFijo(resultSet.getString("telefono_fijo"));
+                empleador.setTelefonoMovil(resultSet.getString("telefono_movil"));
+                empleador.setCedulaJuridica(resultSet.getString("cedula_juridica"));
+                empleador.setNombreEmpresa(resultSet.getString("nombre_empresa"));
+                empleador.setDireccion(resultSet.getString("direccion"));
+                empleador.setUsername(resultSet.getString("username"));
+                empleador.setPass(resultSet.getString("passwd"));
+                empleador.setUltimaActualizacion(resultSet.getDate("ultima_actualizacion"));
+            }
+        } catch (SQLException e) {
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        conexion.close();
+        return empleador;
+    }
 
     public Empleador inicioSesion(String user, String pass) throws SQLException, DataException {
         String sqlSelect = "{CALL iniciar_sesion_empleador(?,?)}";

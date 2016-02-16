@@ -247,6 +247,12 @@
             <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
+        <action name="recuperarPasswordEmpresa" method="recuperarPassword" class="Actions.RecuperarPasswordEmpresaAction">
+            <result name="input" type="dispatcher">/recursos/empresa/recuperarPassword.jsp</result>
+            <result name="error" type="dispatcher">/recursos/empresa/recuperarPassword.jsp</result>
+            <result name="success" type="dispatcher">/recursos/empresa/login.jsp</result>
+        </action>
+        
         <!--***************************SOLICITANTE*******************************************-->
         
         <action name="iniciarSesionInit" class="Actions.IniciarSesionAction">
@@ -260,6 +266,12 @@
             <result name="input" type="dispatcher">/recursos/usuarios/login.jsp</result>
             <result name="error" type="dispatcher">/recursos/usuarios/login.jsp</result>
             <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
+        </action>
+        
+        <action name="recuperarPasswordSolicitante" method="recuperarPassword" class="Actions.RecuperarPasswordAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/recuperarPassword.jsp</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/recuperarPassword.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/login.jsp</result>
         </action>
         
         <action name="insertarSolicitante" class="Actions.InsertarSolicitanteAction">

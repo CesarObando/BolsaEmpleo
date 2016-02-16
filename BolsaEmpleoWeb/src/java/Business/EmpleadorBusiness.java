@@ -53,5 +53,10 @@ public class EmpleadorBusiness {
 
     public Empleador buscarEmpleador(int id) throws SQLException, DataException {
         return empleadorData.buscarEmpleador(id);
+        
+    }
+    
+    public Empleador buscarEmpleadorPorNombreUsuario(String nombreUsuario) throws SQLException, DataException{
+        return empleadorData.buscarEmpleadorPorNombreUsuario(nombreUsuario);
     }
 }

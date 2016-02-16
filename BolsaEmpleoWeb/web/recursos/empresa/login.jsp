@@ -38,6 +38,7 @@
                                         <s:submit  align="center" action="iniciarSesionempleador" value="Iniciar Sesión" class="button-submit"/>
                                     </s:form>
                                 </center>
+                                <a href="../empresa/recuperarPassword.jsp">Recuperar la contraseña</a>
                             </s:else>
                         </div>
                     </aside>

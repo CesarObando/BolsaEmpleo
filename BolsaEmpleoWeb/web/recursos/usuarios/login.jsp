@@ -36,6 +36,7 @@
                                 <s:submit action="iniciarSesion" value="Iniciar Sesion" class="button-submit"/>
                             </s:form>
                         </center>
+                            <a href="../usuarios/recuperarPassword.jsp">Recuperar la contraseña</a>
                     </div>
                 </aside>
             </div>            
