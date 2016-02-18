@@ -9,9 +9,9 @@ and open the template in the editor.
 */
 
 .form{
-    
+
 }.form input[type='text'], .form textarea{
-    
+
     padding: 4px 6px;
     width: 450px;
     border: 1px solid #CED5D7;
@@ -107,9 +107,9 @@ and open the template in the editor.
 
 }
 .form input [type='form'] .form form{
-     border: 1px solid #CED5D7;
-     color: darkblue;
-    
+    border: 1px solid #CED5D7;
+    color: darkblue;
+
 }
 label{
     resize: none;
@@ -130,6 +130,22 @@ textarea{
     font-family: Georgia,'Times New Roman',times,serif;
     font-size: 17px;
 }
+
+.div{
+     padding: 4px 6px;
+    width: 150px;
+    height: 20px;
+    border: 1px solid #CED5D7;
+    resize: none;
+    box-shadow:0 0 0 3px #EEF5F7;
+    margin: 10px 0;
+    font-family: Georgia,'Times New Roman',times,serif;
+    font-size: 17px;
+    color: darkblue;
+    border: 10px solid #CED5D7;
+
+}
+
 
 
 .table {   

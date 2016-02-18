@@ -28,7 +28,8 @@
                                 <s:select name="canton" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>
-                            <table id="mytable" class="table">
+                           
+                            <table id="mytable" class="table" >
 
                                 <s:if test="%{servicios.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
@@ -39,7 +40,7 @@
                                     <th>Título</th>
                                     <th>Ver</th>
                                     </thead>
-                                    <tbody class="td">
+                                    <tbody class="td" >
                                         <s:iterator value="servicios" var="servicioActual">
                                             <tr class="tr">
                                                 <td><s:property value="#servicioActual.titulo"/></td>
@@ -53,10 +54,19 @@
                                             </tr>
                                         </s:iterator>
                                     </s:else>
-                                <div>
-                                </div       
+
                                 </tbody>
-                            </table>
+                            </table> 
+                            <div id="paginador" aling="center" class="div" ></div>  
+                            <script type="text/javascript">
+                                var p = new Paginador(
+                                        document.getElementById('paginador'),
+                                        document.getElementById('mytable'),
+                                        4
+                                        );
+                                p.Mostrar();
+                            </script>
+                           
                         </center>
                     </div>
                 </aside> 

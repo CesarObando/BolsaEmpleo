@@ -30,7 +30,7 @@
                                 <s:submit method="buscar" value="Buscar"/>
                             </s:form>  
 
-                            <table    class="table" >
+                            <table id="mytable"   class="table" >
 
                                 <s:if test="%{ofertas.isEmpty()}">
                                     <h2>No hay resultados que mostrar</h2>
@@ -59,6 +59,15 @@
                                 </div       
                                 </tbody>
                             </table>
+                             <div id="paginador" aling="center" class="div" ></div>  
+                            <script type="text/javascript">
+                                var p = new Paginador(
+                                        document.getElementById('paginador'),
+                                        document.getElementById('mytable'),
+                                        4
+                                        );
+                                p.Mostrar();
+                            </script>
                         </center>
                     </div>
                 </aside> 
