@@ -25,6 +25,7 @@
                         <li>
                             <a>Trabajos Independientes</a> 
                             <ul>
+                            <s:a action="buscarServiciosEmpleador" >Buscar</s:a>
                             <s:a action="insertarServicio" >Registrar</s:a>
                             <s:a action="buscarServicios" >Ver/Actualizar/Eliminar</s:a>
                             </ul>

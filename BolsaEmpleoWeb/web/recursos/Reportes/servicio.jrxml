@@ -89,7 +89,7 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 				<textElement>
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
-				<text><![CDATA[Telefono:]]></text>
+				<text><![CDATA[Telefono fijo:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="147" y="132" width="387" height="20"/>
@@ -103,7 +103,7 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 				<textElement>
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
-				<text><![CDATA[Celular:]]></text>
+				<text><![CDATA[Teléfono móvil:]]></text>
 			</staticText>
 			<textField>
 				<reportElement x="147" y="177" width="387" height="20"/>
@@ -128,14 +128,14 @@ WHERE Solicitante.id= $P{idSolicitante} and Servicio.solicitante=$P{idSolicitant
 				<textElement textAlignment="Center">
 					<font fontName="Arial Rounded MT Bold" size="14"/>
 				</textElement>
-				<text><![CDATA[Descripcion]]></text>
+				<text><![CDATA[Descripción]]></text>
 			</staticText>
 			<staticText>
 				<reportElement x="32" y="30" width="277" height="29"/>
 				<textElement textAlignment="Center">
 					<font fontName="Castellar" size="18" isBold="true" isUnderline="false"/>
 				</textElement>
-				<text><![CDATA[ServicioS que ofrece]]></text>
+				<text><![CDATA[Servicios que ofrece]]></text>
 			</staticText>
 		</band>
 	</columnHeader>
