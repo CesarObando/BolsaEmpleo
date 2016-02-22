@@ -19,6 +19,7 @@
         
         <result-types>
             <result-type name="fotoSolicitante" class="Actions.CustomImageResult" />
+            <result-type name="fotoServicio" class="Actions.CustomImageResultServicio" />
         </result-types>
         
         <action name="getImagen" class="Actions.ImagenUtilAction">
@@ -41,6 +42,17 @@
             </interceptor-ref>
             <result name="success" type="fotoSolicitante" />
             <result name="input" type="fotoSolicitante" />
+        </action>
+        
+        <action name="getImagenServicio" class="Actions.ImagenServicioAction">
+            <interceptor-ref name="defaultStack">
+                <param name="maximumSize">2097152</param>
+                <param name="allowedTypes">
+                    image/png,image/gif,image/jpeg,image/pjpeg,image/jpg
+                </param>
+            </interceptor-ref>
+            <result name="success" type="fotoServicio" />
+            <result name="input" type="fotoServicio" />
         </action>
         
         <action name="menuPrincipal">
@@ -552,8 +564,8 @@
         </action>
         
         <action  class="Actions.BuscarServiciosSolicitanteAction" name="buscarServicios">
-            <result name="input" type="dispatcher">/recursos/servicio/buscarServicios.jsp</result>
-            <result name="success" type="dispatcher">/recursos/servicio/buscarServicios.jsp</result>
+            <result name="input" type="dispatcher">/recursos/servicio/mantenerServicios.jsp</result>
+            <result name="success" type="dispatcher">/recursos/servicio/mantenerServicios.jsp</result>
         </action>
         
         <action  class="Actions.BuscarServiciosSolicitanteAction" name="buscarServiciosProcess" method="buscar">

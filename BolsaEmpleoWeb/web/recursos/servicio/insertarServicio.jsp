@@ -31,7 +31,8 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form method="post" action="insertarServicioProcess" cssClass="form" name="f1">
+                            <s:form method="post" action="insertarServicioProcess" cssClass="form" name="f1" enctype="multipart/form-data">
+                                <s:file name="archivoImagen" placeholder="Seleccione una foto para su trabajo independiente" style="width:450px"/> 
                                 <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true"/>
                                 <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true"/>
                                 <s:select name="categoria.id" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1" requiredLabel="true"/>            

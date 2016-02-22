@@ -31,7 +31,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="../empresa/verPerfilSolicitante.action" class="" >Actualizar/Eliminar perfil</a>
+                            <a href="../usuarios/verPerfilSolicitante.action" class="" >Actualizar/Eliminar perfil</a>
                         </li>
                         <li>
                         <s:url action="cerrarSesion" var="url"></s:url>

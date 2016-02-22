@@ -18,13 +18,14 @@ public class Servicio {
     private Categoria categoria;
     private String provincia;
     private String canton;
+    private byte[] foto;
 
     public Servicio() {
         solicitante = new Solicitante();
         categoria = new Categoria();
     }
 
-    public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria, String provincia, String canton) {
+    public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria, String provincia, String canton, byte[] foto) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
@@ -32,6 +33,7 @@ public class Servicio {
         this.categoria = categoria;
         this.provincia = provincia;
         this.canton = canton;
+        this.foto = foto;
     }
 
     public int getId() {
@@ -88,6 +90,14 @@ public class Servicio {
 
     public void setCanton(String canton) {
         this.canton = canton;
+    }
+
+    public byte[] getFoto() {
+        return foto;
+    }
+
+    public void setFoto(byte[] foto) {
+        this.foto = foto;
     }
 
 }

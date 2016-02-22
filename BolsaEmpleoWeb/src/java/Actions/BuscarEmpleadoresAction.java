@@ -41,11 +41,6 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
-        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
-        cedula = request.getParameter("cedula");
-        nombre = request.getParameter("nombre");
-        apellidos = request.getParameter("apellidos");
-        empleadores = empleadorBusiness.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
     }
 
     public String buscar() throws DataException {

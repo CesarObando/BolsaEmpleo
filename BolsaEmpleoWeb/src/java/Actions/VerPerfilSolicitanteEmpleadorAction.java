@@ -55,7 +55,7 @@ public class VerPerfilSolicitanteEmpleadorAction extends ActionSupport implement
 
         try {
             solicitanteAVer = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
-            sessionMap.put("solicitante", solicitanteAVer);
+            sessionMap.put("solicitanteO", solicitanteAVer);
             sessionMap.put("solicitud", solicitud);
         } catch (SQLException e) {
             existe = false;

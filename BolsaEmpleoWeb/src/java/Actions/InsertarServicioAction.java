@@ -14,9 +14,16 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -35,6 +42,9 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
     public SessionMap<String, Object> sessionMap;
     private Solicitante solicitante;
     private int idSolicitante;
+    private File archivoImagen;
+    private String imagenFileName;
+    private String imagenContentType;
 
     public InsertarServicioAction() {
     }
@@ -87,6 +97,7 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
         ServicioBusiness servicioBusiness = new ServicioBusiness();
         boolean insertado = true;
         try {
+            cargarImagen();
             servicioAInsertar.setSolicitante(solicitante);
             servicioBusiness.insertarServicio(servicioAInsertar);
         } catch (SQLException e) {
@@ -102,6 +113,22 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
             return SUCCESS;
         } else {
             return ERROR;
+        }
+    }
+    
+    public void cargarImagen() {
+        try {
+            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            BufferedImage buffer = ImageIO.read(this.archivoImagen);
+            // Creamos un stream de salida, que escriba un arreglo de bytes
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            ImageIO.write(buffer, "jpg", baos);
+            baos.flush();
+            this.servicioAInsertar.setFoto(baos.toByteArray());
+            baos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -156,6 +183,30 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
 
     public void setIdSolicitante(int idSolicitante) {
         this.idSolicitante = idSolicitante;
+    }
+
+    public File getArchivoImagen() {
+        return archivoImagen;
+    }
+
+    public void setArchivoImagen(File archivoImagen) {
+        this.archivoImagen = archivoImagen;
+    }
+
+    public String getImagenFileName() {
+        return imagenFileName;
+    }
+
+    public void setImagenFileName(String imagenFileName) {
+        this.imagenFileName = imagenFileName;
+    }
+
+    public String getImagenContentType() {
+        return imagenContentType;
+    }
+
+    public void setImagenContentType(String imagenContentType) {
+        this.imagenContentType = imagenContentType;
     }
 
 }

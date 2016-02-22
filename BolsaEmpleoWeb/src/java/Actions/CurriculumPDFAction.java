@@ -37,14 +37,14 @@ public class CurriculumPDFAction extends ActionSupport implements Preparable, Mo
     public void prepare() throws Exception {
         existe = true;
 
-        solicitanteAVer = (Solicitante) sessionMap.get("solicitante");
+        solicitanteAVer = (Solicitante) sessionMap.get("solicitanteO");
 
     }
 
     public String reportePDF() throws SQLException, IOException {
         BaseData bas = new BaseData();
         setConexion(bas.getConnection());
-        solicitanteAVer = (Solicitante) sessionMap.get("solicitante");
+        solicitanteAVer = (Solicitante) sessionMap.get("solicitanteO");
         parametros = new HashMap();
         parametros.put("idSolicitante", solicitanteAVer.getId());
         return SUCCESS;

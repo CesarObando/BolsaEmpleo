@@ -31,8 +31,10 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form method="post" action="editarServicioProcess" cssClass="form" name="f1">
+                            <s:form method="post" action="editarServicioProcess" cssClass="form" name="f1" enctype="multipart/form-data">
                                 <s:hidden name="id"/>
+                                <img src="<s:url action="getImagenServicio" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
+                                <s:file name="archivoImagen" label="Foto" style="width:450px"/>
                                 <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true" label="Nombre"/>
                                 <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true" label="Descripción"/>
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true" label="Categoría"/>            

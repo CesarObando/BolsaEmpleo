@@ -33,6 +33,7 @@
                         <center>
                             <s:form method="post" action="verServicioProcess" cssClass="form">
                                 <s:hidden name="id"/>
+                                <img src="<s:url action="getImagenServicio" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                                 <s:textfield name="titulo" readonly="true" label="Nombre"/>
                                 <s:textarea name="descripcion" readonly="true" label="Descripción"/>
                                 <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>

@@ -54,8 +54,7 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
         solicitante = (Solicitante) sessionMap.get("solicitante");
         solicitante = (Solicitante) request.getSession().getAttribute("solicitante");
         idSolicitante = solicitante.getId();
-        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.categorias = categoriaBusiness.getCategorias();
+        servicios = new ServicioBusiness().buscarServiciosPorSolicitante(-1, "", idSolicitante, "", "");
     }
 
     public String buscar() throws DataException {

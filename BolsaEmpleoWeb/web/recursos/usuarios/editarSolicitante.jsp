@@ -37,7 +37,7 @@
                                 <s:textfield name="nombre" placeholder="Ingresa tu nombre" type="text" requiredLabel="true" label="Nombre"/>
                                 <s:textfield name="apellidos" placeholder="Ingresa tus apellidos" type="text" requiredLabel="true" label="Apellidos"/>
                                 <img src="<s:url action="getImagen" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
-                                <s:file name="archivoImagen" label="Foto"/>
+                                <s:file name="archivoImagen" label="Foto" style="width:450px"/>
                                 <s:textfield name="edad" placeholder="Ingresa tu edad" type="number" requiredLabel="true" label="Edad"/>
                                 <s:select requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="sexo" headerValue="sexo" label="Género"/>
                                 <s:select requiredLabel="true" label="Escolaridad" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="escolaridad" headerValue="escolaridad"/>

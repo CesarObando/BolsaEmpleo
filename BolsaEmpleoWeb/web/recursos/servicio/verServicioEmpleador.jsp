@@ -13,7 +13,12 @@
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
                 <c:if test="${sessionScope.empleador == null}">
-                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                    <c:if test="${sessionScope.solicitante == null}">
+                        <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                    </c:if>
+                    <c:if test="${sessionScope.solicitante != null}">
+                        <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                    </c:if>
                 </c:if>
 
                 <c:if test="${sessionScope.empleador != null}">
@@ -38,6 +43,7 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="reporteServicio" cssClass="form">
+                                <img src="<s:url action="getImagenServicio" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                                 <s:textfield name="titulo" readonly="true" label="Nombre"/>
                                 <s:textfield name="solicitante.nombre" readonly="true" label="Nombre del solicitante"/>
                                 <s:textfield name="solicitante.apellidos" readonly="true" label="Apellidos"/>

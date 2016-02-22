@@ -15,9 +15,16 @@ import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
+import java.awt.image.BufferedImage;
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.IOException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.imageio.ImageIO;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -35,6 +42,9 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
     private HttpServletRequest request;
     private boolean existe;
     private SessionMap<String, Object> sessionMap;
+    private File archivoImagen;
+    private String archivoImagenContentType;
+    private String archivoImagenFileName;
 
     public EditarServicioAction() {
     }
@@ -91,6 +101,9 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
         ServicioBusiness servicioBusiness = new ServicioBusiness();
         boolean editado = true;
         try {
+            if (this.archivoImagen != null) {
+                cargarImagen();
+            }
             servicioBusiness.editarServicio(servicioAEditar);
         } catch (SQLException e) {
             editado = false;
@@ -105,6 +118,23 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
             return SUCCESS;
         } else {
             return ERROR;
+        }
+    }
+    
+    private void cargarImagen() {
+        try {
+            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            BufferedImage buffer = ImageIO.read(this.archivoImagen);
+            // Creamos un stream de salida, que escriba un arreglo de bytes
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            ImageIO.write(buffer, "jpg", baos);
+            baos.flush();
+            // A nuestra instancia de Producto2 le asignamos la archivoImagen
+            this.servicioAEditar.setFoto(baos.toByteArray());
+            baos.close();
+        } catch (IOException ex) {
+            Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -151,6 +181,30 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
 
     public void setCategorias(LinkedList<Categoria> categorias) {
         this.categorias = categorias;
+    }
+
+    public File getArchivoImagen() {
+        return archivoImagen;
+    }
+
+    public void setArchivoImagen(File archivoImagen) {
+        this.archivoImagen = archivoImagen;
+    }
+
+    public String getArchivoImagenContentType() {
+        return archivoImagenContentType;
+    }
+
+    public void setArchivoImagenContentType(String archivoImagenContentType) {
+        this.archivoImagenContentType = archivoImagenContentType;
+    }
+
+    public String getArchivoImagenFileName() {
+        return archivoImagenFileName;
+    }
+
+    public void setArchivoImagenFileName(String archivoImagenFileName) {
+        this.archivoImagenFileName = archivoImagenFileName;
     }
 
 }

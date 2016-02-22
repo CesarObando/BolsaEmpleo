@@ -48,35 +48,7 @@ public class BuscarSolicitudesAdministradorAction extends ActionSupport implemen
     @Override
     public void prepare() throws Exception {
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
-        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
-        OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         this.categorias = categoriaBusiness.getCategorias();
-        puesto = "";
-        categoria = -1;
-        if (request.getParameter("categoria.id") != null) {
-            categoria = Integer.parseInt(request.getParameter("categoria.id"));
-        }
-        if (request.getParameter("puesto") != null) {
-            puesto = request.getParameter("puesto");
-        }
-        solicitudes = solicitudBusiness.getOfertasPorCategorias(categoria, puesto);
-
-        for (int i = 0; i < solicitudes.size(); i++) {
-            Solicitud solicitud = solicitudes.get(i);
-            int idSolicitante = solicitud.getSolicitante().getId();
-            int idOferta = solicitud.getOferta().getId();
-            Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
-            Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
-            int idEmpleador = oferta.getEmpleador().getId();
-            Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
-            oferta.setEmpleador(empleador);
-            solicitud.setSolicitante(solicitante);
-            solicitud.setOferta(oferta);
-            solicitudes.set(i, solicitud);
-        }
-
     }
 
     public String buscar() throws DataException {

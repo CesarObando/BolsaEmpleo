@@ -35,10 +35,6 @@ public class BuscarCategoriasAction extends ActionSupport implements Preparable,
 
     @Override
     public void prepare() throws Exception {
-        CategoriaBusiness categoriaBuss = new CategoriaBusiness();
-        nombre = request.getParameter("nombre");
-        categorias = categoriaBuss.getCategoriasFiltradas(nombre);
-
     }
 
     public String buscar() throws DataException {

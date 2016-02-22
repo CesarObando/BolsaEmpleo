@@ -46,35 +46,7 @@ public class BuscarServiciosEmpleadorAction extends ActionSupport implements Pre
     @Override
     public void prepare() throws Exception {
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        ServicioBusiness servicioBusiness = new ServicioBusiness();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         this.categorias = categoriaBusiness.getCategorias();
-        titulo = "";
-        categoria = -1;
-        provincia = "";
-        canton = "";
-        if (request.getParameter("categoria.id") != null) {
-            categoria = Integer.parseInt(request.getParameter("categoria.id"));
-        }
-        if (request.getParameter("provincia") != null) {
-            provincia = request.getParameter("provincia");
-        }
-        if (request.getParameter("canton") != null) {
-            canton = request.getParameter("canton");
-        }
-        if (request.getParameter("titulo") != null) {
-            titulo = request.getParameter("titulo");
-        }
-        servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
-
-        for (int i = 0; i < servicios.size(); i++) {
-            Servicio servicio = servicios.get(i);
-            int idSolicitante = servicio.getSolicitante().getId();
-            Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
-            servicio.setSolicitante(solicitante);
-            servicios.set(i, servicio);
-        }
-
     }
 
     public String buscar() throws DataException {

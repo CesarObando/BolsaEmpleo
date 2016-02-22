@@ -6,20 +6,16 @@
 package Actions;
 
 import Business.SolicitanteBusiness;
-import Dominio.Empleador;
 import Dominio.Solicitante;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
-import java.util.Collection;
-import java.util.Collections;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
-import Utilitarios.EnviarCorreos;
 
 /**
  *

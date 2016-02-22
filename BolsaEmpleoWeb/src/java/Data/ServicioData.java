@@ -21,7 +21,7 @@ public class ServicioData extends BaseData {
 
     public Servicio insertarServicio(Servicio servicio) throws SQLException {
         Connection conexion = super.getConnection();
-        String sqlInsert = "{CALL insertar_servicio(?,?,?,?,?,?,?)}";
+        String sqlInsert = "{CALL insertar_servicio(?,?,?,?,?,?,?,?)}";
         CallableStatement statement = conexion.prepareCall(sqlInsert);
         conexion.setAutoCommit(false);
         //cargamos el statement con la informacion nueva
@@ -33,6 +33,7 @@ public class ServicioData extends BaseData {
             statement.setInt(5, servicio.getCategoria().getId());
             statement.setString(6, servicio.getProvincia());
             statement.setString(7, servicio.getCanton());
+            statement.setBytes(8, servicio.getFoto());
             statement.executeUpdate();
             servicio.setId(statement.getInt(1));
             conexion.commit();
@@ -45,7 +46,7 @@ public class ServicioData extends BaseData {
     }
 
     public void editarServicio(Servicio servicio) throws SQLException {
-        String sqlEditar = "{CALL editar_servicio(?,?,?,?,?,?)}";
+        String sqlEditar = "{CALL editar_servicio(?,?,?,?,?,?,?)}";
         Connection conexion = this.getConnection();
         conexion.setAutoCommit(false);
         try {
@@ -56,6 +57,7 @@ public class ServicioData extends BaseData {
             statement.setInt(4, servicio.getCategoria().getId());
             statement.setString(5, servicio.getProvincia());
             statement.setString(6, servicio.getCanton());
+            statement.setBytes(7, servicio.getFoto());
             statement.executeUpdate();
             conexion.commit();
         } catch (SQLException e) {
@@ -98,6 +100,7 @@ public class ServicioData extends BaseData {
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
             servicio.setProvincia(resultSet.getString("provincia"));
             servicio.setCanton(resultSet.getString("canton"));
+            servicio.setFoto(resultSet.getBytes("foto"));
             servicios.add(servicio);
         }
         return servicios;
@@ -123,6 +126,7 @@ public class ServicioData extends BaseData {
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
             servicio.setProvincia(resultSet.getString("provincia"));
             servicio.setCanton(resultSet.getString("canton"));
+            servicio.setFoto(resultSet.getBytes("foto"));
             servicios.add(servicio);
         }
         return servicios;
@@ -148,6 +152,7 @@ public class ServicioData extends BaseData {
             servicio.getCategoria().setId(resultSet.getInt("categoria"));
             servicio.setProvincia(resultSet.getString("provincia"));
             servicio.setCanton(resultSet.getString("canton"));
+            servicio.setFoto(resultSet.getBytes("foto"));
             servicios.add(servicio);
         }
         return servicios;
@@ -169,6 +174,7 @@ public class ServicioData extends BaseData {
                 servicio.getCategoria().setId(resultSet.getInt("categoria"));
                 servicio.setProvincia(resultSet.getString("provincia"));
                 servicio.setCanton(resultSet.getString("canton"));
+                servicio.setFoto(resultSet.getBytes("foto"));
             }
         } catch (SQLException e) {
             throw new DataException("Ha ocurrido un error con la base de datos");

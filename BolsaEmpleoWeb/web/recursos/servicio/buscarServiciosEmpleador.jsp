@@ -13,7 +13,12 @@
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
                 <c:if test="${sessionScope.empleador == null}">
-                    <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                    <c:if test="${sessionScope.solicitante == null}">
+                        <jsp:include page="../recursosReusables/menuPrincipal.jsp"/>
+                    </c:if>
+                    <c:if test="${sessionScope.solicitante != null}">
+                        <jsp:include page="../recursosReusables/menuSolicitante.jsp"/>
+                    </c:if>
                 </c:if>
 
                 <c:if test="${sessionScope.empleador != null}">

@@ -63,7 +63,7 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
         servicioAVer.setCategoria(categoria);
         servicioAVer.setSolicitante(solicitante);
         sessionMap.put("servicio", servicioAVer);
-        sessionMap.put("solicitante", solicitante);
+        sessionMap.put("solicitanteO", solicitante);
     }
 
     @Override
