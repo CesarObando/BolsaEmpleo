@@ -7,6 +7,7 @@ package Business;
 
 import Data.OfertaData;
 import Dominio.Oferta;
+import Dominio.Solicitante;
 import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
@@ -26,6 +27,14 @@ public class OfertaBusiness {
     public Oferta insertaOferta(Oferta oferta) throws SQLException {
         return ofertaData.insertarOferta(oferta);
 
+    }
+    
+    public void insertaOfertaFavorita(Oferta oferta, Solicitante solicitante) throws SQLException {
+        ofertaData.insertarOfertaFavorita(oferta, solicitante);
+    }
+    
+    public boolean buscarOfertaFavorita(Oferta oferta, Solicitante solicitante) throws SQLException{
+        return ofertaData.buscarOfertaFavorita(oferta, solicitante);
     }
 
     public void editarOferta(Oferta oferta) throws SQLException {

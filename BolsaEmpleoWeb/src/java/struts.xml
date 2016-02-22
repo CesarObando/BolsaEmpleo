@@ -431,10 +431,27 @@
             <result name="success" type="dispatcher">/recursos/administrador/principalAdministrador.jsp</result>
         </action>
         
+        <action name="marcarOfertaFavorita" class="Actions.VerOfertaSolicitanteAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+        </action>
+        
+        <action name="marcarOfertaFavoritaProcess" method="marcarOfertaFavorita" class="Actions.VerOfertaSolicitanteAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
+        </action>
+        
+        
         <!--***************************SOLICITUD*******************************************-->
         
         <action name="insertarSolicitud" class="Actions.VerOfertaSolicitanteAction">
             <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+        </action>
+        
+        <action name="insertarSolicitudProcess" method="solicitar" class="Actions.VerOfertaSolicitanteAction">
+            <result name="input" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+            <result name="error" type="dispatcher">/recursos/usuarios/verOfertaSolicitante.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/principalSolicitante.jsp</result>
         </action>
         
         <action name="insertarSolicitudProcess" method="solicitar" class="Actions.VerOfertaSolicitanteAction">

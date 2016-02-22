@@ -31,6 +31,7 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
     private Oferta ofertaAVer;
     private String mensaje;
     private boolean existe;
+    private boolean insertado;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
 
@@ -49,9 +50,15 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
     @Override
     public void prepare() throws Exception {
         existe = true;
-        int idOferta = Integer.parseInt(request.getParameter("id"));
+        int idOferta;
         try {
-            ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+            if (request.getParameter("id") != null) {
+                idOferta = Integer.parseInt(request.getParameter("id"));
+                ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+                if (sessionMap.get("solicitante") != null) {
+                    insertado = new OfertaBusiness().buscarOfertaFavorita(ofertaAVer, (Solicitante) sessionMap.get("solicitante"));
+                }
+            }
         } catch (SQLException e) {
             existe = false;
         }
@@ -67,6 +74,9 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
         try {
             solicitante = (Solicitante) sessionMap.get("solicitante");
             solicitud.setSolicitante(solicitante);
+            if (request.getParameter("salario1") != null) {
+                ofertaAVer.setSalario(0);
+            }
             solicitud.setOferta(ofertaAVer);
             solicitudBusiness.insertarSolicitud(solicitud);
         } catch (SQLException e) {
@@ -81,6 +91,24 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
+            return ERROR;
+        }
+    }
+
+    public String marcarOfertaFavorita() throws SQLException, DataException {
+        OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        Solicitante solicitante = new Solicitante();
+        int idOferta = Integer.parseInt(request.getParameter("id"));
+        ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+        try {
+            solicitante = (Solicitante) sessionMap.get("solicitante");
+            ofertaBusiness.insertaOfertaFavorita(ofertaAVer, solicitante);
+            return SUCCESS;
+        } catch (SQLException e) {
+            insertado = false;
+            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            sessionMap.put("mensaje", mensaje);
+            addActionError(mensaje);
             return ERROR;
         }
     }
@@ -130,6 +158,14 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    public boolean isInsertado() {
+        return insertado;
+    }
+
+    public void setInsertado(boolean insertado) {
+        this.insertado = insertado;
     }
 
 }

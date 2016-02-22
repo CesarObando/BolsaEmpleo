@@ -29,7 +29,7 @@
             for (var i = 1; i < this.tabla.rows.length; i++)
             {
                 if (i < min || i > max)
-                    this.tabla.rows[i].style.display = 'none';
+                    this.tabla.rows[i].style.display = 'No hay registros para mostrar';
                 else
                     this.tabla.rows[i].style.display = '';
             }

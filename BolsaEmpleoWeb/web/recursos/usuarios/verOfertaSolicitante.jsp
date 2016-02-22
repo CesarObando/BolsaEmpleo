@@ -44,7 +44,7 @@
                                 <s:textfield name="empleador.apellidos" readonly="true" label="Apellidos"/>
                                 <s:textfield name="empleador.nombreEmpresa" readonly="true" label="Nombre de la empresa"/>
                                 <s:if test="salario==0">
-                                    <s:textfield name="salario" value="No especificado" label="Salario" readonly="true"/>
+                                    <s:textfield name="salario1" value="No especificado" label="Salario" readonly="true"/>
                                 </s:if>
                                 <s:else>
                                     <s:textfield name="salario" readonly="true" label="Salario"/>
@@ -57,6 +57,19 @@
                                 <s:textfield name="canton" readonly="true" label="Cantón"/>
                                 <c:if test="${sessionScope.solicitante != null}">
                                     <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
+
+                                </c:if>
+                            </s:form>
+                            <s:form method="post" action="marcarOfertaFavoritaProcess" cssClass="form">
+                                <s:hidden name="id"/>
+                                <c:if test="${sessionScope.solicitante != null}">
+                                    <c:if test="${insertado == true}">
+
+                                        <s:submit value="Desmarcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox1();"/>
+                                    </c:if>
+                                    <c:if test="${insertado == false}">
+                                        <s:submit value="Marcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox2();"/>
+                                    </c:if>
                                 </c:if>
                             </s:form>
                             <c:if test="${sessionScope.solicitante != null}">
@@ -64,7 +77,7 @@
                             </c:if>
                             <c:if test="${sessionScope.solicitante == null}">
                                 <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
-                                <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
+                                    <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>
 
                         </center>
@@ -72,6 +85,31 @@
                             function confirmBox() {
                                 var answer;
                                 answer = window.confirm("¿Desea registrar la solicitud?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+
+                        </script>
+                        <script>
+                            function confirmBox1() {
+                                var answer;
+                                answer = window.confirm("¿Desea desmarcar al solicitante como favorito?");
+                                if (answer == true) {
+                                    return true;
+                                }
+                                else {
+                                    return false;
+                                }
+                            }
+                        </script>
+                        <script>
+                            function confirmBox2() {
+                                var answer;
+                                answer = window.confirm("¿Desea marcar al solicitante como favorito?");
                                 if (answer == true) {
                                     return true;
                                 }

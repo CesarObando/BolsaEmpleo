@@ -36,17 +36,18 @@
                     <div class="grid-9 region-content" id="region-content">
                         <h1 class="h1">Bolsa de Empleo</h1><br>
                         <br><br><br><h2 class="h2">¿Quiénes somos?</h2><br><br>
-                        <br><p>Somos un grupo de estudiantes de la Universidad de Costa Rica que se encarga de realizar, ofrecer y mantener este servicio
-                            de bolsa de empleo perteneciente al Trabajo Comunal de dicha institución.</p>
+                        <br><p>Somos un grupo de estudiantes de la Universidad de Costa Rica del Recinto de Paraiso que se encarga de realizar, ofrecer y mantener este servicio
+                            de bolsa de empleo perteneciente al Trabajo Comunal de dicha institución. Con la idea de ofrecer un espacio virtual que permita visualizar las ofertas 
+                            laborales ofrecidas por distintas empresas y personas que ofrecen servicios o trabajos independientes</p>
                         <h2 class="h2">Misión</h2><br><br>
-                        <br><p>Ofrecer el servicio de bolsa de empleo a personas de toda la comunidad incluyendo tanto profesionales como no profesionales.</p>
+                        <br><p>Ser facilitadores del servicio de bolsa de empleo a personas de toda la comunidad incluyendo tanto profesionales como no profesionales.</p>
                         <h2 class="h2">Visión</h2><br><br>
                         <br><p>Facilitar a los usuarios el proceso de buscar empleo y ofrecer sus servicios como trabajadores independientes.</p>
                         <center><img src="../imagenes/tcu.jpg" id="logo" style="width: 200px;height: 200px"/><br><br>
                             <br><h3 class="h3">Elaborado por:</h3><br>
                             <p>Jonathan Bonilla Umaña</p>
                             <p>Agustín Camacho Mora</p>
-                            <p>Cesar Obando Solano</p></center>
+                            <p>César Obando Solano</p></center>
                     </div>
                 </aside>
             </div>            

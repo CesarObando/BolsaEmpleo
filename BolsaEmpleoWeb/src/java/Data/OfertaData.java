@@ -10,6 +10,7 @@ import Business.EmpleadorBusiness;
 import Dominio.Categoria;
 import Dominio.Empleador;
 import Dominio.Oferta;
+import Dominio.Solicitante;
 import Exception.DataException;
 import java.sql.CallableStatement;
 import java.sql.Connection;
@@ -54,6 +55,39 @@ public class OfertaData extends BaseData {
         conexion.close();
 
         return newOferta;
+    }
+    
+    public void insertarOfertaFavorita(Oferta oferta, Solicitante solicitante) throws SQLException {
+        Connection conexion = super.getConnection();
+        String sqlInsert = "{CALL insertar_oferta_favorita(?,?)}";
+        CallableStatement statement = conexion.prepareCall(sqlInsert);
+
+        conexion.setAutoCommit(false);
+        try {
+            statement.setInt(1, oferta.getId());
+            statement.setInt(2, solicitante.getId());
+            statement.executeUpdate();
+            conexion.commit();
+        } catch (SQLException e) {
+            conexion.rollback();
+            throw e;
+        }
+        conexion.close();
+    }
+    
+    public boolean buscarOfertaFavorita(Oferta oferta, Solicitante solicitante) throws SQLException{
+        String sqlBuscarOferta = "{CALL buscar_oferta_favorita(?,?)}";
+        Connection conexion = this.getConnection();
+        try {
+            CallableStatement statement = conexion.prepareCall(sqlBuscarOferta);
+            statement.setInt(1, oferta.getId());
+            statement.setInt(2, solicitante.getId());
+            ResultSet result = statement.executeQuery();
+            return result.next();
+        } catch (SQLException e) {
+            conexion.rollback();
+            throw e;
+        }
     }
 
     public void editarOferta(Oferta oferta) throws SQLException {
