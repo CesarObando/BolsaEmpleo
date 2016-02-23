@@ -57,10 +57,9 @@
                                 <s:textfield name="canton" readonly="true" label="Cantón"/>
                                 <c:if test="${sessionScope.solicitante != null}">
                                     <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
-
                                 </c:if>
                             </s:form>
-                            <s:form method="post" action="marcarOfertaFavoritaProcess" cssClass="form">
+                            <s:form method="post" action="marcarOfertaFavoritaProcess" cssClass="form" style="float: right">
                                 <s:hidden name="id"/>
                                 <c:if test="${sessionScope.solicitante != null}">
                                     <c:if test="${insertado == true}">
@@ -72,6 +71,7 @@
                                     </c:if>
                                 </c:if>
                             </s:form>
+                            <br><br><br>
                             <c:if test="${sessionScope.solicitante != null}">
                                 <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>

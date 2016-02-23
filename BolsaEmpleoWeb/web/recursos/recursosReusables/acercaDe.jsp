@@ -37,8 +37,8 @@
                         <h1 class="h1">Bolsa de Empleo</h1><br>
                         <br><br><br><h2 class="h2">¿Quiénes somos?</h2><br><br>
                         <br><p>Somos un grupo de estudiantes de la Universidad de Costa Rica del Recinto de Paraiso que se encarga de realizar, ofrecer y mantener este servicio
-                            de bolsa de empleo perteneciente al Trabajo Comunal de dicha institución. Con la idea de ofrecer un espacio virtual que permita visualizar las ofertas 
-                            laborales ofrecidas por distintas empresas y personas que ofrecen servicios o trabajos independientes</p>
+                            de bolsa de empleo perteneciente al Trabajo Comunal de dicha institución. Esto con la idea de ofrecer un espacio virtual que permita visualizar las ofertas 
+                            laborales ofrecidas por distintas empresas y personas que ofrecen servicios o trabajos independientes.</p>
                         <h2 class="h2">Misión</h2><br><br>
                         <br><p>Ser facilitadores del servicio de bolsa de empleo a personas de toda la comunidad incluyendo tanto profesionales como no profesionales.</p>
                         <h2 class="h2">Visión</h2><br><br>

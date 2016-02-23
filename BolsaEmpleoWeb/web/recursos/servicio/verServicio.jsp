@@ -41,8 +41,8 @@
                                 <s:textfield name="canton" readonly="true" label="Cantón"/>
                             </s:form>
                         </center>
-                        <a href="../servicio/editarServicio.action" class="">Editar</a>
-                        <a href="../servicio/eliminarServicioProcess.action" class="" onclick="return confirmBox();">Eliminar</a>
+                            <a href="../servicio/editarServicio.action" class="" style="background: transparent">Editar</a>
+                            <a href="../servicio/eliminarServicioProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Eliminar</a>
 
                     </div>
                     <script>
