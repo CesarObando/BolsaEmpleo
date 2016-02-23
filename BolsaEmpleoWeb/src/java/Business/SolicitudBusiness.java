@@ -38,6 +38,10 @@ public class SolicitudBusiness {
     public LinkedList<Solicitud> buscarSolicitudes() throws SQLException {
         return solicitudData.buscarSolicitudes();
     }
+    
+    public LinkedList<Solicitud> buscarSolicitudesFavoritas(int oferta) throws SQLException {
+        return solicitudData.buscarSolicitudesFavoritas(oferta);
+    }
 
     public LinkedList<Solicitud> buscarSolicitudesFiltradas(int solicitante, int oferta) throws SQLException {
         return solicitudData.buscarSolicitudesFiltradas(solicitante, oferta);

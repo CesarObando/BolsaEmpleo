@@ -86,11 +86,30 @@ public class SolicitudData extends BaseData {
             solicitudActual.setId(resultSet.getInt("id"));
             solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
             solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
+            solicitudActual.setFavorito(resultSet.getBoolean("favorito"));
             solicitudes.add(solicitudActual);
         }
         return solicitudes;
     }
 
+    public LinkedList<Solicitud> buscarSolicitudesFavoritas(int oferta) throws SQLException {
+        String sqlBuscarSolicitudes = "{CALL buscar_solicitudes_favoritas(?)}";
+        Connection conexion = this.getConnection();
+        CallableStatement statement = conexion.prepareCall(sqlBuscarSolicitudes);
+        statement.setInt(1, oferta);
+        ResultSet resultSet = statement.executeQuery();
+        LinkedList<Solicitud> solicitudes = new LinkedList<Solicitud>();
+        while (resultSet.next()) {
+            Solicitud solicitudActual = new Solicitud();
+            solicitudActual.setId(resultSet.getInt("id"));
+            solicitudActual.getSolicitante().setId(resultSet.getInt("solicitante"));
+            solicitudActual.getOferta().setId(resultSet.getInt("oferta"));
+            solicitudActual.setFavorito(resultSet.getBoolean("favorito"));
+            solicitudes.add(solicitudActual);
+        }
+        return solicitudes;
+    }
+    
     public LinkedList<Solicitud> buscarSolicitudesFiltradas(int solicitante, int oferta) throws SQLException {
         String sqlBuscarSolicitudesFiltradas = "{CALL buscar_solicitudes_filtradas(?,?)}";
         Connection conexion = this.getConnection();

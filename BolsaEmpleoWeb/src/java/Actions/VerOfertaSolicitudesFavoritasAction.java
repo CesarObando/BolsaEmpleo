@@ -11,7 +11,6 @@ import Business.SolicitudBusiness;
 import Dominio.Oferta;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
-import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
@@ -19,8 +18,6 @@ import com.opensymphony.xwork2.Preparable;
 import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.Map;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
@@ -30,7 +27,7 @@ import org.apache.struts2.interceptor.SessionAware;
  *
  * @author Tin
  */
-public class VerOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
+public class VerOfertaSolicitudesFavoritasAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
     private Oferta ofertaAVer;
     private LinkedList<Solicitud> solicitudes;
@@ -38,9 +35,8 @@ public class VerOfertaAction extends ActionSupport implements SessionAware, Prep
     private boolean existe;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
-    private int idOferta;
 
-    public VerOfertaAction() {
+    public VerOfertaSolicitudesFavoritasAction() {
     }
 
     @Override
@@ -55,9 +51,9 @@ public class VerOfertaAction extends ActionSupport implements SessionAware, Prep
     @Override
     public void prepare() throws Exception {
         existe = true;
-        idOferta = Integer.parseInt(request.getParameter("id"));
+        int idOferta = Integer.parseInt(request.getParameter("id"));
         try {
-            solicitudes = new SolicitudBusiness().buscarSolicitudesFiltradas(0, idOferta);
+            solicitudes = new SolicitudBusiness().buscarSolicitudesFavoritas(idOferta);
             for (int i = 0; i < solicitudes.size(); i++) {
                 Solicitud solicitud = new Solicitud();
                 solicitud = solicitudes.get(i);
@@ -70,24 +66,6 @@ public class VerOfertaAction extends ActionSupport implements SessionAware, Prep
             sessionMap.put("oferta", ofertaAVer);
         } catch (SQLException e) {
             existe = false;
-        }
-    }
-
-    public String buscarSolicitudesFavoritas() throws SQLException {
-        try {
-            solicitudes = new SolicitudBusiness().buscarSolicitudesFavoritas(Integer.parseInt(request.getParameter("id")));
-            for (int i = 0; i < solicitudes.size(); i++) {
-                Solicitud solicitud = new Solicitud();
-                solicitud = solicitudes.get(i);
-                Solicitante solicitante = new Solicitante();
-                solicitante = new SolicitanteBusiness().buscarSolicitante(solicitud.getSolicitante().getId());
-                solicitud.setSolicitante(solicitante);
-                solicitudes.set(i, solicitud);
-            }
-            return SUCCESS;
-        } catch (DataException ex) {
-            Logger.getLogger(VerOfertaAction.class.getName()).log(Level.SEVERE, null, ex);
-            return ERROR;
         }
     }
 
@@ -144,14 +122,6 @@ public class VerOfertaAction extends ActionSupport implements SessionAware, Prep
     @Override
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
-    }
-
-    public int getIdOferta() {
-        return idOferta;
-    }
-
-    public void setIdOferta(int idOferta) {
-        this.idOferta = idOferta;
     }
 
 }

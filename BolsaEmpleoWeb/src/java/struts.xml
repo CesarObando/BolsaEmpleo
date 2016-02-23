@@ -411,6 +411,11 @@
             <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
         </action>
         
+        <action class="Actions.VerOfertaAction" name="verSolicitudesFavoritas" method="buscarSolicitudesFavoritas">
+            <result type="dispatcher" name="input">/recursos/Ofertas/verOferta.jsp</result>
+            <result type="dispatcher" name="success">/recursos/Ofertas/verOferta.jsp</result>
+        </action>
+        
         <action  class="Actions.BuscarOfertasSolicitanteAction" name="buscarOfertasSolicitante">
             <result name="input" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
             <result name="success" type="dispatcher">/recursos/usuarios/buscarOfertasSolicitante.jsp</result>
