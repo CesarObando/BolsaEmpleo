@@ -50,6 +50,16 @@
                         </center>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
                         <a href="../Ofertas/eliminarOfertaProcess.action" class="" onclick="return confirmBox();">Eliminar Oferta</a>
+                        <br><br>
+                        <s:url action="verSolicitudesFavoritas" var="url">
+                            <s:param name="id" value="id"/>
+                        </s:url>
+                        <a href='<s:property value="#url"/>' class="">Ver solicitudes favoritas</a>
+                        <br>
+                        <s:url action="verOferta" var="url">
+                            <s:param name="id" value="id"/>
+                        </s:url>
+                        <a href='<s:property value="#url"/>' class="">Ver todas las solicitudes</a>
                         <script>
                             function confirmBox() {
                                 var answer;

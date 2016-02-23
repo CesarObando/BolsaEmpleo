@@ -17,7 +17,7 @@
                         </li>
                     </c:if>
                     <li>
-                        <a>Buscar Ofertas</a>
+                        <a>Ofertas</a>
                         <ul>
                             <s:a action="buscarOfertasSolicitante" >Buscar Ofertas</s:a>
                             <s:a action="buscarOfertasFavoritasProcess" >Ofertas Favoritas</s:a>

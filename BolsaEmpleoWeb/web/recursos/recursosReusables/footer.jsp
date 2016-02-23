@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
 <!DOCTYPE html>
 <div id="zone-footer-wrapper" class="zone-wrapper zone-footer-wrapper clearfix">  
     <div id="zone-footer" class="zone zone-footer clearfix container-12">
@@ -29,7 +30,7 @@
                                     <div class="views-field views-field-changed">    
                                         <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">23/2/2015 - 9:30</span>
                                         <c:if test="${sessionScope.administrador != null}">
-                                            <span class="views-label views-label-changed">Numero de visitas a la pagina:</span><span class="field-content">${sessionScope.numeroVisitas}</span>
+                                            <br><span class="views-label views-label-changed">Numero de visitas a la pagina:</span><span class="field-content">${sessionScope.numeroVisitas}</span>
                                         </c:if>
                                     </div>  
                                 </div>
