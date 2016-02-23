@@ -36,6 +36,10 @@ public class OfertaBusiness {
     public boolean buscarOfertaFavorita(Oferta oferta, Solicitante solicitante) throws SQLException{
         return ofertaData.buscarOfertaFavorita(oferta, solicitante);
     }
+    
+     public LinkedList<Oferta> buscarOfertasFavoritas(Solicitante solicitante) throws SQLException, DataException{
+         return ofertaData.buscarOfertasFavoritas(solicitante);
+     }
 
     public void editarOferta(Oferta oferta) throws SQLException {
 

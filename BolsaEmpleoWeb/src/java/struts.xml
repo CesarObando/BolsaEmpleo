@@ -420,6 +420,11 @@
             <result name="buscarOfertasSolicitante" type="dispatcher">/recursos/usuarios/verOfertas.jsp</result>
         </action>
         
+        <action  class="Actions.BuscarOfertasFavoritasAction" name="buscarOfertasFavoritasProcess" method="buscar">
+            <result name="buscarOfertasFavoritas" type="dispatcher">/recursos/usuarios/verOfertasFavoritas.jsp</result>
+            <result name="success" type="dispatcher">/recursos/usuarios/verOfertasFavoritas.jsp</result>
+        </action>
+        
         <action class="Actions.VerOfertaSolicitanteAction" name="verOfertaSolicitante">
             <result type="dispatcher" name="input">/recursos/usuarios/verOfertaSolicitante.jsp</result>
         </action>

@@ -89,6 +89,20 @@ public class OfertaData extends BaseData {
             throw e;
         }
     }
+    
+    public LinkedList<Oferta> buscarOfertasFavoritas(Solicitante solicitante) throws SQLException, DataException{
+        String sqlBuscarOferta = "{CALL buscar_ofertas_favoritas(?)}";
+        Connection conexion = this.getConnection();
+            CallableStatement statement = conexion.prepareCall(sqlBuscarOferta);
+            statement.setInt(1, solicitante.getId());
+            ResultSet result = statement.executeQuery();
+            LinkedList<Oferta> ofertas = new LinkedList<Oferta>();
+        while (result.next()) {
+            ofertas.add(buscarOferta(result.getInt("id_oferta")));
+        }
+        return ofertas;
+        
+    }
 
     public void editarOferta(Oferta oferta) throws SQLException {
         String sqlEditar = "{CALL editar_oferta(?,?,?,?,?,?,?,?)}";
