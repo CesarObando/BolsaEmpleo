@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
+	<queryString language="SQL">
+		<![CDATA[SELECT
+     Oferta."id" AS Oferta_id,
+     Oferta."puesto" AS Oferta_puesto,
+     Oferta."empleador" AS Oferta_empleador,
+     Oferta."salario" AS Oferta_salario,
+     Oferta."cantidad_vacantes" AS Oferta_cantidad_vacantes,
+     Oferta."requerimentos" AS Oferta_requerimentos,
+     Oferta."categoria" AS Oferta_categoria,
+     Oferta."descripcion" AS Oferta_descripcion,
+     Oferta."provincia" AS Oferta_provincia,
+     Oferta."canton" AS Oferta_canton,
+     Empleador."cedula" AS Empleador_cedula,
+     Empleador."nombre" AS Empleador_nombre,
+     Empleador."apellidos" AS Empleador_apellidos,
+     Empleador."correo" AS Empleador_correo,
+     Empleador."telefono_fijo" AS Empleador_telefono_fijo,
+     Empleador."telefono_movil" AS Empleador_telefono_movil,
+     Empleador."nombre_empresa" AS Empleador_nombre_empresa,
+     Empleador."direccion" AS Empleador_direccion,
+     Empleador."id" AS Empleador_id
+FROM
+     "dbo"."Empleador" Empleador,
+     "dbo"."Oferta" Oferta]]>
+	</queryString>
+	<field name="Oferta_id" class="java.lang.Integer"/>
+	<field name="Oferta_puesto" class="java.lang.String"/>
+	<field name="Oferta_empleador" class="java.lang.Integer"/>
+	<field name="Oferta_salario" class="java.math.BigDecimal"/>
+	<field name="Oferta_cantidad_vacantes" class="java.lang.Integer"/>
+	<field name="Oferta_requerimentos" class="java.lang.String"/>
+	<field name="Oferta_categoria" class="java.lang.Integer"/>
+	<field name="Oferta_descripcion" class="java.lang.String"/>
+	<field name="Oferta_provincia" class="java.lang.String"/>
+	<field name="Oferta_canton" class="java.lang.String"/>
+	<field name="Empleador_cedula" class="java.lang.String"/>
+	<field name="Empleador_nombre" class="java.lang.String"/>
+	<field name="Empleador_apellidos" class="java.lang.String"/>
+	<field name="Empleador_correo" class="java.lang.String"/>
+	<field name="Empleador_telefono_fijo" class="java.lang.String"/>
+	<field name="Empleador_telefono_movil" class="java.lang.String"/>
+	<field name="Empleador_nombre_empresa" class="java.lang.String"/>
+	<field name="Empleador_direccion" class="java.lang.String"/>
+	<field name="Empleador_id" class="java.lang.Integer"/>
+	<background>
+		<band splitType="Stretch"/>
+	</background>
+	<title>
+		<band height="79" splitType="Stretch"/>
+	</title>
+	<pageHeader>
+		<band height="35" splitType="Stretch"/>
+	</pageHeader>
+	<columnHeader>
+		<band height="61" splitType="Stretch"/>
+	</columnHeader>
+	<detail>
+		<band height="125" splitType="Stretch"/>
+	</detail>
+	<columnFooter>
+		<band height="45" splitType="Stretch"/>
+	</columnFooter>
+	<pageFooter>
+		<band height="54" splitType="Stretch"/>
+	</pageFooter>
+	<summary>
+		<band height="42" splitType="Stretch"/>
+	</summary>
+</jasperReport>
