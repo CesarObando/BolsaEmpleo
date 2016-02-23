@@ -39,11 +39,6 @@ WHERE  Servicio.id=$P{idServicio} and Solicitante.id = $P{idSolicitante}]]>
 	</background>
 	<title>
 		<band height="300" splitType="Stretch">
-			<textField>
-				<reportElement x="0" y="0" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.String"><![CDATA[$P{idSolicitante}]]></textFieldExpression>
-			</textField>
 			<image>
 				<reportElement x="194" y="20" width="100" height="50"/>
 				<imageExpression class="java.io.InputStream"><![CDATA[$F{Solicitante_foto}]]></imageExpression>
@@ -137,11 +132,6 @@ WHERE  Servicio.id=$P{idServicio} and Solicitante.id = $P{idSolicitante}]]>
 				</textElement>
 				<text><![CDATA[Servicio que ofrece]]></text>
 			</staticText>
-			<textField>
-				<reportElement x="17" y="10" width="100" height="20"/>
-				<textElement/>
-				<textFieldExpression class="java.lang.Integer"><![CDATA[$P{idServicio}]]></textFieldExpression>
-			</textField>
 		</band>
 	</columnHeader>
 	<detail>
