@@ -27,7 +27,10 @@
                             <div class="view-content">
                                 <div class="views-row views-row-1 views-row-odd views-row-first views-row-last">
                                     <div class="views-field views-field-changed">    
-                                        <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">6/2/2015 - 13:30</span>  
+                                        <span class="views-label views-label-changed">Última Actualización:</span><span class="field-content">23/2/2015 - 9:30</span>
+                                        <c:if test="${sessionScope.administrador != null}">
+                                            <span class="views-label views-label-changed">Numero de visitas a la pagina:</span><span class="field-content">${sessionScope.numeroVisitas}</span>
+                                        </c:if>
                                     </div>  
                                 </div>
                             </div>

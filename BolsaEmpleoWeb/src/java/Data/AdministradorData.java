@@ -182,4 +182,17 @@ public class AdministradorData extends BaseData {
         conexion.close();
         return administrador;
     }
+    
+    public int getNumeroVisitas() throws SQLException{
+        String sqlNumeroVisitas = "{CALL getNumeroVisitas}";
+        Connection conexion = this.getConnection();
+        int numeroVisitas = 0;
+        CallableStatement statement = conexion.prepareCall(sqlNumeroVisitas);
+        ResultSet resultSet = statement.executeQuery();
+        if(resultSet.next()){
+            numeroVisitas = resultSet.getInt(1);
+        }
+        return numeroVisitas;
+    }
+    
 }

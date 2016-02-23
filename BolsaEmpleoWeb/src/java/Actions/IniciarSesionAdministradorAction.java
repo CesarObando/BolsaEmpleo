@@ -74,6 +74,7 @@ public class IniciarSesionAdministradorAction extends ActionSupport implements P
             sessionMap.put("mensaje", mensaje);
             this.addActionMessage(mensaje);
             sessionMap.put("administrador", administrador);
+            sessionMap.put("numeroVisitas", administradorBusiness.getNumeroVisitas());
         } catch (SQLException ex) {
             Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
             mensaje = "Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias";

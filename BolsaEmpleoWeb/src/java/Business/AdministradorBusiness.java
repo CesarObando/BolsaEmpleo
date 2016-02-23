@@ -50,4 +50,8 @@ public class AdministradorBusiness {
     public Administrador iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
         return administradorData.iniciarSesion(nombreUsuario, password);
     }
+    
+    public int getNumeroVisitas() throws SQLException{
+        return administradorData.getNumeroVisitas();
+    }
 }
