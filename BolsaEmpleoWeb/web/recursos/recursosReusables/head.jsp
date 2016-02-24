@@ -7,6 +7,30 @@
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Pragma" content="no-cache" />
 
+<link rel="stylesheet" type="text/css" href="../css/Paginador.css">
+<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
+
+<link rel="stylesheet" type="text/css" href="../css/system.base.css">
+<link rel="stylesheet" type="text/css" href="../css/system.menus.css">
+<link rel="stylesheet" type="text/css" href="../css/system.messages.css">
+<link rel="stylesheet" type="text/css" href="../css/system.theme.css">
+
+<!--menu-->
+<link rel="stylesheet" type="text/css" href="../css/superfish.css" media="screen">       
+<link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">  
+
+<link rel="stylesheet" type="text/css" href="../css/omega-text.css">
+<link rel="stylesheet" type="text/css" href="../css/omega-branding.css">
+<link rel="stylesheet" type="text/css" href="../css/omega-menu.css">
+<link rel="stylesheet" type="text/css" href="../css/omega-forms.css">
+<link rel="stylesheet" type="text/css" href="../css/global.css">
+<!--responsive-->
+<style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
+    @import url("../css/omega-obas-alpha-default_1.css");            
+    @import url("../css/alpha-default-normal-12.css");            
+</style>
+
+
 <script type="text/javascript">
 
     Paginador = function (divPaginador, tabla, tamPagina)
@@ -59,7 +83,7 @@
             var num = fil.insertCell(fil.cells.length);
             num.innerHTML = ''; //en rigor, aún no se el número de la página
             num.className = 'pag_num';
-
+            
             var sig = fil.insertCell(fil.cells.length);
             sig.innerHTML = 'Siguiente';
             sig.className = 'pag_btn';
@@ -80,26 +104,6 @@
             this.SetPagina(this.pagActual);
         };
     };
+    
 </script>
 
-<link rel="stylesheet" type="text/css" href="../css/Estilo.css">
-
-<link rel="stylesheet" type="text/css" href="../css/system.base.css">
-<link rel="stylesheet" type="text/css" href="../css/system.menus.css">
-<link rel="stylesheet" type="text/css" href="../css/system.messages.css">
-<link rel="stylesheet" type="text/css" href="../css/system.theme.css">
-
-<!--menu-->
-<link rel="stylesheet" type="text/css" href="../css/superfish.css" media="screen">       
-<link rel="stylesheet" type="text/css" href="../css/superfish-smallscreen.css" media="screen">  
-
-<link rel="stylesheet" type="text/css" href="../css/omega-text.css">
-<link rel="stylesheet" type="text/css" href="../css/omega-branding.css">
-<link rel="stylesheet" type="text/css" href="../css/omega-menu.css">
-<link rel="stylesheet" type="text/css" href="../css/omega-forms.css">
-<link rel="stylesheet" type="text/css" href="../css/global.css">
-<!--responsive-->
-<style type="text/css" media="all and (min-width: 670px) and (min-device-width: 670px), all and (max-device-width: 1024px) and (min-width: 1024px) and (orientation:landscape)">
-    @import url("../css/omega-obas-alpha-default_1.css");            
-    @import url("../css/alpha-default-normal-12.css");            
-</style>

@@ -69,12 +69,12 @@
                                 </div       
                                 </tbody>
                             </table>
-                              <div id="paginador" aling="center" class="div" ></div>  
+                            <div id="paginador" aling="center" class="div"></div>
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
                                         document.getElementById('mytable'),
-                                        10
+                                        4
                                         );
                                 p.Mostrar();
                             </script>

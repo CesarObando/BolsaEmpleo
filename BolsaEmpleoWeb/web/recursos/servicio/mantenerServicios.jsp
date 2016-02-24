@@ -19,7 +19,7 @@
             <div id="zone-content" class="clearfix container-12">  
                 <jsp:include page="../recursosReusables/section.jsp"/>
                 <aside class="grid-3 region" id="region-sidebar-second">
-                    <div class="grid-9 region-content" id="region-content">
+                    <div class="grid-9 region-content" id="region-content" itemid="tablapaginada">
                         <center>
                             <table id="mytable" class="table" >
 
