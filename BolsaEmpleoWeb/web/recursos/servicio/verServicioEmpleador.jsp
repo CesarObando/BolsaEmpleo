@@ -42,7 +42,7 @@
                             </script>
                         </s:if>
                         <center>
-                            <s:form method="post" action="reporteServicio" cssClass="form">
+                            <s:form method="post" action="reporteServicio" cssClass="form" enctype="multipart/form-data" >
                                 <img src="<s:url action="getImagenServicio" namespace="/"><s:param name="idImagen">${id}</s:param></s:url>" width="100" height="100" />
                                 <s:textfield name="titulo" readonly="true" label="Nombre"/>
                                 <s:textfield name="solicitante.nombre" readonly="true" label="Nombre del solicitante"/>
@@ -51,7 +51,7 @@
                                 <s:textfield name="categoria.nombre" readonly="true" label="Categoría"/>
                                 <s:textfield name="provincia" readonly="true" label="Provincia"/>
                                 <s:textfield name="canton" readonly="true" label="Cantón"/>
-                                <s:submit name="reporte" value="Exportar a PDF"></s:submit>
+                                <s:submit  action="reporteServicio" value="Exportar a PDF"></s:submit>
                             </s:form>
                         </center>
                     </div>

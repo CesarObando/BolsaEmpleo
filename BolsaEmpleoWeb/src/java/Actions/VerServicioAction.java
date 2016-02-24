@@ -53,7 +53,7 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
             idServicio = Integer.parseInt(request.getParameter("idS"));
         }
         else {
-            idServicio = Integer.parseInt(request.getParameter("id"));
+            idServicio = Integer.parseInt(request.getParameter("idS"));
         }
         servicioAVer = new ServicioBusiness().buscarServicio(idServicio);
         int idCategoria = servicioAVer.getCategoria().getId();
