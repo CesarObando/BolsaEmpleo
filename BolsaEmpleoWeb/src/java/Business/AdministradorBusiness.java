@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.AdministradorData;
@@ -11,13 +6,9 @@ import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- *
- * @author JonathanA
- */
 public class AdministradorBusiness {
 
-    private AdministradorData administradorData;
+    private final AdministradorData administradorData;
 
     public AdministradorBusiness() {
         administradorData = new AdministradorData();
@@ -31,8 +22,8 @@ public class AdministradorBusiness {
         administradorData.editarAdministrador(administrador);
     }
 
-    public void eliminarAdministrador(int id) throws SQLException, DataException {
-        administradorData.eliminarAdministrador(id);
+    public void eliminarAdministrador(int idAdministrador) throws SQLException, DataException {
+        administradorData.eliminarAdministrador(idAdministrador);
     }
 
     public LinkedList<Administrador> buscarAdministradores() throws SQLException, DataException {
@@ -47,8 +38,8 @@ public class AdministradorBusiness {
         return administradorData.buscarAdministrador(id);
     }
 
-    public Administrador iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
-        return administradorData.iniciarSesion(nombreUsuario, password);
+    public Administrador iniciarSesion(String username, String password) throws SQLException, DataException {
+        return administradorData.iniciarSesion(username, password);
     }
     
     public int getNumeroVisitas() throws SQLException{

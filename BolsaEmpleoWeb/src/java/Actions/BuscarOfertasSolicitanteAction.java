@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -20,12 +15,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarOfertasSolicitanteAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_OFERTAS = "buscarOfertasSolicitante";
     private LinkedList<Oferta> ofertas;
     private HttpServletRequest request;
@@ -45,17 +37,22 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
 
     @Override
     public void prepare() throws Exception {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.categorias = categoriaBusiness.getCategorias();
+        //Llamado al metodo que realiza la busqueda
+        this.categorias = categoriaBusiness.buscarCategorias();
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        //Captura de los campos de busqueda en el jsp
         puesto = request.getParameter("puesto");
         categoria = -1;
-        provincia="";
+        provincia = "";
         canton = "";
+        //Si el usuario selecciona una opcion del select
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
@@ -66,13 +63,19 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
             canton = request.getParameter("canton");
         }
         try {
-            ofertas = ofertaBusiness.getOfertasPorCategoria(categoria, puesto,provincia,canton);
-
+            //Llamado al metodo que realiza la busqueda
+            ofertas = ofertaBusiness.buscarOfertasPorCategoria(categoria, puesto, provincia, canton);
+            //Se recorre la lista de objetos y se le asigna a cada uno de ellos los objetos que tenga relacionados para mostrar mayor informacion al usuario
             for (int i = 0; i < ofertas.size(); i++) {
+                //Crea una oferta a la que se le asignan las propiedades de la oferta actual de la lista recorrida
                 Oferta oferta = ofertas.get(i);
+                //Captura el id del empleador
                 int idEmpleador = oferta.getEmpleador().getId();
+                //Busca el empleador
                 Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+                //Asigna el empleador a la oferta
                 oferta.setEmpleador(empleador);
+                //Asigna la oferta creada anteriormente a la lista de ofertas
                 ofertas.set(i, oferta);
             }
         } catch (SQLException e) {
@@ -85,7 +88,8 @@ public class BuscarOfertasSolicitanteAction extends ActionSupport implements Pre
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
+    //Setter-getter
     public String getNombre() {
         return puesto;
     }

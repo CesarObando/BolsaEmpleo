@@ -8,7 +8,7 @@
         <jsp:include page="../recursosReusables/head.jsp"/>
         <title>Editar Servicio | Bolsa de Empleo</title>  
     </head>
-    <body onload="editarCanton('<s:property value="canton"/>','<s:property value="provincia"/>')">
+    <body onload="editarCanton('<s:property value="canton"/>', '<s:property value="provincia"/>')">
         <header>
             <div class="clearfix">
                 <jsp:include page="../recursosReusables/header.jsp"/>
@@ -40,22 +40,10 @@
                                 <s:select name="categoria.id" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id" requiredLabel="true" label="Categoría"/>            
                                 <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" label="Provincia" onselect="" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="provincia"/>
                                 <s:select name="canton" requiredLabel="true" label="Cantón" list="#{}" headerKey="canton" />
-                                <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox();"/>
+                                <s:submit action="editarServicioProcess" value="Editar Servicio" onclick="return confirmBox('¿Desea editar el servicio?');"/>
                             </s:form>
                             <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea editar el servicio?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

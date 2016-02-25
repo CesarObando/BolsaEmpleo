@@ -51,20 +51,27 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         solicitante = (Solicitante) sessionMap.get("solicitante");
         solicitante = (Solicitante) request.getSession().getAttribute("solicitante");
+        //Obtiene el id del objeto
         idSolicitante = solicitante.getId();
+        //Llamado al metodo que realiza la busqueda
         servicios = new ServicioBusiness().buscarServiciosPorSolicitante(-1, "", idSolicitante, "", "");
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         ServicioBusiness servicioBusiness = new ServicioBusiness();
+        //Captura de los campos de busqueda en el jsp
         titulo = request.getParameter("titulo");
         categoria = Integer.parseInt(request.getParameter("categoria.id"));
         provincia = request.getParameter("provincia");
         canton = request.getParameter("canton");
+        //Obtiene el id del objeto
         idSolicitante = solicitante.getId();
         try {
+            //Llamado al metodo que realiza la busqueda
             servicios = servicioBusiness.buscarServiciosPorSolicitante(categoria, titulo, idSolicitante, provincia,canton);
         } catch (SQLException e) {
             Logger.getLogger(BuscarServiciosSolicitanteAction.class.getName()).log(Level.SEVERE, null, e);
@@ -76,15 +83,7 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
-    public HttpServletRequest getRequest() {
-        return request;
-    }
-
-    public void setRequest(HttpServletRequest request) {
-        this.request = request;
-    }
-
+    
     @Override
     public Solicitante getModel() {
         return this.solicitante;
@@ -94,6 +93,15 @@ public class BuscarServiciosSolicitanteAction extends ActionSupport implements P
     public void setSession(Map<String, Object> map) {
         this.sessionMap = (SessionMap<String, Object>) map;
     }
+    
+    //Setter-Getter
+    public HttpServletRequest getRequest() {
+        return request;
+    }
+
+    public void setRequest(HttpServletRequest request) {
+        this.request = request;
+    } 
 
     public LinkedList<Servicio> getServicios() {
         return servicios;

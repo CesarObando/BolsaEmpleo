@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitudBusiness;
@@ -18,12 +13,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class InsertarSolicitudAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
+    //Variables globales
     private Solicitud solicitudInsertar;
     private String mensaje;
     private HttpServletRequest request;
@@ -38,7 +30,39 @@ public class InsertarSolicitudAction extends ActionSupport implements SessionAwa
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         solicitudInsertar = new Solicitud();
+    }
+
+    public String insertar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        //Inicializa las variables
+        boolean insertado = false;
+        try {
+            //Llamado al metodo que realiza la insercion
+            solicitudBusiness.insertarSolicitud(solicitudInsertar);
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            insertado = false;
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+        }
+        if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "La solicitud fue registrada exitosamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -51,27 +75,12 @@ public class InsertarSolicitudAction extends ActionSupport implements SessionAwa
         this.request = hsr;
     }
 
-    public String insertar() throws DataException {
-        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
-        boolean insertado = false;
-        try {
-            solicitudBusiness.insertarSolicitud(solicitudInsertar);
-        } catch (SQLException e) {
-            insertado = false;
-            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-        }
-        if (insertado == true) {
-            this.mensaje = "La solicitud fue registrada exitosamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Solicitud getSolicitudInsertar() {
         return solicitudInsertar;
     }
@@ -94,11 +103,6 @@ public class InsertarSolicitudAction extends ActionSupport implements SessionAwa
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

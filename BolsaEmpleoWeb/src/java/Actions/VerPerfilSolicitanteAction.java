@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitudBusiness;
 import Dominio.Solicitante;
 import Dominio.Solicitud;
+import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -19,12 +15,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class VerPerfilSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Solicitante solicitante;
     private String mensaje;
     private int numFavoritos;
@@ -42,17 +35,23 @@ public class VerPerfilSolicitanteAction extends ActionSupport implements Prepara
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         solicitante = (Solicitante) sessionMap.get("solicitante");
         solicitante = (Solicitante) request.getSession().getAttribute("solicitante");
+        //Obtiene la cantidad de solicitudes en la que ha sido marcado como favorito
         getFavoritos();
     }
 
-    public void getFavoritos() throws SQLException {
+    public void getFavoritos() throws SQLException, DataException {
         numFavoritos = 0;
+        //Obtiene la lista de solicitudes
         LinkedList<Solicitud> solicitudes = new SolicitudBusiness().buscarSolicitudesFiltradas(solicitante.getId(), 0);
+        //Obtiene el tamaño de la lista
         numSolicitudes = solicitudes.size();
+        //Recorre la lista
         for (Solicitud solicitud : solicitudes) {
-            if(solicitud.isFavorito()){
+            //Si es favorito
+            if (solicitud.isFavorito()) {
                 numFavoritos++;
             }
         }

@@ -66,8 +66,7 @@
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>

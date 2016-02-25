@@ -48,54 +48,16 @@
                                 <s:textfield name="correo" readonly="true" label="Correo electrónico"/>
                                 <s:textfield name="idiomas" readonly="true" label="Idiomas"/>
                                 <s:submit name="reporte" value="Exportar a PDF"></s:submit>
-
                             </s:form>
-
                         </center>
                         <c:if test="${sessionScope.solicitud.favorito == true}">
-                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Desmarcar como favorito</a>
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox('¿Desea desmarcar al solicitante como favorito?');" style="background: transparent">Desmarcar como favorito</a>
                         </c:if>
                         <c:if test="${sessionScope.solicitud.favorito == false}">
-                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Marcar como favorito</a>
+                            <a href="../empresa/editarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox('¿Desea marcar al solicitante como favorito?');" style="background: transparent">Marcar como favorito</a>
                         </c:if>
-                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox2();" style="background: transparent">Eliminar</a>
+                        <a href="../empresa/eliminarSolicitudEmpleadorProcess.action" class="" onclick="return confirmBox('¿Desea eliminar al solicitante?');" style="background: transparent">Eliminar</a>
                     </div>
-                    <script>
-                        function confirmBox() {
-                            var answer;
-                            answer = window.confirm("¿Desea desmarcar al solicitante como favorito?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
-                    <script>
-                        function confirmBox1() {
-                            var answer;
-                            answer = window.confirm("¿Desea marcar al solicitante como favorito?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
-                    <script>
-                        function confirmBox2() {
-                            var answer;
-                            answer = window.confirm("¿Desea eliminar al solicitante?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
                 </aside> 
             </div>            
         </section>

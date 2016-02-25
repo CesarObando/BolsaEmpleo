@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.CategoriaData;
@@ -11,39 +6,35 @@ import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- *
- * @author Cesar
- */
 public class CategoriaBusiness {
 
-    private CategoriaData categoriaData;
+    private final CategoriaData categoriaData;
 
     public CategoriaBusiness() {
         categoriaData = new CategoriaData();
     }
 
-    public Categoria insertarCategoria(Categoria categoriaAInsertar) throws SQLException, DataException {
-        return categoriaData.insertarCategoria(categoriaAInsertar);
+    public Categoria insertarCategoria(Categoria categoria) throws SQLException, DataException {
+        return categoriaData.insertarCategoria(categoria);
     }
 
-    public Categoria editarCategoria(Categoria categoriaAEditar) throws SQLException, DataException {
-        return categoriaData.editarCategoria(categoriaAEditar);
+    public Categoria editarCategoria(Categoria categoria) throws SQLException, DataException {
+        return categoriaData.editarCategoria(categoria);
     }
 
     public void eliminarCategoria(int idCategoria) throws SQLException, DataException {
         categoriaData.eliminarCategoria(idCategoria);
     }
 
-    public LinkedList<Categoria> getCategorias() throws SQLException, DataException {
-        return categoriaData.getCategorias();
+    public LinkedList<Categoria> buscarCategorias() throws SQLException, DataException {
+        return categoriaData.buscarCategorias();
     }
 
-    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException {
-        return categoriaData.getCategoriasFiltradas(nombre);
+    public LinkedList<Categoria> buscarCategoriasFiltradas(String nombre) throws SQLException, DataException {
+        return categoriaData.buscarCategoriasFiltradas(nombre);
     }
 
-    public Categoria buscarCategoria(int id) throws SQLException, DataException {
-        return categoriaData.buscarCategoria(id);
+    public Categoria buscarCategoria(int idCategoria) throws SQLException, DataException {
+        return categoriaData.buscarCategoria(idCategoria);
     }
 }

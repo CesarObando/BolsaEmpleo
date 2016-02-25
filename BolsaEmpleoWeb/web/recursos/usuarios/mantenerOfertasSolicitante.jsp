@@ -45,7 +45,7 @@
                                                         <s:url action="eliminarSolicitudSolicitanteProcess" var="url">
                                                             <s:param name="id" value="#solicitudActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url"/>' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                        <a href='<s:property value="#url"/>' onclick="return confirmBox('¿Desea eliminar la solicitud?');">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -55,28 +55,15 @@
                                 </div       
                                 </tbody>
                             </table>
-                              <div id="paginador" aling="center" class="div" ></div>  
+                            <div id="paginador" aling="center" class="div" ></div>  
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>
                         </center>
-                        <script>
-                                function confirmBox() {
-                                var answer;
-                                    answer = window.confirm("¿Desea eliminar la solicitud?");
-                                if (answer == true) {
-                                return true;
-                                    }
-                                else {
-                            return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

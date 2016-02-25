@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitanteBusiness;
@@ -18,15 +13,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class EliminarSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Solicitante solicitanteAEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
 
@@ -35,27 +26,59 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         solicitanteAEliminar = new Solicitante();
+        //Obtiene el objeto en sesion
         solicitanteAEliminar = (Solicitante) sessionMap.get("solicitante");
-        existe = true;
         if (request.getParameter("id") != null) {
+            //Captura el id del objeto a eliminar
             int idSolicitante = Integer.parseInt(request.getParameter("id"));
-            try {
-                solicitanteAEliminar = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
-            } catch (SQLException e) {
-                existe = false;
-            }
+            //Llamado al metodo que realiza la busqueda
+            solicitanteAEliminar = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
         }
+    }
 
+    @Override
+    public void validate() {
+
+    }
+
+    public String eliminar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        //Inicializa la variable
+        boolean eliminado = true;
+        try {
+            //Llamado al metodo que realiza la eliminacion
+            solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "El solicitante fue eliminado correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            //Elimina la sesion del objeto
+            sessionMap.remove("solicitante");
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
+        }
     }
 
     @Override
@@ -69,30 +92,8 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
     }
 
     @Override
-    public void validate() {
-
-    }
-
-    public String eliminar() throws DataException {
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        boolean eliminado = true;
-        try {
-            solicitanteBusiness.eliminarSolicitante(solicitanteAEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "El solicitante fue eliminado correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            sessionMap.remove("solicitante");
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Solicitante getSolicitanteAEliminar() {
@@ -117,19 +118,6 @@ public class EliminarSolicitanteAction extends ActionSupport implements Preparab
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

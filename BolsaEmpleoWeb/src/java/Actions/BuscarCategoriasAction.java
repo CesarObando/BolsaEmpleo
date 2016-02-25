@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -17,12 +12,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author Tin
- */
 public class BuscarCategoriasAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_CATEGORIAS = "buscarCategorias";
     private LinkedList<Categoria> categorias;
     private HttpServletRequest request;
@@ -38,12 +30,13 @@ public class BuscarCategoriasAction extends ActionSupport implements Preparable,
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBuss = new CategoriaBusiness();
-
+        //Captura de los campos de busqueda en el jsp
         nombre = request.getParameter("nombre");
-
         try {
-            categorias = categoriaBuss.getCategoriasFiltradas(nombre);
+            //Llamado al metodo que realiza la busqueda
+            categorias = categoriaBuss.buscarCategoriasFiltradas(nombre);
         } catch (SQLException e) {
             Logger.getLogger(BuscarCategoriasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -54,7 +47,8 @@ public class BuscarCategoriasAction extends ActionSupport implements Preparable,
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
+    //Setter-Getter
     public LinkedList<Categoria> getCategorias() {
         return categorias;
     }

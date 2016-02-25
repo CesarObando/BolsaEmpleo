@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.OfertaBusiness;
@@ -22,15 +17,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class VerOfertaSolicitanteAction extends ActionSupport implements Preparable, ModelDriven<Oferta>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Oferta ofertaAVer;
     private String mensaje;
-    private boolean existe;
     private boolean insertado;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
@@ -40,54 +31,65 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
         int idOferta;
-        try {
-            if (request.getParameter("id") != null) {
-                idOferta = Integer.parseInt(request.getParameter("id"));
-                ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
-                if (sessionMap.get("solicitante") != null) {
-                    insertado = new OfertaBusiness().buscarOfertaFavorita(ofertaAVer, (Solicitante) sessionMap.get("solicitante"));
-                }
+        if (request.getParameter("id") != null) {
+            //Captura el id de la oferta
+            idOferta = Integer.parseInt(request.getParameter("id"));
+            //Llamado al metodo que realiza la busqueda
+            ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+            if (sessionMap.get("solicitante") != null) {
+                //Llamado al metodo que realiza la busqueda
+                insertado = new OfertaBusiness().buscarOfertaFavorita(ofertaAVer, (Solicitante) sessionMap.get("solicitante"));
             }
-        } catch (SQLException e) {
-            existe = false;
         }
     }
 
     public String solicitar() throws SQLException, DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        //Inicializa el objeto
         Solicitud solicitud = new Solicitud();
-        Solicitante solicitante = new Solicitante();
+        Solicitante solicitante;
+        //Captura el id de la oferta
         int idOferta = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
         ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
-        boolean insertado = true;
+        //Asigna valor a la variable
+        insertado = true;
         try {
+            //Captura el objeto en sesion
             solicitante = (Solicitante) sessionMap.get("solicitante");
+            //Asigna el solicitante a la solicitud
             solicitud.setSolicitante(solicitante);
+            //Evita que ponga un String en salario
             if (request.getParameter("salario1") != null) {
                 ofertaAVer.setSalario(0);
             }
+            //Asigna la oferta a la solicitud
             solicitud.setOferta(ofertaAVer);
+            //Llamado al metodo que realiza la insercion
             solicitudBusiness.insertarSolicitud(solicitud);
         } catch (SQLException e) {
+            //Asigna valor a la variable
             insertado = false;
-            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (insertado == true) {
-            this.mensaje = "La  oferta  fue insertada correctamente";
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "El solicitante fue editado correctamente";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
@@ -96,18 +98,27 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
     }
 
     public String marcarOfertaFavorita() throws SQLException, DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
-        Solicitante solicitante = new Solicitante();
+        Solicitante solicitante;
+        //Captura el id de la oferta
         int idOferta = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
         ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
         try {
+            //Captura el objeto en sesion
             solicitante = (Solicitante) sessionMap.get("solicitante");
+            //Llamado al metodo que realiza la insercion
             ofertaBusiness.insertaOfertaFavorita(ofertaAVer, solicitante);
             return SUCCESS;
         } catch (SQLException e) {
+            //Asigna valor a la variable
             insertado = false;
-            mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
             return ERROR;
         }
@@ -123,6 +134,12 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
         this.request = hsr;
     }
 
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public Oferta getOfertaAEliminar() {
         return ofertaAVer;
     }
@@ -145,19 +162,6 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public boolean isInsertado() {

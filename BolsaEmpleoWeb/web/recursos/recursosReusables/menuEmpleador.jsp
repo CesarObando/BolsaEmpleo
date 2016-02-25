@@ -1,8 +1,6 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@taglib prefix="s" uri="/struts-tags" %>
 <%@taglib uri="http://java.sun.com/jstl/core_rt" prefix="c" %>
-
 <div id="zone-menu" class="zone-menu clearfix container-12">
     <div class="grid-12">                        
         <div class="main-menu">
@@ -25,11 +23,11 @@
                     </li>
                     <li>
                         <s:a action="buscarServiciosEmpleador" >Trabajos Independientes</s:a>
-                    </li>
-                    <li>
-                        <a href="../empresa/verPerfilEmpleador.action" class="" >Actualizar/Eliminar perfil</a>
-                    </li>
-                    <li>
+                        </li>
+                        <li>
+                            <a href="../empresa/verPerfilEmpleador.action" class="" >Actualizar/Eliminar perfil</a>
+                        </li>
+                        <li>
                         <s:url action="cerrarSesion" var="url"></s:url>
                         <a href='<s:property value="#url" />' class="">Cerrar Sesión</a>
                     </li>

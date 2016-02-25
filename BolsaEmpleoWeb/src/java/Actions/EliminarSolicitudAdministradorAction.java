@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.EmpleadorBusiness;
@@ -24,15 +19,10 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class EliminarSolicitudAdministradorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitud>, ServletRequestAware {
 
     private Solicitud solicitudEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
 
@@ -40,34 +30,67 @@ public class EliminarSolicitudAdministradorAction extends ActionSupport implemen
     }
 
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        //Captura el id del objeto a eliminar
         int idSolicitud = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
+        solicitudEliminar = new SolicitudBusiness().buscarSolicitud(idSolicitud);
+        //Captura el id de la oferta de la solicitud a eliminar
+        int idOferta = solicitudEliminar.getOferta().getId();
+        //Captura el id del solicitante de la solicitud a eliminar
+        int idSolicitante = solicitudEliminar.getSolicitante().getId();
+        //Llamado al metodo que realiza la busqueda de la oferta
+        Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
+        //Captura el id del empleador de la oferta de la solicitud a eliminar
+        int idEmpleador = oferta.getEmpleador().getId();
+        //Llamado al metodo que realiza la busqueda del empleador
+        Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+        //Asigna el empleador a la oferta
+        oferta.setEmpleador(empleador);
+        //Llamado al metodo que realiza la busqueda del solicitante
+        Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
+        //Asigna la oferta a la solicitud a eliminar
+        solicitudEliminar.setOferta(oferta);
+        //Asigna el solicitante a la solicitud a eliminar
+        solicitudEliminar.setSolicitante(solicitante);
+    }
+
+    public String eliminar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        //Inicializa la variable
+        boolean eliminado = true;
         try {
-            solicitudEliminar = new SolicitudBusiness().buscarSolicitud(idSolicitud);
-            int idOferta = solicitudEliminar.getOferta().getId();
-            int idSolicitante = solicitudEliminar.getSolicitante().getId();
-            Oferta oferta = ofertaBusiness.buscarOferta(idOferta);
-            int idEmpleador = oferta.getEmpleador().getId();
-            Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
-            oferta.setEmpleador(empleador);
-            Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
-            solicitudEliminar.setOferta(oferta);
-            solicitudEliminar.setSolicitante(solicitante);
-            
+            //Llamado al metodo que realiza la eliminacion
+            solicitudBusiness.eliminarSolicitud(solicitudEliminar.getId());
         } catch (SQLException e) {
-            existe = false;
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "La solicitud fue eliminada correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
         }
     }
 
@@ -81,27 +104,12 @@ public class EliminarSolicitudAdministradorAction extends ActionSupport implemen
         this.request = hsr;
     }
 
-    public String eliminar() throws DataException {
-        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
-        boolean eliminado = true;
-        try {
-            solicitudBusiness.eliminarSolicitud(solicitudEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "La solicitud fue eliminada correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Solicitud getSolicitudEliminar() {
         return solicitudEliminar;
     }
@@ -118,25 +126,12 @@ public class EliminarSolicitudAdministradorAction extends ActionSupport implemen
         this.mensaje = mensaje;
     }
 
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
     public HttpServletRequest getRequest() {
         return request;
     }
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

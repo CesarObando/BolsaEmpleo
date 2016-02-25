@@ -59,7 +59,7 @@
                                                         <s:url action="eliminarAdministradorProcess" var="url">
                                                             <s:param name="id" value="#administradorActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/></button> </a>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox('¿Desea eliminar al administrador?');">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/></button> </a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -73,25 +73,11 @@
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar al administrador?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
-
                     </div>
                 </aside> 
             </div>            

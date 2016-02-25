@@ -4,6 +4,7 @@ import java.sql.Date;
 
 public class Empleador {
 
+    //Atributos
     private int id;
     private String cedula;
     private String nombre;
@@ -14,15 +15,16 @@ public class Empleador {
     private String cedulaJuridica;
     private String nombreEmpresa;
     private String username;
-    private String pass;
+    private String password;
     private String direccion;
     private Date ultimaActualizacion;
 
-
+    //Constructor vacio
     public Empleador() {
     }
 
-    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String direccion, String pass, String username) {
+    //Constructor cargado
+    public Empleador(int id, String cedula, String nombre, String apellidos, String correo, String telefonoFijo, String telefonoMovil, String cedulaJuridica, String nombreEmpresa, String username, String password, String direccion, Date ultimaActualizacion) {
         this.id = id;
         this.cedula = cedula;
         this.nombre = nombre;
@@ -32,11 +34,14 @@ public class Empleador {
         this.telefonoMovil = telefonoMovil;
         this.cedulaJuridica = cedulaJuridica;
         this.nombreEmpresa = nombreEmpresa;
-        this.direccion = direccion;
-        this.pass = pass;
         this.username = username;
+        this.password = password;
+        this.direccion = direccion;
+        this.ultimaActualizacion = ultimaActualizacion;
     }
+    
 
+    //Seter-Getter
     public int getId() {
         return id;
     }
@@ -109,28 +114,28 @@ public class Empleador {
         this.nombreEmpresa = nombreEmpresa;
     }
 
-    public String getDireccion() {
-        return direccion;
-    }
-
-    public void setDireccion(String direccion) {
-        this.direccion = direccion;
-    }
-
-    public String getPass() {
-        return pass;
-    }
-
-    public void setPass(String pass) {
-        this.pass = pass;
-    }
-
     public String getUsername() {
         return username;
     }
 
     public void setUsername(String username) {
         this.username = username;
+    }
+
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public String getDireccion() {
+        return direccion;
+    }
+
+    public void setDireccion(String direccion) {
+        this.direccion = direccion;
     }
 
     public Date getUltimaActualizacion() {
@@ -140,5 +145,4 @@ public class Empleador {
     public void setUltimaActualizacion(Date ultimaActualizacion) {
         this.ultimaActualizacion = ultimaActualizacion;
     }
-    
 }

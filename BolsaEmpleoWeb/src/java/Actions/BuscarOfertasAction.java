@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -23,12 +18,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarOfertasAction extends ActionSupport implements Preparable, ServletRequestAware, ModelDriven<Empleador>, SessionAware {
 
+    //Variables globales
     private final String BUSCAR_OFERTAS = "buscarOfertas";
     private LinkedList<Oferta> ofertas;
     private HttpServletRequest request;
@@ -51,37 +43,51 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         empleador = (Empleador) sessionMap.get("empleador");
         empleador = (Empleador) request.getSession().getAttribute("empleador");
+        //Obtiene el id del objeto
         idEmpleador = empleador.getId();
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.categorias = categoriaBusiness.getCategorias();
+        //Llamado al metodo que realiza la busqueda
+        this.categorias = categoriaBusiness.buscarCategorias();
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        //Captura de los campos de busqueda en el jsp
         puesto = request.getParameter("puesto");
+        //Si el usuario no selecciona ninguna opcion del select
         if (request.getParameter("categoria.id")==null) {
             categoria=-1;
         }
-        else{
+        else{ 
+            //Si el usuario selecciona una opcion del select
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
+        //Si el usuario no selecciona ninguna opcion del select
         if (request.getParameter("provincia")==null) {
             provincia="";
         }
         else{
+            //Si el usuario selecciona una opcion del select
             provincia = request.getParameter("provincia");
         }
+        //Si el usuario no selecciona ninguna opcion del select
         if (request.getParameter("canton")==null) {
             canton="";
         }
         else{
+            //Si el usuario selecciona una opcion del select
             canton = request.getParameter("canton");
         }
+        //Obtiene el id del objeto
         idEmpleador = empleador.getId();
         try {
-            ofertas = ofertaBusiness.getOfertasPorEmpleador(categoria, puesto, idEmpleador, provincia,canton);
+            //Llamado al metodo que realiza la busqueda
+            ofertas = ofertaBusiness.buscarOfertasPorEmpleador(categoria, puesto, idEmpleador, provincia,canton);
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasAction.class.getName()).log(Level.SEVERE, null, e);
         }
@@ -92,7 +98,18 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
+    @Override
+    public Empleador getModel() {
+        return this.empleador;
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+    
+    //Setter-Getter
     public String getNombre() {
         return puesto;
     }
@@ -133,11 +150,6 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
         this.categorias = categorias;
     }
 
-    @Override
-    public Empleador getModel() {
-        return this.empleador;
-    }
-
     public int getCategoria() {
         return categoria;
     }
@@ -152,11 +164,6 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
 
     public void setEmpleador(Empleador empleador) {
         this.empleador = empleador;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public int getIdEmpleador() {

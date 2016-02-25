@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Dominio.Empleador;
@@ -15,12 +10,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class VerPerfilEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Empleador empleador;
     private String mensaje;
     private HttpServletRequest request;
@@ -36,6 +28,7 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         empleador = (Empleador) sessionMap.get("empleador");
         empleador = (Empleador) request.getSession().getAttribute("empleador");
     }
@@ -52,9 +45,14 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
 
     @Override
     public void validate() {
-
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public String getMensaje() {
         return mensaje;
     }
@@ -71,11 +69,6 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
         this.request = request;
     }
 
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
-    }
-
     public Empleador getEmpleadorEditar() {
         return empleador;
     }
@@ -83,4 +76,5 @@ public class VerPerfilEmpleadorAction extends ActionSupport implements Preparabl
     public void setEmpleadorEditar(Empleador empleadorEditar) {
         this.empleador = empleadorEditar;
     }
+    
 }

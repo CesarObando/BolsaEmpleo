@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Data.BaseData;
@@ -21,45 +16,49 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class CurriculumPDFAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, ServletRequestAware, SessionAware {
 
     private Connection conexion;
     private Map parametros;
-    private boolean existe;
     private Solicitante solicitanteAVer;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
 
     public void prepare() throws Exception {
-        existe = true;
-
         solicitanteAVer = (Solicitante) sessionMap.get("solicitanteO");
 
     }
 
     public String reportePDF() throws SQLException, IOException {
-        BaseData bas = new BaseData();
-        setConexion(bas.getConnection());
+        //Define un objeto BaseData que se comunica con la base de datos
+        BaseData baseData = new BaseData();
+        //Establece la conexion
+        setConexion(baseData.getConnection());
+        //Obtiene el objeto en sesion
         solicitanteAVer = (Solicitante) sessionMap.get("solicitanteO");
+        //Inicializa el mapa de parametros
         parametros = new HashMap();
+        //Incluye el atributo al mapa de parametros
         parametros.put("idSolicitante", solicitanteAVer.getId());
         return SUCCESS;
     }
 
     @Override
     public Solicitante getModel() {
-        return this.solicitanteAVer; //To change body of generated methods, choose Tools | Templates.
+        return this.solicitanteAVer;
     }
 
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr; //To change body of generated methods, choose Tools | Templates.
+        this.request = hsr;
+    }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Connection getConexion() {
         return conexion;
     }
@@ -90,15 +89,6 @@ public class CurriculumPDFAction extends ActionSupport implements Preparable, Mo
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;//To change body of generated methods, choose Tools | Templates.
-    }
-
-    public SessionMap<String, Object> getSessionMap() {
-        return sessionMap;
     }
 
 }

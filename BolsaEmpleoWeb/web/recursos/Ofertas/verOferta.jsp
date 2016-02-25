@@ -49,7 +49,7 @@
                             </s:form>
                         </center>
                         <a href="../Ofertas/editarOferta.action" class="">Editar Oferta</a>
-                        <a href="../Ofertas/eliminarOfertaProcess.action" class="" onclick="return confirmBox();">Eliminar Oferta</a>
+                        <a href="../Ofertas/eliminarOfertaProcess.action" class="" onclick="return confirmBox('¿Desea eliminar la oferta?');">Eliminar Oferta</a>
                         <br><br>
                         <s:url action="verSolicitudesFavoritas" var="url">
                             <s:param name="id" value="id"/>
@@ -60,18 +60,7 @@
                             <s:param name="id" value="id"/>
                         </s:url>
                         <a href='<s:property value="#url"/>' class="">Ver todas las solicitudes</a>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar la oferta?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
+                        
                         <center>
                             <table id="mytable" class="table" title="Solicitantes">
 
@@ -119,8 +108,7 @@
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>

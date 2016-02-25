@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.AdministradorBusiness;
@@ -18,15 +13,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class EliminarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Administrador administradorEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
 
@@ -34,19 +25,54 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     }
 
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         administradorEliminar = new Administrador();
+        //Obtiene el objeto en sesion
         administradorEliminar = (Administrador) sessionMap.get("administrador");
     }
 
+    public String eliminar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        //Inicializa el objeto
+        administradorEliminar = new Administrador();
+        //Obtiene el objeto en sesion
+        administradorEliminar = (Administrador) sessionMap.get("administrador");
+        //Inicializa la variable
+        boolean eliminado = true;
+        try {
+            //Llamado al metodo que realiza la eliminacion
+            administradorBusiness.eliminarAdministrador(administradorEliminar.getId());
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "El administrador fue eliminado correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            //Elimina la sesion del objeto
+            sessionMap.remove("administrador");
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
+        }
+    }
+    
     @Override
     public Administrador getModel() {
         return this.administradorEliminar;
@@ -56,31 +82,13 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
-    public String eliminar() throws DataException {
-        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
-        administradorEliminar = new Administrador();
-        administradorEliminar = (Administrador) sessionMap.get("administrador");
-        boolean eliminado = true;
-        try {
-            administradorBusiness.eliminarAdministrador(administradorEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "El administrador fue eliminado correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            sessionMap.remove("administrador");
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Administrador getAdministradorEliminar() {
         return administradorEliminar;
     }
@@ -96,26 +104,12 @@ public class EliminarAdministradorAction extends ActionSupport implements Prepar
     public void setMensaje(String mensaje) {
         this.mensaje = mensaje;
     }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
     public HttpServletRequest getRequest() {
         return request;
     }
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

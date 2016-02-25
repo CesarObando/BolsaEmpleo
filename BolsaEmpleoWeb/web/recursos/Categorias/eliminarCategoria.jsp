@@ -34,22 +34,10 @@
                             <s:form action="eliminarCategoriaProcess" cssClass="form">
                                 <s:hidden name="id"/>
                                 <s:textfield name="nombre" readonly="true" label="Nombre"/>
-                                <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox();"/>
+                                <s:submit action="eliminarCategoriaProcess" value="Eliminar Categoría" onclick="return confirmBox('¿Desea eliminar la categoría?');"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar la categoría?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

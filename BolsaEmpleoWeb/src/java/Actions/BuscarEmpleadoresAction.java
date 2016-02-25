@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.EmpleadorBusiness;
@@ -10,21 +5,16 @@ import Dominio.Empleador;
 import Exception.DataException;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.Preparable;
-import java.sql.Date;
 import java.sql.SQLException;
-import java.text.SimpleDateFormat;
 import java.util.LinkedList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarEmpleadoresAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_EMPLEADORES = "buscarEmpleadores";
     private LinkedList<Empleador> empleadores;
     private HttpServletRequest request;
@@ -44,11 +34,14 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        //Captura de los campos de busqueda en el jsp
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
         try {
+            //Llamado al metodo que realiza la busqueda
             empleadores = empleadorBusiness.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
             ordenarLista();
         } catch (SQLException e) {
@@ -57,7 +50,7 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
         return BUSCAR_EMPLEADORES;
     }
 
-    public void ordenarLista() {
+    public void ordenarLista() { //Calcula los meses que han transcurrido desde la ultima actualizacion
         java.util.Date fechaActual = new java.util.Date();
         java.sql.Date fechaUltimaActualizacion;
         for (Empleador empleador : empleadores) {
@@ -83,6 +76,7 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
         this.request = hsr;
     }
 
+    //Setter-Getter
     public LinkedList<Empleador> getEmpleadores() {
         return empleadores;
     }

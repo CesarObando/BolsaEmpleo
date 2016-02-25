@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -18,38 +13,58 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
-public class EliminarCategoriaAction extends ActionSupport implements SessionAware,Preparable, ModelDriven<Categoria>, ServletRequestAware {
+public class EliminarCategoriaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Categoria>, ServletRequestAware {
 
+    //Variables globales
     private Categoria categoriaAEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
-    private SessionMap<String,Object> sessionMap;
+    private SessionMap<String, Object> sessionMap;
 
     public EliminarCategoriaAction() {
     }
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Obtiene el id del objeto a eliminar
         int idCategoria = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
+        categoriaAEliminar = new CategoriaBusiness().buscarCategoria(idCategoria);
+    }
+
+    public String eliminar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        //Inicializa la variable
+        boolean eliminado = true;
         try {
-            categoriaAEliminar = new CategoriaBusiness().buscarCategoria(idCategoria);
+            //Llamado al metodo que realiza la eliminacion
+            categoriaBusiness.eliminarCategoria(categoriaAEliminar.getId());
         } catch (SQLException e) {
-            existe = false;
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "La categoría fue eliminada correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
         }
     }
 
@@ -63,27 +78,12 @@ public class EliminarCategoriaAction extends ActionSupport implements SessionAwa
         this.request = hsr;
     }
 
-    public String eliminar() throws DataException {
-        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        boolean eliminado = true;
-        try {
-            categoriaBusiness.eliminarCategoria(categoriaAEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "La categoría fue eliminada correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Categoria getCategoriaAEliminar() {
         return categoriaAEliminar;
     }
@@ -106,19 +106,6 @@ public class EliminarCategoriaAction extends ActionSupport implements SessionAwa
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

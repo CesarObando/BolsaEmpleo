@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.ServicioData;
@@ -13,38 +8,38 @@ import java.util.LinkedList;
 
 public class ServicioBusiness {
 
-    private ServicioData servicioData;
+    private final ServicioData servicioData;
 
     public ServicioBusiness() {
         servicioData = new ServicioData();
     }
 
-    public Servicio insertarServicio(Servicio servicio) throws SQLException {
+    public Servicio insertarServicio(Servicio servicio) throws SQLException, DataException {
         return servicioData.insertarServicio(servicio);
     }
 
-    public void editarServicio(Servicio servicio) throws SQLException {
+    public void editarServicio(Servicio servicio) throws SQLException, DataException {
         servicioData.editarServicio(servicio);
     }
 
-    public void eliminarServicio(int id) throws SQLException {
-        servicioData.eliminarServicio(id);
+    public void eliminarServicio(int idServicio) throws SQLException, DataException {
+        servicioData.eliminarServicio(idServicio);
     }
 
-    public LinkedList<Servicio> buscarServicios() throws SQLException {
+    public LinkedList<Servicio> buscarServicios() throws SQLException, DataException {
         return servicioData.buscarServicios();
     }
 
-    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo, String provincia,String canton) throws SQLException {
+    public LinkedList<Servicio> buscarServiciosFiltrados(int categoria, String titulo, String provincia,String canton) throws SQLException, DataException {
         return servicioData.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
     }
 
-    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante, String provincia,String canton) throws SQLException {
+    public LinkedList<Servicio> buscarServiciosPorSolicitante(int categoria, String titulo, int solicitante, String provincia,String canton) throws SQLException, DataException {
         return servicioData.buscarServiciosPorSolicitante(categoria, titulo, solicitante, provincia,canton);
     }
 
-    public Servicio buscarServicio(int id) throws SQLException, DataException {
-        return servicioData.buscarServicio(id);
+    public Servicio buscarServicio(int idServicio) throws SQLException, DataException {
+        return servicioData.buscarServicio(idServicio);
     }
 
 }

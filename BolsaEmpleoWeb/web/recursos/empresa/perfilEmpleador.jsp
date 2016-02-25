@@ -46,33 +46,9 @@
                             </s:form>
                         </center>
                         <a href="../empresa/editarEmpleador.action" class="" style="background: transparent">Editar</a>
-                        <a href="../empresa/eliminarEmpleadorProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Eliminar</a>
-                        <a href="../empresa/editarEmpleadorProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Renovar cuenta</a>
+                        <a href="../empresa/eliminarEmpleadorProcess.action" class="" onclick="return confirmBox('¿Desea eliminar la cuenta?');" style="background: transparent">Eliminar</a>
+                        <a href="../empresa/editarEmpleadorProcess.action" class="" onclick="return confirmBox('¿Desea renovar su perfil?');" style="background: transparent">Renovar cuenta</a>
                     </div>
-                    <script>
-                        function confirmBox() {
-                            var answer;
-                            answer = window.confirm("¿Desea renovar la información?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
-                    <script>
-                        function confirmBox1() {
-                            var answer;
-                            answer = window.confirm("¿Desea eliminar la cuenta?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
                 </aside> 
             </div>            
         </section>

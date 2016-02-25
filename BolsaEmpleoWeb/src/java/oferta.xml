@@ -6,6 +6,5 @@
 
 <struts>
     <package name="oferta" namespace="/recursos/Ofertas" extends="struts-default"> 
-        
     </package>
 </struts>

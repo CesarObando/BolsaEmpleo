@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import com.opensymphony.xwork2.ActionSupport;
@@ -11,10 +6,6 @@ import java.io.FileInputStream;
 import java.io.InputStream;
 import org.apache.struts2.ServletActionContext;
 
-/**
- *
- * @author JonathanA
- */
 public class DownloadEjemploAction extends ActionSupport {
     
     private InputStream fileInputStream;
@@ -23,7 +14,9 @@ public class DownloadEjemploAction extends ActionSupport {
     }
     
     public String execute() throws Exception {
+        //Obtiene la ruta de la aplicacion
         String ruta = ServletActionContext.getRequest().getSession().getServletContext().getRealPath("/");
+        //Agrega la ruta del archivo
         fileInputStream = new FileInputStream(new File(ruta+"/recursos/curriculo/Ejemplo.doc"));
 	    return SUCCESS;
     }

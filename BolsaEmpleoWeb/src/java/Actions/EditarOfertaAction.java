@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
 import Dominio.Categoria;
 import Dominio.Oferta;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -23,17 +19,13 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class EditarOfertaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
+    //Variables globales
     private Oferta ofertaAEditar;
     private LinkedList<Categoria> categorias;
     private String mensaje;
     private HttpServletRequest request;
-    private boolean existe;
     private SessionMap<String, Object> sessionMap;
 
     public EditarOfertaAction() {
@@ -41,33 +33,21 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Obtiene el objeto en sesion
         ofertaAEditar = (Oferta) sessionMap.get("oferta");
-        categorias = new CategoriaBusiness().getCategorias();
+        //Llamado al metodo que realiza la busqueda
+        categorias = new CategoriaBusiness().buscarCategorias();
 
-    }
-
-    @Override
-    public Oferta getModel() {
-        return this.ofertaAEditar;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr;
     }
 
     @Override
     public void validate() {
+        //Validaciones de los campos de entrada
         if (ofertaAEditar.getPuesto().length() == 0) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
@@ -91,20 +71,30 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
         }
     }
 
-    public String editar() {
+    public String editar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        //Inicializa las variables
         boolean editado = true;
         try {
+            //Llamado al metodo que realiza la edicion
             ofertaBusiness.editarOferta(ofertaAEditar);
         } catch (SQLException e) {
+            //Asigna valor a la variable
             editado = false;
+            //Define un mensaje que sera mostrado al usuario
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (editado == true) {
+            //Define un mensaje que sera mostrado al usuario
             this.mensaje = "La oferta fue editada correctamente";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
@@ -112,6 +102,22 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
         }
     }
 
+    @Override
+    public Oferta getModel() {
+        return this.ofertaAEditar;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public Oferta getOfertaAEditar() {
         return ofertaAEditar;
     }
@@ -134,19 +140,6 @@ public class EditarOfertaAction extends ActionSupport implements SessionAware, P
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public LinkedList<Categoria> getCategorias() {

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -21,15 +16,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class VerServicioAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Servicio>, ServletRequestAware {
 
+    //Variables globales
     private Servicio servicioAVer;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
 
@@ -38,31 +29,33 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
         int idServicio;
-        if (request.getParameter("idS") != null) {
+
+            //Captura el id del servicio
             idServicio = Integer.parseInt(request.getParameter("idS"));
-        }
-        else {
-            idServicio = Integer.parseInt(request.getParameter("idS"));
-        }
+        
+        //Busca el servicio
         servicioAVer = new ServicioBusiness().buscarServicio(idServicio);
+        //Captura el id de la categoria
         int idCategoria = servicioAVer.getCategoria().getId();
+        //Captura el id del solicitante
         int idSolicitante = servicioAVer.getSolicitante().getId();
+        //Busca la categoria
         Categoria categoria = new CategoriaBusiness().buscarCategoria(idCategoria);
+        //Busca el solicitante
         Solicitante solicitante = new SolicitanteBusiness().buscarSolicitante(idSolicitante);
+        //Asigna la categoria al servicio
         servicioAVer.setCategoria(categoria);
+        //Asigna el solicitante al servicio
         servicioAVer.setSolicitante(solicitante);
+        //Coloca en sesion al servicio
         sessionMap.put("servicio", servicioAVer);
+        //Coloca en sesion al solicitante
         sessionMap.put("solicitanteO", solicitante);
     }
 
@@ -76,6 +69,12 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
         this.request = hsr;
     }
 
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public Servicio getServicioAVer() {
         return servicioAVer;
     }
@@ -98,19 +97,6 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

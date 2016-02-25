@@ -6,6 +6,5 @@
 
 <struts>
     <package name="servicio" namespace="/recursos/servicio" extends="struts-default">
-        
     </package>
 </struts>

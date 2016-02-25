@@ -63,32 +63,8 @@
                             </s:form>
                         </center>
                             <a href="../usuarios/editarSolicitante.action" class="" style="background: transparent">Editar</a>
-                        <a href="../usuarios/eliminarSolicitanteProcess.action" class="" style="background: transparent" onclick="return confirmBox();" >Eliminar</a>
-                        <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox1();" style="background: transparent">Renovar cuenta</a>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar su perfil?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
-                        <script>
-                            function confirmBox1() {
-                                var answer;
-                                answer = window.confirm("¿Desea renovar la información?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
+                        <a href="../usuarios/eliminarSolicitanteProcess.action" class="" style="background: transparent" onclick="return confirmBox('¿Desea eliminar su perfil?');" >Eliminar</a>
+                        <a href="../usuarios/editarSolicitanteProcess.action" class="" onclick="return confirmBox('¿Desea renovar su perfil?');" style="background: transparent">Renovar cuenta</a>
                     </div>
                 </aside> 
             </div>            

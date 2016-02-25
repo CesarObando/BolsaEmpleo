@@ -1,75 +1,46 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
-/**
- *
- * @author Cesar
- */
 public class Oferta {
 
+    //Atributos
     private int id;
-    private String puesto;
-    private Empleador empleador;
-    private float salario;
     private int cantidadVacantes;
+    private float salario;
+    private String puesto;
     private String requerimientos;
-    private Categoria categoria;
     private String descripcion;
     private String provincia;
     private String canton;
-
+    private Empleador empleador;
+    private Categoria categoria;
+    
+    //Constructor vacio
     public Oferta() {
         categoria = new Categoria();
         empleador = new Empleador();
     }
 
-    public Oferta(int id, String puesto, Empleador empleador, float salario, int cantidadVacantes, String requerimientos, Categoria categoria, String descripcion, String provincia, String canton) {
+    //Constructor cargado
+    public Oferta(int id, int cantidadVacantes, float salario, String puesto, String requerimientos, String descripcion, String provincia, String canton, Empleador empleador, Categoria categoria) {
         this.id = id;
-        this.puesto = puesto;
-        this.empleador = empleador;
-        this.salario = salario;
         this.cantidadVacantes = cantidadVacantes;
+        this.salario = salario;
+        this.puesto = puesto;
         this.requerimientos = requerimientos;
-        this.categoria = categoria;
         this.descripcion = descripcion;
         this.provincia = provincia;
         this.canton = canton;
+        this.empleador = empleador;
+        this.categoria = categoria;
     }
-
+    
+    //Setter-Getter
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getPuesto() {
-        return puesto;
-    }
-
-    public void setPuesto(String puesto) {
-        this.puesto = puesto;
-    }
-
-    public Empleador getEmpleador() {
-        return empleador;
-    }
-
-    public void setEmpleador(Empleador empleador) {
-        this.empleador = empleador;
-    }
-
-    public float getSalario() {
-        return salario;
-    }
-
-    public void setSalario(float salario) {
-        this.salario = salario;
     }
 
     public int getCantidadVacantes() {
@@ -80,20 +51,28 @@ public class Oferta {
         this.cantidadVacantes = cantidadVacantes;
     }
 
+    public float getSalario() {
+        return salario;
+    }
+
+    public void setSalario(float salario) {
+        this.salario = salario;
+    }
+
+    public String getPuesto() {
+        return puesto;
+    }
+
+    public void setPuesto(String puesto) {
+        this.puesto = puesto;
+    }
+
     public String getRequerimientos() {
         return requerimientos;
     }
 
     public void setRequerimientos(String requerimientos) {
         this.requerimientos = requerimientos;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public String getDescripcion() {
@@ -120,4 +99,19 @@ public class Oferta {
         this.canton = canton;
     }
 
+    public Empleador getEmpleador() {
+        return empleador;
+    }
+
+    public void setEmpleador(Empleador empleador) {
+        this.empleador = empleador;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

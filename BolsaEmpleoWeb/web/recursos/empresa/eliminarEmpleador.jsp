@@ -35,23 +35,10 @@
                                 <s:hidden name="id"/>
                                 <s:label name="nombre" label="Nombre"/>
                                 <s:label name="apellidos" label="Apellidos"/>
-                                <s:submit value="Eliminar" action="eliminarEmpleadorProcess" onclick="return confirmBox();"/>
+                                <s:submit value="Eliminar" action="eliminarEmpleadorProcess" onclick="return confirmBox('¿Desea eliminar su perfil?');"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar su perfil?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
-
                     </div>
                 </aside> 
             </div>            

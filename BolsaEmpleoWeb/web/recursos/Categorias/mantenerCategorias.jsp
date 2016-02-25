@@ -1,9 +1,3 @@
-<%-- 
-    Document   : mantenerCategorias
-    Created on : 04-ene-2016, 15:34:11
-    Author     : Tin
---%>
-
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
@@ -71,7 +65,7 @@
                                                         <s:url action="eliminarCategoriaProcess" var="url">
                                                             <s:param name="id" value="#categoriaActual.id"/>
                                                         </s:url>
-                                                        <a href='<s:property value="#url" />' onclick="return confirmBox();">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
+                                                        <a href='<s:property value="#url" />' onclick="return confirmBox('¿Desea eliminar la categoría?');">  <button style="background-color: transparent"><img src="../imagenes/eliminar.png"/> </button> </a>
                                                     </p>
                                                 </td>
                                             </tr>
@@ -81,28 +75,15 @@
                                 </div       
                                 </tbody>
                             </table>    
-                           <div id="paginador" aling="center" class="div" ></div>  
+                            <div id="paginador" aling="center" class="div" ></div>  
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar la categoría?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

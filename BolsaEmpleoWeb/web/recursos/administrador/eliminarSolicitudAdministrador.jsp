@@ -39,22 +39,10 @@
                                 <s:label name="oferta.empleador.nombre" label="Nombre del empleador" readonly="true"/>
                                 <s:label name="oferta.empleador.apellidos" label="Apellidos del empleador" readonly="true"/>
                                 <s:label name="oferta.empleador.nombreEmpresa" label="Nombre de la empresa" readonly="true"/>
-                                <s:submit action="eliminarSolicitudAdministradorProcess" value="Eliminar Solicitud" onclick="return confirmBox();"/>
+                                <s:submit action="eliminarSolicitudAdministradorProcess" value="Eliminar Solicitud" onclick="return confirmBox('¿Desea eliminar la solicitud?');"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar la solicitud?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

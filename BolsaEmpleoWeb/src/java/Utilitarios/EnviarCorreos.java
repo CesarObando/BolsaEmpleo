@@ -8,11 +8,10 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 public class EnviarCorreos {
-    
-    public String EnviarCorreo(String destinatario, String asunto, String cuerpo){
-         try
-        {
-            // Propiedades de la conexión
+
+    public String EnviarCorreo(String destinatario, String asunto, String cuerpo) {
+        try {
+            //Propiedades de la conexión
             Properties props = new Properties();
             props.setProperty("mail.smtp.host", "smtp.gmail.com");
             props.setProperty("mail.smtp.starttls.enable", "true");
@@ -20,29 +19,25 @@ public class EnviarCorreos {
             props.setProperty("mail.smtp.user", "bolsaempleopublica@gmail.com");
             props.setProperty("mail.smtp.auth", "true");
 
-            // Preparamos la sesion
+            //Preparacion de la sesion
             Session session = Session.getDefaultInstance(props);
 
-            // Construimos el mensaje
+            //Construccion del mensaje
             MimeMessage message = new MimeMessage(session);
             message.setFrom(new InternetAddress("bolsaempleopublica@gmail.com"));
-            message.addRecipient(
-                Message.RecipientType.TO,
-                new InternetAddress(destinatario));
+            message.addRecipient(Message.RecipientType.TO, new InternetAddress(destinatario));
             message.setSubject(asunto);
             message.setText(cuerpo);
 
-            // Lo enviamos.
+            //Envio del mensaje
             Transport t = session.getTransport("smtp");
             t.connect("bolsaempleopublica@gmail.com", "tcu-563paraiso");
             t.sendMessage(message, message.getAllRecipients());
 
-            // Cierre.
+            //Cierre del envio
             t.close();
             return "Enviado";
-        }
-        catch (Exception e)
-        {
+        } catch (Exception e) {
             return "No enviado";
         }
     }

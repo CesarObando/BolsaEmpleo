@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.EmpleadorBusiness;
@@ -20,15 +15,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class EliminarEmpleadorAction extends ActionSupport implements Preparable, ModelDriven<Empleador>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Empleador empleadorAEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     public SessionMap<String, Object> sessionMap;
 
@@ -42,8 +33,9 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Inicializa el objeto
         empleadorAEliminar = new Empleador();
+        //Obtiene el objeto en sesion
         empleadorAEliminar = (Empleador) sessionMap.get("empleador");
     }
 
@@ -52,6 +44,45 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
 
     }
 
+    public String eliminar() throws DataException, SQLException {
+        //Inicializa la variable
+        boolean eliminado = true;
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
+        //Inicializa el objeto
+        empleadorAEliminar = new Empleador();
+        //Obtiene el objeto en sesion
+        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
+        //Obtiene el id del objeto a eliminar
+        int idEmpleador = empleadorAEliminar.getId();
+        try {
+            //Llamado al metodo que realiza la eliminacion
+            empleadorBusiness.eliminarEmpleador(idEmpleador);
+            } catch (SQLException e) {
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "El empleador fue eliminada correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            //Elimina la sesion del objeto
+            sessionMap.remove("empleador");
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
+        }
+    }
+    
     @Override
     public Empleador getModel() {
         return this.empleadorAEliminar;
@@ -61,32 +92,13 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
-    public String eliminar() throws DataException, SQLException {
-        boolean eliminado = true;
-        EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
-        empleadorAEliminar = new Empleador();
-        empleadorAEliminar = (Empleador) sessionMap.get("empleador");
-        int idEmpleador = empleadorAEliminar.getId();
-        try {
-            empleadorBusiness.eliminarEmpleador(idEmpleador);
-            } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "El empleador fue eliminada correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            sessionMap.remove("empleador");
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
-
+    
+    //Setter-Getter
     public Empleador getEmpleadorAEliminar() {
         return empleadorAEliminar;
     }
@@ -110,18 +122,5 @@ public class EliminarEmpleadorAction extends ActionSupport implements Preparable
     public void setRequest(HttpServletRequest request) {
         this.request = request;
     }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
-    }
-
+    
 }

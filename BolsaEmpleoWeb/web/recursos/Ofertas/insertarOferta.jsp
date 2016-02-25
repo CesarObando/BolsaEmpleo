@@ -3,7 +3,6 @@
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-
 <html>
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
@@ -41,22 +40,10 @@
                                 <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="listaCategorias" listKey="id" listValue="nombre" headerKey="-1" headerValue="Seleccione una categoría"/>            
                                 <s:select requiredLabel="true" name="provincia" label="Provincia" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia" onchange="cambiarCanton()"/>
                                 <s:select name="canton" requiredLabel="true" label="Cantón" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
-                                <s:submit action="insertarOfertaProcess" value="Insertar Oferta" onclick="return confirmBox();"/>
+                                <s:submit action="insertarOfertaProcess" value="Insertar Oferta" onclick="return confirmBox('¿Desea registrar la oferta?');"/>
                             </s:form>
                         </center>
                         <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea registrar la oferta?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

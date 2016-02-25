@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitudBusiness;
@@ -18,16 +13,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class EditarSolicitudAction extends ActionSupport implements Preparable, ModelDriven<Solicitud>, ServletRequestAware, SessionAware {
 
     private Solicitud solicitudAEditar;
     private String mensaje;
     private HttpServletRequest request;
-    private boolean existe;
     private SessionMap<String, Object> sessionMap;
 
     public EditarSolicitudAction() {
@@ -35,18 +25,53 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Obtiene el objeto en sesion
         solicitudAEditar = (Solicitud) sessionMap.get("solicitud");
 
+    }
+
+    public String editar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
+        //Inicializa las variables
+        boolean editado = true;
+        try {
+            //Valida si la solicitud es favorita o no
+            if (solicitudAEditar.isFavorito()) {
+                //Coloca la solicitud como no favorita
+                solicitudAEditar.setFavorito(false);
+            } else {
+                //Coloca la solicitud como favorita
+                solicitudAEditar.setFavorito(true);
+            }
+            //Llamado al metodo que realiza la edicion
+            solicitudBusiness.editarSolicitud(solicitudAEditar);
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            editado = false;
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+        }
+        if (editado == true) {
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "La solicitud fue editada correctamente";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -59,32 +84,12 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
         this.request = hsr;
     }
 
-    public String editar() throws DataException {
-        SolicitudBusiness solicitudBusiness = new SolicitudBusiness();
-        boolean editado = true;
-        try {
-            if (solicitudAEditar.isFavorito()) {
-                solicitudAEditar.setFavorito(false);
-            } else {
-                solicitudAEditar.setFavorito(true);
-            }
-            solicitudBusiness.editarSolicitud(solicitudAEditar);
-        } catch (SQLException e) {
-            editado = false;
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-        }
-        if (editado == true) {
-            this.mensaje = "La solicitud fue editada correctamente";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
+    //Setter-Getter
     public Solicitud getSolicitudAEditar() {
         return solicitudAEditar;
     }
@@ -107,19 +112,6 @@ public class EditarSolicitudAction extends ActionSupport implements Preparable, 
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

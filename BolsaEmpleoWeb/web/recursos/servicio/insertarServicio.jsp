@@ -38,22 +38,10 @@
                                 <s:select name="categoria.id" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1" requiredLabel="true"/>            
                                 <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia"/>
                                 <s:select name="canton" requiredLabel="true" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
-                                <s:submit action="insertarServicioProcess" value="Insertar Servicio" onclick="return confirmBox();"/>
+                                <s:submit action="insertarServicioProcess" value="Insertar Servicio" onclick="return confirmBox('¿Desea registrar el servicio?');"/>
                             </s:form>
                             <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea registrar el servicio?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

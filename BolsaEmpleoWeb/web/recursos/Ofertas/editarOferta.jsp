@@ -41,22 +41,10 @@
                                 <s:select name="categoria.id" requiredLabel="true" label="Categoría" list="categorias" listKey="id" listValue="nombre" headerKey="categoria.id"/>            
                                 <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" label="Provincia" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="provincia"/>
                                 <s:select name="canton" requiredLabel="true" label="Cantón" list="#{}" headerKey="canton"/>
-                                <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox();"/>
+                                <s:submit action="editarOfertaProcess" value="Editar Oferta" onclick="return confirmBox('¿Desea editar la oferta?');"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea editar la oferta?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

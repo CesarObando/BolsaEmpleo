@@ -38,22 +38,10 @@
                                 <s:textfield name="apellidos" requiredLabel="true" placeholder="Ingresa tus apellidos"/>
                                 <s:textfield name="username" requiredLabel="true" placeholder="Ingresa un nombre de usuario"/>
                                 <s:password name="password" requiredLabel="true" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres"/> 
-                                <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox();"/>
+                                <s:submit action="insertarAdministradorProcess" value="Insertar Administrador" onclick="return confirmBox(¿Desea registrar el administrador?);"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea registrar el administrador?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

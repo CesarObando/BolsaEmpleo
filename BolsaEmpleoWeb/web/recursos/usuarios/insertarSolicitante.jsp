@@ -49,23 +49,10 @@
                                 <s:textfield name="idiomas" type="text" placeholder="Ingresa los idiomas que dominas"/>
                                 <s:textfield name="username" requiredLabel="true" placeholder="Ingresa un nombre de usuario"/>
                                 <s:password name="password" requiredLabel="true" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres"/> 
-                                <s:submit method="insertar" value="Insertar Solicitante" action="insertarSolicitanteProcess" onclick="return confirmBox();"/>
+                                <s:submit method="insertar" value="Insertar Solicitante" action="insertarSolicitanteProcess" onclick="return confirmBox('¿Desea registrar el solicitante?');"/>
                             </s:form>
                         </center>
                         <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
-
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea registrar el solicitante?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -21,12 +16,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class InsertarCategoriaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Categoria>, ServletRequestAware {
 
+    //Variables globales
     private Categoria categoriaAInsertar;
     private String mensaje;
     private HttpServletRequest request;
@@ -42,8 +34,47 @@ public class InsertarCategoriaAction extends ActionSupport implements SessionAwa
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         this.categoriaAInsertar = new Categoria();
-        this.mensaje = "";
+    }
+
+    @Override
+    public void validate() {
+        //Validaciones de los campos de entrada
+        if (categoriaAInsertar.getNombre().length() == 0) {
+            addFieldError("nombre", "Debe ingresar un nombre.");
+        }
+    }
+
+    public String insertar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        //Inicializa las variables
+        boolean insertado = true;
+        try {
+            //Llamado al metodo que realiza la insercion
+            categoriaBusiness.insertarCategoria(categoriaAInsertar);
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            insertado = false;
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+        }
+        if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "La categoria fue insertada correctamente";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -57,33 +88,11 @@ public class InsertarCategoriaAction extends ActionSupport implements SessionAwa
     }
 
     @Override
-    public void validate() {
-        if (categoriaAInsertar.getNombre().length() == 0) {
-            addFieldError("nombre", "Debe ingresar un nombre.");
-        }
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
-    public String insertar() throws DataException {
-        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        boolean insertado = true;
-        try {
-            categoriaBusiness.insertarCategoria(categoriaAInsertar);
-        } catch (SQLException e) {
-            insertado = false;
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-        }
-        if (insertado == true) {
-            this.mensaje = "La categoria fue insertada correctamente";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
-    }
-
+    //Setter-Getter
     public Categoria getCategoriaAInsertar() {
         return categoriaAInsertar;
     }
@@ -106,11 +115,6 @@ public class InsertarCategoriaAction extends ActionSupport implements SessionAwa
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

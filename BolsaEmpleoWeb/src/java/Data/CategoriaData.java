@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Data;
 
 import Dominio.Categoria;
@@ -14,119 +9,191 @@ import java.sql.SQLException;
 import java.sql.Types;
 import java.util.LinkedList;
 
-/**
- *
- * @author Cesar
- */
 public class CategoriaData extends BaseData {
 
+    //Constructor vacio
     public CategoriaData() {
     }
 
-    public Categoria insertarCategoria(Categoria categoriaAInsertar) throws SQLException, DataException {
+    public Categoria insertarCategoria(Categoria categoria) throws SQLException, DataException {
+        //Creacion de la conexion a la base de datos
         Connection conexion = super.getConnection();
-        String sqlInsert = "{Call insertar_categoria (?, ?)}";
+        //Definicion del procedimiento almacenado
+        String sqlInsertarCategoria = "{Call insertar_categoria (?, ?)}";
         try {
-            CallableStatement statement = conexion.prepareCall(sqlInsert);
+            //Preparacion del procedimiento almacenado
+            CallableStatement statement = conexion.prepareCall(sqlInsertarCategoria);
+            //Propiedad de la conexion para evitar finalizar la transaccion automaticamente
+            conexion.setAutoCommit(false);
+            //Definicion del parametro de salida
             statement.registerOutParameter(1, Types.INTEGER);
-            statement.setString(2, categoriaAInsertar.getNombre());
+            //Definicion de los parametros que recibe el procedimiento almacenado
+            statement.setString(2, categoria.getNombre());
+            //Ejecucion del procedimiento almacenado
             statement.executeUpdate();
-            categoriaAInsertar.setId(statement.getInt(1));
+            //Recuperacion del parametro de salida
+            categoria.setId(statement.getInt(1));
+            //Finaliza la transaccion
             conexion.commit();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            //Reversa la transaccion
+            conexion.rollback();
+            //Lanza la excepcion para mostrar el error
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
+        //Cierre de la conexion
         conexion.close();
-        return categoriaAInsertar;
+        //Retorno del objeto
+        return categoria;
     }
 
-    public Categoria editarCategoria(Categoria categoriaAEditar) throws SQLException, DataException {
+    public Categoria editarCategoria(Categoria categoria) throws SQLException, DataException {
+        //Creacion de la conexion a la base de datos
         Connection conexion = super.getConnection();
-        String sqlEdit = "{Call editar_categoria (?,?)}";
+        //Definicion del procedimiento almacenado
+        String sqlEditarCategoria = "{Call editar_categoria (?,?)}";
+        //Propiedad de la conexion para evitar finalizar la transaccion automaticamente
+        conexion.setAutoCommit(false);
         try {
-            CallableStatement statement = conexion.prepareCall(sqlEdit);
-            statement.setInt(1, categoriaAEditar.getId());
-            statement.setString(2, categoriaAEditar.getNombre());
+            //Preparacion del procedimiento almacenado
+            CallableStatement statement = conexion.prepareCall(sqlEditarCategoria);
+            //Definicion de los parametros que recibe el procedimiento almacenado
+            statement.setInt(1, categoria.getId());
+            statement.setString(2, categoria.getNombre());
+            //Ejecucion del procedimiento almacenado
             statement.executeUpdate();
+            //Finaliza la transaccion
             conexion.commit();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            //Reversa la transaccion
+            conexion.rollback();
+            //Lanza la excepcion para mostrar el error
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
+        //Cierre de la conexion
         conexion.close();
-        return categoriaAEditar;
+        //Retorno del objeto
+        return categoria;
     }
 
     public void eliminarCategoria(int idCategoria) throws SQLException, DataException {
+        //Creacion de la conexion a la base de datos
         Connection conexion = super.getConnection();
-        String sqlDelete = "{CALL eliminar_categoria (?)}";
+        //Definicion del procedimiento almacenado
+        String sqlEliminarCategoria = "{CALL eliminar_categoria (?)}";
         try {
-            CallableStatement statement = conexion.prepareCall(sqlDelete);
+            //Preparacion del procedimiento almacenado
+            CallableStatement statement = conexion.prepareCall(sqlEliminarCategoria);
+            //Definicion del parametro que recibe el procedimiento almacenado
             statement.setInt(1, idCategoria);
+            //Ejecucion del procedimiento almacenado
             statement.executeUpdate();
+            //Finaliza la transaccion
             conexion.commit();
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            //Reversa la transaccion
+            conexion.rollback();
+            //Lanza la excepcion para mostrar el error
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
+        //Cierre de la conexion
         conexion.close();
     }
 
-    public LinkedList<Categoria> getCategorias() throws SQLException, DataException {
-        LinkedList<Categoria> categorias = new LinkedList<Categoria>();
-        Connection conexion = super.getConnection();
-        String sqlSelect = "{CALL buscar_categorias}";
-        try {
-            CallableStatement statement = conexion.prepareCall(sqlSelect);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Categoria categoria = new Categoria();
-                categoria.setId(rs.getInt("id"));
-                categoria.setNombre(rs.getString("nombre"));
-                categorias.add(categoria);
-            }
-        } catch (Exception e) {
-            throw new DataException("Ha ocurrido un error con la base de datos");
-        }
-        conexion.close();
-        return categorias;
-    }
-
-    public LinkedList<Categoria> getCategoriasFiltradas(String nombre) throws SQLException, DataException {
+    public LinkedList<Categoria> buscarCategorias() throws SQLException, DataException {
+        //Definicion de la lista de objetos a consultar
         LinkedList<Categoria> categorias = new LinkedList<>();
+        //Creacion de la conexion a la base de datos
         Connection conexion = super.getConnection();
-        String sqlSelect = "{CALL buscar_categorias_filtradas (?)}";
+        //Definicion del procedimiento almacenado
+        String sqlBuscarCategorias = "{CALL buscar_categorias}";
         try {
-            CallableStatement statement = conexion.prepareCall(sqlSelect);
-            statement.setString(1, nombre);
-            ResultSet rs = statement.executeQuery();
-            while (rs.next()) {
-                Categoria categoria = new Categoria();
-                categoria.setId(rs.getInt("id"));
-                categoria.setNombre(rs.getString("nombre"));
-                categorias.add(categoria);
+            //Preparacion del procedimiento almacenado
+            CallableStatement statement = conexion.prepareCall(sqlBuscarCategorias);
+            //Ejecucion del procedimiento almacenado y recuperacion del resultado de busqueda
+            ResultSet resultSet = statement.executeQuery();
+            //Recorrido del resultado de busqueda
+            while (resultSet.next()) {
+                //Definicion de un objeto para asignarle cada atributo contenido en un resultado de busqueda
+                Categoria categoriaActual = new Categoria();
+                //Asignacion de atributos al objeto
+                categoriaActual.setId(resultSet.getInt("id"));
+                categoriaActual.setNombre(resultSet.getString("nombre"));
+                //Inclusion del objeto a la lista
+                categorias.add(categoriaActual);
             }
-        } catch (Exception e) {
+        } catch (SQLException e) {
+            //Lanza la excepcion para mostrar el error
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
+        //Cierre de la conexion
         conexion.close();
+        //Retorno de la lista
         return categorias;
     }
 
-    public Categoria buscarCategoria(int id) throws SQLException, DataException {
+    public LinkedList<Categoria> buscarCategoriasFiltradas(String nombre) throws SQLException, DataException {
+        //Definicion de la lista de objetos a consultar
+        LinkedList<Categoria> categorias = new LinkedList<>();
+        //Creacion de la conexion a la base de datos
+        Connection conexion = super.getConnection();
+        //Definicion del procedimiento almacenado
+        String sqlBuscarCategoriasFiltradas = "{CALL buscar_categorias_filtradas (?)}";
+        try {
+            //Preparacion del procedimiento almacenado
+            CallableStatement statement = conexion.prepareCall(sqlBuscarCategoriasFiltradas);
+            //Definicion del parametro que recibe el procedimiento almacenado
+            statement.setString(1, nombre);
+            //Ejecucion del procedimiento almacenado y recuperacion del resultado de busqueda
+            ResultSet resultSet = statement.executeQuery();
+            //Recorrido del resultado de busqueda
+            while (resultSet.next()) {
+                //Definicion de un objeto para asignarle cada atributo contenido en un resultado de busqueda
+                Categoria categoriaActual = new Categoria();
+                //Asignacion de atributos al objeto
+                categoriaActual.setId(resultSet.getInt("id"));
+                categoriaActual.setNombre(resultSet.getString("nombre"));
+                //Inclusion del objeto a la lista
+                categorias.add(categoriaActual);
+            }
+        } catch (SQLException e) {
+            //Lanza la excepcion para mostrar el error
+            throw new DataException("Ha ocurrido un error con la base de datos");
+        }
+        //Cierre de la conexion
+        conexion.close();
+        //Retorno de la lista
+        return categorias;
+    }
+
+    public Categoria buscarCategoria(int idCategoria) throws SQLException, DataException {
+        //Definicion del procedimiento almacenado
         String sqlBuscarCategoria = "{CALL buscar_categoria(?)}";
+        //Creacion de la conexion a la base de datos
         Connection conexion = this.getConnection();
+        //Definicion del objeto a consultar
         Categoria categoria = new Categoria();
         try {
+            //Preparacion del procedimiento almacenado
             CallableStatement statement = conexion.prepareCall(sqlBuscarCategoria);
-            statement.setInt(1, id);
+            //Definicion del parametro que recibe el procedimiento almacenado
+            statement.setInt(1, idCategoria);
+            //Ejecucion del procedimiento almacenado y recuperacion del resultado de busqueda
             ResultSet resultSet = statement.executeQuery();
+            //Si hay resultado de busqueda
             if (resultSet.next()) {
+                //Asignacion de atributos al objeto
                 categoria.setId(resultSet.getInt("id"));
                 categoria.setNombre(resultSet.getString("nombre"));
             }
         } catch (SQLException e) {
+            //Lanza la excepcion para mostrar el error
             throw new DataException("Ha ocurrido un error con la base de datos");
         }
+        //Cierre de la conexion
         conexion.close();
+        //Retorno del objeto
         return categoria;
     }
+
 }

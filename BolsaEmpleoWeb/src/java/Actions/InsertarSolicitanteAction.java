@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitanteBusiness;
@@ -26,10 +21,6 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class InsertarSolicitanteAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Solicitante>, ServletRequestAware {
 
     private Solicitante solicitanteAInsertar;
@@ -52,22 +43,13 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         solicitanteAInsertar = new Solicitante();
-        mensaje = "";
-    }
-
-    @Override
-    public Solicitante getModel() {
-        return this.solicitanteAInsertar;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr;
     }
 
     @Override
     public void validate() {
+        //Validaciones de los campos de entrada
         if (solicitanteAInsertar.getCedula().length() != 9) {
             addFieldError("cedula", "Debe ingresar un número de identificación válido. Ej: 000000000");
         }
@@ -101,39 +83,58 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
     }
 
     public String insertar() {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        //Inicializa las variables
         insertado = true;
         boolean existe = false;
         try {
+            //Define una lista de objetos
             LinkedList<Solicitante> solicitantes = new SolicitanteBusiness().buscarSolicitantes();
             int i = 0;
+            //Recorre la lista
             while (existe == false && i < solicitantes.size()) {
                 Solicitante solicitante = solicitantes.get(i);
+                //Valida que la cedula, correo y nombre de usuario que se esta insertando no exista
                 if (solicitanteAInsertar.getCedula().equals(solicitante.getCedula()) || solicitanteAInsertar.getCorreo().equals(solicitante.getCorreo())
                         || solicitanteAInsertar.getUsername().equals(solicitante.getUsername())) {
                     existe = true;
                 }
                 i++;
             }
+            //Si no existe la cedula, correo y nombre de usuario
             if (existe == false) {
+                //Asigna la imagen al objeto a insertar
                 cargarImagen();
+                //Llamado al metodo que realiza la insercion
                 solicitanteBusiness.insertarSolicitante(solicitanteAInsertar);
             } else {
+                //Asigna valor a la variable
                 insertado = false;
+                //Define un mensaje que sera mostrado al usuario
                 mensaje = "La cédula, correo o nombre de usuario ya se encuentran registrados. Inténtelo nuevamente.";
+                //Coloca en sesion al mensaje
                 sessionMap.put("mensaje", mensaje);
+                //Coloca el mensaje como mensaje de error
                 addActionError(mensaje);
                 return ERROR;
             }
         } catch (SQLException | DataException e) {
+            //Asigna valor a la variable
             insertado = false;
+            //Define un mensaje que sera mostrado al usuario
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
             this.mensaje = "El solicitante fue insertado correctamente";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
@@ -143,20 +144,38 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
 
     public void cargarImagen() {
         try {
-            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            //Genera un buffer en memoria que va a almacenar nuestro archivoImagen
             BufferedImage buffer = ImageIO.read(this.archivoImagen);
-            // Creamos un stream de salida, que escriba un arreglo de bytes
+            //Crea un stream de salida que escriba un arreglo de bytes
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            //Escribe el archivoImagen en el stream de salida
             ImageIO.write(buffer, "jpg", baos);
             baos.flush();
+            //Asigna el archivoImagen al objeto por editar
             this.solicitanteAInsertar.setFoto(baos.toByteArray());
+            //Cierra el stream de salida
             baos.close();
         } catch (IOException ex) {
             Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    @Override
+    public Solicitante getModel() {
+        return this.solicitanteAInsertar;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public Solicitante getSolicitanteAInsertar() {
         return solicitanteAInsertar;
     }
@@ -211,11 +230,6 @@ public class InsertarSolicitanteAction extends ActionSupport implements SessionA
 
     public void setInsertado(boolean insertado) {
         this.insertado = insertado;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

@@ -2,7 +2,6 @@
 <%@taglib uri="/struts-tags" prefix="s" %>
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-
 <html>
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>

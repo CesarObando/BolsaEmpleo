@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.SolicitanteData;
@@ -11,13 +6,9 @@ import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- *
- * @author Cesar
- */
 public class SolicitanteBusiness {
 
-    private SolicitanteData solicitanteData;
+    private final SolicitanteData solicitanteData;
 
     public SolicitanteBusiness() {
         solicitanteData = new SolicitanteData();
@@ -31,8 +22,8 @@ public class SolicitanteBusiness {
         return solicitanteData.editarSolicitante(solicitanteAEditar);
     }
 
-    public Solicitante iniciarSesion(String nombreUsuario, String password) throws SQLException, DataException {
-        return solicitanteData.iniciarSesion(nombreUsuario, password);
+    public Solicitante iniciarSesion(String username, String password) throws SQLException, DataException {
+        return solicitanteData.iniciarSesion(username, password);
     }
 
     public LinkedList<Solicitante> buscarSolicitantes() throws SQLException, DataException {
@@ -43,16 +34,16 @@ public class SolicitanteBusiness {
         return solicitanteData.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
     }
     
-    public Solicitante buscarSolicitantePorNombreUsuario(String nombreUsuario) throws SQLException, DataException{
-        return solicitanteData.buscarSolicitantePorNombreUsuario(nombreUsuario);
+    public Solicitante buscarSolicitantePorNombreUsuario(String username) throws SQLException, DataException{
+        return solicitanteData.buscarSolicitantePorNombreUsuario(username);
     }
 
-    public Solicitante buscarSolicitante(int id) throws SQLException, DataException {
-        return solicitanteData.buscarSolicitante(id);
+    public Solicitante buscarSolicitante(int idSolicitante) throws SQLException, DataException {
+        return solicitanteData.buscarSolicitante(idSolicitante);
     }
 
-    public void eliminarSolicitante(int id) throws SQLException, DataException {
-        solicitanteData.eliminarSolicitante(id);
+    public void eliminarSolicitante(int idSolicitante) throws SQLException, DataException {
+        solicitanteData.eliminarSolicitante(idSolicitante);
     }
 
 }

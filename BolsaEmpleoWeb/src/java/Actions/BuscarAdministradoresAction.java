@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.AdministradorBusiness;
@@ -17,12 +12,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarAdministradoresAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_ADMINISTRADORES = "buscarAdministradores";
     private LinkedList<Administrador> administradores;
     private HttpServletRequest request;
@@ -39,19 +31,25 @@ public class BuscarAdministradoresAction extends ActionSupport implements Prepar
 
     @Override
     public void prepare() throws Exception {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        //Captura de los campos de busqueda en el jsp
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
+        //Llamado al metodo que realiza la busqueda
         administradores = administradorBusiness.buscarAdministradoresFiltrados(cedula, nombre, apellidos);
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        //Captura de los campos de busqueda en el jsp
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
         try {
+            //Llamado al metodo que realiza la busqueda
             administradores = administradorBusiness.buscarAdministradoresFiltrados(cedula, nombre, apellidos);
         } catch (SQLException e) {
             Logger.getLogger(BuscarAdministradoresAction.class.getName()).log(Level.SEVERE, null, e);
@@ -63,7 +61,8 @@ public class BuscarAdministradoresAction extends ActionSupport implements Prepar
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
+    //Setter-Getter
     public LinkedList<Administrador> getAdministradores() {
         return administradores;
     }

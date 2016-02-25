@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitanteBusiness;
@@ -17,12 +12,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarSolicitantesAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_SOLICITANTES = "buscarSolicitantes";
     private LinkedList<Solicitante> solicitantes;
     private HttpServletRequest request;
@@ -44,11 +36,14 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
     
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        //Captura de los campos de busqueda en el jsp
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
         try {
+            //Llamado al metodo que realiza la busqueda
             solicitantes = solicitanteBusiness.buscarSolicitantesFiltrados(cedula, nombre, apellidos);
             ordenarLista();
         } catch (SQLException e) {
@@ -57,7 +52,7 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         return BUSCAR_SOLICITANTES;
     }
     
-    public void ordenarLista() {
+    public void ordenarLista() { //Calcula los meses que han transcurrido desde la ultima actualizacion
         java.util.Date fechaActual = new java.util.Date();
         java.sql.Date fechaUltimaActualizacion;
         for (Solicitante solicitante : solicitantes) {
@@ -83,6 +78,7 @@ public class BuscarSolicitantesAction extends ActionSupport implements Preparabl
         this.request = hsr;
     }
 
+    //Setter-Getter
     public LinkedList<Solicitante> getSolicitantes() {
         return solicitantes;
     }

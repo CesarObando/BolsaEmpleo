@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.SolicitudData;
@@ -11,47 +6,43 @@ import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- *
- * @author JonathanA
- */
 public class SolicitudBusiness {
 
-    private SolicitudData solicitudData;
+    private final SolicitudData solicitudData;
 
     public SolicitudBusiness() {
         solicitudData = new SolicitudData();
     }
 
-    public Solicitud insertarSolicitud(Solicitud solicitud) throws SQLException {
+    public Solicitud insertarSolicitud(Solicitud solicitud) throws SQLException, DataException {
         return solicitudData.insertarSolicitud(solicitud);
     }
 
-    public Solicitud editarSolicitud(Solicitud solicitudAEditar) throws SQLException, DataException {
-        return solicitudData.editarSolicitud(solicitudAEditar);
+    public Solicitud editarSolicitud(Solicitud solicitud) throws SQLException, DataException {
+        return solicitudData.editarSolicitud(solicitud);
     }
 
-    public void eliminarSolicitud(int id) throws SQLException {
-        solicitudData.eliminarSolicitud(id);
+    public void eliminarSolicitud(int idSolicitud) throws SQLException, DataException {
+        solicitudData.eliminarSolicitud(idSolicitud);
     }
 
-    public LinkedList<Solicitud> buscarSolicitudes() throws SQLException {
+    public LinkedList<Solicitud> buscarSolicitudes() throws SQLException, DataException {
         return solicitudData.buscarSolicitudes();
     }
     
-    public LinkedList<Solicitud> buscarSolicitudesFavoritas(int oferta) throws SQLException {
-        return solicitudData.buscarSolicitudesFavoritas(oferta);
+    public LinkedList<Solicitud> buscarSolicitudesFavoritas(int idOferta) throws SQLException, DataException {
+        return solicitudData.buscarSolicitudesFavoritas(idOferta);
     }
 
-    public LinkedList<Solicitud> buscarSolicitudesFiltradas(int solicitante, int oferta) throws SQLException {
-        return solicitudData.buscarSolicitudesFiltradas(solicitante, oferta);
+    public LinkedList<Solicitud> buscarSolicitudesFiltradas(int idSolicitante, int idOferta) throws SQLException, DataException {
+        return solicitudData.buscarSolicitudesFiltradas(idSolicitante, idOferta);
     }
 
     public Solicitud buscarSolicitud(int id) throws SQLException, DataException {
         return solicitudData.buscarSolicitud(id);
     }
 
-    public LinkedList<Solicitud> getOfertasPorCategorias(int categoria, String puesto) throws SQLException {
-        return solicitudData.getOfertasPorCategorias(categoria, puesto);
+    public LinkedList<Solicitud> buscarSolicitudesPorCategoria(int categoria, String puesto) throws SQLException, DataException {
+        return solicitudData.buscarSolicitudesPorCategoria(categoria, puesto);
     }
 }

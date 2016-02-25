@@ -34,22 +34,10 @@
                             <s:form action="eliminarOfertaProcess" cssClass="form">
                                 <s:hidden name="id"/>
                                 <s:textfield name="puesto" readonly="true" label="Puesto"/>
-                                <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta" onclick="return confirmBox();"/>
+                                <s:submit action="eliminarOfertaProcess" value="Eliminar Oferta" onclick="return confirmBox('¿Desea eliminar la oferta?');"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar la oferta?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

@@ -6,8 +6,5 @@
 
 <struts>
     <package name="administrador" namespace="/recursos/administrador" extends="struts-default">
-        <action class="Actions.CerrarSesionAction" name="cerrarSesion" method="cerrarSesion">
-            <result type="dispatcher" name="success">/recursos/usuarios/pantallaPrincipal.jsp</result>
-        </action>
     </package>
 </struts>

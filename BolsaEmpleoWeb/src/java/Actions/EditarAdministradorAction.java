@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.AdministradorBusiness;
@@ -21,33 +16,82 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class EditarAdministradorAction extends ActionSupport implements Preparable, ModelDriven<Administrador>, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Administrador administradorEditar;
     private String mensaje;
     private HttpServletRequest request;
-    private boolean existe;
     public SessionMap<String, Object> sessionMap;
 
     public EditarAdministradorAction() {
     }
 
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         administradorEditar = new Administrador();
+        //Obtiene el objeto en sesion
         administradorEditar = (Administrador) sessionMap.get("administrador");
+    }
+    
+    @Override
+    public void validate() {
+        //Validaciones de los campos de entrada
+        if (administradorEditar.getCedula().length() != 9 || administradorEditar.getCedula() == null) {
+            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
+        }
+        if (administradorEditar.getNombre().length() == 0 || administradorEditar.getNombre() == null) {
+            addFieldError("nombre", "Debe ingresar su nombre.");
+        }
+        if (administradorEditar.getApellidos().length() == 0 || administradorEditar.getApellidos() == null) {
+            addFieldError("apellidos", "Debe ingresar sus apellidos.");
+        }
+        if (administradorEditar.getUsername().length() == 0 || administradorEditar.getUsername() == null) {
+            addFieldError("username", "Debe ingresar un nombre de usuario.");
+        }
+        if (administradorEditar.getPassword().length() == 0 || administradorEditar.getPassword() == null) {
+            addFieldError("password", "Debe ingresar una contraseña.");
+        }
+    }
+
+    public String editar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
+        //Inicializa el objeto
+        administradorEditar = new Administrador();
+        //Obtiene el objeto en sesion
+        administradorEditar = (Administrador) sessionMap.get("administrador");
+        //Inicializa la variable
+        boolean insertado = true;
+        try {
+            //Llamado al metodo que realiza la edicion
+            administradorBusiness.editarAdministrador(administradorEditar);
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            insertado = false;
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+        }
+        if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "El administrador fue editado correctamente";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -59,49 +103,13 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
     @Override
-    public void validate() {
-        if (administradorEditar.getCedula().length() != 9 || administradorEditar.getCedula().equals(null)) {
-            addFieldError("cedula", "Debe ingresar un número de identificación válido. Formato de 9 dígitos. Ej.: 000000000");
-        }
-        if (administradorEditar.getNombre().length() == 0 || administradorEditar.getNombre().equals(null)) {
-            addFieldError("nombre", "Debe ingresar su nombre.");
-        }
-        if (administradorEditar.getApellidos().length() == 0 || administradorEditar.getApellidos().equals(null)) {
-            addFieldError("apellidos", "Debe ingresar sus apellidos.");
-        }
-        if (administradorEditar.getUsername().length() == 0 || administradorEditar.getUsername().equals(null)) {
-            addFieldError("username", "Debe ingresar un nombre de usuario.");
-        }
-        if (administradorEditar.getPassword().length() == 0 || administradorEditar.getPassword().equals(null)) {
-            addFieldError("password", "Debe ingresar una contraseña.");
-        }
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
-
-    public String editar() throws DataException {
-        AdministradorBusiness administradorBusiness = new AdministradorBusiness();
-        administradorEditar = new Administrador();
-        administradorEditar = (Administrador) sessionMap.get("administrador");
-        boolean insertado = true;
-        try {
-            administradorBusiness.editarAdministrador(administradorEditar);
-        } catch (SQLException e) {
-            insertado = false;
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-        }
-        if (insertado == true) {
-            this.mensaje = "El administrador fue editado correctamente";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
-    }
-
+    
+    //Setter-Getter
     public Administrador getAdministradorEditar() {
         return administradorEditar;
     }
@@ -124,19 +132,6 @@ public class EditarAdministradorAction extends ActionSupport implements Preparab
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

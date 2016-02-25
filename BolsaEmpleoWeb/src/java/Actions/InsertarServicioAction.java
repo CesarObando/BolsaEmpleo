@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
 import Business.ServicioBusiness;
 import Dominio.Servicio;
 import Dominio.Solicitante;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -29,12 +25,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class InsertarServicioAction extends ActionSupport implements ModelDriven<Servicio>, Preparable, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Servicio servicioAInsertar;
     private LinkedList listaCategorias;
     private String mensaje;
@@ -56,26 +49,20 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         solicitante = (Solicitante) sessionMap.get("solicitante");
         solicitante = (Solicitante) request.getSession().getAttribute("solicitante");
+        //Inicializa el objeto
         servicioAInsertar = new Servicio();
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.listaCategorias = categoriaBusiness.getCategorias();
-        mensaje = "";
-    }
-
-    @Override
-    public Servicio getModel() {
-        return this.servicioAInsertar;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr;
+        //Llamado al metodo que realiza la busqueda
+        this.listaCategorias = categoriaBusiness.buscarCategorias();
     }
 
     @Override
     public void validate() {
+        //Validaciones de los campos de entrada
         if (servicioAInsertar.getTitulo().length() == 0) {
             addFieldError("titulo", "Debe ingresar el título del servicio.");
         }
@@ -93,56 +80,81 @@ public class InsertarServicioAction extends ActionSupport implements ModelDriven
         }
     }
 
-    public String insertar() {
+    public String insertar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         ServicioBusiness servicioBusiness = new ServicioBusiness();
+        //Inicializa las variables
         boolean insertado = true;
         try {
+            //Asigna la imagen al objeto a insertar
             cargarImagen();
+            //Asigna el solicitante al servicio
             servicioAInsertar.setSolicitante(solicitante);
+            //Llamado al metodo que realiza la insercion
             servicioBusiness.insertarServicio(servicioAInsertar);
         } catch (SQLException e) {
+            //Asigna valor a la variable
             insertado = false;
+            //Define un mensaje que sera mostrado al usuario
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
             this.mensaje = "El servicio fue insertado correctamente";
+            //Coloca en sesion al mensaje
             addActionMessage(mensaje);
+            //Coloca el mensaje como mensaje del action
             sessionMap.put("mensaje", mensaje);
             return SUCCESS;
         } else {
             return ERROR;
         }
     }
-    
+
     public void cargarImagen() {
         try {
-            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            //Genera un buffer en memoria que va a almacenar nuestro archivoImagen
             BufferedImage buffer = ImageIO.read(this.archivoImagen);
-            // Creamos un stream de salida, que escriba un arreglo de bytes
+            //Crea un stream de salida que escriba un arreglo de bytes
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            //Escribe el archivoImagen en el stream de salida
             ImageIO.write(buffer, "jpg", baos);
             baos.flush();
+            //Asigna el archivoImagen al objeto por editar
             this.servicioAInsertar.setFoto(baos.toByteArray());
+            //Cierra el stream de salida
             baos.close();
         } catch (IOException ex) {
             Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
+    @Override
+    public Servicio getModel() {
+        return this.servicioAInsertar;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public HttpServletRequest getRequest() {
         return request;
     }
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Servicio getServicioAInsertar() {

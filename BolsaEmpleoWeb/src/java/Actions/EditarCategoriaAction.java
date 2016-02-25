@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -18,16 +13,12 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class EditarCategoriaAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Categoria>, ServletRequestAware {
 
+    //Variables globales
     private Categoria categoriaAEditar;
     private String mensaje;
     private HttpServletRequest request;
-    private boolean existe;
     private SessionMap<String, Object> sessionMap;
 
     public EditarCategoriaAction() {
@@ -35,18 +26,54 @@ public class EditarCategoriaAction extends ActionSupport implements SessionAware
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Captura el parametro necesario para realizar la busqueda
         int id = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
         categoriaAEditar = new CategoriaBusiness().buscarCategoria(id);
+    }
+
+    @Override
+    public void validate() {
+        //Validaciones de los campos de entrada
+        if (categoriaAEditar.getNombre().length() == 0) {
+            addFieldError("nombre", "Debe ingresar un nombre.");
+        }
+    }
+
+    public String editar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
+        //Inicializa la variable
+        boolean editado = true;
+        try {
+            //Llamado al metodo que realiza la edicion
+            categoriaBusiness.editarCategoria(categoriaAEditar);
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            editado = false;
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+        }
+        if (editado == true) {
+            //Define un mensaje que sera mostrado al usuario
+            this.mensaje = "La categoria fue editada correctamente";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            return ERROR;
+        }
     }
 
     @Override
@@ -58,35 +85,13 @@ public class EditarCategoriaAction extends ActionSupport implements SessionAware
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
-
+    
     @Override
-    public void validate() {
-        if (categoriaAEditar.getNombre().length() == 0) {
-            addFieldError("nombre", "Debe ingresar un nombre.");
-        }
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
-
-    public String editar() throws DataException {
-        CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        boolean editado = true;
-        try {
-            categoriaBusiness.editarCategoria(categoriaAEditar);
-        } catch (SQLException e) {
-            editado = false;
-            mensaje = "Ocurrió un error con la base de datos.Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-        }
-        if (editado == true) {
-            this.mensaje = "La categoria fue editada correctamente";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            return ERROR;
-        }
-    }
-
+    
+    //Setter-Getter
     public Categoria getCategoriaAEditar() {
         return categoriaAEditar;
     }
@@ -109,19 +114,6 @@ public class EditarCategoriaAction extends ActionSupport implements SessionAware
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

@@ -1,16 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
-/**
- *
- * @author Cesar
- */
 public class Administrador {
-
+    
+    //Atributos
     private int id;
     private String cedula;
     private String nombre;
@@ -18,9 +10,11 @@ public class Administrador {
     private String username;
     private String password;
 
+    //Constructor vacio
     public Administrador() {
     }
 
+    //constructor cargado
     public Administrador(int id, String cedula, String nombre, String apellidos, String username, String password) {
         this.id = id;
         this.cedula = cedula;
@@ -30,6 +24,7 @@ public class Administrador {
         this.password = password;
     }
 
+    //Setter-Getter
     public int getId() {
         return id;
     }
@@ -77,5 +72,4 @@ public class Administrador {
     public void setPassword(String password) {
         this.password = password;
     }
-
 }

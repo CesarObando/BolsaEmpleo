@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Business;
 
 import Data.EmpleadorData;
@@ -11,36 +6,28 @@ import Exception.DataException;
 import java.sql.SQLException;
 import java.util.LinkedList;
 
-/**
- *
- * @author Tin em
- */
 public class EmpleadorBusiness {
 
-    private EmpleadorData empleadorData;
+    private final EmpleadorData empleadorData;
 
     public EmpleadorBusiness() {
         empleadorData = new EmpleadorData();
     }
 
-    public Empleador insertarEmpleador(Empleador empleador) throws SQLException {
-
+    public Empleador insertarEmpleador(Empleador empleador) throws SQLException, DataException {
         return empleadorData.insertarEmpleador(empleador);
-
     }
 
-    public void editarEmpleador(Empleador empleador) throws SQLException {
+    public void editarEmpleador(Empleador empleador) throws SQLException, DataException {
         empleadorData.editarEmpleador(empleador);
     }
 
-    public void eliminarEmpleador(int id) throws SQLException {
-
-        empleadorData.eliminarEmpleador(id);
-
+    public void eliminarEmpleador(int idEmpleador) throws SQLException, DataException {
+        empleadorData.eliminarEmpleador(idEmpleador);
     }
 
-    public Empleador inicioSesion(String user, String pass) throws SQLException, DataException {
-        return empleadorData.inicioSesion(user, pass);
+    public Empleador iniciarSesion(String username, String password) throws SQLException, DataException {
+        return empleadorData.iniciarSesion(username, password);
     }
 
     public LinkedList<Empleador> buscarEmpleadores() throws SQLException, DataException {
@@ -51,12 +38,12 @@ public class EmpleadorBusiness {
         return empleadorData.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
     }
 
-    public Empleador buscarEmpleador(int id) throws SQLException, DataException {
-        return empleadorData.buscarEmpleador(id);
+    public Empleador buscarEmpleador(int idEmpleador) throws SQLException, DataException {
+        return empleadorData.buscarEmpleador(idEmpleador);
         
     }
     
-    public Empleador buscarEmpleadorPorNombreUsuario(String nombreUsuario) throws SQLException, DataException{
-        return empleadorData.buscarEmpleadorPorNombreUsuario(nombreUsuario);
+    public Empleador buscarEmpleadorPorNombreUsuario(String username) throws SQLException, DataException{
+        return empleadorData.buscarEmpleadorPorNombreUsuario(username);
     }
 }

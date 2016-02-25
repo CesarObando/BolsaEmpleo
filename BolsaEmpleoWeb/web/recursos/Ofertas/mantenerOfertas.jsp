@@ -3,7 +3,6 @@
 <%@taglib prefix="sj" uri="/struts-jquery-tags" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 
-<!DOCTYPE html>
 <html>
     <head>
         <jsp:include page="../recursosReusables/head.jsp"/>
@@ -63,8 +62,7 @@
                             <script type="text/javascript">
                                 var p = new Paginador(
                                         document.getElementById('paginador'),
-                                        document.getElementById('mytable'),
-                                        10
+                                        document.getElementById('mytable')
                                         );
                                 p.Mostrar();
                             </script>

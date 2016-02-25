@@ -28,14 +28,14 @@
                 </div>
             </div>
         </div>
-                    <section class="block block-menu block-menu-redes-sociales block-menu-menu-redes-sociales odd" id="block-menu-menu-redes-sociales">
-                        <div class="block-inner clearfix">
-                            <h2 class="block-title" style="float: left;width: 200px;font-size: 20px">Síguenos en Facebook</h2>
-                            <div class="content clearfix">
-                                <div class="fb-like-box" data-href="https://www.facebook.com/pages/Oficina-Orientaci%C3%B3n-sitio-oficial/188921904531554?fref=ts" data-width="235" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
-                            </div>
-                        </div>
-                    </section>
-                    </aside>           
-                    </section> 
+        <section class="block block-menu block-menu-redes-sociales block-menu-menu-redes-sociales odd" id="block-menu-menu-redes-sociales">
+            <div class="block-inner clearfix">
+                <h2 class="block-title" style="float: left;width: 200px;font-size: 20px">Síguenos en Facebook</h2>
+                <div class="content clearfix">
+                    <div class="fb-like-box" data-href="https://www.facebook.com/pages/Oficina-Orientaci%C3%B3n-sitio-oficial/188921904531554?fref=ts" data-width="235" data-colorscheme="light" data-show-faces="true" data-header="false" data-stream="true" data-show-border="false"></div>
+                </div>
+            </div>
+        </section>
+    </aside>           
+</section> 
 

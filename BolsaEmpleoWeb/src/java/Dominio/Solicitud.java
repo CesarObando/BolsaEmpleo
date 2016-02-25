@@ -1,39 +1,43 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
-/**
- *
- * @author JonathanA
- */
 public class Solicitud {
 
+    //Atributos
     private int id;
+    private boolean favorito;
     private Solicitante solicitante;
     private Oferta oferta;
-    private boolean favorito;
-
+    
+    //Constructor vacio
     public Solicitud() {
         this.solicitante = new Solicitante();
         this.oferta = new Oferta();
     }
 
-    public Solicitud(int id, Solicitante solicitante, Oferta oferta, boolean favorito) {
+    //Constructor cargado
+
+    public Solicitud(int id, boolean favorito, Solicitante solicitante, Oferta oferta) {
         this.id = id;
+        this.favorito = favorito;
         this.solicitante = solicitante;
         this.oferta = oferta;
-        this.favorito = favorito;
     }
-
+    
+    //Setter-Getter
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public boolean isFavorito() {
+        return favorito;
+    }
+
+    public void setFavorito(boolean favorito) {
+        this.favorito = favorito;
     }
 
     public Solicitante getSolicitante() {
@@ -51,13 +55,4 @@ public class Solicitud {
     public void setOferta(Oferta oferta) {
         this.oferta = oferta;
     }
-
-    public boolean isFavorito() {
-        return favorito;
-    }
-
-    public void setFavorito(boolean favorito) {
-        this.favorito = favorito;
-    }
-
 }

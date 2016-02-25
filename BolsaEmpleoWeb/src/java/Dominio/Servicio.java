@@ -1,41 +1,36 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
-/**
- *
- * @author JonathanA
- */
 public class Servicio {
 
+    //Atributos
     private int id;
     private String titulo;
     private String descripcion;
-    private Solicitante solicitante;
-    private Categoria categoria;
     private String provincia;
     private String canton;
     private byte[] foto;
+    private Solicitante solicitante;
+    private Categoria categoria;
 
+    //Constructor vacio
     public Servicio() {
         solicitante = new Solicitante();
         categoria = new Categoria();
     }
 
-    public Servicio(int id, String titulo, String descripcion, Solicitante solicitante, Categoria categoria, String provincia, String canton, byte[] foto) {
+    //Constructor cargado
+    public Servicio(int id, String titulo, String descripcion, String provincia, String canton, byte[] foto, Solicitante solicitante, Categoria categoria) {
         this.id = id;
         this.titulo = titulo;
         this.descripcion = descripcion;
-        this.solicitante = solicitante;
-        this.categoria = categoria;
         this.provincia = provincia;
         this.canton = canton;
         this.foto = foto;
+        this.solicitante = solicitante;
+        this.categoria = categoria;
     }
 
+    //Setter-Getter
     public int getId() {
         return id;
     }
@@ -58,22 +53,6 @@ public class Servicio {
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }
-
-    public Solicitante getSolicitante() {
-        return solicitante;
-    }
-
-    public void setSolicitante(Solicitante solicitante) {
-        this.solicitante = solicitante;
-    }
-
-    public Categoria getCategoria() {
-        return categoria;
-    }
-
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
     }
 
     public String getProvincia() {
@@ -100,4 +79,19 @@ public class Servicio {
         this.foto = foto;
     }
 
+    public Solicitante getSolicitante() {
+        return solicitante;
+    }
+
+    public void setSolicitante(Solicitante solicitante) {
+        this.solicitante = solicitante;
+    }
+
+    public Categoria getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
+    }
 }

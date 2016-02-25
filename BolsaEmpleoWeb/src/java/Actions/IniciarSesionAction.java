@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.SolicitanteBusiness;
@@ -20,12 +15,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Cesar
- */
 public class IniciarSesionAction extends ActionSupport implements Preparable, ModelDriven<Solicitante>, SessionAware, ServletRequestAware {
 
+    //Variables globales
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
     private Solicitante solicitante;
@@ -35,16 +27,63 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
 
     @Override
     public void prepare() throws Exception {
+        //Inicializa el objeto
         solicitante = new Solicitante();
     }
 
     @Override
     public String execute() throws Exception {
-        if (this.sessionMap.get("solicitante") == null) { // Si no hay una sesion iniciada
+        // Si no hay una sesion iniciada
+        if (this.sessionMap.get("solicitante") == null) {
             return INPUT;
         } else {
             this.addActionError("Ya se ha iniciado una sesion en el sistema");
             return ERROR;
+        }
+    }
+
+    public String iniciarSesionUsuario() {
+        //Limpia el mapa de sesiones
+        sessionMap.clear();
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        try {
+            //Llamado al metodo que realiza la busqueda para iniciar sesion
+            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
+            //Si no hay resultado de busqueda
+            if (solicitante.getId() == 0) {
+                this.addFieldError("nombreUsuario", "Usuario o contraseña incorrecta");
+                return ERROR;
+            }
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ha iniciado sesión correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            this.addActionMessage(mensaje);
+            //Coloca en sesion al solicitante
+            sessionMap.put("solicitante", solicitante);
+        } catch (SQLException | DataException ex) {
+            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            this.addActionError(mensaje);
+            return ERROR;
+        }
+        return SUCCESS;
+    }
+
+    @Override
+    public void validate() {
+        //Validaciones de los campos de entrada
+        if (this.request.getParameter("nombreUsuario").trim().equals("")) {
+            addFieldError("nombreUsuario", "Ingrese un nombre de usuario o correo");
+        }
+        if (this.request.getParameter("clave").trim().equals("")) {
+            addFieldError("clave", "Ingrese una contraseña");
         }
     }
 
@@ -63,45 +102,7 @@ public class IniciarSesionAction extends ActionSupport implements Preparable, Mo
         this.sessionMap = (SessionMap<String, Object>) map;
     }
 
-    public String iniciarSesionUsuario() {
-        sessionMap.clear();
-        SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
-        try {
-            solicitante = solicitanteBusiness.iniciarSesion(nombreUsuario, clave);
-            if (solicitante.getId() == 0) {
-                this.addFieldError("nombreUsuario", "Usuario o contraseña incorrecta");
-                return ERROR;
-            }
-            mensaje = "Ha iniciado sesión correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            this.addActionMessage(mensaje);
-            sessionMap.put("solicitante", solicitante);
-        } catch (SQLException ex) {
-            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            mensaje = "Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\nGracias";
-            sessionMap.put("mensaje", mensaje);
-            this.addActionError(mensaje);
-            return ERROR;
-        } catch (DataException ex) {
-            Logger.getLogger(IniciarSesionAction.class.getName()).log(Level.SEVERE, null, ex);
-            mensaje = "\"Ha ocurrido un error en la base de datos, por favor espere. O si el error persiste comuníquese con nosotros.\\nGracias\"";
-            sessionMap.put("mensaje", mensaje);
-            this.addActionError(mensaje);
-            return ERROR;
-        }
-        return SUCCESS;
-    }
-
-    @Override
-    public void validate() {
-        if (this.request.getParameter("nombreUsuario").trim().equals("")) {
-            addFieldError("nombreUsuario", "Ingrese un nombre de usuario o correo");
-        }
-        if (this.request.getParameter("clave").trim().equals("")) {
-            addFieldError("clave", "Ingrese una contraseña");
-        }
-    }
-
+    //Setter-Getter
     public Solicitante getSolicitante() {
         return solicitante;
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.OfertaBusiness;
@@ -23,16 +18,12 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class VerOfertaSolicitudesFavoritasAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Oferta>, ServletRequestAware {
 
+    //Variables globales
     private Oferta ofertaAVer;
     private LinkedList<Solicitud> solicitudes;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
 
@@ -41,32 +32,30 @@ public class VerOfertaSolicitudesFavoritasAction extends ActionSupport implement
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Captura el id de la oferta
         int idOferta = Integer.parseInt(request.getParameter("id"));
-        try {
-            solicitudes = new SolicitudBusiness().buscarSolicitudesFavoritas(idOferta);
-            for (int i = 0; i < solicitudes.size(); i++) {
-                Solicitud solicitud = new Solicitud();
-                solicitud = solicitudes.get(i);
-                Solicitante solicitante = new Solicitante();
-                solicitante = new SolicitanteBusiness().buscarSolicitante(solicitud.getSolicitante().getId());
-                solicitud.setSolicitante(solicitante);
-                solicitudes.set(i, solicitud);
-            }
-            ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
-            sessionMap.put("oferta", ofertaAVer);
-        } catch (SQLException e) {
-            existe = false;
+        //Llamado al metodo que realiza la busqueda
+        solicitudes = new SolicitudBusiness().buscarSolicitudesFavoritas(idOferta);
+        //Se recorre la lista de objetos y se le asigna a cada uno de ellos los objetos que tenga relacionados para mostrar mayor informacion al usuario
+        for (int i = 0; i < solicitudes.size(); i++) {
+            //Crea una solicitud a la que se le asignan las propiedades de la solicitud actual de la lista recorrida
+            Solicitud solicitud = solicitudes.get(i);
+            //Busca el solicitante
+            Solicitante solicitante = new SolicitanteBusiness().buscarSolicitante(solicitud.getSolicitante().getId());
+            //Asigna el solicitante a la solicitud
+            solicitud.setSolicitante(solicitante);
+            //Asigna la solicitud creada anteriormente a la lista de solicitudes
+            solicitudes.set(i, solicitud);
         }
+        //Llamado al metodo que realiza la busqueda
+        ofertaAVer = new OfertaBusiness().buscarOferta(idOferta);
+        //Coloca al objeto en sesion
+        sessionMap.put("oferta", ofertaAVer);
     }
 
     @Override
@@ -77,6 +66,11 @@ public class VerOfertaSolicitudesFavoritasAction extends ActionSupport implement
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Oferta getOfertaAEliminar() {
@@ -103,25 +97,12 @@ public class VerOfertaSolicitudesFavoritasAction extends ActionSupport implement
         this.request = request;
     }
 
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
     public LinkedList<Solicitud> getSolicitudes() {
         return solicitudes;
     }
 
     public void setSolicitudes(LinkedList<Solicitud> solicitudes) {
         this.solicitudes = solicitudes;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

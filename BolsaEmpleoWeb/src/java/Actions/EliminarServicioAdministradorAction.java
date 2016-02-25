@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.ServicioBusiness;
@@ -20,15 +15,11 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class EliminarServicioAdministradorAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Servicio>, ServletRequestAware {
 
+    //Variables globales
     private Servicio servicioAEliminar;
     private String mensaje;
-    private boolean existe;
     private HttpServletRequest request;
     private SessionMap<String, Object> sessionMap;
 
@@ -37,18 +28,46 @@ public class EliminarServicioAdministradorAction extends ActionSupport implement
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
+        //Obtiene el id del objeto a eliminar
         int idServicio = Integer.parseInt(request.getParameter("id"));
+        //Llamado al metodo que realiza la busqueda
         servicioAEliminar = new ServicioBusiness().buscarServicio(idServicio);
+    }
+
+    public String eliminar() throws SQLException, DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
+        ServicioBusiness servicioBusiness = new ServicioBusiness();
+        //Inicializa la variable
+        boolean eliminado = true;
+        try {
+            //Llamado al metodo que realiza la eliminacion
+            servicioBusiness.eliminarServicio(servicioAEliminar.getId());
+        } catch (SQLException e) {
+            //Asigna valor a la variable
+            eliminado = !eliminado;
+        }
+        if (eliminado) {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "El servicio fue eliminado correctamente.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
+            addActionMessage(mensaje);
+            return SUCCESS;
+        } else {
+            //Define un mensaje que sera mostrado al usuario
+            mensaje = "Ocurrió un problema al eliminar.";
+            //Coloca en sesion al mensaje
+            sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
+            addActionError(mensaje);
+            return ERROR;
+        }
     }
 
     @Override
@@ -56,30 +75,14 @@ public class EliminarServicioAdministradorAction extends ActionSupport implement
         return this.servicioAEliminar;
     }
 
-    public String eliminar() throws SQLException, DataException {
-        ServicioBusiness servicioBusiness = new ServicioBusiness();
-        boolean eliminado = true;
-        try {
-            servicioBusiness.eliminarServicio(servicioAEliminar.getId());
-        } catch (SQLException e) {
-            eliminado = !eliminado;
-        }
-        if (eliminado) {
-            mensaje = "El servicio fue eliminado correctamente.";
-            sessionMap.put("mensaje", mensaje);
-            addActionMessage(mensaje);
-            return SUCCESS;
-        } else {
-            mensaje = "Ocurrió un problema al eliminar.";
-            sessionMap.put("mensaje", mensaje);
-            addActionError(mensaje);
-            return ERROR;
-        }
-    }
-
     @Override
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Servicio getServicioAEliminar() {
@@ -104,19 +107,6 @@ public class EliminarServicioAdministradorAction extends ActionSupport implement
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

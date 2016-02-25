@@ -46,7 +46,7 @@
                                     <s:hidden name="id"/>
                                     <s:label name="nombre" label="Nombre"/>
                                     <s:label name="apellidos" label="Apellidos"/>
-                                    <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox();"/>
+                                    <s:submit value="Eliminar" action="eliminarSolicitanteAdministradorProcess" onclick="return confirmBox('¿Desea eliminar al solicitante?');"/>
                                 </s:form>
                                 <a href="../usuarios/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </center>
@@ -57,24 +57,11 @@
                                     <s:hidden name="id"/>
                                     <s:label name="nombre" label="Nombre"/>
                                     <s:label name="apellidos" label="Apellidos"/>
-                                    <s:submit value="Eliminar" action="eliminarSolicitanteProcess" onclick="return confirmBox();"/>
+                                    <s:submit value="Eliminar" action="eliminarSolicitanteProcess" onclick="return confirmBox('¿Desea eliminar su perfil?');"/>
                                 </s:form>
                                 <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent">Cancelar</a>
                             </center>
                         </c:if>
-
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea eliminar?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

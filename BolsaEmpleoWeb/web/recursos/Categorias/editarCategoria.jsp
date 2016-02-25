@@ -34,22 +34,10 @@
                             <s:form method="post" action="editarCategoriaProcess" cssClass="form">
                                 <s:hidden name="id"/>
                                 <s:textfield name="nombre" requiredLabel="true" placeholder="Ingresa el nombre de la categoría" label="Nombre"/>
-                                <s:submit action="editarCategoriaProcess" value="Editar Categoría" onclick="return confirmBox();"/>
+                                <s:submit action="editarCategoriaProcess" value="Editar Categoría" onclick="return confirmBox('¿Desea editar la categoría?');"/>
                             </s:form>
                             <a href="../administrador/principalAdministrador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea editar la categoría?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

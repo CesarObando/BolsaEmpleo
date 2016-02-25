@@ -40,20 +40,8 @@
                             </s:form>
                         </center>
                         <a href="../administrador/editarAdministrador.action" class="" style="background: transparent">Editar</a>
-                        <a href="../administrador/eliminarAdministradorProcess.action" class="" onclick="return confirmBox();" style="background: transparent">Eliminar</a>
+                        <a href="../administrador/eliminarAdministradorProcess.action" class="" onclick="return confirmBox('¿Desea eliminar su perfil?');" style="background: transparent">Eliminar</a>
                     </div>
-                    <script>
-                        function confirmBox() {
-                            var answer;
-                            answer = window.confirm("¿Desea eliminar su perfil?");
-                            if (answer == true) {
-                                return true;
-                            }
-                            else {
-                                return false;
-                            }
-                        }
-                    </script>
                 </aside> 
             </div>            
         </section>

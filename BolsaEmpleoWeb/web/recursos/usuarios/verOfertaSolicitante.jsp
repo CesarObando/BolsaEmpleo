@@ -56,7 +56,7 @@
                                 <s:textfield name="provincia" readonly="true" label="Provincia"/>
                                 <s:textfield name="canton" readonly="true" label="Cantón"/>
                                 <c:if test="${sessionScope.solicitante != null}">
-                                    <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox();"/>
+                                    <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox('¿Desea registrar la solicitud?');"/>
                                 </c:if>
                             </s:form>
                             <s:form method="post" action="marcarOfertaFavoritaProcess" cssClass="form" style="float: right">
@@ -64,10 +64,10 @@
                                 <c:if test="${sessionScope.solicitante != null}">
                                     <c:if test="${insertado == true}">
 
-                                        <s:submit value="Desmarcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox1();"/>
+                                        <s:submit value="Desmarcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox('¿Desea desmarcar al solicitante como favorito?');"/>
                                     </c:if>
                                     <c:if test="${insertado == false}">
-                                        <s:submit value="Marcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox2();"/>
+                                        <s:submit value="Marcar favorito" action="marcarOfertaFavoritaProcess" onclick="return confirmBox('¿Desea marcar al solicitante como favorito?');"/>
                                     </c:if>
                                 </c:if>
                             </s:form>
@@ -79,45 +79,7 @@
                                 <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
                                     <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>
-
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea registrar la solicitud?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-
-                        </script>
-                        <script>
-                            function confirmBox1() {
-                                var answer;
-                                answer = window.confirm("¿Desea desmarcar al solicitante como favorito?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
-                        <script>
-                            function confirmBox2() {
-                                var answer;
-                                answer = window.confirm("¿Desea marcar al solicitante como favorito?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

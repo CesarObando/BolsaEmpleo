@@ -45,22 +45,10 @@
                                 <s:textarea name="direccion" placeholder="Ingresa tu dirección" label="Dirección"/>
                                 <s:textfield name="username" placeholder="Ingresa un nombre de usuario" readonly="true" disabled="true" label="Nombre de usuario"/>
                                 <s:password name="pass" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true" label="Contraseña"/>
-                                <s:submit action="editarEmpleadorProcess" value="Editar Empleador" onclick="return confirmBox();"/>
+                                <s:submit action="editarEmpleadorProcess" value="Editar Empleador" onclick="return confirmBox('¿Desea editar la información?');"/>
                             </s:form>
                             <a href="../empresa/principalEmpleador.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                         </center>
-                        <script>
-                            function confirmBox() {
-                                var answer;
-                                answer = window.confirm("¿Desea editar la información?");
-                                if (answer == true) {
-                                    return true;
-                                }
-                                else {
-                                    return false;
-                                }
-                            }
-                        </script>
                     </div>
                 </aside> 
             </div>            

@@ -1,11 +1,5 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
-import Business.CategoriaBusiness;
 import Business.EmpleadorBusiness;
 import Business.OfertaBusiness;
 import Dominio.Empleador;
@@ -24,12 +18,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarOfertasFavoritasAction extends ActionSupport implements Preparable, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private final String BUSCAR_OFERTAS = "buscarOfertasFavoritas";
     private LinkedList<Oferta> ofertas;
     private HttpServletRequest request;
@@ -48,16 +39,23 @@ public class BuscarOfertasFavoritasAction extends ActionSupport implements Prepa
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
         EmpleadorBusiness empleadorBusiness = new EmpleadorBusiness();
         try {
+            //Llamado al metodo que realiza la busqueda con el objeto en sesion
             ofertas = ofertaBusiness.buscarOfertasFavoritas((Solicitante) sessionMap.get("solicitante"));
-
+            //Se recorre la lista de objetos y se le asigna a cada uno de ellos los objetos que tenga relacionados para mostrar mayor informacion al usuario
             for (int i = 0; i < ofertas.size(); i++) {
+                //Crea una oferta a la que se le asignan las propiedades de la oferta actual de la lista recorrida
                 Oferta oferta = ofertas.get(i);
+                //Captura el id del empleador
                 int idEmpleador = oferta.getEmpleador().getId();
+                //Busca el empleador
                 Empleador empleador = empleadorBusiness.buscarEmpleador(idEmpleador);
+                //Asigna el empleador a la oferta
                 oferta.setEmpleador(empleador);
+                //Asigna la oferta creada anteriormente a la lista de ofertas
                 ofertas.set(i, oferta);
             }
         } catch (SQLException e) {
@@ -70,7 +68,13 @@ public class BuscarOfertasFavoritasAction extends ActionSupport implements Prepa
     public void setServletRequest(HttpServletRequest hsr) {
         this.request = hsr;
     }
+    
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
 
+    //Setter-Getter
     public LinkedList<Oferta> getOfertas() {
         return ofertas;
     }
@@ -85,12 +89,6 @@ public class BuscarOfertasFavoritasAction extends ActionSupport implements Prepa
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-  
-     @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
 }

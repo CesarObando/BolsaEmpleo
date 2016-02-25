@@ -6,6 +6,5 @@
 
 <struts>
     <package name="categoria" namespace="/recursos/Categorias" extends="struts-default">
-
     </package>
 </struts>

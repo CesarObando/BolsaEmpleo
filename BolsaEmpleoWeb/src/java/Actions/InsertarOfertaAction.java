@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
 import Business.OfertaBusiness;
 import Dominio.Empleador;
 import Dominio.Oferta;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.SUCCESS;
 import com.opensymphony.xwork2.ActionSupport;
@@ -22,12 +18,9 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class InsertarOfertaAction extends ActionSupport implements ModelDriven<Oferta>, Preparable, ServletRequestAware, SessionAware {
 
+    //Variables globales
     private Oferta ofertaAInsertar;
     private LinkedList listaCategorias;
     private String mensaje;
@@ -46,26 +39,20 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
 
     @Override
     public void prepare() throws Exception {
+        //Obtiene el objeto en sesion
         empleador = (Empleador) sessionMap.get("empleador");
         empleador = (Empleador) request.getSession().getAttribute("empleador");
+        //Inicializa el objeto
         ofertaAInsertar = new Oferta();
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.listaCategorias = categoriaBusiness.getCategorias();
-        mensaje = "";
-    }
-
-    @Override
-    public Oferta getModel() {
-        return this.ofertaAInsertar;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr;
+        //Llamado al metodo que realiza la busqueda
+        this.listaCategorias = categoriaBusiness.buscarCategorias();
     }
 
     @Override
     public void validate() {
+        //Validaciones de los campos de entrada
         if (ofertaAInsertar.getPuesto().length() == 0) {
             addFieldError("puesto", "Debe ingresar el puesto vacante");
         }
@@ -89,21 +76,32 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
         }
     }
 
-    public String insertar() {
+    public String insertar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         OfertaBusiness ofertaBusiness = new OfertaBusiness();
+        //Inicializa las variables
         boolean insertado = true;
         try {
+            //Asigna el empleador a la oferta
             ofertaAInsertar.setEmpleador(empleador);
+            //Llamado al metodo que realiza la insercion
             ofertaBusiness.insertaOferta(ofertaAInsertar);
         } catch (SQLException e) {
+            //Asigna valor a la variable
             insertado = false;
+            //Define un mensaje que sera mostrado al usuario
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (insertado == true) {
+            //Define un mensaje que sera mostrado al usuario
             this.mensaje = "La  oferta  fue insertada correctamente";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
@@ -111,6 +109,22 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
         }
     }
 
+    @Override
+    public Oferta getModel() {
+        return this.ofertaAInsertar;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
+    }
+
+    //Setter-Getter
     public Oferta getOfertaAInsertar() {
         return ofertaAInsertar;
     }
@@ -141,11 +155,6 @@ public class InsertarOfertaAction extends ActionSupport implements ModelDriven<O
 
     public void setListaCategorias(LinkedList listaCategorias) {
         this.listaCategorias = listaCategorias;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Empleador getEmpleador() {

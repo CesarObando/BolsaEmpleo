@@ -1,14 +1,10 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
 import Business.ServicioBusiness;
 import Dominio.Categoria;
 import Dominio.Servicio;
+import Exception.DataException;
 import static com.opensymphony.xwork2.Action.ERROR;
 import static com.opensymphony.xwork2.Action.INPUT;
 import static com.opensymphony.xwork2.Action.SUCCESS;
@@ -30,17 +26,13 @@ import org.apache.struts2.dispatcher.SessionMap;
 import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.SessionAware;
 
-/**
- *
- * @author Tin
- */
 public class EditarServicioAction extends ActionSupport implements SessionAware, Preparable, ModelDriven<Servicio>, ServletRequestAware {
 
+    //Variables globales
     private Servicio servicioAEditar;
     private LinkedList<Categoria> categorias;
     private String mensaje;
     private HttpServletRequest request;
-    private boolean existe;
     private SessionMap<String, Object> sessionMap;
     private File archivoImagen;
     private String archivoImagenContentType;
@@ -51,35 +43,26 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
 
     @Override
     public String execute() throws Exception {
-        if (existe) {
-            return INPUT;
-        } else {
-            return ERROR;
-        }
+        return INPUT;
     }
 
     @Override
     public void prepare() throws Exception {
-        existe = true;
-        categorias = new CategoriaBusiness().getCategorias();
+        //Llamado al metodo que realiza la busqueda
+        categorias = new CategoriaBusiness().buscarCategorias();
+        //Obtiene el objeto en sesion
         servicioAEditar = (Servicio) sessionMap.get("servicio");
+        //Obtiene el id del objeto
         int idCategoria = servicioAEditar.getCategoria().getId();
+        //Llamado al procedimiento que realiza la busqueda
         Categoria categoria = new CategoriaBusiness().buscarCategoria(idCategoria);
+        //Asigna la cateogria al objeto por editar
         servicioAEditar.setCategoria(categoria);
     }
 
     @Override
-    public Servicio getModel() {
-        return this.servicioAEditar;
-    }
-
-    @Override
-    public void setServletRequest(HttpServletRequest hsr) {
-        this.request = hsr;
-    }
-
-    @Override
     public void validate() {
+        //Validaciones de los campos de entrada
         if (servicioAEditar.getTitulo().length() == 0) {
             addFieldError("titulo", "Debe ingresar el título del servicio.");
         }
@@ -97,45 +80,72 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
         }
     }
 
-    public String editar() {
+    public String editar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         ServicioBusiness servicioBusiness = new ServicioBusiness();
+        //Inicializa las variables
         boolean editado = true;
         try {
+            //Valida si se ha seleccionado una nueva imagen
             if (this.archivoImagen != null) {
                 cargarImagen();
             }
+            //Llamado al metodo que realiza la edicion
             servicioBusiness.editarServicio(servicioAEditar);
         } catch (SQLException e) {
+            //Asigna valor a la variable
             editado = false;
+            //Define un mensaje que sera mostrado al usuario
             mensaje = "Ocurrió un error con la base de datos. Inténtelo nuevamente. Si persiste comuníquese con el administrador del sistema.";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje de error
             addActionError(mensaje);
         }
         if (editado == true) {
+            //Define un mensaje que sera mostrado al usuario
             this.mensaje = "El servicio fue editado correctamente";
+            //Coloca en sesion al mensaje
             sessionMap.put("mensaje", mensaje);
+            //Coloca el mensaje como mensaje del action
             addActionMessage(mensaje);
             return SUCCESS;
         } else {
             return ERROR;
         }
     }
-    
+
     private void cargarImagen() {
         try {
-            // Generamos un buffer en memoria que va a almacenar nuestra archivoImagen
+            //Genera un buffer en memoria que va a almacenar nuestro archivoImagen
             BufferedImage buffer = ImageIO.read(this.archivoImagen);
-            // Creamos un stream de salida, que escriba un arreglo de bytes
+            //Crea un stream de salida que escriba un arreglo de bytes
             ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            // Nuestro objeto de utileria escribira la archivoImagen en el stream de salida
+            //Escribe el archivoImagen en el stream de salida
             ImageIO.write(buffer, "jpg", baos);
             baos.flush();
-            // A nuestra instancia de Producto2 le asignamos la archivoImagen
+            //Asigna el archivoImagen al objeto por editar
             this.servicioAEditar.setFoto(baos.toByteArray());
+            //Cierra el stream de salida
             baos.close();
         } catch (IOException ex) {
             Logger.getLogger(InsertarSolicitanteAction.class.getName()).log(Level.SEVERE, null, ex);
         }
+    }
+
+    @Override
+    public Servicio getModel() {
+        return this.servicioAEditar;
+    }
+
+    @Override
+    public void setServletRequest(HttpServletRequest hsr) {
+        this.request = hsr;
+    }
+
+    @Override
+    public void setSession(Map<String, Object> map) {
+        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public Servicio getServicioAEditar() {
@@ -160,19 +170,6 @@ public class EditarServicioAction extends ActionSupport implements SessionAware,
 
     public void setRequest(HttpServletRequest request) {
         this.request = request;
-    }
-
-    public boolean isExiste() {
-        return existe;
-    }
-
-    public void setExiste(boolean existe) {
-        this.existe = existe;
-    }
-
-    @Override
-    public void setSession(Map<String, Object> map) {
-        this.sessionMap = (SessionMap<String, Object>) map;
     }
 
     public LinkedList<Categoria> getCategorias() {

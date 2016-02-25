@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Actions;
 
 import Business.CategoriaBusiness;
@@ -20,12 +15,9 @@ import java.util.logging.Logger;
 import javax.servlet.http.HttpServletRequest;
 import org.apache.struts2.interceptor.ServletRequestAware;
 
-/**
- *
- * @author JonathanA
- */
 public class BuscarServiciosAdministradorAction extends ActionSupport implements Preparable, ServletRequestAware {
 
+    //Variables globales
     private final String BUSCAR_SERVICIOS = "buscarServiciosAdministrador";
     private LinkedList<Servicio> servicios;
     private HttpServletRequest request;
@@ -45,17 +37,22 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
 
     @Override
     public void prepare() throws Exception {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        this.categorias = categoriaBusiness.getCategorias();
+        //Llamado al metodo que realiza la busqueda
+        this.categorias = categoriaBusiness.buscarCategorias();
     }
 
     public String buscar() throws DataException {
+        //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         ServicioBusiness servicioBusiness = new ServicioBusiness();
         SolicitanteBusiness solicitanteBusiness = new SolicitanteBusiness();
+        //Captura de los campos de busqueda en el jsp
         titulo = request.getParameter("titulo");
         categoria = -1;
         provincia = "";
         canton = "";
+        //Si el usuario selecciona una opcion del select
         if (request.getParameter("categoria.id") != null) {
             categoria = Integer.parseInt(request.getParameter("categoria.id"));
         }
@@ -66,13 +63,19 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
             canton = request.getParameter("canton");
         }
         try {
+            //Llamado al metodo que realiza la busqueda
             servicios = servicioBusiness.buscarServiciosFiltrados(categoria, titulo, provincia,canton);
-
+            //Se recorre la lista de objetos y se le asigna a cada uno de ellos los objetos que tenga relacionados para mostrar mayor informacion al usuario
             for (int i = 0; i < servicios.size(); i++) {
+                //Crea un servicio al que se le asignan las propiedades del servicio actual de la lista recorrida
                 Servicio servicio = servicios.get(i);
+                //Captura el id del solicitante
                 int idSolicitante = servicio.getSolicitante().getId();
+                //Busca el solicitante
                 Solicitante solicitante = solicitanteBusiness.buscarSolicitante(idSolicitante);
+                //Asigna el solicitante al servicio
                 servicio.setSolicitante(solicitante);
+                //Asigna el servicio creado anteriormente a la lista de servicios
                 servicios.set(i, servicio);
             }
         } catch (SQLException e) {
@@ -86,6 +89,7 @@ public class BuscarServiciosAdministradorAction extends ActionSupport implements
         this.request = hsr;
     }
 
+    //Setter-Getter
     public HttpServletRequest getRequest() {
         return request;
     }

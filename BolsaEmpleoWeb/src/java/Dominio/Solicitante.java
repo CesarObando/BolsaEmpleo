@@ -1,66 +1,79 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package Dominio;
 
 import java.sql.Date;
 
-/**
- *
- * @author Cesar
- */
 public class Solicitante {
 
+    //Atributos
     private int id;
+    private int edad;
+    private int experienciaLaboral;
     private String cedula;
     private String nombre;
     private String apellidos;
     private String username;
     private String password;
-    private byte[] foto;
-    private int edad;
     private String sexo;
     private String escolaridad;
     private String titulos;
-    private int experienciaLaboral;
     private String detalleExperienciaLaboral;
     private String telefonoFijo;
     private String telefonoMovil;
     private String correo;
     private String idiomas;
+    private byte[] foto;
     private Date ultimaActualizacion;
 
+    //Constructor vacio
     public Solicitante() {
     }
 
-    public Solicitante(int id, String cedula, String nombre, String apellidos, String username, String password, byte[] foto, int edad, String sexo, String escolaridad, String titulos, int experienciaLaboral, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idiomas) {
+    //Constructor cargado
+
+    public Solicitante(int id, int edad, int experienciaLaboral, String cedula, String nombre, String apellidos, String username, String password, String sexo, String escolaridad, String titulos, String detalleExperienciaLaboral, String telefonoFijo, String telefonoMovil, String correo, String idiomas, byte[] foto, Date ultimaActualizacion) {
         this.id = id;
+        this.edad = edad;
+        this.experienciaLaboral = experienciaLaboral;
         this.cedula = cedula;
         this.nombre = nombre;
         this.apellidos = apellidos;
         this.username = username;
         this.password = password;
-        this.foto = foto;
-        this.edad = edad;
         this.sexo = sexo;
         this.escolaridad = escolaridad;
         this.titulos = titulos;
-        this.experienciaLaboral = experienciaLaboral;
         this.detalleExperienciaLaboral = detalleExperienciaLaboral;
         this.telefonoFijo = telefonoFijo;
         this.telefonoMovil = telefonoMovil;
         this.correo = correo;
         this.idiomas = idiomas;
+        this.foto = foto;
+        this.ultimaActualizacion = ultimaActualizacion;
     }
 
+    //Setter-Getter
     public int getId() {
         return id;
     }
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getEdad() {
+        return edad;
+    }
+
+    public void setEdad(int edad) {
+        this.edad = edad;
+    }
+
+    public int getExperienciaLaboral() {
+        return experienciaLaboral;
+    }
+
+    public void setExperienciaLaboral(int experienciaLaboral) {
+        this.experienciaLaboral = experienciaLaboral;
     }
 
     public String getCedula() {
@@ -103,14 +116,6 @@ public class Solicitante {
         this.password = password;
     }
 
-    public int getEdad() {
-        return edad;
-    }
-
-    public void setEdad(int edad) {
-        this.edad = edad;
-    }
-
     public String getSexo() {
         return sexo;
     }
@@ -133,14 +138,6 @@ public class Solicitante {
 
     public void setTitulos(String titulos) {
         this.titulos = titulos;
-    }
-
-    public int getExperienciaLaboral() {
-        return experienciaLaboral;
-    }
-
-    public void setExperienciaLaboral(int experienciaLaboral) {
-        this.experienciaLaboral = experienciaLaboral;
     }
 
     public String getDetalleExperienciaLaboral() {
@@ -191,10 +188,6 @@ public class Solicitante {
         this.foto = foto;
     }
 
-    public String getFotoString() {
-        return new String(this.foto);
-    }
-
     public Date getUltimaActualizacion() {
         return ultimaActualizacion;
     }
@@ -202,6 +195,4 @@ public class Solicitante {
     public void setUltimaActualizacion(Date ultimaActualizacion) {
         this.ultimaActualizacion = ultimaActualizacion;
     }
-    
-    
 }
