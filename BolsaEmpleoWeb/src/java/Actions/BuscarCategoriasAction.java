@@ -35,7 +35,7 @@ public class BuscarCategoriasAction extends ActionSupport implements Preparable,
         //Captura de los campos de busqueda en el jsp
         nombre = request.getParameter("nombre");
         try {
-            //Llamado al metodo que realiza la busqueda
+            //Llamado al metodo que realiza la busqueda de categorias con su parametro de busqueda
             categorias = categoriaBuss.buscarCategoriasFiltradas(nombre);
         } catch (SQLException e) {
             Logger.getLogger(BuscarCategoriasAction.class.getName()).log(Level.SEVERE, null, e);
