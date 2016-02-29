@@ -1,5 +1,5 @@
 <script type="text/javascript" src="../js/cantones.js"></script>
-<script type="text/javascript" src="../js/popups.js"></script>
+<script type="text/javascript" src="../js/popup.js"></script>
 <script type="text/javascript" src="../js/backbutton.js"></script>
 <script type="text/javascript" src="../js/paginador.js"></script>
 
