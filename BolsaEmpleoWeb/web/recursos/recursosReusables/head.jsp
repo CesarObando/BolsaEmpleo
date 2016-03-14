@@ -1,3 +1,4 @@
+<link rel="stylesheet" type="text/css" href="../css/Paginador.css">
 <script type="text/javascript" src="../js/cantones.js"></script>
 <script type="text/javascript" src="../js/popup.js"></script>
 <script type="text/javascript" src="../js/backbutton.js"></script>
@@ -11,7 +12,6 @@
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Pragma" content="no-cache" />
 
-<link rel="stylesheet" type="text/css" href="../css/Paginador.css">
 <link rel="stylesheet" type="text/css" href="../css/Estilo.css">
 
 <link rel="stylesheet" type="text/css" href="../css/system.base.css">
