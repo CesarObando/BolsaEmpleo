@@ -9,24 +9,17 @@ and open the template in the editor.
 */
 
 .pag_btn {
-    border: solid 1px;
-    border-color: rgb(0, 0, 255);
-    color: rgb(0, 0, 255);
-    background-color: rgb(255, 255, 255);
+    color: blue;
     cursor: pointer;
 }
  
 .pag_btn_des {
-    border: solid 1px;
-    border-color: rgb(200, 200, 200);
-    color: rgb(200, 200, 200);
-    background-color: rgb(245, 245, 245);
+    color: blue;
 }
  
 .pag_num {
     border: solid 1px;
-    border-color: rgb(0, 0, 255);
-    color: rgb(255, 255, 255);
-    background-color: rgb(0, 0, 255);
+    border-color: blue;
+    color: black;
     cursor: default
 }

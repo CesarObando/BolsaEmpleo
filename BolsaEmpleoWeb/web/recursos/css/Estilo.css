@@ -132,14 +132,14 @@ textarea{
 }
 
 .div{
-     padding: 4px 6px;
-    width: 150px;
-    height: 20px;
+    padding: 4px 6px;
+    width: 180px;
+    height: 30px;
     border: 1px solid #CED5D7;
     resize: none;
     box-shadow:0 0 0 3px #EEF5F7;
-    margin: 10px 0;
-    font-family: Georgia,'Times New Roman',times,serif;
+    margin: 10px 10px;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
     font-size: 17px;
     color: darkblue;
     border: 10px solid #CED5D7;
@@ -189,6 +189,16 @@ textarea{
     color : #143c55;
     font-size: 15px;
 }
+
+.h6 { 
+    margin : 0;
+    padding : 20px 0 20px 0;
+    font-family: "Lucida Sans Unicode", "Lucida Grande", Sans-Serif;
+    letter-spacing : 1px;
+    color : #143c55;
+    font-size: 15px;
+}
+
 blockquote {
     font-weight : bold;
     font-style : italic;

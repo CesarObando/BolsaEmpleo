@@ -12,6 +12,7 @@
 <meta http-equiv="Cache-Control" content="no-cache"/>
 <meta http-equiv="Pragma" content="no-cache" />
 
+<link rel="stylesheet" type="text/css" href="../css/Paginador.css">
 <link rel="stylesheet" type="text/css" href="../css/Estilo.css">
 
 <link rel="stylesheet" type="text/css" href="../css/system.base.css">

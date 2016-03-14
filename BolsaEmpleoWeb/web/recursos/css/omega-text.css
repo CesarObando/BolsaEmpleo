@@ -31,7 +31,7 @@ hr {
     background: #5294c1;
 }
 
-h1, h2, h3, h4, h5, h6 {
+h1, h2, h3, h4, h5{
     letter-spacing: -0.05em;
     font-family: Georgia, 'Times New Roman', serif;
 }

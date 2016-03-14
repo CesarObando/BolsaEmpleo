@@ -30,6 +30,21 @@
                                 window.alert("${sessionScope.mensaje}");
                             </script>
                         </s:if>
+                            <h1 class="h1">Bienvenido/a ${sessionScope.empleador.nombre}</h1><br><br><br>
+                        <br><p>Como empleador podrás publicar tus ofertas de trabajo para que otros usuarios puedan visualizarlas y aplicar a las mismas. Podrás
+                            editar tus ofertas y eliminarlas. Además, tendrás la oportunidad de ver las personas que han hecho una solicitud para tu oferta y así 
+                            marcarlas como favoritas o descartarlas. Para acceder a estas funcionalidades ve a la pestaña con el nombre de "Ofertas".</p>
+                        <p>Por otra parte, en la pestaña titulada "Trabajos independientes", podrás buscar servicios no profesionales que ofrecen otros usuarios
+                            del sistema para que los empleadores puedan contactarlos.</p>
+                        <center>
+                            <table id="tablaDeIconos" class="table">
+                                <td><a href="http://www.muni-carta.go.cr/bolsa-de-empleo-del-canton.html"><img class="img-responsive" src="../imagenes/IconosRelacionados/MuniCartago.png" /></a></td>
+                                <td></td>
+                                <td><a href="http://www.mtss.go.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/mtss.png" alt="" /></a></td>
+                                <td></td>
+                                <td><a href="http://www.ina.ac.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/ina.png" alt="" /></a></td>
+                            </table>
+                        </center>
                     </div>
                 </aside> 
             </div>            

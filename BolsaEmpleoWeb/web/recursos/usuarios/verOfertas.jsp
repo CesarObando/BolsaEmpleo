@@ -78,6 +78,7 @@
                                 p.Mostrar();
                             </script>
                         </center>
+                        <a href="../empresa/registrarEmpleador.jsp" style="background: transparent;float: left">Para ingresar una oferta profesional registrate como empleador.</a>
                     </div>
                 </aside> 
             </div>            

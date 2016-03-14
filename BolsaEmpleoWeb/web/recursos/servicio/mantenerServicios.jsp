@@ -38,7 +38,7 @@
                                                 <td><s:property value="#servicioActual.titulo"/></td>
                                                 <td><p data-placement="top" data-toggle="tooltip" title="Ver">
                                                         <s:url action="verServicio" var="url">
-                                                            <s:param name="id" value="#servicioActual.id"/>
+                                                            <s:param name="idS" value="#servicioActual.id"/>
                                                         </s:url>
                                                         <a href='<s:property value="#url" />'>  <button style="background-color: transparent"><img src="../imagenes/ver.png"/></button> </a>
                                                     </p>

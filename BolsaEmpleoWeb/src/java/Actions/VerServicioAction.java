@@ -36,9 +36,9 @@ public class VerServicioAction extends ActionSupport implements SessionAware, Pr
     public void prepare() throws Exception {
         int idServicio;
 
-            //Captura el id del servicio
-            idServicio = Integer.parseInt(request.getParameter("idS"));
-        
+        //Captura el id del servicio
+        idServicio = Integer.parseInt(request.getParameter("idS"));
+
         //Busca el servicio
         servicioAVer = new ServicioBusiness().buscarServicio(idServicio);
         //Captura el id de la categoria
