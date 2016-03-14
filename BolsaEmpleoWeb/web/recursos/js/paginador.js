@@ -18,12 +18,12 @@ Paginador = function (divPaginador, tabla)
         for (var i = 1; i < this.tabla.rows.length; i++)
         {
             if (i < min || i > max)
-                this.tabla.rows[i].style.display = 'No hay registros para mostrar';
+                this.tabla.rows[i].style.display = 'none';
             else
                 this.tabla.rows[i].style.display = '';
         }
         this.miDiv.firstChild.rows[0].cells[1].innerHTML = this.pagActual;
-    };
+    }
 
     this.Mostrar = function ()
     {
@@ -40,10 +40,10 @@ Paginador = function (divPaginador, tabla)
         var self = this;
         ant.onclick = function ()
         {
-            if (self.pagActual === 1)
+            if (self.pagActual == 1)
                 return;
             self.SetPagina(self.pagActual - 1);
-        };
+        }
 
         var num = fil.insertCell(fil.cells.length);
         num.innerHTML = ''; //en rigor, aún no se el número de la página
@@ -54,10 +54,10 @@ Paginador = function (divPaginador, tabla)
         sig.className = 'pag_btn';
         sig.onclick = function ()
         {
-            if (self.pagActual === self.paginas)
+            if (self.pagActual == self.paginas)
                 return;
             self.SetPagina(self.pagActual + 1);
-        };
+        }
 
         //Como ya tengo mi tabla, puedo agregarla al DIV de los controles
         this.miDiv.appendChild(tblPaginador);
@@ -67,5 +67,5 @@ Paginador = function (divPaginador, tabla)
             this.paginas = this.paginas + 1;
 
         this.SetPagina(this.pagActual);
-    };
+    }
 };
