@@ -58,7 +58,7 @@
         <action class="Actions.PrincipalAction" name="principal">
             <result name="sucess" type="dispatcher">/recursos/usuarios/pantallaPrincipal.jsp</result>            
         </action>
-        
+          <!--***************************REPORTES*******************************************-->
         <action class="Actions.CurriculumPDFAction" name="reporte" method="reportePDF">
             <result name="success" type="jasper">
                 <param name="location">/recursos/Reportes/curriculum.jasper</param>
@@ -71,6 +71,15 @@
         <action class="Actions.ServicioPDFAction" name="reporteServicio" method="reportePDF">
             <result name="success" type="jasper">
                 <param name="location">/recursos/Reportes/servicio.jasper</param>
+                <param name="format">PDF</param>
+                <param name="connection">conexion</param>   
+                <param name="reportParameters">parametros</param>    
+               
+            </result>
+        </action>
+           <action class="Actions.OfertaPDFAction" name="reporteOferta" method="reportePDF">
+            <result name="success" type="jasper">
+                <param name="location">/recursos/Reportes/oferta.jasper</param>
                 <param name="format">PDF</param>
                 <param name="connection">conexion</param>   
                 <param name="reportParameters">parametros</param>    

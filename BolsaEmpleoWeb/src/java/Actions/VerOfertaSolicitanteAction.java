@@ -47,6 +47,7 @@ public class VerOfertaSolicitanteAction extends ActionSupport implements Prepara
                 insertado = new OfertaBusiness().buscarOfertaFavorita(ofertaAVer, (Solicitante) sessionMap.get("solicitante"));
             }
         }
+        sessionMap.put("oferta", ofertaAVer);
     }
 
     public String solicitar() throws SQLException, DataException {

@@ -59,6 +59,9 @@
                                     <s:submit value="Solicitar" action="insertarSolicitudProcess" onclick="return confirmBox('¿Desea registrar la solicitud?');"/>
                                 </c:if>
                             </s:form>
+                            <s:form action="reporteOferta" style="float: right" cssClass="form">
+                                <s:submit value="Exportar a PDF"></s:submit>
+                            </s:form>
                             <s:form method="post" action="marcarOfertaFavoritaProcess" cssClass="form" style="float: right">
                                 <s:hidden name="id"/>
                                 <c:if test="${sessionScope.solicitante != null}">

@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <jasperReport xmlns="http://jasperreports.sourceforge.net/jasperreports" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://jasperreports.sourceforge.net/jasperreports http://jasperreports.sourceforge.net/xsd/jasperreport.xsd" name="null" language="groovy" pageWidth="595" pageHeight="842" columnWidth="555" leftMargin="20" rightMargin="20" topMargin="20" bottomMargin="20">
-	<queryString language="SQL">
+	<property name="ireport.zoom" value="1.0"/>
+	<property name="ireport.x" value="0"/>
+	<property name="ireport.y" value="0"/>
+	<parameter name="idOferta" class="java.lang.Integer"/>
+	<queryString>
 		<![CDATA[SELECT
      Oferta."id" AS Oferta_id,
      Oferta."puesto" AS Oferta_puesto,
@@ -22,8 +26,8 @@
      Empleador."direccion" AS Empleador_direccion,
      Empleador."id" AS Empleador_id
 FROM
-     "dbo"."Empleador" Empleador,
-     "dbo"."Oferta" Oferta]]>
+     "dbo"."Empleador" Empleador INNER JOIN "dbo"."Oferta" Oferta ON Empleador."id" = Oferta."empleador"
+where Oferta.id=$P{idOferta}]]>
 	</queryString>
 	<field name="Oferta_id" class="java.lang.Integer"/>
 	<field name="Oferta_puesto" class="java.lang.String"/>
@@ -48,23 +52,162 @@ FROM
 		<band splitType="Stretch"/>
 	</background>
 	<title>
-		<band height="79" splitType="Stretch"/>
+		<band height="271" splitType="Stretch">
+			<staticText>
+				<reportElement x="177" y="51" width="250" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[INORMACION DEL EMPLEADOR]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="95" width="115" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_nombre}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="95" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Nombre:]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="129" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Correo:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="321" y="95" width="137" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_apellidos}]]></textFieldExpression>
+			</textField>
+			<textField>
+				<reportElement x="144" y="129" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_correo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="159" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Celular:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="159" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_telefono_movil}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="195" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Telefono:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="195" width="115" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_telefono_fijo}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="302" y="195" width="49" height="20"/>
+				<textElement/>
+				<text><![CDATA[Movil:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="375" y="195" width="124" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_telefono_movil}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="230" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Direccion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="230" width="355" height="38"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Empleador_direccion}]]></textFieldExpression>
+			</textField>
+		</band>
 	</title>
-	<pageHeader>
-		<band height="35" splitType="Stretch"/>
-	</pageHeader>
-	<columnHeader>
-		<band height="61" splitType="Stretch"/>
-	</columnHeader>
 	<detail>
-		<band height="125" splitType="Stretch"/>
+		<band height="360" splitType="Stretch">
+			<staticText>
+				<reportElement x="187" y="21" width="250" height="20"/>
+				<textElement>
+					<font fontName="Arial Black" size="12"/>
+				</textElement>
+				<text><![CDATA[INORMACION DE LA OFERTA]]></text>
+			</staticText>
+			<staticText>
+				<reportElement x="22" y="51" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Puesto:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="159" y="51" width="162" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Oferta_puesto}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="87" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Salario:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="159" y="87" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.math.BigDecimal"><![CDATA[$F{Oferta_salario}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="126" width="122" height="20"/>
+				<textElement/>
+				<text><![CDATA[Cantidad de Vacantes:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="159" y="126" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.Integer"><![CDATA[$F{Oferta_cantidad_vacantes}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="187" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Requerimientos:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="187" width="293" height="88"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Oferta_requerimentos}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="156" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Canton:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="144" y="156" width="132" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Oferta_canton}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="302" y="156" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Provincia]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="427" y="156" width="100" height="20"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Oferta_provincia}]]></textFieldExpression>
+			</textField>
+			<staticText>
+				<reportElement x="22" y="290" width="100" height="20"/>
+				<textElement/>
+				<text><![CDATA[Descripcion:]]></text>
+			</staticText>
+			<textField>
+				<reportElement x="159" y="290" width="268" height="43"/>
+				<textElement/>
+				<textFieldExpression class="java.lang.String"><![CDATA[$F{Oferta_descripcion}]]></textFieldExpression>
+			</textField>
+		</band>
 	</detail>
-	<columnFooter>
-		<band height="45" splitType="Stretch"/>
-	</columnFooter>
-	<pageFooter>
-		<band height="54" splitType="Stretch"/>
-	</pageFooter>
 	<summary>
 		<band height="42" splitType="Stretch"/>
 	</summary>
