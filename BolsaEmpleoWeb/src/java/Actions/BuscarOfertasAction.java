@@ -50,7 +50,7 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
         idEmpleador = empleador.getId();
         //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        //Llamado al metodo que realiza la busqueda
+        //Llamado al metodo que realiza la busqueda de todas las categorias para llenar el select correspondiente
         this.categorias = categoriaBusiness.buscarCategorias();
     }
 
@@ -86,7 +86,7 @@ public class BuscarOfertasAction extends ActionSupport implements Preparable, Se
         //Obtiene el id del objeto
         idEmpleador = empleador.getId();
         try {
-            //Llamado al metodo que realiza la busqueda
+            //Llamado al metodo que realiza la busqueda de ofertas con sus parametros de busqueda
             ofertas = ofertaBusiness.buscarOfertasPorEmpleador(categoria, puesto, idEmpleador, provincia,canton);
         } catch (SQLException e) {
             Logger.getLogger(BuscarOfertasAction.class.getName()).log(Level.SEVERE, null, e);

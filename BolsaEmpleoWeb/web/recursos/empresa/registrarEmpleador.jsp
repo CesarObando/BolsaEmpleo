@@ -42,7 +42,7 @@
                                 <s:textfield name="nombreEmpresa" placeholder="Ingresa el nombre de tu empresa"/>
                                 <s:textarea name="direccion" placeholder="Ingresa tu dirección"/>
                                 <s:textfield name="username" placeholder="Ingresa un nombre de usuario" requiredLabel="true"/>
-                                <s:password name="pass" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true"/>
+                                <s:password name="password" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres" requiredLabel="true"/>
                                 <s:submit action="registrarEmpleadorProcess" value="Registrar Empleador" onclick="return confirmBox('¿Desea registrar el empleador?');"/>
                             </s:form>
                             <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

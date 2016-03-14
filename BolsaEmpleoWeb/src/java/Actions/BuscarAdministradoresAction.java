@@ -37,7 +37,7 @@ public class BuscarAdministradoresAction extends ActionSupport implements Prepar
         cedula = request.getParameter("cedula");
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
-        //Llamado al metodo que realiza la busqueda
+        //Llamado al metodo que realiza la busqueda de administradores con sus parametros de busqueda
         administradores = administradorBusiness.buscarAdministradoresFiltrados(cedula, nombre, apellidos);
     }
 
@@ -49,7 +49,7 @@ public class BuscarAdministradoresAction extends ActionSupport implements Prepar
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
         try {
-            //Llamado al metodo que realiza la busqueda
+            //Llamado al metodo que realiza la busqueda de administradores con sus parametros de busqueda
             administradores = administradorBusiness.buscarAdministradoresFiltrados(cedula, nombre, apellidos);
         } catch (SQLException e) {
             Logger.getLogger(BuscarAdministradoresAction.class.getName()).log(Level.SEVERE, null, e);

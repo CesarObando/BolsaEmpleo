@@ -39,7 +39,7 @@ public class BuscarOfertasAdministradorAction extends ActionSupport implements P
     public void prepare() throws Exception {
         //Definicion de un objeto de la capa Business para comunicarse con los metodos de la capa Data
         CategoriaBusiness categoriaBusiness = new CategoriaBusiness();
-        //Llamado al metodo que realiza la busqueda
+        //Llamado al metodo que realiza la busqueda de todas las categorias para llenar el select correspondiente
         this.categorias = categoriaBusiness.buscarCategorias();
     }
 
@@ -63,7 +63,7 @@ public class BuscarOfertasAdministradorAction extends ActionSupport implements P
             canton = request.getParameter("canton");
         }
         try {
-            //Llamado al metodo que realiza la busqueda
+            //Llamado al metodo que realiza la busqueda de ofertas con sus parametros de busqueda
             ofertas = ofertaBusiness.buscarOfertasPorCategoria(categoria, puesto,provincia,canton);
             //Se recorre la lista de objetos y se le asigna a cada uno de ellos los objetos que tenga relacionados para mostrar mayor informacion al usuario
             for (int i = 0; i < ofertas.size(); i++) {

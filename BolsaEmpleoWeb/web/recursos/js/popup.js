@@ -2,7 +2,7 @@
 function confirmBox(mensaje) {
     var answer;
     answer = window.confirm(mensaje);
-    if (answer == true) {
+    if (answer === true) {
         return true;
     }
     else {

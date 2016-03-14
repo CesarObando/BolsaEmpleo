@@ -41,7 +41,7 @@ public class BuscarEmpleadoresAction extends ActionSupport implements Preparable
         nombre = request.getParameter("nombre");
         apellidos = request.getParameter("apellidos");
         try {
-            //Llamado al metodo que realiza la busqueda
+            //Llamado al metodo que realiza la busqueda de empleadores con sus parametros de busqueda
             empleadores = empleadorBusiness.buscarEmpleadoresFiltrados(cedula, nombre, apellidos);
             ordenarLista();
         } catch (SQLException e) {

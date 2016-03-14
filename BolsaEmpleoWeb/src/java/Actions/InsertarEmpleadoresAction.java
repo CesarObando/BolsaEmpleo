@@ -50,7 +50,7 @@ public class InsertarEmpleadoresAction extends ActionSupport implements SessionA
             addFieldError("username", "Debe ingresar un nombre de usuario.");
         }
         if (empleadorInsertar.getPassword().length() < 6) {
-            addFieldError("pass", "La contraseña debe ser mayor a 6 caracteres");
+            addFieldError("password", "La contraseña debe ser mayor a 6 caracteres");
         }
     }
 
