@@ -1,3 +1,4 @@
+
 Paginador = function (divPaginador, tabla)
 {
     this.miDiv = divPaginador; //un DIV donde irán controles de paginación
