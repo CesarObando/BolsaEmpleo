@@ -52,8 +52,8 @@
                                 <td><a href="http://www.ina.ac.cr/"><img class="img-responsive" src="../imagenes/IconosRelacionados/ina.png" alt="" /></a></td>
                             </table>
                         </center>
-                            <h6 class="h6">Si deseas publicar una oferta profesional registrate como empleador haciendo click <a href="../empresa/registrarEmpleador.jsp" style="background: transparent; color: blue">aquí</a> o si ya estás registrado <a href="../empresa/login.jsp" style="background: transparent">inicia sesión.</a> </h6>
-                            <h6 class="h6">Si deseas publicar tu trabajo independiente registrate como solicitante haciendo click <a href="../usuarios/insertarSolicitante.jsp" style="background: transparent; color: blue">aquí</a> o si ya estás registrado <a href="../usuarios/login.jsp" style="background: transparent">inicia sesión.</a> </h6>
+                        <h6 class="h6">Si deseas publicar tu trabajo independiente registrate como solicitante haciendo click <a href="../usuarios/insertarSolicitante.jsp" style="background: transparent; color: blue">aquí</a> o si ya estás registrado <a href="../usuarios/login.jsp" style="background: transparent">inicia sesión.</a> </h6>
+                        <h6 class="h6">Si deseas publicar una oferta profesional registrate como empleador haciendo click <a href="../empresa/registrarEmpleador.jsp" style="background: transparent; color: blue">aquí</a> o si ya estás registrado <a href="../empresa/login.jsp" style="background: transparent">inicia sesión.</a> </h6>
                     </div>
                 </aside> 
             </div>            
