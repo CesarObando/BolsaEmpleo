@@ -32,12 +32,12 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="insertarServicioProcess" cssClass="form" name="f1" enctype="multipart/form-data">
-                                <s:file name="archivoImagen" placeholder="Seleccione una foto para su trabajo independiente" style="width:450px"/> 
-                                <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente" requiredLabel="true"/>
-                                <s:textarea name="descripcion" placeholder="Ingresa una descripción" requiredLabel="true"/>
-                                <s:select name="categoria.id" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría" headerKey="-1" requiredLabel="true"/>            
-                                <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia"/>
-                                <s:select name="canton" requiredLabel="true" list="#{}" headerKey="" headerValue="Selecciona un cantón" />
+                                <s:file name="archivoImagen" label="Seleccione una foto para su trabajo independiente" style="width:450px"/> 
+                                <s:textfield name="titulo" placeholder="Ingresa el nombre del trabajo independiente*" requiredLabel="true"/>
+                                <s:textarea name="descripcion" placeholder="Ingresa una descripción*" requiredLabel="true"/>
+                                <s:select name="categoria.id" list="listaCategorias" listKey="id" listValue="nombre" headerValue="Seleccione una categoría*" headerKey="-1" requiredLabel="true"/>            
+                                <s:select requiredLabel="true" name="provincia" onchange="cambiarCanton()" list="#{'Alajuela':'Alajuela','Cartago':'Cartago','Guanacaste':'Guanacaste','Heredia':'Heredia','Limón':'Limón','Puntarenas':'Puntarenas','San José':'San José'}" headerKey="" headerValue="Selecciona una provincia*"/>
+                                <s:select name="canton" requiredLabel="true" list="#{}" headerKey="" headerValue="Selecciona un cantón*" />
                                 <s:submit action="insertarServicioProcess" value="Insertar Servicio" onclick="return confirmBox('¿Desea registrar el servicio?');"/>
                             </s:form>
                             <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>

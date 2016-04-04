@@ -79,7 +79,7 @@
                                 <a href="../usuarios/principalSolicitante.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>
                             <c:if test="${sessionScope.solicitante == null}">
-                                <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a>
+                                <s:a href="../usuarios/insertarSolicitante.jsp">Registrate para enviar tu solicitud a esta oferta</s:a> o <s:a href="../usuarios/login.jsp">inicia sesión.</s:a>
                                     <a href="../usuarios/pantallaPrincipal.jsp" style="height: 10px;background: transparent;float: left">Cancelar</a>
                             </c:if>
                         </center>

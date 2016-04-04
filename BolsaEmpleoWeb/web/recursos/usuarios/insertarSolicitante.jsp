@@ -33,22 +33,22 @@
                         </s:if>
                         <center>
                             <s:form method="post" action="insertarSolicitanteProcess" enctype="multipart/form-data" cssClass="form">
-                                <s:textfield name="cedula" type="number" requiredLabel="true" placeholder="Ingresa tu cédula con 9 dígitos"/>
-                                <s:textfield name="nombre" type="text" requiredLabel="true" placeholder="Ingresa tu nombre"/>
-                                <s:textfield name="apellidos" type="text" requiredLabel="true" placeholder="Ingresa tus apellidos"/>
-                                <s:file name="archivoImagen" requiredLabel="true" placeholder="Seleccione una foto para su perfil" style="width:450px"/> 
-                                <s:textfield name="edad" type="number" requiredLabel="true" placeholder="Ingresa tu edad"/>
-                                <s:select requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="-1" headerValue="Selecciona tu género"/>
-                                <s:select requiredLabel="true" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="-1" headerValue="Seleccione tu escolaridad"/>
+                                <s:textfield name="cedula" type="number" requiredLabel="true" placeholder="Ingresa tu cédula con 9 dígitos*"/>
+                                <s:textfield name="nombre" type="text" requiredLabel="true" placeholder="Ingresa tu nombre*"/>
+                                <s:textfield name="apellidos" type="text" requiredLabel="true" placeholder="Ingresa tus apellidos*"/>
+                                <s:file name="archivoImagen" requiredLabel="true" label="Seleccione una foto para su perfil" style="width:450px"/> 
+                                <s:textfield name="edad" type="number" requiredLabel="true" placeholder="Ingresa tu edad*"/>
+                                <s:select requiredLabel="true" name="sexo" list="#{'M':'Masculino','F':'Femenino'}" headerKey="-1" headerValue="Selecciona tu género*"/>
+                                <s:select requiredLabel="true" name="escolaridad" list="#{'Educación Escolar':'Educación Escolar','Educación Media':'Educación Media','Educación Diversificada':'Eduación Diversificada','Educación Superior Universitaria':'Educación Superior Universitaria','Educación Superior no Universitaria':'Educación Superior no Universitaria'}" headerKey="-1" headerValue="Seleccione tu escolaridad*"/>
                                 <s:textarea name="titulos" placeholder="Ingresa los títulos que posees"/>
                                 <s:textfield name="experienciaLaboral" type="number" placeholder="Ingresa los años de experiencia laboral que tienes"/>
                                 <s:textarea name="detalleExperienciaLaboral" placeholder="Describe tu experiencia laboral detalladamente"/>
                                 <s:textfield name="telefonoFijo" type="number" placeholder="Ingresa tu número fijo"/> 
                                 <s:textfield name="telefonoMovil" type="number" placeholder="Ingresa tu número móvil"/>
-                                <s:textfield name="correo" type="email" requiredLabel="true" placeholder="Ingresa tu correo electrónico"/>
+                                <s:textfield name="correo" type="email" requiredLabel="true" placeholder="Ingresa tu correo electrónico*"/>
                                 <s:textfield name="idiomas" type="text" placeholder="Ingresa los idiomas que dominas"/>
-                                <s:textfield name="username" requiredLabel="true" placeholder="Ingresa un nombre de usuario"/>
-                                <s:password name="password" requiredLabel="true" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres"/> 
+                                <s:textfield name="username" requiredLabel="true" placeholder="Ingresa un nombre de usuario*"/>
+                                <s:password name="password" requiredLabel="true" placeholder="Ingresa una contraseña mayor o igual a 6 caracteres*"/> 
                                 <s:submit method="insertar" value="Insertar Solicitante" action="insertarSolicitanteProcess" onclick="return confirmBox('¿Desea registrar el solicitante?');"/>
                             </s:form>
                         </center>
